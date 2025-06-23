@@ -12,6 +12,7 @@ Icon.png.import
 *.import
 .exported/
 *.cs
+.vscode
 *.csproj
 .import/
 CustomMaps/autosave/
