@@ -1,8 +1,8 @@
-# Mercury goes to In'n'Out: Psychopomp mod
+# Project DeadStars: Psychopomp mod
 
 <!-- centre image  -->
 <p align="center">
-  <img src="InNOut_logo.png" />
+  <img src="Icon.png" />
 </p>
 
-## Godot 4.2.1.stable.mono
+## Godot 4.3.0.stable.mono
