@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://crlxkf7rvm4e"]
+
+[ext_resource type="FontFile" uid="uid://dku4ohp5rmpr5" path="res://Fonts/DBStylez.ttf" id="1_djp7l"]
+[ext_resource type="Script" path="res://CustomScripts/Objects/In'nOut/MenuGrabber.gd" id="5_u4rpg"]
+[ext_resource type="Curve" uid="uid://iwl6freusb4t" path="res://KOMResources/Curves/CamGrabberCurve.tres" id="6_83fdw"]
+[ext_resource type="AudioStream" uid="uid://cwu83yi6qfjwb" path="res://Sounds/tick3.ogg" id="7_7ptkb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s47yy"]
+size = Vector3(2.69515, 2.76039, 1.29054)
+
+[node name="CamGrabber" type="StaticBody3D"]
+transform = Transform3D(0.7, 0, 1.66893e-07, 0, 0.7, 0, -1.66893e-07, 0, 0.7, 0.761729, 1.4295, 0.0488453)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+visible = false
+
+[node name="Sound" type="AudioStreamPlayer" parent="CanvasLayer"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+offset_left = 10.0
+offset_top = 510.0
+offset_right = 250.0
+offset_bottom = 540.0
+theme_override_fonts/normal_font = ExtResource("1_djp7l")
+theme_override_font_sizes/normal_font_size = 23
+bbcode_enabled = true
+text = "[shake rate=1]press [color=red]space[/color] to exit."
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 3.58114e-12, 0, 1, 0, -3.58114e-12, 0, 1, 0.0232935, -0.297965, -0.429907)
+shape = SubResource("BoxShape3D_s47yy")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1.42857, 1.69954e-07, 4.54328e-08, -1.69954e-07, 1.23801, 0.712839, 4.54326e-08, -0.712839, 1.23801, 9.53674e-07, 0.46123, 0.69226)
+
+[node name="Behavior" type="Node" parent="." node_paths=PackedStringArray("SoundSource", "MenuCam", "CanvasToShow", "CollisionShape", "UIToToggle")]
+script = ExtResource("5_u4rpg")
+SoundSource = NodePath("../CanvasLayer/Sound")
+MenuCam = NodePath("../Camera3D")
+CanvasToShow = NodePath("../CanvasLayer")
+CamCurve = ExtResource("6_83fdw")
+CollisionShape = NodePath("../CollisionShape3D")
+UIToToggle = [null, null, null, null]
+DistanceToClose = 4.0
+
+[node name="SoundSource" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_7ptkb")

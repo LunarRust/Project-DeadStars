@@ -1,0 +1,19 @@
+[gd_resource type="Environment" format=3 uid="uid://clfs4divhiind"]
+
+[resource]
+background_mode = 1
+background_energy_multiplier = 0.49
+ambient_light_source = 2
+ambient_light_color = Color(0.145098, 0, 0.505882, 1)
+ambient_light_energy = 0.0
+tonemap_mode = 1
+tonemap_exposure = 2.45
+glow_intensity = 0.96
+glow_strength = 0.87
+glow_bloom = 0.7
+glow_blend_mode = 0
+glow_hdr_scale = 1.09
+fog_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+fog_light_energy = 1.43
+volumetric_fog_density = 0.0

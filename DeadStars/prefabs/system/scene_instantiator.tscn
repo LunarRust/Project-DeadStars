@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm0ks56ht7kq0"]
+
+[ext_resource type="Script" path="res://CustomScripts/AutoSceneInstantiator.gd" id="1_omjt3"]
+[ext_resource type="PackedScene" uid="uid://dfnd2drrmwkyf" path="res://KOMPrefabs/NPCs/PompNpc.tscn" id="2_ienqi"]
+
+[node name="SceneInstantiator" type="Node3D" node_paths=PackedStringArray("TargetLoc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.35284, 2.17133, 0.608196)
+script = ExtResource("1_omjt3")
+Scene = ExtResource("2_ienqi")
+TargetLoc = NodePath("RayCast3D")
+LocOffset = Vector3(0, 1, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+hit_back_faces = false

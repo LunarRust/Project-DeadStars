@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://s040nqfxv831"]
+
+[ext_resource type="Texture2D" uid="uid://dkjkpii52h5vi" path="res://textures/Signs/ExitEmission.png" id="1_3c10c"]
+
+[resource]
+albedo_texture = ExtResource("1_3c10c")
+metallic_specular = 0.0
+texture_filter = 2

@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bainlikocj7tf"]
+
+[ext_resource type="Texture2D" uid="uid://c8lgnrltnqdwj" path="res://Models/textures/PompTextureDamage1.png" id="1"]
+
+[resource]
+resource_local_to_scene = true
+cull_mode = 2
+albedo_texture = ExtResource("1")
+rim = 0.42
+rim_tint = 0.1
+subsurf_scatter_strength = 0.67

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bk40wll0gyt74"]
+
+[ext_resource type="Script" path="res://CustomScripts/AutoLoads/NpcSceneRules.gd" id="1_sr1ki"]
+
+[node name="NpcSceneRules" type="Node" groups=["NpcSceneRules"]]
+script = ExtResource("1_sr1ki")
