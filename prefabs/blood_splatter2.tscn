@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bw7oavbfwucoy"]
 
-[ext_resource type="Material" path="res://Material/BloodParticle.tres" id="1"]
+[ext_resource type="Material" uid="uid://bv3n43nuolqjk" path="res://Material/BloodParticle.tres" id="1"]
 [ext_resource type="Script" path="res://Scripts/bloodsplatter.cs" id="2_pudgv"]
 [ext_resource type="AudioStream" uid="uid://cnq4ok8ggd6bs" path="res://Sounds/Gore02.ogg" id="3"]
 
@@ -36,7 +36,7 @@ size = Vector2(0.75, 0.75)
 transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
 cast_shadow = 0
 emitting = false
-amount = 5
+amount = 7
 one_shot = true
 explosiveness = 1.0
 transform_align = 3

@@ -2,6 +2,9 @@ extends GPUParticles3D
 @export var bloodMark : Node3D
 @export var GibRef : RigidBody3D
 
+func _ready():
+	self.emitting = true
+
 func _process(delta):
 	if GibRef == null:
 		self.queue_free()

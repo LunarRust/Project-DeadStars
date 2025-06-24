@@ -1,10 +1,10 @@
 [gd_scene load_steps=14 format=4 uid="uid://ccit002joxsvv"]
 
 [ext_resource type="Script" path="res://addons/func_godot/src/map/func_godot_map.gd" id="1_51026"]
-[ext_resource type="Resource" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="2_4jfcy"]
+[ext_resource type="Resource" uid="uid://b7b1eyuwdw2s4" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="2_4jfcy"]
 [ext_resource type="Material" path="res://textures/Grass1.tres" id="3_8iq3n"]
 [ext_resource type="PackedScene" uid="uid://cbseiu8v8wlhh" path="res://DeadStars/prefabs/player/DS_player_object.tscn" id="4_w115f"]
-[ext_resource type="PackedScene" uid="uid://ciryyfobi7dmd" path="res://KOMPrefabs/Thrait/thrait_albino.tscn" id="5_3ng7s"]
+[ext_resource type="PackedScene" uid="uid://ciryyfobi7dmd" path="res://DeadStars/prefabs/NPCs/Thrait/thrait_albino.tscn" id="5_3ng7s"]
 [ext_resource type="PackedScene" uid="uid://dfnd2drrmwkyf" path="res://KOMPrefabs/NPCs/PompNpc.tscn" id="6_xr5s1"]
 [ext_resource type="Script" path="res://CustomScripts/AutoLoads/NpcSceneRules.gd" id="7_8e63k"]
 

@@ -1,0 +1,111 @@
+[gd_scene load_steps=15 format=3 uid="uid://vy1cubirw6y3"]
+
+[ext_resource type="PackedScene" uid="uid://cr8nu5uoqcsoh" path="res://Models/Logs.blend" id="1_ka7eq"]
+[ext_resource type="Script" path="res://Scripts/AnimeStalkBehavior.cs" id="2_7c2tj"]
+[ext_resource type="Texture2D" uid="uid://kb35blhp0og7" path="res://Sprites/Particles/BloodPart.png" id="3_tpa23"]
+[ext_resource type="AudioStream" uid="uid://murjo85p86jv" path="res://Sounds/Fire.ogg" id="4_jfa8e"]
+[ext_resource type="AudioStream" uid="uid://b0ghpmguefprk" path="res://Sounds/Ambience1.ogg" id="5_7o0ur"]
+[ext_resource type="AudioStream" uid="uid://gl5qxneblhs7" path="res://Music/Thought Made Broken.ogg" id="6_ob70c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gryaj"]
+size = Vector3(1, 1.77051, 1)
+
+[sub_resource type="Curve" id="Curve_c26sx"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 360), 0.0, 0.0, 0, 0, Vector2(1, -360), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_s87a4"]
+curve = SubResource("Curve_c26sx")
+
+[sub_resource type="Curve" id="Curve_8j5aq"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.3125, 1), 0.0, 0.0, 0, 0, Vector2(0.711309, 0.673684), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_3bpub"]
+curve = SubResource("Curve_8j5aq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_obc1a"]
+emission_shape = 1
+emission_sphere_radius = 0.25
+angle_curve = SubResource("CurveTexture_s87a4")
+spread = 26.129
+gravity = Vector3(0, 1, 0)
+scale_curve = SubResource("CurveTexture_3bpub")
+color = Color(0.964706, 0, 0.505882, 1)
+turbulence_enabled = true
+turbulence_noise_strength = 0.16
+turbulence_noise_scale = 0.08
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.01
+turbulence_initial_displacement_min = -48.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s6q1x"]
+transparency = 1
+albedo_texture = ExtResource("3_tpa23")
+emission_enabled = true
+emission = Color(0.858824, 0.376471, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_8pyso"]
+material = SubResource("StandardMaterial3D_s6q1x")
+size = Vector2(0.645, 0.905)
+
+[node name="Logs" instance=ExtResource("1_ka7eq")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+transform = Transform3D(3.33333, 0, 0, 0, 3.33333, 0, 0, 0, 3.33333, 0, 1.63265, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.385254, 0)
+shape = SubResource("BoxShape3D_gryaj")
+
+[node name="Behavior" type="Node" parent="StaticBody3D" index="1"]
+script = ExtResource("2_7c2tj")
+
+[node name="Torch" type="MeshInstance3D" parent="." index="2"]
+transform = Transform3D(-1.65697, 0, 0.179478, 0, 1.66667, 0, -0.179478, 0, -1.65697, 0.094101, -0.174433, -0.238471)
+skeleton = NodePath("")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Torch" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.742022, 0)
+amount = 16
+lifetime = 2.0
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_obc1a")
+draw_pass_1 = SubResource("QuadMesh_8pyso")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Torch" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.715504, 0)
+light_color = Color(0.964706, 0.541176, 0, 1)
+light_energy = 1.1
+shadow_enabled = true
+omni_range = 3.52786
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Torch" index="2"]
+stream = ExtResource("4_jfa8e")
+autoplay = true
+max_distance = 5.0
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Torch/AudioStreamPlayer3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.39993, 5, -12.9244)
+stream = ExtResource("5_7o0ur")
+autoplay = true
+max_distance = 50.0
+panning_strength = 0.0
+
+[node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="Torch/AudioStreamPlayer3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+stream = ExtResource("6_ob70c")
+volume_db = -7.273
+autoplay = true
+max_distance = 50.0
+panning_strength = 0.0
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="Torch/AudioStreamPlayer3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.7558, 6, -4.52284)
+stream = ExtResource("5_7o0ur")
+pitch_scale = 1.79
+autoplay = true
+max_distance = 50.0
+panning_strength = 0.0

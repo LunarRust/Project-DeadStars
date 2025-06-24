@@ -15499,14 +15499,14 @@ _data = {
 [sub_resource type="QuadMesh" id="1"]
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_cc38c"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_2ngga"]
 viewport_path = NodePath("VenusModel/OrderPanel/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p303q"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m6k3l"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_cc38c")
+albedo_texture = SubResource("ViewportTexture_2ngga")
 billboard_mode = 1
 billboard_keep_scale = true
 
@@ -15574,11 +15574,10 @@ script = ExtResource("4_w558x")
 HP = 9
 gibRoot = "res://KOMPrefabs/blood_splatter_KOM.tscn"
 
-[node name="HealthController" type="Node3D" parent="." node_paths=PackedStringArray("CoreHealthHandler", "DialogueSystem", "SoundSource", "Body")]
+[node name="HealthController" type="Node3D" parent="." node_paths=PackedStringArray("DialogueSystem", "SoundSource", "Body")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("5_yiqxo")
 HP = 9999
-CoreHealthHandler = NodePath("../HealthHandler")
 DialogueSystem = NodePath("../DialogueSystem")
 SoundSource = NodePath("../AudioStreamPlayer3D")
 gibRoot = ExtResource("11_cla74")
@@ -16569,7 +16568,7 @@ default_item_texture = ExtResource("15_7c6vw")
 [node name="Quad" type="MeshInstance3D" parent="VenusModel/OrderPanel"]
 transform = Transform3D(0.57, 0, 0, 0, 0.57, 0, 0, 0, 0.756, 0, 0, 0)
 mesh = SubResource("1")
-surface_material_override/0 = SubResource("StandardMaterial3D_p303q")
+surface_material_override/0 = SubResource("StandardMaterial3D_m6k3l")
 
 [node name="Area3D" type="Area3D" parent="VenusModel/OrderPanel/Quad"]
 collision_layer = 2

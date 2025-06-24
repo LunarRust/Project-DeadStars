@@ -25,6 +25,7 @@ func _process(delta):
 
 
 func _on_area_entered(area):
+	print("TriggerVolume: Area Entered")
 	if !BeenEntered:
 		if !TriggerByGroup.is_empty():
 			for i in TriggerByGroup:
@@ -39,6 +40,7 @@ func _on_area_entered(area):
 
 
 func _on_area_exited(area):
+	print("TriggerVolume: Area Exited")
 	if  !BeenExited:
 		if !TriggerByGroup.is_empty():
 			for i in TriggerByGroup:

@@ -1,0 +1,50 @@
+[gd_scene load_steps=10 format=3 uid="uid://duf6pk3ks8wad"]
+
+[ext_resource type="Script" path="res://CustomScripts/Logic/Player/DialogueSystem.gd" id="1_pkeel"]
+[ext_resource type="Script" path="res://CustomScripts/NPC/HealthController.gd" id="2_242gj"]
+[ext_resource type="AudioStream" uid="uid://cnq4ok8ggd6bs" path="res://Sounds/Gore02.ogg" id="3_0us8o"]
+[ext_resource type="Script" path="res://Scripts/InteractableObject.cs" id="3_6uqx3"]
+[ext_resource type="PackedScene" uid="uid://dbrrtfnihdheq" path="res://KOMPrefabs/blood_splatter_KOM.tscn" id="3_8x682"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a2lqy"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ophv7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tl6qw"]
+albedo_color = Color(0.133196, 0.133196, 0.133196, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tiqho"]
+material = SubResource("StandardMaterial3D_tl6qw")
+
+[node name="NPC Template" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_a2lqy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_ophv7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(0.21, 0, 0, 0, 0.21, 0, 0, 0, 0.21, 0, 0.47839, 0.485188)
+mesh = SubResource("BoxMesh_tiqho")
+
+[node name="DialogueSystem" type="Node3D" parent="." node_paths=PackedStringArray("soundSource")]
+script = ExtResource("1_pkeel")
+npcName = "template"
+Dialogue = Array[String](["[center][placeholder]"])
+LookDescription = Array[String](["[center][placeholder]"])
+TouchDescription = Array[String](["[center][placeholder]"])
+soundSource = NodePath("../AudioStreamPlayer3D")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="HealthController" type="Node3D" parent="." node_paths=PackedStringArray("DialogueSystem", "SoundSource")]
+script = ExtResource("2_242gj")
+HP = 1
+DialogueSystem = NodePath("../DialogueSystem")
+SoundSource = NodePath("../AudioStreamPlayer3D")
+gibRoot = ExtResource("3_8x682")
+HurtSound = ExtResource("3_0us8o")
+
+[node name="Interactable" type="Node" parent="."]
+script = ExtResource("3_6uqx3")

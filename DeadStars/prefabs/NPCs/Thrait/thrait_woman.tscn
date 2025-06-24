@@ -1,0 +1,90 @@
+[gd_scene load_steps=8 format=3 uid="uid://wtckr3mak6q8"]
+
+[ext_resource type="Script" path="res://CustomScripts/Logic/Player/DialogueSystem.gd" id="1_4ai3l"]
+[ext_resource type="PackedScene" uid="uid://dbrrtfnihdheq" path="res://KOMPrefabs/blood_splatter_KOM.tscn" id="3_6hc5s"]
+[ext_resource type="AudioStream" uid="uid://cnq4ok8ggd6bs" path="res://Sounds/Gore02.ogg" id="3_prqym"]
+[ext_resource type="Script" path="res://CustomScripts/NPC/HealthController.gd" id="4_fxjlu"]
+[ext_resource type="PackedScene" uid="uid://copi71jpyccwi" path="res://Models/Thrait.blend" id="5_23ryw"]
+[ext_resource type="Script" path="res://Scripts/ThraitBabyBehavior.cs" id="6_302xb"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0xcfd"]
+
+[node name="Thrait Woman" type="StaticBody3D"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 1.01008, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_0xcfd")
+
+[node name="DialogueSystem" type="Node3D" parent="." node_paths=PackedStringArray("soundSource")]
+script = ExtResource("1_4ai3l")
+npcName = "Thrait Woman"
+Dialogue = Array[String](["[placeholder]"])
+LookDescription = Array[String](["[placeholder]"])
+TouchDescription = Array[String](["[placeholder]"])
+soundSource = NodePath("../AudioStreamPlayer3D")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="HealthController" type="Node3D" parent="." node_paths=PackedStringArray("DialogueSystem", "SoundSource")]
+script = ExtResource("4_fxjlu")
+Innocent = true
+HP = 6
+DialogueSystem = NodePath("../DialogueSystem")
+SoundSource = NodePath("../AudioStreamPlayer3D")
+gibRoot = ExtResource("3_6hc5s")
+HurtSound = ExtResource("3_prqym")
+
+[node name="Thrait" parent="." instance=ExtResource("5_23ryw")]
+transform = Transform3D(0.77, 0, 0, 0, 0.77, 0, 0, 0, 0.77, 0, -1, -0.508147)
+
+[node name="Skeleton3D" parent="Thrait/ThraitArm" index="0"]
+bones/0/rotation = Quaternion(0.185049, -1.1715e-07, -2.20596e-08, 0.982729)
+bones/1/rotation = Quaternion(0.219122, 1.32668e-09, -6.12112e-08, 0.975698)
+bones/2/rotation = Quaternion(0.0920063, -5.24122e-15, -2.1936e-08, 0.995758)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(0.463685, -0.0648338, -0.612995, 0.636419)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(0.108466, -0.027082, 0.235654, 0.965385)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(-0.0715419, -0.0136421, 0.555393, 0.828393)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(0.297054, -0.0651243, -0.511696, 0.803545)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(0.125638, 0.118659, -0.0631414, 0.982929)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(0.0519993, 0.098686, -0.0662915, 0.991546)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(0.0954487, 0.0611769, -0.171866, 0.978575)
+bones/10/position = Vector3(0.014545, 0.2897, 0.136283)
+bones/10/rotation = Quaternion(0.515088, 0.0964819, 0.0408045, 0.850712)
+bones/11/rotation = Quaternion(0.28363, 4.80209e-12, -4.7336e-07, 0.958934)
+bones/12/position = Vector3(0.0970957, 0.140743, -0.109577)
+bones/12/rotation = Quaternion(0.123855, -0.0455503, 0.204735, 0.969881)
+bones/13/position = Vector3(0.164418, 0.14999, 0.00868974)
+bones/13/rotation = Quaternion(0.215617, -0.0619149, 0.20933, 0.951765)
+bones/13/scale = Vector3(1, 1, 1)
+bones/14/position = Vector3(-0.0970962, 0.140743, -0.109576)
+bones/14/rotation = Quaternion(0.123853, 0.0455517, -0.204735, 0.969881)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/position = Vector3(-0.164418, 0.149992, 0.00866372)
+bones/15/rotation = Quaternion(0.215617, 0.0619165, -0.20933, 0.951765)
+bones/15/scale = Vector3(1, 1, 1)
+bones/16/position = Vector3(0.0799659, 0.247835, 0.144641)
+bones/16/rotation = Quaternion(0.298851, -0.00111687, 0.0211055, 0.954066)
+bones/17/position = Vector3(-0.0799656, 0.247835, 0.144641)
+bones/17/rotation = Quaternion(0.298851, 0.0011185, -0.0211062, 0.954066)
+bones/18/rotation = Quaternion(0.463684, 0.0648298, 0.612995, 0.636421)
+bones/18/scale = Vector3(1, 1, 1)
+bones/19/rotation = Quaternion(0.108466, 0.027082, -0.235654, 0.965385)
+bones/19/scale = Vector3(1, 1, 1)
+bones/20/rotation = Quaternion(-0.071542, 0.0136421, -0.555393, 0.828393)
+bones/21/rotation = Quaternion(0.297054, 0.0651244, 0.511696, 0.803545)
+
+[node name="AnimationPlayer" parent="Thrait" index="1"]
+autoplay = "Idle"
+
+[node name="Behavior" type="Node" parent="." node_paths=PackedStringArray("thraits")]
+script = ExtResource("6_302xb")
+thraits = [null]
+
+[editable path="Thrait"]

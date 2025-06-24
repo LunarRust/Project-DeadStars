@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://dbrrtfnihdheq"]
 
-[ext_resource type="Material" path="res://Material/BloodParticle.tres" id="1_rlnbw"]
+[ext_resource type="Material" uid="uid://bv3n43nuolqjk" path="res://Material/BloodParticle.tres" id="1_rlnbw"]
 [ext_resource type="Script" path="res://CustomScripts/NPC/Objects/BloodSplatter.gd" id="2_wg0lf"]
 [ext_resource type="PackedScene" path="res://prefabs/gib.tscn" id="3_62s37"]
 [ext_resource type="Texture2D" uid="uid://kb35blhp0og7" path="res://Sprites/Particles/BloodPart.png" id="4_2shob"]

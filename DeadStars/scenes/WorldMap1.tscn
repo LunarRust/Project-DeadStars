@@ -155,6 +155,7 @@ script = ExtResource("9_ttwu1")
 destination = "WorldMap2"
 
 [node name="Eye label" type="RichTextLabel" parent="Descend/TextureButton"]
+layout_mode = 0
 offset_left = 12.0
 offset_top = 42.5
 offset_right = 97.055

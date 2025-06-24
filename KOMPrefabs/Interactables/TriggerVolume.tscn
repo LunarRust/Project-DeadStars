@@ -2,13 +2,16 @@
 
 [ext_resource type="Script" path="res://CustomScripts/Objects/TriggerVolume.gd" id="1_s8rhm"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_tlv32"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_flawc"]
+resource_local_to_scene = true
 
 [node name="TriggerVolume" type="Area3D"]
+collision_layer = 2050
+collision_mask = 2049
 script = ExtResource("1_s8rhm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_tlv32")
+shape = SubResource("BoxShape3D_flawc")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

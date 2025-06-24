@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdinnup4b678h"]
+
+[ext_resource type="Material" uid="uid://biaw1atl6ys4k" path="res://Material/FogPlane.tres" id="1_hyfp7"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_25vty"]
+
+[node name="LowFog3" type="MeshInstance3D"]
+transform = Transform3D(31.136, 0, 0, 0, 4.00819, 0, 0, 0, 38.5897, 0, 0, 0)
+material_override = ExtResource("1_hyfp7")
+mesh = SubResource("PlaneMesh_25vty")

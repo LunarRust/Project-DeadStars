@@ -4,7 +4,6 @@ extends Node3D
 @export var Innocent = false
 @export var HP : int = 9
 @export_category("Assignments")
-@export var CoreHealthHandler : Node3D
 @export var DialogueSystem : Node3D
 @export var SoundSource : AudioStreamPlayer3D
 var shake
@@ -24,7 +23,6 @@ var dead : bool
 
 func _ready():
 	shake = get_tree().get_first_node_in_group("CameraShake")
-	CoreHealthHandler = get_parent().get_node("HealthHandler")
 func _process(delta):
 	if HP < 1 && !dead:
 		Death()
@@ -34,6 +32,7 @@ func _process(delta):
 
 
 func Hurt(amount : int,doShake : bool = false):
+	DialogueSystem.CloseDialogue()
 	if HP > 1:
 		var node : Node = gibRoot2.instantiate()
 		#var node = gib2.instantiate(PackedScene.GEN_EDIT_STATE_DISABLED)
