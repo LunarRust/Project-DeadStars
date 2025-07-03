@@ -206,5 +206,14 @@ json_data = "[
         \"name\": \"Drink Cup\",
         \"usable\": \"false\",
         \"width\": 1
+    },
+    {
+        \"description\": \"placeholder\",
+        \"height\": 1,
+        \"id\": \"lighter\",
+        \"image\": \"res://DeadStars/sprites/Items/LighterRenderTiltedCroppedResizedx128.png\",
+        \"name\": \"Lighter\",
+        \"usable\": \"false\",
+        \"width\": 1
     }
 ]"

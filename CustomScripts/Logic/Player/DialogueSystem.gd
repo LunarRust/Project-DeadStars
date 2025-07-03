@@ -10,6 +10,7 @@ extends Node3D
 @export var DoLook : bool = true
 @export var DoTouch : bool = true
 @export var soundSource : AudioStreamPlayer3D
+@export var ObjectRoot : Node3D
 @export var DialogueSound : AudioStream
 @export var faceSprite : Texture2D
 var DialogueBox : Node2D
@@ -38,7 +39,10 @@ func _ready():
 	PlayerObject = get_tree().get_first_node_in_group("player")
 	PlayerHealthController = get_tree().get_first_node_in_group("PlayerHealthHandler")
 	ActionButtonMaster = get_tree().get_first_node_in_group("InteractionButtonKOMMaster")
-	DialogueBox.DialogueClosed.connect(CloseDialogue)
+	if DialogueBox != null:
+		DialogueBox.DialogueClosed.connect(CloseDialogue)
+	if ObjectRoot == null:
+		ObjectRoot = self
 
 	parentnode = self.get_parent()
 	var vector : Vector3 = parentnode.global_position + parentnode.basis.z * 2

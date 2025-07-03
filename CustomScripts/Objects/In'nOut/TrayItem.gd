@@ -92,14 +92,14 @@ func Item(item : String):
 		SoundSource.stream = load("res://Sounds/PhoneFail.ogg")
 		SoundSource.play()
 		return false
-	
+
 func SetItem(prefab : String):
 	Scene = load(prefab) as PackedScene
 	Packload()
 	HasItem = true
 	emited = false
 	return true
-			
+
 func _process(delta):
 	if node == null:
 		if emited == false:
@@ -116,7 +116,7 @@ func Packload():
 		node.global_position = TargetLoc.global_position
 		print(node.get_tree_string_pretty())
 		node.scale = ObjectScale
-		
+
 		if NPCNavEnabled:
 			NavNodeTarget = node
 			await get_tree().create_timer(0.1).timeout
@@ -133,7 +133,7 @@ func Packload():
 				if i.is_in_group("PompNPC"):
 					if i.InstID == currentID:
 						SignalBusKOM.emit_signal("ItemSpef",currentID,NavNodeTarget,0)
-			
+
 			currentMark.global_position = NavNodeTarget.global_position
 			currentMark = null
 			currentID = null
@@ -161,10 +161,9 @@ func find_closest_or_furthest(node: Object,group_name,get_closest:= true) -> Obj
 		return return_node
 	else:
 		return null
-			
+
 func get_all_children(in_node, array := []):
 	array.push_back(in_node)
 	for child in in_node.get_children():
 		array = get_all_children(child, array)
 	return array
-

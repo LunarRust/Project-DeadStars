@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=4 uid="uid://xs4pvu3yjtlk"]
+
+[ext_resource type="Script" path="res://addons/func_godot/src/map/func_godot_map.gd" id="1_e0tos"]
+[ext_resource type="Script" path="res://DeadStars/scripts/LockDoor.gd" id="1_usulk"]
+[ext_resource type="Resource" uid="uid://b7b1eyuwdw2s4" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="2_gjntu"]
+[ext_resource type="Material" uid="uid://b16me04j0qxyq" path="res://textures/CustomText/Grate.tres" id="3_8ioxu"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_wys27"]
+_surfaces = [{
+"aabb": AABB(-4, -1, -4, 0.5, 2, 4),
+"attribute_data": PackedByteArray("AACAQAAAgL8AAIBAAACAPwAAYEAAAIA/AABgQAAAgL8AAIDAAACAvwAAAAAAAIC/AAAAAAAAgD8AAIDAAACAPwAAgEAAAGBAAACAQAAAgEAAAAAAAACAQAAAAAAAAGBAAACAwAAAYEAAAAAAAABgQAAAAAAAAIBAAACAwAAAgEAAAIBAAACAvwAAgEAAAIA/AAAAAAAAgD8AAAAAAACAvwAAgMAAAIC/AABgwAAAgL8AAGDAAACAPwAAgMAAAIA/"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAACAAMABAAFAAYABAAGAAcACAAJAAoACAAKAAsADAANAA4ADAAOAA8AEAARABIAEAASABMAFAAVABYAFAAWABcA"),
+"material": ExtResource("3_8ioxu"),
+"name": "CustomText/Grate",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AACAwAAAgD8AAIDAAACAwAAAgL8AAIDAAABgwAAAgL8AAIDAAABgwAAAgD8AAIDAAACAwAAAgD8AAIDAAACAwAAAgD8AAAAAAACAwAAAgL8AAAAAAACAwAAAgL8AAIDAAABgwAAAgL8AAIDAAACAwAAAgL8AAIDAAACAwAAAgL8AAAAAAABgwAAAgL8AAAAAAABgwAAAgD8AAIDAAABgwAAAgD8AAAAAAACAwAAAgD8AAAAAAACAwAAAgD8AAIDAAABgwAAAgD8AAIDAAABgwAAAgL8AAIDAAABgwAAAgL8AAAAAAABgwAAAgD8AAAAAAACAwAAAgD8AAAAAAABgwAAAgD8AAAAAAABgwAAAgL8AAAAAAACAwAAAgL8AAAAA/////wAA/7//////AAD/v/////8AAP+//////wAA/78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//v/9/AAD//////38AAP//////fwAA//////9/AAD//////3////9//7//f////3//v/9/////f/+//3////9//7////9//////////3//////////f/////////9///////9//3////+//3//f////7//f/9/////v/9//3////+/")
+}]
+
+[sub_resource type="ArrayOccluder3D" id="ArrayOccluder3D_58ke5"]
+vertices = PackedVector3Array(-4, 1, -4, -4, -1, -4, -3.5, -1, -4, -3.5, 1, -4, -4, 1, -4, -4, 1, 0, -4, -1, 0, -4, -1, -4, -3.5, -1, -4, -4, -1, -4, -4, -1, 0, -3.5, -1, 0, -3.5, 1, -4, -3.5, 1, 0, -4, 1, 0, -4, 1, -4, -3.5, 1, -4, -3.5, -1, -4, -3.5, -1, 0, -3.5, 1, 0, -4, 1, 0, -3.5, 1, 0, -3.5, -1, 0, -4, -1, 0)
+indices = PackedInt32Array(0, 1, 2, 0, 2, 3, 4, 5, 6, 4, 6, 7, 8, 9, 10, 8, 10, 11, 12, 13, 14, 12, 14, 15, 16, 17, 18, 16, 18, 19, 20, 21, 22, 20, 22, 23)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3odgb"]
+points = PackedVector3Array(-4, 1, -4, -4, -1, -4, -3.5, -1, -4, -3.5, 1, -4, -4, 1, 0, -4, -1, 0, -3.5, -1, 0, -3.5, 1, 0)
+
+[node name="GrateDoor" type="Node3D"]
+script = ExtResource("1_usulk")
+
+[node name="FuncGodotMap" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.76191, 0, 0)
+script = ExtResource("1_e0tos")
+local_map_file = "res://DeadStars/maps/grate.map"
+map_settings = ExtResource("2_gjntu")
+
+[node name="entity_0_worldspawn" type="StaticBody3D" parent="FuncGodotMap"]
+collision_mask = 0
+
+[node name="entity_0_mesh_instance" type="MeshInstance3D" parent="FuncGodotMap/entity_0_worldspawn"]
+mesh = SubResource("ArrayMesh_wys27")
+
+[node name="entity_0_occluder_instance" type="OccluderInstance3D" parent="FuncGodotMap/entity_0_worldspawn"]
+occluder = SubResource("ArrayOccluder3D_58ke5")
+
+[node name="entity_0_brush_0_collision_shape" type="CollisionShape3D" parent="FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_3odgb")
+
+[node name="SoundSource" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true

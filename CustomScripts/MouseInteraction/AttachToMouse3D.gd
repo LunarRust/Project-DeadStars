@@ -18,7 +18,7 @@ func _ready():
 		pass # Replace with function body.
 	else:
 		active = false
-	
+
 func _physics_process(delta):
 	if active:
 		if CheckRules == true:
@@ -32,7 +32,7 @@ func _physics_process(delta):
 			cam = get_viewport().get_camera_3d()
 			mousepos = get_viewport().get_mouse_position()
 			self.global_position = RCS.get_mouse_world_position(space_state,cam,mousepos)
-	
+
 
 func _process(delta):
 	if CheckRules == true:
@@ -50,8 +50,8 @@ func _process(delta):
 		else:
 			fade_out(CharParent,1)
 			active = false
-	
-	
+
+
 func fade_out(node : Node3D,fade_duration : float):
 	var tween = get_tree().create_tween()
 	tween.tween_property(node, "modulate:a", 0, fade_duration)
@@ -65,4 +65,3 @@ func fade_in(node : Node3D,fade_duration : float):
 	tween.play()
 	await tween.finished
 	tween.kill()
-

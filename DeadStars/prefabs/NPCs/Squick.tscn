@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://1u3we0aapct7"]
+
+[ext_resource type="PackedScene" uid="uid://3wobpa6lpxpd" path="res://Models/LilSquick.glb" id="1_xwf0p"]
+[ext_resource type="Script" path="res://CustomScripts/Logic/Player/DialogueSystem.gd" id="2_1rqga"]
+[ext_resource type="AudioStream" uid="uid://ounonyqd5nsg" path="res://Sounds/Squick.ogg" id="3_4oetn"]
+[ext_resource type="Script" path="res://CustomScripts/NPC/HealthController.gd" id="4_yoxxp"]
+[ext_resource type="PackedScene" uid="uid://dbrrtfnihdheq" path="res://KOMPrefabs/blood_splatter_KOM.tscn" id="5_1me8l"]
+[ext_resource type="AudioStream" uid="uid://cnq4ok8ggd6bs" path="res://Sounds/Gore02.ogg" id="5_memym"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l3xhg"]
+resource_local_to_scene = true
+radius = 0.419521
+
+[node name="Squick" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.835, 0, 0, 0, 0.835, 0, 0, 0, 0.835, 0, 0.813096, 0.0494666)
+shape = SubResource("CapsuleShape3D_l3xhg")
+
+[node name="DialogueSystem" type="Node3D" parent="." node_paths=PackedStringArray("soundSource", "ObjectRoot")]
+transform = Transform3D(0.835, 0, 0, 0, 0.835, 0, 0, 0, 0.835, 0, 0.813096, 0.0494666)
+script = ExtResource("2_1rqga")
+npcName = "Lil' Squick"
+Dialogue = Array[String](["Idk"])
+LookDescription = Array[String](["stupid idiot."])
+TouchDescription = Array[String](["nasty 🤮🤮🤮"])
+soundSource = NodePath("../DialogueSource")
+ObjectRoot = NodePath("")
+DialogueSound = ExtResource("3_4oetn")
+
+[node name="DialogueSource" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.813096, 0.0494666)
+max_distance = 7.0
+
+[node name="HealthController" type="Node3D" parent="." node_paths=PackedStringArray("DialogueSystem", "SoundSource")]
+transform = Transform3D(0.835, 0, 0, 0, 0.835, 0, 0, 0, 0.835, 0, 0.813096, 0.0494666)
+script = ExtResource("4_yoxxp")
+HP = 4
+DialogueSystem = NodePath("../DialogueSystem")
+SoundSource = NodePath("../DialogueSource")
+gibRoot = ExtResource("5_1me8l")
+HurtSound = ExtResource("5_memym")
+
+[node name="LilSquick" parent="." instance=ExtResource("1_xwf0p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.96046e-08, -0.0766723)
+
+[node name="Skeleton3D" parent="LilSquick/Armature" index="0"]
+bones/0/position = Vector3(4.64954e-17, 0.168936, -0.144245)
+bones/0/rotation = Quaternion(0.142178, -0.0151521, -0.104882, 0.984152)
+bones/1/rotation = Quaternion(0.246652, -3.29162e-16, -1.91111e-16, 0.969104)
+bones/2/rotation = Quaternion(-0.0127076, 1.56378e-09, -9.06322e-10, 0.999919)
+bones/3/rotation = Quaternion(0.289784, -4.18358e-08, -1.26669e-08, 0.957092)
+bones/4/rotation = Quaternion(-0.457009, -0.172195, -0.0906713, 0.867911)
+bones/5/rotation = Quaternion(0.456599, 0.683828, 0.562716, -0.0851359)
+bones/6/rotation = Quaternion(-0.153719, 0.17483, -0.26113, 0.936812)
+bones/7/rotation = Quaternion(-0.498145, -0.0738666, 0.689232, 0.520918)
+bones/8/rotation = Quaternion(-0.456599, 0.683828, 0.562716, 0.0851359)
+bones/9/rotation = Quaternion(-0.303523, 0.0790226, 0.276234, 0.908474)
+bones/10/rotation = Quaternion(-0.439528, 0.0394369, -0.604468, 0.663233)
+
+[node name="AnimationPlayer2" parent="LilSquick" index="2"]
+autoplay = "Idle"
+
+[editable path="LilSquick"]

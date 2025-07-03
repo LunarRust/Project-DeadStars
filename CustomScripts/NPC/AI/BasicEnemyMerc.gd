@@ -18,33 +18,33 @@ extends CharacterBody3D
 var attackTimer : float
 var attacking : bool
 var active : bool = false
-
-var playerMover = load("res://Scripts/MoverTest.cs")
-var playerHealthInstance
+var distance
+var playerHealth
 
 func _ready():
 	if (playerObject == null):
 		print("Ouchie wawa! There's no defined player object for this enemy to chase! Trying to find one now.")
 		playerObject = get_tree().get_first_node_in_group("player")
-		playerHealthInstance = get_tree().get_first_node_in_group("PlayerHealthHandler")
+		playerHealth = get_tree().get_first_node_in_group("PlayerHealthHandler")
 		active = true
 	else:
 		active = true
 	pass
-		
+
 
 func _physics_process(delta):
 	if (active):
 		active_handling(delta)
 
 func active_handling(delta):
-	if (position.distance_to(playerObject.position) < aggroRange && !attacking):
+	distance = global_position.distance_to(playerObject.position)
+	if (global_position.distance_to(playerObject.global_position) < aggroRange && !attacking):
 		if (anim != null):
 			anim.play(walkName)
 		attacking = true
-	if (position.distance_to(playerObject.position) > 1.5 && attacking):
+	if (global_position.distance_to(playerObject.global_position) > 1.5 && attacking):
 		handle_Move()
-	if (position.distance_to(playerObject.position) < 1.5):
+	if (global_position.distance_to(playerObject.global_position) < 3.5):
 		attackTimer += 1 * delta
 	if (attackTimer > attackThreshold && attacking && meleeAttack):
 		Attack()
@@ -53,7 +53,7 @@ func active_handling(delta):
 
 func update_target_location(target_location):
 	nav_agent.target_position = target_location
-	
+
 func handle_Move():
 	var current_location = global_transform.origin
 	var next_location = nav_agent.get_next_path_position()
@@ -61,18 +61,18 @@ func handle_Move():
 	var lookTarget = Vector3(global_position.x + velocity.x, global_position.y, global_position.z + velocity.z)
 	if (current_location != next_location && velocity != Vector3.ZERO && lookTarget != global_position):
 		look_at(Vector3(lookTarget), Vector3.UP, true)
-	
+
 	#look_at(Vector3(playerObject.global_position.x,global_position.y,playerObject.global_position.z), Vector3.UP, true);
-	
+
 	velocity = velocity.move_toward(new_velocity, .25)
 	move_and_slide()
-	update_target_location(playerObject.position)
+	update_target_location(playerObject.global_position)
 
 func Attack():
 	if (anim != null):
 		anim.play(attackName)
-	if (position.distance_to(playerObject.position) < 1.5):
-		playerHealthInstance.notsostatichealth(attackPower)
+	if (global_position.distance_to(playerObject.global_position) < 2.5):
+		playerHealth.notsostatichealth(attackPower)
 	await get_tree().create_timer(1.0).timeout
 	if (anim != null):
 		anim.play(walkName)

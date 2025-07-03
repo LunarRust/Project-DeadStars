@@ -6,8 +6,8 @@
 resource_local_to_scene = true
 
 [node name="TriggerVolume" type="Area3D"]
-collision_layer = 2050
-collision_mask = 2049
+collision_layer = 8192
+collision_mask = 8192
 script = ExtResource("1_s8rhm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

@@ -32,7 +32,8 @@ func _process(delta):
 
 
 func Hurt(amount : int,doShake : bool = false):
-	DialogueSystem.CloseDialogue()
+	if DialogueSystem != null:
+		DialogueSystem.CloseDialogue()
 	if HP > 1:
 		var node : Node = gibRoot2.instantiate()
 		#var node = gib2.instantiate(PackedScene.GEN_EDIT_STATE_DISABLED)
@@ -67,7 +68,8 @@ func SkinCheck():
 
 func Death():
 	var node : Node = gibRoot.instantiate()
-	DialogueSystem.CloseDialogue()
+	if DialogueSystem != null:
+		DialogueSystem.CloseDialogue()
 	get_node("/root").add_child(node)
 	node.global_position = self.global_position
 	get_parent().queue_free()

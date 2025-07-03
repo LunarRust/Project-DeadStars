@@ -13,6 +13,7 @@ var Hided : bool
 @export_category("Parameters")
 @export var Speed : float = 1.0
 @export var ItemDropRange : float = 200
+@export var greaterThan : bool
 @export var OpenPos : Vector2 = Vector2(480,300)
 @export var ClosePos : Vector2 = Vector2(480,560)
 var HealthHandler
@@ -45,21 +46,39 @@ func _process(delta):
 		#manalabel.text = str(HealthHandler.mana)
 		pass
 
-	if Input.is_action_pressed("MouseAction") && get_viewport().get_mouse_position().y > ItemDropRange && open && !Hided && InvCtl._grabbed_ctrl_inventory_item != null:
-		var tween : Tween = create_tween()
-		tween.set_parallel()
-		tween.tween_property(HotBar,"position",Vector2(ClosePos.x,ClosePos.y - 0.1),Speed / 2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
-		tween.tween_property(Gear1,"rotation",0,Speed / 2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
-		tween.tween_property(Gear2,"rotation",0,Speed / 2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
-		Hided = true
+#### Probably a cleaner way to be this but I cant be fucked
+	if greaterThan:
+		if Input.is_action_pressed("MouseAction") && get_viewport().get_mouse_position().y > ItemDropRange && open && !Hided && InvCtl._grabbed_ctrl_inventory_item != null:
+			var tween : Tween = create_tween()
+			tween.set_parallel()
+			tween.tween_property(HotBar,"position",Vector2(ClosePos.x,ClosePos.y - 0.1),Speed / 2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+			tween.tween_property(Gear1,"rotation",0,Speed / 2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+			tween.tween_property(Gear2,"rotation",0,Speed / 2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+			Hided = true
 
-	elif Input.is_action_just_released("MouseAction") && Hided:
-		var tween : Tween = create_tween()
-		tween.set_parallel()
-		tween.tween_property(HotBar,"position",OpenPos,Speed / 2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
-		tween.tween_property(Gear1,"rotation",5,Speed / 2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
-		tween.tween_property(Gear2,"rotation",-5,Speed / 2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
-		Hided = false
+		elif Input.is_action_just_released("MouseAction") && Hided:
+			var tween : Tween = create_tween()
+			tween.set_parallel()
+			tween.tween_property(HotBar,"position",OpenPos,Speed / 2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+			tween.tween_property(Gear1,"rotation",5,Speed / 2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+			tween.tween_property(Gear2,"rotation",-5,Speed / 2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+			Hided = false
+	else:
+		if Input.is_action_pressed("MouseAction") && get_viewport().get_mouse_position().y < ItemDropRange && open && !Hided && InvCtl._grabbed_ctrl_inventory_item != null:
+			var tween : Tween = create_tween()
+			tween.set_parallel()
+			tween.tween_property(HotBar,"position",Vector2(ClosePos.x,ClosePos.y - 0.1),Speed / 2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+			tween.tween_property(Gear1,"rotation",0,Speed / 2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+			tween.tween_property(Gear2,"rotation",0,Speed / 2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+			Hided = true
+
+		elif Input.is_action_just_released("MouseAction") && Hided:
+			var tween : Tween = create_tween()
+			tween.set_parallel()
+			tween.tween_property(HotBar,"position",OpenPos,Speed / 2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+			tween.tween_property(Gear1,"rotation",5,Speed / 2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+			tween.tween_property(Gear2,"rotation",-5,Speed / 2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+			Hided = false
 
 
 func _on_pressed():

@@ -25,32 +25,32 @@ func _process(delta):
 
 
 func _on_area_entered(area):
-	print("TriggerVolume: Area Entered")
 	if !BeenEntered:
+		print("TriggerVolume: Area Entered")
 		if !TriggerByGroup.is_empty():
 			for i in TriggerByGroup:
 				if area.get_parent().is_in_group(i):
 					VolumeBeenEntered.emit()
-					if !TriggerOnce:
+					if TriggerOnce:
 						BeenEntered = true
 		else:
 			VolumeBeenEntered.emit()
-			if !TriggerOnce:
+			if TriggerOnce:
 				BeenEntered = true
 
 
 func _on_area_exited(area):
-	print("TriggerVolume: Area Exited")
 	if  !BeenExited:
+		print("TriggerVolume: Area Exited")
 		if !TriggerByGroup.is_empty():
 			for i in TriggerByGroup:
 				if area.get_parent().is_in_group(i):
 					VolumeBeenExited.emit()
-					if !TriggerOnce:
+					if TriggerOnce:
 						BeenExited = true
 		else:
 			VolumeBeenExited.emit()
-			if !TriggerOnce:
+			if TriggerOnce:
 				BeenExited = true
 
 

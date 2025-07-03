@@ -6,7 +6,7 @@ var loadScene: PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	loadScene = load("res://CustomMercScenes/CustomScenes/WMMD.tscn")
+	loadScene = load(destination)
 	pass # Replace with function body.
 
 

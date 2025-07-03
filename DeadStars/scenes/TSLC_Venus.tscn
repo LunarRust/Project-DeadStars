@@ -142,13 +142,16 @@ offset_right = 601.0
 offset_bottom = 311.0
 theme_override_colors/default_color = Color(0.647059, 0.121569, 0.196078, 1)
 theme_override_fonts/normal_font = ExtResource("3_pveot")
-theme_override_font_sizes/normal_font_size = 25
+theme_override_font_sizes/normal_font_size = 19
 bbcode_enabled = true
 text = "[wave][center]
 If you work in the food service industry, you can sue you're employer for mental health damages."
 scroll_active = false
 script = ExtResource("10_wuwae")
-tips = Array[String](["If you work in the food service industry, you can sue you're employer for mental health damages.", "You should try estrogen.", "I hate [img=100]res://KOMSprites/innout/InNOut_logo.png[/img].", "I swear to god if that bitch comes in and orders three sets of fries again I will commit manslaughter.", "Will I get PTO if I dunk my head in the fryer?", "You can take all the napkins in the napkin dispenser home with you. No one gets paid enough to try to stop you.", "Don't let you're ice get too cold. Put them in the Deep fryer.", "I miss my wife."])
+tips = Array[String](["You should try estrogen.", "Do not ride elevators when there’s a fire in the building. 
+That’s how you’ll guarantee a spot in your town’s local annual Best Corpse Competition. 
+Someone will always die better than you. 
+You will not win first prize."])
 
 [node name="MeshInstance2D5" type="MeshInstance2D" parent="."]
 modulate = Color(0.156863, 0, 0.00784314, 1)

@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://cg47dwupbooko"]
+
+[ext_resource type="Material" uid="uid://dvt3ygib25uqx" path="res://textures/WaterCaustic.tres" id="1_dw2ic"]
+[ext_resource type="AudioStream" uid="uid://cwlfkcpvjtg5o" path="res://Sounds/WaterRun2.ogg" id="2_o75gj"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ol6vn"]
+material = ExtResource("1_dw2ic")
+
+[sub_resource type="Animation" id="Animation_6wjda"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(16, -13.4184, 67.5111)]
+}
+
+[sub_resource type="Animation" id="Animation_67sxl"]
+resource_name = "waterRise"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4, 10),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector3(16, -13.4184, 67.5111), Vector3(16, -13.271, 67.5111), Vector3(16, -13.4184, 67.5111)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y60po"]
+_data = {
+"RESET": SubResource("Animation_6wjda"),
+"waterRise": SubResource("Animation_67sxl")
+}
+
+[node name="MeshInstance3D" type="MeshInstance3D"]
+transform = Transform3D(18.5803, 0, 0, 0, 18.5803, 0, 0, 0, 18.5803, 16, -13.4184, 67.5111)
+mesh = SubResource("PlaneMesh_ol6vn")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(0.0538204, 0, 0, 0, 0.0538204, 0, 0, 0, 0.0538204, -0.000572709, 0.0136454, 0)
+stream = ExtResource("2_o75gj")
+volume_db = 13.878
+pitch_scale = 0.23
+autoplay = true
+max_distance = 30.0
+panning_strength = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_y60po")
+}
+autoplay = "waterRise"

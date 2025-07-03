@@ -1,6 +1,7 @@
 extends Node
 var inv : Inventory
 var NpcInv : Inventory
+var Npc
 var used : bool = false
 @export var ItemID : String
 # Called when the node enters the scene tree for the first time.
@@ -11,9 +12,9 @@ func _ready():
 
 
 func Touch(AmNpc = false):
-	NpcInv = find_closest_or_furthest(self.get_parent(),"PompNPC")
-	if NpcInv != null:
-		NpcInv = NpcInv.get_node("InventoryGrid")
+	Npc = find_closest_or_furthest(self.get_parent(),"PompNPC")
+	if Npc != null:
+		NpcInv = Npc.get_node("InventoryGrid")
 	if AmNpc && NpcInv != null:
 		if (!used):
 			if NpcInv.can_add_item(create_item(ItemID)):

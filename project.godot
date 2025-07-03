@@ -18,8 +18,9 @@ config/name="DeadStars Adaptation"
 config/tags=PackedStringArray("mod")
 run/main_scene="res://DeadStars/scenes/Chapter1/Level0.tscn"
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
-config/icon="res://Icon.png"
+config/icon="res://icon.png"
 
 [autoload]
 
@@ -47,6 +48,23 @@ version_control/autoload_on_startup=true
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/PlayerPrefs/plugin.cfg", "res://addons/func_godot/plugin.cfg", "res://addons/gloot/plugin.cfg", "res://addons/qodot/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://DeadStars/models/": "red",
+"res://DeadStars/prefabs/": "purple",
+"res://DeadStars/prefabs/NPCs/AdvNpc/": "yellow",
+"res://DeadStars/scenes/": "blue",
+"res://DeadStars/scripts/": "teal",
+"res://DeadStars/sounds/": "pink",
+"res://DeadStars/sprites/": "yellow"
+}
+
+[global_group]
+
+NPCArea=""
+NPCBody=""
 
 [input]
 
@@ -171,6 +189,8 @@ LookAxis={
 [layer_names]
 
 3d_physics/layer_4="mouseIgnore"
+3d_physics/layer_13="Message Trigger"
+3d_physics/layer_14="Trigger Volume"
 
 [rendering]
 

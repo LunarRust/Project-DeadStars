@@ -23,19 +23,20 @@ var attackTimer : float
 var attacking : bool
 var active : bool = false
 
-var playerHealth = load("res://Scripts/PlayerHealthHandler.cs")
-var playerMover = load("res://Scripts/MoverTest.cs")
-var playerHealthInstance = playerHealth.new()
+var playerHealth
+var playerMover
 
 func _ready():
 	if (playerObject == null):
 		print("Ouchie wawa! There's no defined player object for this enemy to chase! Trying to find one now.")
 		playerObject = get_tree().get_first_node_in_group("player")
+		playerHealth = get_tree().get_first_node_in_group("PlayerHealthHandler")
+
 		active = true
 	else:
 		active = true
 	pass
-		
+
 
 func _physics_process(delta):
 	if (active):
@@ -65,7 +66,7 @@ func active_handling(delta):
 
 func update_target_location(target_location):
 	nav_agent.target_position = target_location
-	
+
 func handle_Move(delta):
 
 	var direction = Vector3()
@@ -96,7 +97,7 @@ func Attack():
 		animTree.active = true;
 		animTrigger("Attack")
 	if (position.distance_to(playerObject.position) < 1.5):
-		playerHealthInstance.notsostatichealth(attackPower)
+		playerHealth.notsostatichealth(attackPower)
 	await get_tree().create_timer(1.0).timeout
 	if (anim != null):
 		anim.play(walkName)

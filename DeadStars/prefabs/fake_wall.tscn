@@ -1,0 +1,53 @@
+[gd_scene load_steps=10 format=3 uid="uid://baadu1ltw2dbf"]
+
+[ext_resource type="Texture2D" uid="uid://cb3htjx6o5llp" path="res://textures/Marble2.png" id="1_7yvy4"]
+[ext_resource type="Texture2D" uid="uid://de5gnv6ys4x1i" path="res://textures/Normals/Marble_normal.png" id="2_6111x"]
+[ext_resource type="Script" path="res://CustomScripts/Logic/Player/DialogueSystem.gd" id="3_71gju"]
+[ext_resource type="Script" path="res://CustomScripts/NPC/HealthController.gd" id="4_10cuk"]
+[ext_resource type="PackedScene" uid="uid://dbrrtfnihdheq" path="res://KOMPrefabs/blood_splatter_KOM.tscn" id="5_ivk0j"]
+[ext_resource type="AudioStream" uid="uid://cnq4ok8ggd6bs" path="res://Sounds/Gore02.ogg" id="6_re6an"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_plctl"]
+size = Vector3(7.75223, 8.47297, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uvmvl"]
+albedo_color = Color(0.694118, 0.694118, 0.694118, 1)
+albedo_texture = ExtResource("1_7yvy4")
+normal_enabled = true
+normal_texture = ExtResource("2_6111x")
+uv1_scale = Vector3(13.88, 8.925, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_flgqa"]
+
+[node name="Fake Wall" type="StaticBody3D"]
+transform = Transform3D(2.23517e-08, -1.73472e-18, -0.477145, 1.17357e-11, 0.477145, 9.09496e-13, 0.477145, -1.74347e-11, 2.23517e-08, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, -6.93889e-18, -3.15544e-29, -5.20418e-18, 1, 0, 8.67362e-19, -2.76619e-29, 1, 0, 0, 1.74105)
+shape = SubResource("BoxShape3D_plctl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+transform = Transform3D(8.83663, 1.66533e-16, 1.00974e-28, 1.38778e-16, 9.61574, 0, -9.71445e-17, 1.19203e-27, 1, 0, 0, 0.0712042)
+material_override = SubResource("StandardMaterial3D_uvmvl")
+mesh = SubResource("BoxMesh_flgqa")
+skeleton = NodePath("../..")
+
+[node name="DialogueSystem" type="Node3D" parent="." node_paths=PackedStringArray("soundSource")]
+script = ExtResource("3_71gju")
+Dialogue = Array[String](["Talking to a wall will not do you any good.
+They tend to be awful at conversations."])
+LookDescription = Array[String](["The wall looks a little worse for wear."])
+TouchDescription = Array[String](["You rap your knuckles against the wall.
+It rings out a bit more hollow than the other walls."])
+soundSource = NodePath("../AudioStreamPlayer3D")
+looking = false
+
+[node name="HealthController" type="Node3D" parent="." node_paths=PackedStringArray("DialogueSystem", "SoundSource")]
+script = ExtResource("4_10cuk")
+HP = 1
+DialogueSystem = NodePath("../DialogueSystem")
+SoundSource = NodePath("../AudioStreamPlayer3D")
+gibRoot = ExtResource("5_ivk0j")
+HurtSound = ExtResource("6_re6an")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]

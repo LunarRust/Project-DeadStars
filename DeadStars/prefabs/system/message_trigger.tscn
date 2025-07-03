@@ -9,8 +9,8 @@ size = Vector3(5.506, 1, 1)
 
 [node name="Message Trigger" type="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.328233, 1.56319, 3.61187)
-collision_layer = 2051
-collision_mask = 2051
+collision_layer = 4096
+collision_mask = 4096
 script = ExtResource("1_qtba5")
 Name = "..."
 Message = "Water Treatment. Human waste being processed and cleaned. Made acceptable for consumption again. Chemicals being added to chemicals to remove chemicals. "

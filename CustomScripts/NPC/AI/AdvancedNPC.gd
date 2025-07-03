@@ -99,7 +99,6 @@ func _ready():
 	nav_agent.target_desired_distance = MaxDistance
 	if (TargetEntity == null):
 		print("Ouchie wawa! There's no defined player object for this enemy to chase! Trying to find one now.")
-		TargetPlayer()
 		running = true
 	else:
 		running = true
@@ -222,6 +221,8 @@ func AnimAndVelocity(delta):
 		else:
 			AttackDistance = AttackDistanceDefault
 
+
+
 func update_target_location(target_location):
 	nav_agent.target_position = target_location
 
@@ -324,7 +325,7 @@ func CheckGlobals():
 			if FlashLight.visible:
 				FlashLightOff()
 		if !NpcRules.InventoryVisible:
-			self.get_node("VenusModel/OrderPanel/SubViewport/InvDisplay").hide()
+			self.get_node("VenusModel/OrderPanel").hide()
 		if NpcRules.AllowPlayerControl == true:
 			AllowPlayerCon = true
 		else:
@@ -560,6 +561,7 @@ func TargetPlayer(MaxDist = MaxDistanceDef):
 		MaxDistance = MaxDistanceDef
 	TargetEntity = get_tree().get_first_node_in_group("player")
 	LookTarget = TargetEntity
+	print_rich("new target: [color=red]" + (TargetEntity.name) + "[/color]")
 
 
 ###################################

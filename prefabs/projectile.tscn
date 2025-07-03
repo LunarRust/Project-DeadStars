@@ -1,6 +1,6 @@
-[gd_scene load_steps=17 format=3]
+[gd_scene load_steps=17 format=3 uid="uid://udqyqx4ufrta"]
 
-[ext_resource type="Script" path="res://Scripts/basicProjectile.cs" id="1"]
+[ext_resource type="Script" path="res://DeadStars/scripts/basicProjectile.gd" id="1_ukpmy"]
 [ext_resource type="Texture2D" uid="uid://toc3avwefyks" path="res://Sprites/Particles/Projectile2.png" id="2"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1pnsb"]
@@ -99,19 +99,24 @@ animations = [{
 }]
 
 [node name="Projectile" type="Area3D"]
-script = ExtResource("1")
+collision_layer = 11
+collision_mask = 11
+script = ExtResource("1_ukpmy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_1pnsb")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-light_color = Color(0.7607839703559875, 0.4745100140571594, 0.03921569883823395, 1)
+light_color = Color(0.760784, 0.47451, 0.0392157, 1)
 omni_range = 4.0
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(0.6000000238418579, 0, 0, 0, 0.6000000238418579, 0, 0, 0, 0.6000000238418579, 0, 0, 0)
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 billboard = 1
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_otoe1")
 autoplay = "default"
-frame_progress = 0.8285260200500488
+frame_progress = 0.828526
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

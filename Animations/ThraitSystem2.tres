@@ -10,7 +10,7 @@ animation = &"Attack"
 animation = &"Block"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7sgk2"]
-animation = &"Idle3"
+animation = &"Idle"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_whl7h"]
 animation = &"Scared"
@@ -33,7 +33,7 @@ advance_mode = 2
 advance_condition = &"Touch"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mel60"]
-xfade_time = 0.2
+xfade_time = 0.4
 advance_mode = 2
 advance_condition = &"Talk"
 
@@ -105,4 +105,4 @@ states/Talking/position = Vector2(439, 116)
 states/WalkAggro/node = SubResource("AnimationNodeAnimation_54w2e")
 states/WalkAggro/position = Vector2(616, 121)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_tra67"), "Idle", "Slap", SubResource("AnimationNodeStateMachineTransition_mcu5h"), "Idle", "Talking", SubResource("AnimationNodeStateMachineTransition_mel60"), "Idle", "Scared", SubResource("AnimationNodeStateMachineTransition_pgq82"), "Scared", "Block", SubResource("AnimationNodeStateMachineTransition_2oeed"), "Block", "Angry", SubResource("AnimationNodeStateMachineTransition_bo34a"), "Angry", "WalkAggro", SubResource("AnimationNodeStateMachineTransition_wk3kf"), "WalkAggro", "Attack", SubResource("AnimationNodeStateMachineTransition_0x4gf"), "Attack", "WalkAggro", SubResource("AnimationNodeStateMachineTransition_lhmpq"), "Scared", "Idle", SubResource("AnimationNodeStateMachineTransition_at73s"), "Talking", "Idle", SubResource("AnimationNodeStateMachineTransition_am2sg"), "Slap", "Idle", SubResource("AnimationNodeStateMachineTransition_vgly7"), "Idle", "Block", SubResource("AnimationNodeStateMachineTransition_15j3b")]
-graph_offset = Vector2(121, 21)
+graph_offset = Vector2(-205, -19)
