@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://b5cqqk2kavced"]
+
+[ext_resource type="Script" path="res://CustomScripts/Logic/Player/DialogueSystem.gd" id="1_bw2cu"]
+[ext_resource type="Script" path="res://CustomScripts/NPC/HealthController.gd" id="2_sky1f"]
+[ext_resource type="PackedScene" uid="uid://0ocqtkp140vd" path="res://prefabs/Clay_Splatter.tscn" id="3_50537"]
+[ext_resource type="PackedScene" uid="uid://dp48f2kb24aok" path="res://Models/FakePomp.blend" id="4_ehvjf"]
+[ext_resource type="Script" path="res://Scripts/lookatplayer.cs" id="5_ckc7k"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a2lqy"]
+
+[node name="FakePompNPC" type="RigidBody3D"]
+transform = Transform3D(8.9407e-08, 0, 1, 0, 1, 0, -1, 0, 8.9407e-08, 0, 0, 0)
+gravity_scale = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_a2lqy")
+
+[node name="DialogueSystem" type="Node3D" parent="."]
+script = ExtResource("1_bw2cu")
+npcName = "You"
+Dialogue = Array[String](["..."])
+LookDescription = Array[String](["Perfecting Imitation."])
+TouchDescription = Array[String](["Fingers looking for hammers."])
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="HealthHandler" type="Node3D" parent="." node_paths=PackedStringArray("DialogueSystem", "SoundSource")]
+script = ExtResource("2_sky1f")
+HP = 1
+DialogueSystem = NodePath("../DialogueSystem")
+SoundSource = NodePath("../AudioStreamPlayer3D")
+gibRoot = ExtResource("3_50537")
+
+[node name="Interactable" type="Node" parent="."]
+
+[node name="FakePomp" parent="." instance=ExtResource("4_ehvjf")]
+transform = Transform3D(2.32052, 0, 1.13687e-13, 0, 2.32052, 0, -1.13687e-13, 0, 2.32052, 0, -1, 0)
+
+[node name="Head" parent="FakePomp" index="0"]
+transform = Transform3D(0.333611, 0, 0, 0, 0.333611, 0, 0, 0, 0.333611, 0, 0.572109, -0.0699387)
+script = ExtResource("5_ckc7k")
+shakeMagnitude = 0.05
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
+max_distance = 15.0
+
+[editable path="FakePomp"]

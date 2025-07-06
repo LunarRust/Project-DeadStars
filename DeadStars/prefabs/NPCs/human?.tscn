@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://6j3cv3wpylx0"]
+
+[ext_resource type="Script" path="res://CustomScripts/Logic/Player/DialogueSystem.gd" id="1_uoidq"]
+[ext_resource type="Script" path="res://Scripts/EnemyHealthHandler.cs" id="2_cksb4"]
+[ext_resource type="Script" path="res://Scripts/InteractableObject.cs" id="3_pp4u3"]
+[ext_resource type="PackedScene" uid="uid://byfcbrdtvjkxb" path="res://Models/Human.blend" id="4_c6qlb"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a2lqy"]
+
+[node name="Human?" type="RigidBody3D"]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 0, 0, 0)
+gravity_scale = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_a2lqy")
+
+[node name="DialogueSystem" type="Node3D" parent="." node_paths=PackedStringArray("soundSource")]
+script = ExtResource("1_uoidq")
+npcName = "Human"
+Dialogue = Array[String](["Day open score total eat food what open
+tell score work day seven two over hill child
+scream baby telling music culture"])
+LookDescription = Array[String](["The Human is just starting to learn word order. It will be a while still before it is sent to the surface."])
+TouchDescription = Array[String](["Cold and stiff."])
+soundSource = NodePath("../AudioStreamPlayer3D")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="HealthHandler" type="Node3D" parent="."]
+script = ExtResource("2_cksb4")
+gibRoot = "res://prefabs/Clay_Splatter.tscn"
+
+[node name="Interactable" type="Node" parent="."]
+script = ExtResource("3_pp4u3")
+
+[node name="Human" parent="." instance=ExtResource("4_c6qlb")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -1, 0)
+
+[node name="Skeleton3D" parent="Human/Armature" index="0"]
+bones/0/rotation = Quaternion(-0.0878961, -1.03467e-17, -1.03467e-17, 0.99613)
+bones/1/rotation = Quaternion(0.129218, 1.1821e-07, 1.5404e-08, 0.991616)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/rotation = Quaternion(-0.0477633, 1.7895e-14, -1.13877e-08, 0.998859)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(-0.000457832, 0.000618621, -0.749487, 0.662018)
+bones/3/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(-0.00150851, -2.18568e-07, -0.123707, 0.992318)
+bones/5/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(-0.00045801, -0.000618779, 0.749487, 0.662018)
+bones/8/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(-0.00150851, 2.18854e-07, 0.123707, 0.992318)
+bones/11/rotation = Quaternion(0.49022, 0.146625, 0.855131, -0.0832824)
+bones/11/scale = Vector3(1, 1, 1)
+bones/12/rotation = Quaternion(-0.232226, 0.0303282, 0.106578, 0.966329)
+bones/12/scale = Vector3(1, 1, 1)
+bones/13/rotation = Quaternion(-0.49022, 0.146625, 0.855131, 0.0832824)
+bones/13/scale = Vector3(1, 1, 1)
+bones/14/rotation = Quaternion(-0.232226, -0.0303282, -0.106578, 0.966329)
+bones/14/scale = Vector3(1, 1, 1)
+
+[node name="AnimationPlayer" parent="Human" index="1"]
+autoplay = "Idle"
+
+[editable path="Human"]

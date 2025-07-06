@@ -698,23 +698,23 @@ size = Vector3(21.4667, 1, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_awxj0"]
 size = Vector3(25.3776, 1, 1)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_05nsd"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_o172r"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j3w6a"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2im3j"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_05nsd")
+albedo_texture = SubResource("ViewportTexture_o172r")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_kkywx"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_4e331"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_63har"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4v073"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_kkywx")
+albedo_texture = SubResource("ViewportTexture_4e331")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hs10k"]
 size = Vector3(23.3569, 1, 1)
@@ -1371,7 +1371,7 @@ visible_ratio = 1.0
 BlinkSpeed = 1.0
 
 [node name="Quad" parent="ScrollingMarkee" index="2"]
-surface_material_override/0 = SubResource("StandardMaterial3D_j3w6a")
+surface_material_override/0 = SubResource("StandardMaterial3D_2im3j")
 
 [node name="ScrollingMarkee2" parent="." instance=ExtResource("24_uwe4p")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.85816, 4.72762, -31.4299)
@@ -1389,7 +1389,7 @@ visible_ratio = 1.0
 BlinkSpeed = 1.0
 
 [node name="Quad" parent="ScrollingMarkee2" index="2"]
-surface_material_override/0 = SubResource("StandardMaterial3D_63har")
+surface_material_override/0 = SubResource("StandardMaterial3D_4v073")
 
 [node name="Message Trigger3" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.328233, 1.56319, -26.8716)

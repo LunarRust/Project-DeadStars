@@ -15,7 +15,7 @@ var CurrentIntersectedObject
 var interactionButtonKOM
 var TouchedObject
 var ViewButton = preload("res://Scripts/ViewButton.cs")
-var WooshSound = preload("res://Sounds/Woosh.ogg") as AudioStream
+@export var WooshSound : AudioStream = preload("res://Sounds/Woosh.ogg")
 var ImpactSound = preload("res://Sounds/Impact.ogg") as AudioStream
 
 # Called when the node enters the scene tree for the first time.
