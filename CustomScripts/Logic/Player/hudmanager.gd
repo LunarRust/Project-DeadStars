@@ -20,11 +20,11 @@ func _input(event):
 
 func HideHUD():
 	instance.hide()
-	if instance.backupFilter != null:
-		instance.backupFilter.show()
+	#if instance.backupFilter != null:
+		#instance.backupFilter.show()
 
 
 func ShowHUD():
 	instance.show()
-	if instance.backupFilter != null:
-		instance.backupFIlter.hide()
+	#if instance.backupFilter != null:
+	#	instance.backupFIlter.hide()

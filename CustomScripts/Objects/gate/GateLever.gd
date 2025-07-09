@@ -7,13 +7,13 @@ extends Node
 var used : bool = false
 var playerObject : Node3D
 
-	
+
 func Touch():
 	print("Lever Touched!")
 	if(!used):
 		_OpenGate()
 	pass
-	
+
 func _OpenGate():
 	print("Lever flipped!")
 	used = true
@@ -22,5 +22,5 @@ func _OpenGate():
 	GateAnim.play("Open")
 	await get_tree().create_timer(delay).timeout
 	gate.queue_free()
-	
+
 	pass

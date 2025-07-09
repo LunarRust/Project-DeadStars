@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://br20xgntamej3"]
+[gd_scene load_steps=29 format=3 uid="uid://br20xgntamej3"]
 
 [ext_resource type="Texture2D" uid="uid://lgt33gnqe66k" path="res://Sprites/MapBack1new.png" id="1_jrwy6"]
 [ext_resource type="Script" path="res://Scripts/Tweener2D.cs" id="2_3gnr1"]
@@ -21,6 +21,8 @@
 [ext_resource type="Texture2D" uid="uid://cy2vqc8pk5ygw" path="res://Sprites/UI/Fullscreen1.png" id="20_hdbxf"]
 [ext_resource type="Texture2D" uid="uid://be3jf3qr3gbmy" path="res://Sprites/UI/Fullscreen2.png" id="21_f3nt1"]
 [ext_resource type="Script" path="res://Scripts/Fullscreen.gd" id="22_1pia8"]
+[ext_resource type="PackedScene" uid="uid://d1m1r3psoqh4d" path="res://CustomMercScenes/CustomScenes/MenuLabelBase.tscn" id="22_j1v08"]
+[ext_resource type="Script" path="res://CustomScripts/Logic/KOMStats.gd" id="23_haann"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5mmss"]
 shader = ExtResource("3_kni28")
@@ -81,6 +83,11 @@ adjustment_enabled = true
 adjustment_saturation = 1.21
 
 [node name="Node2D" type="Node2D"]
+
+[node name="KOMStats" type="Node" parent="." node_paths=PackedStringArray("DeadStarsLabel")]
+script = ExtResource("23_haann")
+DeadStarsLabel = NodePath("../VerLabel")
+DeadStars = "InDev"
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(480, 270)
@@ -230,11 +237,13 @@ offset_left = -33.0
 offset_top = -30.0
 offset_right = 32.0
 offset_bottom = 34.0
-script = ExtResource("9_ttwu1")
-destination = "House1"
+script = ExtResource("11_loshc")
+destination = "res://DeadStars/scenes/Chapter1/Level0.tscn"
+sceneLoader = "res://DeadStars/scenes/TSLC_Venus.tscn"
 metadata/_edit_use_anchors_ = true
 
 [node name="Phone" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(906, 476)
 scale = Vector2(1.07831, 1.07868)
 texture = ExtResource("12_qdary")
@@ -305,6 +314,7 @@ HospitalButton = NodePath("../Hospital")
 FinalButton = NodePath("../Descend")
 
 [node name="Button" type="Button" parent="."]
+visible = false
 offset_left = 863.0
 offset_top = 2.0
 offset_right = 957.0
@@ -340,3 +350,14 @@ script = ExtResource("22_1pia8")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4bkj6")
+
+[node name="VerLabel" parent="." instance=ExtResource("22_j1v08")]
+offset_left = 781.0
+offset_top = 11.0
+offset_right = 1281.0
+offset_bottom = 72.0
+scale = Vector2(0.635, 0.635)
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.686275, 0.247059, 0.247059, 1)
+theme_override_font_sizes/normal_font_size = 32
+text = "[shake rate=20] PLACEHOLDER"

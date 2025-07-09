@@ -244,4 +244,3 @@ text = "[shake rate=20] PLACEHOLDER"
 [node name="KOMStats" type="Node" parent="VerLabel" node_paths=PackedStringArray("DeadStarsLabel")]
 script = ExtResource("13_b2i4f")
 DeadStarsLabel = NodePath("..")
-DeadStars = "DeadStars"

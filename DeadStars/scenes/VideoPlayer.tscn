@@ -20,7 +20,7 @@ expand = true
 
 [node name="VideoWait" type="Node" parent="."]
 script = ExtResource("3")
-Destination = "res://Scenes/title_screen.tscn"
+Destination = "res://DeadStars/scenes/WorldMap1.tscn"
 transition = true
 
 [node name="DitherFilter" type="ColorRect" parent="."]

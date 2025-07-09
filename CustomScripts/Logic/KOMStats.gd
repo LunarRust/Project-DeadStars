@@ -10,14 +10,14 @@ var config = ConfigFile.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var err = config.load("res://KOMData/system.cfg")
+	var err = config.load("user://system.cfg")
 	# Store some values.
 	if err != OK:
 		config.set_value("Versions", "KOMVer", KOMVer)
 		config.set_value("Versions", "DeadStars", DeadStars)
 		config.set_value("Config_Data", "Exists", true)
 	# Save it to a file (overwrite if already exists).
-		config.save("res://KOMData/system.cfg")
+		config.save("user://system.cfg")
 
 	for Versions in config.get_sections():
 		var KOMVer = config.get_value(Versions, "KOMVer")
