@@ -5,6 +5,7 @@ var SignalBusKOM
 @export var anim : AnimationTree
 @export var PompAI : Node3D
 @export var dialogue : Node3D
+@export var HealthController : Node3D
 @export_category("Parameters")
 @export var follow : bool
 #@export var PlayerObject : MeshInstance3D
@@ -38,11 +39,11 @@ func Talk(DoDiolouge : bool = true):
 		dialogue.DialogueProcessing()
 
 func Hurt():
-	AnimTrigger("Hurt")
+	if HealthController.HP >= 1:
+		AnimTrigger("Hurt")
 	if follow:
 		#PompAI.set("hurt", true)
 		DialogueBox.hide()
-		AnimTrigger("Hurt")
 		await get_tree().create_timer(1).timeout
 		#PompAI.set("hurt", false)
 		if InnoutExists == true:

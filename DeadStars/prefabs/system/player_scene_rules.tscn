@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bp4lwj3vx0yhw"]
+
+[ext_resource type="Script" path="res://DeadStars/scripts/Player/PlayerSceneRules.gd" id="1_m8ebn"]
+
+[node name="PlayerSceneRules" type="Node" groups=["PlayerSceneRules"]]
+script = ExtResource("1_m8ebn")
+FlashlightOn = false
+Health = 999
+Stamina = 999.0
+FlashlightEnabled = false

@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://bmnw5qub3lf4m"]
+
+[ext_resource type="Texture2D" uid="uid://b3uatjht1f1ci" path="res://DeadStars/models/Daddy_blood_bud/Daddy_Blood_Bud_Daddy_Blood_Bud_Baked.png" id="1_565qn"]
+[ext_resource type="Texture2D" uid="uid://cr5a60ytvv0fs" path="res://DeadStars/models/Daddy_blood_bud/Daddy_Blood_Bud_Daddy_Blood_Bud_Normal.png" id="2_ai54t"]
+
+[resource]
+resource_name = "Daddy_Blood_Bud"
+cull_mode = 2
+albedo_texture = ExtResource("1_565qn")
+roughness = 0.7
+normal_enabled = true
+normal_texture = ExtResource("2_ai54t")
+texture_filter = 2

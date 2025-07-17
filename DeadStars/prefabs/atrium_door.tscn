@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://calcjn4lsmeco"]
+
+[ext_resource type="PackedScene" uid="uid://2p8rl2gpbnxv" path="res://KOMPrefabs/DoorGlass.tscn" id="1_q56mw"]
+[ext_resource type="PackedScene" uid="uid://bjwu2ait6stxh" path="res://KOMPrefabs/Interactables/AreaTrigger.tscn" id="2_k5q7a"]
+
+[node name="AtriumDoor" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.985, -0.029, 0)
+
+[node name="DoorGlass" parent="." instance=ExtResource("1_q56mw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3269, 1.51024, -0.46126)
+
+[node name="Behavior" parent="DoorGlass" index="7" node_paths=PackedStringArray("PartnerDoor")]
+RequireItem = true
+Transmit = true
+PartnerDoor = NodePath("../../DoorGlass2")
+
+[node name="DoorGlass2" parent="." instance=ExtResource("1_q56mw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3269, 1.51024, 0.494351)
+
+[node name="Behavior" parent="DoorGlass2" index="7" node_paths=PackedStringArray("PartnerDoor")]
+PartnerDoor = NodePath("../../DoorGlass")
+direction = Vector3(0, 0, 1)
+
+[node name="AreaTrigger" parent="." node_paths=PackedStringArray("Target") instance=ExtResource("2_k5q7a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.1522, 2.09785, 0.0263536)
+Target = NodePath("../DoorGlass")
+ChildNumber = 7
+Entrance = true
+Exit = true
+
+[node name="AreaTrigger2" parent="." node_paths=PackedStringArray("Target") instance=ExtResource("2_k5q7a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.6965, 2.03503, -0.00908136)
+Target = NodePath("../DoorGlass")
+ChildNumber = 7
+Entrance = true
+Exit = true
+
+[connection signal="closed" from="DoorGlass/Behavior" to="AreaTrigger" method="_on_behavior_closed"]
+[connection signal="closed" from="DoorGlass/Behavior" to="AreaTrigger2" method="_on_behavior_closed"]
+[connection signal="open" from="DoorGlass/Behavior" to="AreaTrigger" method="_on_behavior_open"]
+[connection signal="open" from="DoorGlass/Behavior" to="AreaTrigger2" method="_on_behavior_open"]
+
+[editable path="DoorGlass"]
+[editable path="DoorGlass2"]
+[editable path="AreaTrigger"]
+[editable path="AreaTrigger2"]

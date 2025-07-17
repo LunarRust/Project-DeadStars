@@ -1,5 +1,5 @@
 extends AnimationPlayer
-
+@export var Anim : String = "Open"
 
 func _ready():
 	self.stop()

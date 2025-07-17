@@ -3,6 +3,7 @@ extends Node3D
 @export_category("Parameters")
 @export var Innocent = false
 @export var HP : int = 9
+@export var removeOnDeath : bool = true
 @export_category("Assignments")
 @export var DialogueSystem : Node3D
 @export var SoundSource : AudioStreamPlayer3D
@@ -15,10 +16,14 @@ var shake
 @export var Skin0 : StandardMaterial3D
 @export var Skin1 : StandardMaterial3D
 @export var Skin2 : StandardMaterial3D
+@export_category("Skin Change Values")
+@export var Skin0Num : int = 7
+@export var Skin1Num : int = 4
+@export var Skin2Num : int = 2
 
 var gib = PackedScene
 var gib2 = PackedScene
-
+signal death
 var dead : bool
 
 func _ready():
@@ -53,23 +58,28 @@ func Hurt(amount : int,doShake : bool = false):
 ###################################
 func SkinCheck():
 	if Body != null:
-		if HP > 7:
+		if HP > Skin0Num:
 			if Body != null:
 				Skin0 = Skin0.duplicate()
 				Body.set_surface_override_material(0,Skin0)
-		elif HP > 5:
+		elif HP > Skin1Num:
 			if Body != null:
 				Skin1 = Skin1.duplicate()
 				Body.set_surface_override_material(0,Skin1)
-		else:
+		elif HP > Skin2Num:
 			if Body != null:
 				Skin2 = Skin2.duplicate()
 				Body.set_surface_override_material(0,Skin2)
 
 func Death():
+	death.emit()
 	var node : Node = gibRoot.instantiate()
 	if DialogueSystem != null:
 		DialogueSystem.CloseDialogue()
 	get_node("/root").add_child(node)
 	node.global_position = self.global_position
-	get_parent().queue_free()
+	if removeOnDeath:
+		get_parent().queue_free()
+	else:
+		get_parent().animTrigger("Death")
+		get_parent().running = false

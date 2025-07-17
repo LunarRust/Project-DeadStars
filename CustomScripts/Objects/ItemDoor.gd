@@ -20,7 +20,7 @@ var opened : bool
 var moving : bool = false
 var ItemUsed: bool = false
 signal stopped
-	
+
 func Item(item : String):
 	TweenClose.set_parallel()
 	TweenOpen.set_parallel()
@@ -34,15 +34,15 @@ func Item(item : String):
 		return true
 	else:
 		return false
-		
-		
+
+
 #TODO: Fix glassdoor spam bug
 func OpenDoor():
 	if moving:
 		await stopped
 	if !opened:
 		#print("Door is moving: " + str(TweenClose.is_running()))
-		opened = true 
+		opened = true
 		%SoundSource.stream = SoundEffect
 		%SoundSource.play()
 		TweenOpen = get_tree().create_tween()
@@ -55,15 +55,15 @@ func OpenDoor():
 			open.emit()
 			if PartnerDoor != null:
 				PartnerDoor.get_child(7).OpenDoor()
-			
-		
-	
+
+
+
 func Close():
 	if moving:
 		await stopped
 	if opened:
 		#print("Door is moving: " + str(TweenOpen.is_running()))
-		opened = false 
+		opened = false
 		%SoundSource.stream = SoundEffect
 		%SoundSource.play()
 		TweenClose = get_tree().create_tween()
@@ -75,7 +75,7 @@ func Close():
 			closed.emit()
 			if PartnerDoor != null:
 				PartnerDoor.get_child(7).Close()
-		
+
 
 func RemoteTriggerActivate():
 	#print("Does door Require Item: " + str(RequireItem) + " and has Item been used: " + str(ItemUsed))
@@ -84,7 +84,7 @@ func RemoteTriggerActivate():
 			OpenDoor()
 	else:
 		OpenDoor()
-	
+
 func RemoteTriggerDeactivate():
 	#print("Does door Require Item: " + str(RequireItem) + " and has Item been used: " + str(ItemUsed))
 	if RequireItem:
@@ -97,7 +97,7 @@ func on_tweenclose_finished():
 	#print("Door finished Moving!")
 	stopped.emit()
 	moving = false
-	
+
 func on_tweenopen_finished():
 	stopped.emit()
 	#print("Door finished Moving!")

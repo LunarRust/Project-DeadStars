@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://crwjwk6uowyox"]
+
+[ext_resource type="Texture2D" uid="uid://onobkjqblqcw" path="res://DeadStars/models/Junior_blood_bud/Junior_Blood_Bud_Junior_Blood_Bud_Diffuse.png" id="1_6uaso"]
+[ext_resource type="Texture2D" uid="uid://dtv0nnaa6govf" path="res://DeadStars/models/Junior_blood_bud/Junior_Blood_Bud_Junior_Blood_Bud_Normal.png" id="2_4ym0s"]
+
+[resource]
+resource_name = "Junior_Blood_Bud.001"
+cull_mode = 2
+albedo_texture = ExtResource("1_6uaso")
+roughness = 0.8
+normal_enabled = true
+normal_texture = ExtResource("2_4ym0s")
+texture_filter = 2

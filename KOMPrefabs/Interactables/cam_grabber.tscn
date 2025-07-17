@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://cwu83yi6qfjwb" path="res://Sounds/tick3.ogg" id="7_7ptkb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s47yy"]
-size = Vector3(2.69515, 2.76039, 1.29054)
+size = Vector3(4.16353, 1.13468, 1.29054)
 
 [node name="CamGrabber" type="StaticBody3D"]
 transform = Transform3D(0.7, 0, 1.66893e-07, 0, 0.7, 0, -1.66893e-07, 0, 0.7, 0.761729, 1.4295, 0.0488453)

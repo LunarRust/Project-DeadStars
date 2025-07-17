@@ -35,22 +35,22 @@ func _ready():
 	PlayerCam = get_viewport().get_camera_3d()
 	playerObject = get_tree().get_first_node_in_group("player") as Node3D
 	head = get_tree().get_first_node_in_group("PlayerHead") as Node3D
-	
+
 	await get_tree().create_timer(0.3).timeout
-	
+
 	MenuCamCurrentTransform = MenuCam.global_transform
 	PlayerCamCurrentTransform = PlayerCam.global_transform
-	
+
 func Touch():
 	MenuCamCurrentTransform = MenuCam.global_transform
 	PlayerCamCurrentTransform = PlayerCam.global_transform
-	
-	
+
+
 	print("CamGrab Touched!")
 	if(!used):
 		CameraGrab()
-	
-	
+
+
 func _process(delta):
 	if used:
 		if Input.is_physical_key_pressed(KEY_SPACE):
@@ -73,21 +73,21 @@ func _process(delta):
 			tween.tween_property(PlayerCam, "rotation", Vector3.ZERO, 0.1).set_trans(Tween.TRANS_QUAD)
 			tween.tween_property(head, "rotation", Vector3.ZERO, 0.1).set_trans(Tween.TRANS_QUAD)
 			#sPlayerCam.make_current()
-			
+
 		if CamCurve.sample(t) <= 1 && MoveCamera:
 			t += delta * Speed
 			CamIsInterpolating = true
-			
+
 		else:
 			CamIsInterpolating = false
 		if MoveCamera:
 			PlayerCam.global_transform = PlayerCamCurrentTransform.interpolate_with(MenuCamCurrentTransform,CamCurve.sample(t))
-		
-		
+
+
 		if !CamIsInterpolating && get_parent().global_position.distance_to(playerObject.global_position) > DistanceToClose:
 			ReturnCamera()
-	
-	
+
+
 func ReturnCamera():
 	used = false
 	#MenuCam.set_process(false)
@@ -107,7 +107,7 @@ func ReturnCamera():
 	tween.set_parallel()
 	tween.tween_property(PlayerCam, "rotation", Vector3.ZERO, 0.1).set_trans(Tween.TRANS_QUAD)
 	tween.tween_property(head, "rotation", Vector3.ZERO, 0.1).set_trans(Tween.TRANS_QUAD)
-	
+
 func CameraGrab():
 	CollisionShape.disabled = true
 	CanvasToShow.show()

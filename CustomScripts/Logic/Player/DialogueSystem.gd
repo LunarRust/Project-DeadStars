@@ -110,5 +110,6 @@ func  DialogueProcessing():
 
 func CloseDialogue():
 	DialogueBox.hide()
-	soundSource.stop()
+	if soundSource != null:
+		soundSource.stop()
 	isTalking = false

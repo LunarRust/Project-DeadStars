@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://br20xgntamej3"]
+[gd_scene load_steps=54 format=3 uid="uid://br20xgntamej3"]
 
 [ext_resource type="Texture2D" uid="uid://lgt33gnqe66k" path="res://Sprites/MapBack1new.png" id="1_jrwy6"]
 [ext_resource type="Script" path="res://Scripts/Tweener2D.cs" id="2_3gnr1"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" path="res://Scripts/Fullscreen.gd" id="22_1pia8"]
 [ext_resource type="PackedScene" uid="uid://d1m1r3psoqh4d" path="res://CustomMercScenes/CustomScenes/MenuLabelBase.tscn" id="22_j1v08"]
 [ext_resource type="Script" path="res://CustomScripts/Logic/KOMStats.gd" id="23_haann"]
+[ext_resource type="Texture2D" uid="uid://dgl6r7ahs626j" path="res://Sprites/TrnsSheet1.png" id="24_linmy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5mmss"]
 shader = ExtResource("3_kni28")
@@ -81,6 +82,175 @@ glow_hdr_scale = 4.0
 glow_hdr_luminance_cap = 17.3
 adjustment_enabled = true
 adjustment_saturation = 1.21
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwov3"]
+atlas = ExtResource("24_linmy")
+region = Rect2(0, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5kk0"]
+atlas = ExtResource("24_linmy")
+region = Rect2(64, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmulm"]
+atlas = ExtResource("24_linmy")
+region = Rect2(128, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmrg5"]
+atlas = ExtResource("24_linmy")
+region = Rect2(192, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7b7qd"]
+atlas = ExtResource("24_linmy")
+region = Rect2(256, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tye8"]
+atlas = ExtResource("24_linmy")
+region = Rect2(0, 80, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlein"]
+atlas = ExtResource("24_linmy")
+region = Rect2(64, 80, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_maxui"]
+atlas = ExtResource("24_linmy")
+region = Rect2(128, 80, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3138"]
+atlas = ExtResource("24_linmy")
+region = Rect2(192, 80, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_meq1o"]
+atlas = ExtResource("24_linmy")
+region = Rect2(256, 80, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arqd0"]
+atlas = ExtResource("24_linmy")
+region = Rect2(0, 160, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1t5i"]
+atlas = ExtResource("24_linmy")
+region = Rect2(64, 160, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrqne"]
+atlas = ExtResource("24_linmy")
+region = Rect2(128, 160, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhrt8"]
+atlas = ExtResource("24_linmy")
+region = Rect2(192, 160, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dk8y4"]
+atlas = ExtResource("24_linmy")
+region = Rect2(256, 160, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epdkh"]
+atlas = ExtResource("24_linmy")
+region = Rect2(0, 240, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fskht"]
+atlas = ExtResource("24_linmy")
+region = Rect2(64, 240, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_grl64"]
+atlas = ExtResource("24_linmy")
+region = Rect2(128, 240, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfphg"]
+atlas = ExtResource("24_linmy")
+region = Rect2(192, 240, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfs86"]
+atlas = ExtResource("24_linmy")
+region = Rect2(256, 240, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r16bk"]
+atlas = ExtResource("24_linmy")
+region = Rect2(0, 320, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xapoy"]
+atlas = ExtResource("24_linmy")
+region = Rect2(64, 320, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ilv0"]
+atlas = ExtResource("24_linmy")
+region = Rect2(128, 320, 64, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fcfl6"]
+animations = [{
+"frames": [{
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_gwov3")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_d5kk0")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_qmulm")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_lmrg5")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_7b7qd")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_5tye8")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_jlein")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_maxui")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_s3138")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_meq1o")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_arqd0")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_t1t5i")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_yrqne")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_fhrt8")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_dk8y4")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_epdkh")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_fskht")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_grl64")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_wfphg")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_nfs86")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_r16bk")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_xapoy")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_8ilv0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Node2D" type="Node2D"]
 
@@ -238,7 +408,7 @@ offset_top = -30.0
 offset_right = 32.0
 offset_bottom = 34.0
 script = ExtResource("11_loshc")
-destination = "res://DeadStars/scenes/Chapter1/Level0.tscn"
+destination = "res://DeadStars/scenes/House1.tscn"
 sceneLoader = "res://DeadStars/scenes/TSLC_Venus.tscn"
 metadata/_edit_use_anchors_ = true
 
@@ -361,3 +531,36 @@ mouse_filter = 2
 theme_override_colors/default_color = Color(0.686275, 0.247059, 0.247059, 1)
 theme_override_font_sizes/normal_font_size = 32
 text = "[shake rate=20] PLACEHOLDER"
+
+[node name="Transient 2" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.890196, 0.4, 0.0941176, 1)
+position = Vector2(755, 131)
+scale = Vector2(2.505, 2.505)
+sprite_frames = SubResource("SpriteFrames_fcfl6")
+autoplay = "default"
+frame_progress = 0.484949
+script = ExtResource("2_3gnr1")
+Time = 3.0
+tweenPosition = true
+endPosition = Vector2(0, 10)
+
+[node name="TrnsLabel" type="RichTextLabel" parent="Transient 2"]
+offset_left = -40.5
+offset_top = 23.0
+offset_right = 100.5
+offset_bottom = 62.0
+scale = Vector2(0.59, 0.59)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("7_lwdof")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[wave]Transient Location"
+
+[node name="TextureButton" type="TextureButton" parent="Transient 2"]
+offset_left = -33.0
+offset_top = -30.0
+offset_right = 32.0
+offset_bottom = 34.0
+script = ExtResource("11_loshc")
+destination = "res://DeadStars/scenes/Chapter1/t_persona4.tscn"
+sceneLoader = "res://DeadStars/scenes/TSLC_Venus.tscn"

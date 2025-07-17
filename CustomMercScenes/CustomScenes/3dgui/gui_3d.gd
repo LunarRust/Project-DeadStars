@@ -8,11 +8,13 @@ var last_event_pos2D = null
 var last_event_time: float = -1.0
 @export_category("GUI 3D")
 @export var node_viewport : SubViewport
-@export var node_quad : MeshInstance3D
+@export var node_quad : Array[Node]
 @export var node_area : Area3D
 @export var Billboard : bool = false
 
 func _ready():
+	if node_quad.is_empty():
+		node_quad = get_tree().get_nodes_in_group("CRTdisplay")
 	node_area.mouse_entered.connect(_mouse_entered_area)
 	node_area.mouse_exited.connect(_mouse_exited_area)
 	node_area.input_event.connect(_mouse_input_event)
@@ -22,13 +24,14 @@ func _ready():
 	NewMaterial.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 	NewMaterial.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 	NewMaterial.resource_local_to_scene = true
-	node_quad.set_surface_override_material(0,NewMaterial)
-	if Billboard == true:
-		node_quad.get_surface_override_material(0).billboard_mode = BaseMaterial3D.BILLBOARD_ENABLED
-		node_quad.get_surface_override_material(0).billboard_keep_scale = true
-	# If the material is NOT set to use billboard settings, then avoid running billboard specific code
-	if node_quad.get_surface_override_material(0).billboard_mode == BaseMaterial3D.BillboardMode.BILLBOARD_DISABLED:
-		set_process(false)
+	for i in node_quad:
+		i.set_surface_override_material(0,NewMaterial)
+		if Billboard == true:
+			i.get_surface_override_material(0).billboard_mode = BaseMaterial3D.BILLBOARD_ENABLED
+			i.get_surface_override_material(0).billboard_keep_scale = true
+		# If the material is NOT set to use billboard settings, then avoid running billboard specific code
+		if i.get_surface_override_material(0).billboard_mode == BaseMaterial3D.BillboardMode.BILLBOARD_DISABLED:
+			set_process(false)
 
 
 func _process(_delta):
@@ -56,7 +59,7 @@ func _unhandled_input(event):
 
 func _mouse_input_event(_camera: Camera3D, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int):
 	# Get mesh size to detect edges and make conversions. This code only support PlaneMesh and QuadMesh.
-	var quad_mesh_size = node_quad.mesh.size
+	var quad_mesh_size = node_quad[0].mesh.size
 
 	# Event position in Area3D in world coordinate space.
 	var event_pos3D = event_position
@@ -66,7 +69,7 @@ func _mouse_input_event(_camera: Camera3D, event: InputEvent, event_position: Ve
 
 	# Convert position to a coordinate space relative to the Area3D node.
 	# NOTE: affine_inverse accounts for the Area3D node's scale, rotation, and position in the scene!
-	event_pos3D = node_quad.global_transform.affine_inverse() * event_pos3D
+	event_pos3D = node_quad[0].global_transform.affine_inverse() * event_pos3D
 
 	# TODO: Adapt to bilboard mode or avoid completely.
 
@@ -120,7 +123,7 @@ func _mouse_input_event(_camera: Camera3D, event: InputEvent, event_position: Ve
 
 
 func rotate_area_to_billboard():
-	var billboard_mode = node_quad.get_surface_override_material(0).billboard_mode
+	var billboard_mode = node_quad[0].get_surface_override_material(0).billboard_mode
 
 	# Try to match the area with the material's billboard setting, if enabled.
 	if billboard_mode > 0:

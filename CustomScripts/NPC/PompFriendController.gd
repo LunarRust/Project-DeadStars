@@ -1,8 +1,19 @@
 extends Node
 @export var soundsource : AudioStreamPlayer
 @export var Sound : AudioStream
+@export var FriendUIParent : Node2D
 signal AttackEnimeies
 signal FollowPlayer
+var NPCsettings
+
+func _ready():
+	NPCsettings = get_tree().get_first_node_in_group("NpcSceneRules")
+	if  NPCsettings != null:
+		if NPCsettings.AllowPlayerControl == false:
+			if FriendUIParent != null:
+				FriendUIParent.hide()
+			else:
+				pass
 
 func _on_attack_button_pressed():
 	get_tree().get_first_node_in_group("player").get_node("KOMSignalBus").emit_signal("Activate_Pomp_Target")

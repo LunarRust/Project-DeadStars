@@ -238,6 +238,6 @@ theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
 text = "[shake rate=20] PLACEHOLDER"
 
-[node name="KOMStats" type="Node" parent="VerLabel" node_paths=PackedStringArray("InnoutVerLabel")]
+[node name="KOMStats" type="Node" parent="VerLabel" node_paths=PackedStringArray("DeadStarsLabel")]
 script = ExtResource("13_y8ekg")
-InnoutVerLabel = NodePath("..")
+DeadStarsLabel = NodePath("..")

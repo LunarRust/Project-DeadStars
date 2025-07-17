@@ -1,0 +1,126 @@
+[gd_scene load_steps=18 format=3 uid="uid://lfuusmglu3kf"]
+
+[ext_resource type="Script" path="res://CustomScripts/NPC/AI/BasicEnemyMerc.gd" id="1_sxuf0"]
+[ext_resource type="AudioStream" uid="uid://dw2p5xtpvf5t0" path="res://Sounds/statureman.ogg" id="2_584q6"]
+[ext_resource type="Script" path="res://CustomScripts/Logic/Player/DialogueSystem.gd" id="3_qghj2"]
+[ext_resource type="Script" path="res://CustomScripts/NPC/HealthController.gd" id="4_anbfy"]
+[ext_resource type="PackedScene" uid="uid://dbrrtfnihdheq" path="res://KOMPrefabs/blood_splatter_KOM.tscn" id="5_kpdye"]
+[ext_resource type="AudioStream" uid="uid://cnq4ok8ggd6bs" path="res://Sounds/Gore02.ogg" id="6_cu4jg"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1nxb4"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nkj6s"]
+radius = 0.4
+height = 1.7
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mav5a"]
+animation = &"Junior_Attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_a6spp"]
+animation = &"Junior_Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_eajm7"]
+animation = &"Junior_Walk"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_txk6j"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_a6spp")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_eajm7")
+blend_point_1/pos = 1.0
+min_space = 0.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qxm4s"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hct3a"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"Attack"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yfsie"]
+xfade_time = 1.0
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8fxc2"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"Attack"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_l6fa2"]
+states/Attack/node = SubResource("AnimationNodeAnimation_mav5a")
+states/Attack/position = Vector2(387, 210)
+states/End/position = Vector2(548, 100)
+states/Normal/node = SubResource("AnimationNodeBlendSpace1D_txk6j")
+states/Normal/position = Vector2(387, 100)
+states/Start/position = Vector2(249, 100)
+transitions = ["Start", "Normal", SubResource("AnimationNodeStateMachineTransition_qxm4s"), "Normal", "Attack", SubResource("AnimationNodeStateMachineTransition_hct3a"), "Attack", "Normal", SubResource("AnimationNodeStateMachineTransition_yfsie"), "Start", "Attack", SubResource("AnimationNodeStateMachineTransition_8fxc2")]
+graph_offset = Vector2(-158, 45)
+
+[node name="JuniorBloodBud_enemy" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent", "anim")]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_sxuf0")
+nav_agent = NodePath("NavigationAgent3D")
+speed = 1.0
+anim = NodePath("")
+attackThreshold = 1.0
+walkName = "Junior_Walk"
+attackName = "Junior_Attack"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+autoplay = true
+max_distance = 5.0
+
+[node name="GurglyNoise" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+stream = ExtResource("2_584q6")
+volume_db = 19.673
+pitch_scale = 0.5
+autoplay = true
+max_distance = 8.0
+parameters/looping = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_1nxb4")
+
+[node name="DialogueSystem" type="Node3D" parent="." node_paths=PackedStringArray("soundSource")]
+script = ExtResource("3_qghj2")
+npcName = "Bloody Guard"
+Dialogue = Array[String](["[placeholder]"])
+LookDescription = Array[String](["[placeholder]"])
+TouchDescription = Array[String](["[placeholder]"])
+DoDialogue = false
+DoLook = false
+DoTouch = false
+soundSource = NodePath("../AudioStreamPlayer3D")
+looking = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.858521, 0)
+shape = SubResource("CapsuleShape3D_nkj6s")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_height_offset = 0.5
+path_max_distance = 10.01
+avoidance_enabled = true
+radius = 1.0
+debug_enabled = true
+debug_path_custom_color = Color(1, 0, 0, 1)
+
+[node name="HealthController" type="Node3D" parent="." node_paths=PackedStringArray("DialogueSystem", "SoundSource")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("4_anbfy")
+HP = 1
+DialogueSystem = NodePath("../DialogueSystem")
+SoundSource = NodePath("../AudioStreamPlayer3D")
+gibRoot = ExtResource("5_kpdye")
+HurtSound = ExtResource("6_cu4jg")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_l6fa2")
+parameters/conditions/Attack = false
+parameters/Normal/blend_position = -0.00125392

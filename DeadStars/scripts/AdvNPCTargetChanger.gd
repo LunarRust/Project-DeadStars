@@ -3,5 +3,6 @@ extends Node
 @export var TargetGroup : String
 
 func ReTarget():
-	TargetNPC.TargetEntity = TargetNPC.TargetLocator(TargetGroup)
-	TargetNPC.attacking = true
+	if TargetNPC != null:
+		TargetNPC.TargetEntity = TargetNPC.TargetLocator(TargetGroup)
+		TargetNPC.attacking = true

@@ -4,19 +4,21 @@ extends Node3D
 @export var PlayerAnim : AnimationTree
 @export var HammerAnim : AnimationPlayer
 @export var HurtFor : int
+@export var AttackDelay : float = 1
 @export var SoundSource : AudioStreamPlayer
 @export_category("Settings")
 @export var DoCamShake : bool = true
 var active : bool = false
 var space_state
+var canAttack : bool = true
 var cam
 var mousepos
 var CurrentIntersectedObject
 var interactionButtonKOM
 var TouchedObject
 var ViewButton = preload("res://Scripts/ViewButton.cs")
-@export var WooshSound : AudioStream = preload("res://Sounds/Woosh.ogg")
-var ImpactSound = preload("res://Sounds/Impact.ogg") as AudioStream
+@export var WooshSound : AudioStream = preload("res://Sounds/Woosh.ogg") as AudioStream
+@export var ImpactSound : AudioStream = preload("res://Sounds/Impact.ogg") as AudioStream
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -63,30 +65,39 @@ func Cast():
 						node.Touch()
 						print_rich("Touched object is: [color=red]" + str(node) + "[/color]")
 		4:
-			animTrigger("Attack")
-			HammerAnim.stop()
-			HammerAnim.play("Attack")
-			SoundSource.stream = WooshSound
-			SoundSource.play()
-			await get_tree().create_timer(0.15000000596046448).timeout
-			if !dictionary.is_empty():
-				if (dictionary["collider"] as CollisionObject3D).has_node("HealthController"):
-					var health : Node = (dictionary["collider"] as CollisionObject3D).get_node("HealthController")
-					health.Hurt(HurtFor,DoCamShake)
-					print("Hitting DeadStars creature")
-				elif (dictionary["collider"] as CollisionObject3D).has_node("HealthHandler"):
-					var health : Node = (dictionary["collider"] as CollisionObject3D).get_node("HealthHandler")
-					health.Hurt(HurtFor)
-					print("Hitting base game creature")
+			if canAttack:
+				animTrigger("Attack")
+				HammerAnim.stop()
+				HammerAnim.play("Attack")
+				SoundSource.stream = WooshSound
+				SoundSource.play()
+				await get_tree().create_timer(0.15000000596046448).timeout
+				if !dictionary.is_empty():
+					if (dictionary["collider"] as CollisionObject3D).has_node("HealthController"):
+						var health : Node = (dictionary["collider"] as CollisionObject3D).get_node("HealthController")
+						health.Hurt(HurtFor,DoCamShake)
+						print("Hitting DeadStars creature")
 
-				else:
-					SoundSource.stream = ImpactSound
-					SoundSource.play()
-					print("Hitting object")
-				if node != null:
-					if node.has_method("Hurt"):
-						node.Hurt()
-						print_rich("Attacked object is: [color=red]" + str(node) + "[/color]")
+					elif (dictionary["collider"] as CollisionObject3D).has_node("HealthHandler"):
+						var health : Node = (dictionary["collider"] as CollisionObject3D).get_node("HealthHandler")
+						health.Hurt(HurtFor)
+						print("Hitting base game creature")
+
+
+
+					else:
+						SoundSource.stream = ImpactSound
+						SoundSource.play()
+						print("Hitting object")
+
+					if node != null:
+						if node.has_method("Hurt"):
+							node.Hurt()
+							print_rich("Attacked object is: [color=red]" + str(node) + "[/color]")
+
+				canAttack = false
+				await get_tree().create_timer(AttackDelay).timeout
+				canAttack = true
 		2:
 			if !dictionary.is_empty():
 				if node != null:

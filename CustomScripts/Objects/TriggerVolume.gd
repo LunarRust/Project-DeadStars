@@ -4,6 +4,7 @@ signal VolumeBeenExited
 
 @export var TriggerOnce : bool = false
 @export var TriggerResetTime : float = 0.0
+@export var TriggerDelay : float = 0.0
 @export var TriggerByGroup : Array[String]
 
 var TriggerTime : float = 0.0
@@ -30,12 +31,16 @@ func _on_area_entered(area):
 		if !TriggerByGroup.is_empty():
 			for i in TriggerByGroup:
 				if area.get_parent().is_in_group(i):
+					await get_tree().create_timer(TriggerDelay).timeout
 					VolumeBeenEntered.emit()
 					if TriggerOnce:
 						BeenEntered = true
+						self.queue_free()
 		else:
+			await get_tree().create_timer(TriggerDelay).timeout
 			VolumeBeenEntered.emit()
 			if TriggerOnce:
+				self.queue_free()
 				BeenEntered = true
 
 
@@ -45,12 +50,16 @@ func _on_area_exited(area):
 		if !TriggerByGroup.is_empty():
 			for i in TriggerByGroup:
 				if area.get_parent().is_in_group(i):
+					await get_tree().create_timer(TriggerDelay).timeout
 					VolumeBeenExited.emit()
 					if TriggerOnce:
+						self.queue_free()
 						BeenExited = true
 		else:
+			await get_tree().create_timer(TriggerDelay).timeout
 			VolumeBeenExited.emit()
 			if TriggerOnce:
+				self.queue_free()
 				BeenExited = true
 
 

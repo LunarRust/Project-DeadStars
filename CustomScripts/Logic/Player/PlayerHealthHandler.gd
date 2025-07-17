@@ -1,7 +1,10 @@
 class_name PlayerHealthHandler
 extends Node
 var health : int = 9
+var MaxHealth : int = 9
+var TakeDamage : bool = true
 var mana : int = 16
+var MaxMana : int = 16
 var dead : bool = false
 var manaTimer : float = 0.0
 @export var playerAnim : AnimationTree
@@ -39,7 +42,7 @@ func _ready():
 	usedHeal = false
 	InvButton.open = false
 	instance = self
-	health = 9
+	health = MaxHealth
 	SignalBusKOM = get_tree().get_first_node_in_group("SignalBusKOM")
 
 
@@ -49,15 +52,16 @@ func _process(delta):
 	if InvButton.open:
 		label.text = str(health)
 		manaLabel.text = str(mana)
-	manaBar.frame = (9 - mana / 2)
-	mana = clamp(mana,1,16)
+	if MaxHealth <= 9 && MaxMana <= 16:
+		manaBar.frame = (MaxHealth - mana / 2)
+	mana = clamp(mana,1,MaxMana)
 	if Input.is_action_pressed("Run") && manaTimer > 0.35:
 		RemoveMana()
 	elif manaTimer > 0.35:
 		AddMana()
 
 func AddMana():
-	if !Input.is_action_pressed("Run") && mana < 16:
+	if !Input.is_action_pressed("Run") && mana < MaxMana:
 		mana += 1
 		manaTimer = 0.0
 
@@ -81,8 +85,8 @@ func changeHealth(amount : int):
 		soundSource.play()
 		usedHeal = true
 	health += amount
-	health = clampf(health,0,9)
-	healthBar.frame = 9 - health
+	health = clampf(health,0,MaxHealth)
+	healthBar.frame = MaxHealth - health
 	healthCheck()
 	FaceCheck()
 
@@ -105,13 +109,15 @@ func FaceCheck():
 		faceSprite.frame = 3
 
 func staticHealth():
-	instance.changeHealth(-1)
+	if TakeDamage:
+		instance.changeHealth(-1)
 
 func notsostatichealth(amount : int):
-	instance.changeHealth(amount * -1)
+	if TakeDamage:
+		instance.changeHealth(amount * -1)
 
 func setHealth():
-	health = 9
+	health = MaxHealth
 
 func healthCheck():
 	if health < 1 || (mana < 1 && !dead):

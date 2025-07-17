@@ -18,14 +18,14 @@ size = Vector3(0.27, 1, 5)
 material = ExtResource("3_ls0q7")
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_wy8m3"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_lmyg8"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yqvwo"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ye20q"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_wy8m3")
+albedo_texture = SubResource("ViewportTexture_lmyg8")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h0mcf"]
 size = Vector3(3, 2, 0.1)
@@ -33,7 +33,7 @@ size = Vector3(3, 2, 0.1)
 [node name="ScrollingMarkee" type="Node3D" node_paths=PackedStringArray("node_viewport", "node_quad", "node_area")]
 script = ExtResource("1_dl6v4")
 node_viewport = NodePath("SubViewport")
-node_quad = NodePath("Quad")
+node_quad = [NodePath("Quad")]
 node_area = NodePath("Quad/Area3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -58,9 +58,9 @@ theme_override_fonts/normal_font = ExtResource("4_i1uk8")
 theme_override_font_sizes/normal_font_size = 23
 bbcode_enabled = true
 text = "[center] [PLACEHOLDER] "
-visible_characters = 6
+visible_characters = 7
 visible_characters_behavior = 1
-visible_ratio = 0.425517
+visible_ratio = 0.497538
 script = ExtResource("3_h567t")
 BlinkSpeed = 0.5
 
@@ -75,7 +75,7 @@ color = Color(1, 1, 1, 0)
 transform = Transform3D(-7.2998e-08, 0, 1.02, 0, 0.52, 0, -1.67, 0, -4.45856e-08, 0.517031, -0.013, 3.9205e-10)
 material_overlay = ExtResource("2_dijkt")
 mesh = SubResource("QuadMesh_wor48")
-surface_material_override/0 = SubResource("StandardMaterial3D_yqvwo")
+surface_material_override/0 = SubResource("StandardMaterial3D_ye20q")
 
 [node name="Area3D" type="Area3D" parent="Quad"]
 collision_layer = 2

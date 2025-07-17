@@ -4,6 +4,7 @@ extends Node
 #@export var LocationRelative : Vector3
 @export var TargetLoc : Node3D
 @export var LocOffset : Vector3
+@export var AutoSpawn : bool = true
 var ScenePack
 var active = false
 var Spawned = false
@@ -14,7 +15,7 @@ func _ready():
 	active = true
 
 func _process(delta):
-		if active && !Spawned:
+		if active && !Spawned && AutoSpawn:
 			Spawned = true
 			Packload()
 

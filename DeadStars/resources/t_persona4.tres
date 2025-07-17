@@ -1,0 +1,11 @@
+[gd_resource type="Environment" load_steps=2 format=3 uid="uid://bvmdjfbvw6t00"]
+
+[sub_resource type="Sky" id="1"]
+
+[resource]
+background_mode = 2
+sky = SubResource("1")
+fog_enabled = true
+fog_mode = 1
+fog_light_energy = 0.33
+fog_density = 1.0

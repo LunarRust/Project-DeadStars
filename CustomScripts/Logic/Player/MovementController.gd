@@ -152,8 +152,7 @@ func HitTest(amount : float,direction : Vector3,useStamina : bool = true,manaAmo
 	physicsRayQueryParameters3D.hit_back_faces = false
 	var dictionary : Dictionary = directSpaceState.intersect_ray(physicsRayQueryParameters3D)
 	if dictionary.size() > 0:
-		animTargetSpeed.x = 0
-		animCurrentSpeed.y = 0
+		animTargetSpeed = Vector2(0,0)
 		return
 	directSpaceState = get_world_3d().direct_space_state
 	var vector : Vector3 = newPos + direction * amount

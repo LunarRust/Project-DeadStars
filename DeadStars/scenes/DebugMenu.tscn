@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://b4jiisobpgg31"]
+[gd_scene load_steps=40 format=3 uid="uid://b4jiisobpgg31"]
 
 [ext_resource type="Script" path="res://CustomScripts/Logic/KOMStats.gd" id="1_2itm6"]
 [ext_resource type="PackedScene" uid="uid://d1m1r3psoqh4d" path="res://CustomMercScenes/CustomScenes/MenuLabelBase.tscn" id="2_x08jr"]
@@ -11,8 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://2qykwyvomwth" path="res://Sprites/UI/ButtonSmall2.png" id="8_mrg0i"]
 [ext_resource type="Texture2D" uid="uid://bdhw4bysid07f" path="res://Sprites/UI/RefreshButton.png" id="9_8rc0y"]
 [ext_resource type="Script" path="res://CustomScripts/SceneLoaderTextureButtonFullPath.gd" id="10_eglhn"]
+[ext_resource type="Script" path="res://DeadStars/scripts/toggleUI.gd" id="11_odu46"]
 [ext_resource type="Script" path="res://Scenes/ButtonPlayer.gd" id="11_ora3i"]
-[ext_resource type="Script" path="res://CustomScripts/SceneTransferButton.gd" id="12_2b6ec"]
 [ext_resource type="Script" path="res://Scenes/ProgressChanger.gd" id="13_thrlw"]
 [ext_resource type="AudioStream" uid="uid://b6u3qkb0mte27" path="res://Sounds/Pickup.ogg" id="14_isgpy"]
 [ext_resource type="Script" path="res://CustomScripts/CreditsButton.gd" id="15_oa1k5"]
@@ -27,8 +27,7 @@
 [ext_resource type="AudioStream" uid="uid://cwu83yi6qfjwb" path="res://Sounds/tick3.ogg" id="26_kcrvy"]
 [ext_resource type="Script" path="res://Scripts/game_progress.gd" id="27_cs4nj"]
 [ext_resource type="Script" path="res://CustomScripts/Logic/AppearOnPress.gd" id="28_ltu5s"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2gkel"]
+[ext_resource type="Script" path="res://CustomScripts/SceneLoaderButtonFullPath.gd" id="29_ypgot"]
 
 [sub_resource type="StyleBoxEmpty" id="11"]
 
@@ -50,7 +49,14 @@
 
 [sub_resource type="StyleBoxEmpty" id="1"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2gkel"]
+
 [node name="Node2D" type="Node2D"]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_l081l")
+volume_db = -10.0
+autoplay = true
 
 [node name="KOMStats" type="Node" parent="." node_paths=PackedStringArray("DeadStarsLabel")]
 script = ExtResource("1_2itm6")
@@ -156,27 +162,6 @@ text = "Warning: Only use mods from sources you trust.
 Untrustworthy mods can be dangerous to your system. Use at your own risk.
 Fading Club takes no responsibility for the content of third party modifications."
 
-[node name="TextureButton" type="TextureButton" parent="."]
-visible = false
-offset_left = 758.0
-offset_top = 7.0
-offset_right = 961.0
-offset_bottom = 104.0
-texture_normal = SubResource("CompressedTexture2D_2gkel")
-ignore_texture_size = true
-stretch_mode = 0
-script = ExtResource("6_m1bud")
-
-[node name="Label" type="Label" parent="TextureButton"]
-layout_mode = 0
-offset_left = 41.0
-offset_top = 34.0
-offset_right = 163.0
-offset_bottom = 73.0
-theme = ExtResource("4_u0om8")
-text = "Open Mods Folder"
-autowrap_mode = 3
-
 [node name="TextureButton2" type="TextureButton" parent="."]
 offset_left = 762.0
 offset_top = 11.0
@@ -200,23 +185,53 @@ text = "Exit"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_l081l")
-autoplay = true
+[node name="LoadCustomTestButton2" type="CheckButton" parent="." node_paths=PackedStringArray("UIParentHide", "UIParentShow")]
+top_level = true
+z_as_relative = false
+offset_left = 536.0
+offset_top = 11.0
+offset_right = 750.0
+offset_bottom = 59.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("4_u0om8")
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.0313726, 0.380392, 0.34902, 1)
+theme_override_colors/font_color = Color(0.0313726, 0.380392, 0.34902, 1)
+theme_override_styles/focus = SubResource("11")
+theme_override_styles/disabled = SubResource("10")
+theme_override_styles/hover = SubResource("8")
+theme_override_styles/pressed = SubResource("9")
+theme_override_styles/normal = SubResource("7")
+action_mode = 0
+text = "
+Transients
 
-[node name="Load Button" type="TextureButton" parent="."]
-visible = false
-offset_left = 908.0
-offset_top = 222.0
-offset_right = 940.0
-offset_bottom = 254.0
-texture_normal = ExtResource("9_8rc0y")
-stretch_mode = 0
+"
+alignment = 1
+icon_alignment = 1
+script = ExtResource("11_odu46")
+UIParentHide = NodePath("../PrimaryLoads")
+UIParentShow = NodePath("../transients")
 
-[node name="WorldWarpButtonsParent" type="Node2D" parent="."]
-visible = false
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="LoadCustomTestButton2"]
+stream = ExtResource("26_kcrvy")
+script = ExtResource("11_ora3i")
 
-[node name="LoadCustomTestButton" type="Button" parent="."]
+[node name="ColorRect3" type="ColorRect" parent="LoadCustomTestButton2"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 210.0
+offset_bottom = 41.0
+mouse_filter = 2
+color = Color(0.0235294, 0.12549, 0.121569, 1)
+
+[node name="PrimaryLoads" type="Node2D" parent="."]
+
+[node name="LoadCustomTestButton" type="Button" parent="PrimaryLoads"]
 top_level = true
 z_as_relative = false
 offset_left = 221.0
@@ -238,10 +253,10 @@ text = "
 Load Test Scene
 
 "
-script = ExtResource("12_2b6ec")
+script = ExtResource("29_ypgot")
 destination = "res://DeadStars/scenes/testscene.scn"
 
-[node name="ColorRect3" type="ColorRect" parent="LoadCustomTestButton"]
+[node name="ColorRect3" type="ColorRect" parent="PrimaryLoads/LoadCustomTestButton"]
 show_behind_parent = true
 layout_mode = 0
 offset_left = 4.0
@@ -251,10 +266,10 @@ offset_bottom = 41.0
 mouse_filter = 2
 color = Color(0.0235294, 0.12549, 0.121569, 1)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="LoadCustomTestButton"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="PrimaryLoads/LoadCustomTestButton"]
 script = ExtResource("11_ora3i")
 
-[node name="LoadCustomDebugRoomButton" type="Button" parent="."]
+[node name="LoadCustomDebugRoomButton" type="Button" parent="PrimaryLoads"]
 top_level = true
 z_as_relative = false
 offset_left = 6.0
@@ -276,10 +291,10 @@ text = "
 Load World Map
 
 "
-script = ExtResource("12_2b6ec")
+script = ExtResource("29_ypgot")
 destination = "res://DeadStars/scenes/WorldMap1.tscn"
 
-[node name="ColorRect3" type="ColorRect" parent="LoadCustomDebugRoomButton"]
+[node name="ColorRect3" type="ColorRect" parent="PrimaryLoads/LoadCustomDebugRoomButton"]
 show_behind_parent = true
 layout_mode = 0
 offset_left = 4.0
@@ -289,10 +304,48 @@ offset_bottom = 41.0
 mouse_filter = 2
 color = Color(0.0235294, 0.12549, 0.121569, 1)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="LoadCustomDebugRoomButton"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="PrimaryLoads/LoadCustomDebugRoomButton"]
 script = ExtResource("11_ora3i")
 
-[node name="LoadCustomDebugRoomButton2" type="Button" parent="."]
+[node name="LoadCustomDebugRoomButton3" type="Button" parent="PrimaryLoads"]
+top_level = true
+z_as_relative = false
+offset_left = 6.0
+offset_top = 146.0
+offset_right = 219.999
+offset_bottom = 194.0
+theme = ExtResource("4_u0om8")
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.0313726, 0.380392, 0.34902, 1)
+theme_override_colors/font_color = Color(0.0313726, 0.380392, 0.34902, 1)
+theme_override_styles/focus = SubResource("11")
+theme_override_styles/disabled = SubResource("10")
+theme_override_styles/hover = SubResource("8")
+theme_override_styles/pressed = SubResource("9")
+theme_override_styles/normal = SubResource("7")
+action_mode = 0
+text = "
+Load Tutorial
+
+"
+script = ExtResource("29_ypgot")
+destination = "res://DeadStars/scenes/tutorial.tscn"
+
+[node name="ColorRect3" type="ColorRect" parent="PrimaryLoads/LoadCustomDebugRoomButton3"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 210.0
+offset_bottom = 41.0
+mouse_filter = 2
+color = Color(0.0235294, 0.12549, 0.121569, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="PrimaryLoads/LoadCustomDebugRoomButton3"]
+script = ExtResource("11_ora3i")
+
+[node name="LoadCustomDebugRoomButton2" type="Button" parent="PrimaryLoads"]
 top_level = true
 z_as_relative = false
 offset_left = 435.0
@@ -314,10 +367,10 @@ text = "
 Load Intro Level
 
 "
-script = ExtResource("12_2b6ec")
+script = ExtResource("29_ypgot")
 destination = "res://DeadStars/scenes/Chapter1/Level0.tscn"
 
-[node name="ColorRect3" type="ColorRect" parent="LoadCustomDebugRoomButton2"]
+[node name="ColorRect3" type="ColorRect" parent="PrimaryLoads/LoadCustomDebugRoomButton2"]
 show_behind_parent = true
 layout_mode = 0
 offset_left = 4.0
@@ -327,13 +380,25 @@ offset_bottom = 41.0
 mouse_filter = 2
 color = Color(0.0235294, 0.12549, 0.121569, 1)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="LoadCustomDebugRoomButton2"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="PrimaryLoads/LoadCustomDebugRoomButton2"]
 script = ExtResource("11_ora3i")
 
-[node name="SaveDataButtonsParent" type="Node2D" parent="."]
+[node name="oldUI" type="Node2D" parent="."]
 visible = false
 
-[node name="CheckBox" type="Button" parent="SaveDataButtonsParent"]
+[node name="Load Button" type="TextureButton" parent="oldUI"]
+offset_left = 908.0
+offset_top = 222.0
+offset_right = 940.0
+offset_bottom = 254.0
+texture_normal = ExtResource("9_8rc0y")
+stretch_mode = 0
+
+[node name="WorldWarpButtonsParent" type="Node2D" parent="oldUI"]
+
+[node name="SaveDataButtonsParent" type="Node2D" parent="oldUI"]
+
+[node name="CheckBox" type="Button" parent="oldUI/SaveDataButtonsParent"]
 offset_left = 740.0
 offset_top = 190.0
 offset_right = 947.0
@@ -356,12 +421,12 @@ text_overrun_behavior = 3
 script = ExtResource("13_thrlw")
 Setting = "WonGame"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SaveDataButtonsParent/CheckBox"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="oldUI/SaveDataButtonsParent/CheckBox"]
 stream = ExtResource("14_isgpy")
 max_polyphony = 2
 script = ExtResource("11_ora3i")
 
-[node name="ColorRect2" type="ColorRect" parent="SaveDataButtonsParent/CheckBox"]
+[node name="ColorRect2" type="ColorRect" parent="oldUI/SaveDataButtonsParent/CheckBox"]
 show_behind_parent = true
 layout_mode = 0
 offset_left = -1.0
@@ -370,7 +435,7 @@ offset_bottom = 27.0
 mouse_filter = 2
 color = Color(0.0745098, 0.113725, 0.211765, 1)
 
-[node name="Credits" type="Button" parent="SaveDataButtonsParent" node_paths=PackedStringArray("creditsParent")]
+[node name="Credits" type="Button" parent="oldUI/SaveDataButtonsParent" node_paths=PackedStringArray("creditsParent")]
 offset_left = 128.0
 offset_top = 495.0
 offset_right = 270.0
@@ -393,7 +458,7 @@ text_overrun_behavior = 3
 script = ExtResource("15_oa1k5")
 creditsParent = NodePath("Credits")
 
-[node name="Credits" type="ColorRect" parent="SaveDataButtonsParent/Credits"]
+[node name="Credits" type="ColorRect" parent="oldUI/SaveDataButtonsParent/Credits"]
 visible = false
 z_index = 1
 layout_mode = 0
@@ -404,7 +469,7 @@ offset_bottom = 49.0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="AshleyStuff" type="RichTextLabel" parent="SaveDataButtonsParent/Credits/Credits"]
+[node name="AshleyStuff" type="RichTextLabel" parent="oldUI/SaveDataButtonsParent/Credits/Credits"]
 layout_mode = 0
 offset_left = 37.0
 offset_top = 27.0
@@ -425,7 +490,7 @@ halocraftok@gmail.com
 This is my first ever mod, thank you for giving it your time!
 "
 
-[node name="DevTitle" type="RichTextLabel" parent="SaveDataButtonsParent/Credits/Credits"]
+[node name="DevTitle" type="RichTextLabel" parent="oldUI/SaveDataButtonsParent/Credits/Credits"]
 layout_mode = 0
 offset_left = 288.0
 offset_top = 169.0
@@ -440,7 +505,7 @@ Development help
 ----------------------------------------------------------
 "
 
-[node name="VerNum" type="RichTextLabel" parent="SaveDataButtonsParent/Credits/Credits"]
+[node name="VerNum" type="RichTextLabel" parent="oldUI/SaveDataButtonsParent/Credits/Credits"]
 layout_mode = 0
 offset_left = 682.0
 offset_top = 3.0
@@ -452,7 +517,7 @@ bbcode_enabled = true
 text = "[center][wave]
 Ver[1.0.1]"
 
-[node name="DevCredits" type="RichTextLabel" parent="SaveDataButtonsParent/Credits/Credits"]
+[node name="DevCredits" type="RichTextLabel" parent="oldUI/SaveDataButtonsParent/Credits/Credits"]
 layout_mode = 0
 offset_left = 375.0
 offset_top = 219.0
@@ -468,7 +533,7 @@ Weed God Stalin (Writing)
 
 "
 
-[node name="TextureButton" type="TextureButton" parent="SaveDataButtonsParent/Credits/Credits"]
+[node name="TextureButton" type="TextureButton" parent="oldUI/SaveDataButtonsParent/Credits/Credits"]
 modulate = Color(0.431301, 0.255126, 0.101887, 1)
 z_index = 2
 layout_mode = 0
@@ -480,12 +545,12 @@ texture_normal = ExtResource("17_jvxj2")
 texture_hover = ExtResource("18_cxj2d")
 script = ExtResource("19_rgqqy")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SaveDataButtonsParent/Credits"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="oldUI/SaveDataButtonsParent/Credits"]
 stream = ExtResource("14_isgpy")
 max_polyphony = 2
 script = ExtResource("11_ora3i")
 
-[node name="ColorRect2" type="ColorRect" parent="SaveDataButtonsParent/Credits"]
+[node name="ColorRect2" type="ColorRect" parent="oldUI/SaveDataButtonsParent/Credits"]
 show_behind_parent = true
 layout_mode = 0
 offset_left = 11.0
@@ -495,18 +560,18 @@ offset_bottom = 26.0
 mouse_filter = 2
 color = Color(0.0745098, 0.113725, 0.211765, 1)
 
-[node name="SetCountField" parent="SaveDataButtonsParent" instance=ExtResource("22_w61ve")]
+[node name="SetCountField" parent="oldUI/SaveDataButtonsParent" instance=ExtResource("22_w61ve")]
 position = Vector2(739, 435)
 
-[node name="SetEmeraldCount" type="Node2D" parent="SaveDataButtonsParent"]
+[node name="SetEmeraldCount" type="Node2D" parent="oldUI/SaveDataButtonsParent"]
 position = Vector2(739, 470)
 
-[node name="ColorRect" type="ColorRect" parent="SaveDataButtonsParent/SetEmeraldCount"]
+[node name="ColorRect" type="ColorRect" parent="oldUI/SaveDataButtonsParent/SetEmeraldCount"]
 offset_right = 206.0
 offset_bottom = 27.0
 color = Color(0.0745098, 0.113725, 0.211765, 1)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="SaveDataButtonsParent/SetEmeraldCount/ColorRect"]
+[node name="RichTextLabel" type="RichTextLabel" parent="oldUI/SaveDataButtonsParent/SetEmeraldCount/ColorRect"]
 layout_mode = 0
 offset_left = 48.0
 offset_top = 5.0
@@ -519,7 +584,7 @@ bbcode_enabled = true
 text = "% Emerald Keys"
 fit_content = true
 
-[node name="Down" type="TextureButton" parent="SaveDataButtonsParent/SetEmeraldCount/ColorRect"]
+[node name="Down" type="TextureButton" parent="oldUI/SaveDataButtonsParent/SetEmeraldCount/ColorRect"]
 layout_mode = 0
 offset_left = 202.0
 offset_top = 2.0
@@ -531,7 +596,7 @@ texture_pressed = ExtResource("24_3w3wq")
 stretch_mode = 6
 script = ExtResource("25_7jcuc")
 
-[node name="Up" type="TextureButton" parent="SaveDataButtonsParent/SetEmeraldCount/ColorRect"]
+[node name="Up" type="TextureButton" parent="oldUI/SaveDataButtonsParent/SetEmeraldCount/ColorRect"]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 25.0
@@ -543,20 +608,20 @@ texture_pressed = ExtResource("24_3w3wq")
 stretch_mode = 5
 script = ExtResource("25_7jcuc")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SaveDataButtonsParent/SetEmeraldCount/ColorRect"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="oldUI/SaveDataButtonsParent/SetEmeraldCount/ColorRect"]
 stream = ExtResource("26_kcrvy")
 
-[node name="GameProgress" type="Node" parent="."]
+[node name="GameProgress" type="Node" parent="oldUI"]
 script = ExtResource("27_cs4nj")
 
-[node name="ConsoleParent" type="Node2D" parent="." node_paths=PackedStringArray("SoundEffect", "OtherNodes")]
+[node name="ConsoleParent" type="Node2D" parent="oldUI" node_paths=PackedStringArray("SoundEffect", "OtherNodes")]
 visible = false
 script = ExtResource("28_ltu5s")
 key = 4194335
 SoundEffect = NodePath("AudioStreamPlayer")
 OtherNodes = [NodePath(".")]
 
-[node name="RichTextLabel4" type="RichTextLabel" parent="ConsoleParent"]
+[node name="RichTextLabel4" type="RichTextLabel" parent="oldUI/ConsoleParent"]
 z_index = 2
 offset_left = 107.0
 offset_top = 506.0
@@ -566,19 +631,88 @@ theme_override_fonts/normal_font = ExtResource("16_5bfp3")
 theme_override_font_sizes/normal_font_size = 20
 text = "Console Output"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ConsoleParent"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="oldUI/ConsoleParent"]
 stream = ExtResource("14_isgpy")
 
-[connection signal="pressed" from="LoadCustomTestButton" to="LoadCustomTestButton/AudioStreamPlayer" method="_on_button_pressed"]
-[connection signal="pressed" from="LoadCustomDebugRoomButton" to="LoadCustomDebugRoomButton/AudioStreamPlayer" method="_on_button_pressed"]
-[connection signal="pressed" from="LoadCustomDebugRoomButton2" to="LoadCustomDebugRoomButton2/AudioStreamPlayer" method="_on_button_pressed"]
-[connection signal="pressed" from="SaveDataButtonsParent/CheckBox" to="SaveDataButtonsParent/CheckBox" method="_on_pressed"]
-[connection signal="pressed" from="SaveDataButtonsParent/CheckBox" to="SaveDataButtonsParent/CheckBox/AudioStreamPlayer" method="_on_check_box_pressed"]
-[connection signal="toggled" from="SaveDataButtonsParent/CheckBox" to="SaveDataButtonsParent/CheckBox" method="_on_toggled"]
-[connection signal="pressed" from="SaveDataButtonsParent/Credits" to="SaveDataButtonsParent/Credits" method="_on_pressed"]
-[connection signal="pressed" from="SaveDataButtonsParent/Credits" to="SaveDataButtonsParent/Credits/AudioStreamPlayer" method="_on_check_box_pressed"]
-[connection signal="pressed" from="SaveDataButtonsParent/Credits/Credits/TextureButton" to="SaveDataButtonsParent/Credits/Credits/TextureButton" method="_on_texture_button_pressed"]
-[connection signal="pressed" from="SaveDataButtonsParent/SetEmeraldCount/ColorRect/Down" to="SaveDataButtonsParent/SetEmeraldCount/ColorRect/Down" method="_on_pressed"]
-[connection signal="pressed" from="SaveDataButtonsParent/SetEmeraldCount/ColorRect/Down" to="SaveDataButtonsParent/SetEmeraldCount/ColorRect/Down" method="_down"]
-[connection signal="pressed" from="SaveDataButtonsParent/SetEmeraldCount/ColorRect/Up" to="SaveDataButtonsParent/SetEmeraldCount/ColorRect/Up" method="_on_pressed"]
-[connection signal="pressed" from="SaveDataButtonsParent/SetEmeraldCount/ColorRect/Up" to="SaveDataButtonsParent/SetEmeraldCount/ColorRect/Up" method="_up"]
+[node name="TextureButton" type="TextureButton" parent="oldUI"]
+visible = false
+offset_left = 758.0
+offset_top = 7.0
+offset_right = 961.0
+offset_bottom = 104.0
+texture_normal = SubResource("CompressedTexture2D_2gkel")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("6_m1bud")
+
+[node name="Label" type="Label" parent="oldUI/TextureButton"]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 34.0
+offset_right = 163.0
+offset_bottom = 73.0
+theme = ExtResource("4_u0om8")
+text = "Open Mods Folder"
+autowrap_mode = 3
+
+[node name="transients" type="Node2D" parent="."]
+visible = false
+position = Vector2(536, 11)
+
+[node name="LoadTransient1" type="Button" parent="transients"]
+top_level = true
+z_as_relative = false
+offset_left = 6.0
+offset_top = 98.0
+offset_right = 220.0
+offset_bottom = 146.0
+theme = ExtResource("4_u0om8")
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.0313726, 0.380392, 0.34902, 1)
+theme_override_colors/font_color = Color(0.0313726, 0.380392, 0.34902, 1)
+theme_override_styles/focus = SubResource("11")
+theme_override_styles/disabled = SubResource("10")
+theme_override_styles/hover = SubResource("8")
+theme_override_styles/pressed = SubResource("9")
+theme_override_styles/normal = SubResource("7")
+action_mode = 0
+text = "
+Load t_persona4
+
+"
+script = ExtResource("29_ypgot")
+destination = "res://DeadStars/scenes/Chapter1/t_persona4.tscn"
+
+[node name="ColorRect3" type="ColorRect" parent="transients/LoadTransient1"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 210.0
+offset_bottom = 41.0
+mouse_filter = 2
+color = Color(0.0235294, 0.12549, 0.121569, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="transients/LoadTransient1"]
+script = ExtResource("11_ora3i")
+
+[connection signal="button_down" from="LoadCustomTestButton2" to="LoadCustomTestButton2" method="_on_button_down"]
+[connection signal="button_up" from="LoadCustomTestButton2" to="LoadCustomTestButton2" method="_on_button_up"]
+[connection signal="pressed" from="LoadCustomTestButton2" to="LoadCustomTestButton2" method="_on_pressed"]
+[connection signal="pressed" from="LoadCustomTestButton2" to="LoadCustomTestButton2/AudioStreamPlayer" method="_on_button_pressed"]
+[connection signal="pressed" from="PrimaryLoads/LoadCustomTestButton" to="PrimaryLoads/LoadCustomTestButton/AudioStreamPlayer" method="_on_button_pressed"]
+[connection signal="pressed" from="PrimaryLoads/LoadCustomDebugRoomButton" to="PrimaryLoads/LoadCustomDebugRoomButton/AudioStreamPlayer" method="_on_button_pressed"]
+[connection signal="pressed" from="PrimaryLoads/LoadCustomDebugRoomButton3" to="PrimaryLoads/LoadCustomDebugRoomButton3/AudioStreamPlayer" method="_on_button_pressed"]
+[connection signal="pressed" from="PrimaryLoads/LoadCustomDebugRoomButton2" to="PrimaryLoads/LoadCustomDebugRoomButton2/AudioStreamPlayer" method="_on_button_pressed"]
+[connection signal="pressed" from="oldUI/SaveDataButtonsParent/CheckBox" to="oldUI/SaveDataButtonsParent/CheckBox" method="_on_pressed"]
+[connection signal="pressed" from="oldUI/SaveDataButtonsParent/CheckBox" to="oldUI/SaveDataButtonsParent/CheckBox/AudioStreamPlayer" method="_on_check_box_pressed"]
+[connection signal="toggled" from="oldUI/SaveDataButtonsParent/CheckBox" to="oldUI/SaveDataButtonsParent/CheckBox" method="_on_toggled"]
+[connection signal="pressed" from="oldUI/SaveDataButtonsParent/Credits" to="oldUI/SaveDataButtonsParent/Credits" method="_on_pressed"]
+[connection signal="pressed" from="oldUI/SaveDataButtonsParent/Credits" to="oldUI/SaveDataButtonsParent/Credits/AudioStreamPlayer" method="_on_check_box_pressed"]
+[connection signal="pressed" from="oldUI/SaveDataButtonsParent/Credits/Credits/TextureButton" to="oldUI/SaveDataButtonsParent/Credits/Credits/TextureButton" method="_on_texture_button_pressed"]
+[connection signal="pressed" from="oldUI/SaveDataButtonsParent/SetEmeraldCount/ColorRect/Down" to="oldUI/SaveDataButtonsParent/SetEmeraldCount/ColorRect/Down" method="_on_pressed"]
+[connection signal="pressed" from="oldUI/SaveDataButtonsParent/SetEmeraldCount/ColorRect/Down" to="oldUI/SaveDataButtonsParent/SetEmeraldCount/ColorRect/Down" method="_down"]
+[connection signal="pressed" from="oldUI/SaveDataButtonsParent/SetEmeraldCount/ColorRect/Up" to="oldUI/SaveDataButtonsParent/SetEmeraldCount/ColorRect/Up" method="_on_pressed"]
+[connection signal="pressed" from="oldUI/SaveDataButtonsParent/SetEmeraldCount/ColorRect/Up" to="oldUI/SaveDataButtonsParent/SetEmeraldCount/ColorRect/Up" method="_up"]
+[connection signal="pressed" from="transients/LoadTransient1" to="transients/LoadTransient1/AudioStreamPlayer" method="_on_button_pressed"]

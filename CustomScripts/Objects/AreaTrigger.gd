@@ -32,8 +32,8 @@ func _on_area_entered(area):
 		else:
 			await get_tree().create_timer((Target.get_child(ChildNumber).Duration) + 0.1).timeout
 			_on_area_entered(area)
-			
-		
+
+
 func open():
 	Target.get_child(ChildNumber).RemoteTriggerActivate()
 
@@ -50,7 +50,7 @@ func _process(delta):
 func _on_behavior_open():
 	#print("Door opened")
 	opened = true
-	
+
 
 func _on_behavior_closed():
 	#print("door closed")
