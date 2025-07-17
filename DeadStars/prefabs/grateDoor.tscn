@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://addons/func_godot/src/map/func_godot_map.gd" id="1_e0tos"]
 [ext_resource type="Script" path="res://DeadStars/scripts/LockDoor.gd" id="1_usulk"]
 [ext_resource type="Resource" uid="uid://b7b1eyuwdw2s4" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="2_gjntu"]
-[ext_resource type="Material" uid="uid://b16me04j0qxyq" path="res://textures/CustomText/Grate.tres" id="3_8ioxu"]
+[ext_resource type="Material" uid="uid://w67tge64bscx" path="res://textures/Grate.tres" id="3_8ioxu"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_wys27"]
 _surfaces = [{

@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://su30u7c7tupt"]
 
-[ext_resource type="Texture2D" uid="uid://h8eiphbtudkv" path="res://textures/glass_bright.png" id="1_g82pm"]
+[ext_resource type="Texture2D" uid="uid://h8eiphbtudkv" path="res://KOMTextures/glass_bright.png" id="1_g82pm"]
 
 [resource]
 transparency = 1

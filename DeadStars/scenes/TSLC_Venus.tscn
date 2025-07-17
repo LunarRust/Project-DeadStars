@@ -229,9 +229,9 @@ autoplay = true
 
 [node name="VerLabel" type="RichTextLabel" parent="."]
 z_index = 5
-offset_left = 697.0
+offset_left = 628.0
 offset_top = 8.0
-offset_right = 1247.99
+offset_right = 1178.99
 offset_bottom = 107.0
 scale = Vector2(0.635, 0.635)
 mouse_filter = 2

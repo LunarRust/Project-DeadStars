@@ -1,7 +1,7 @@
 [gd_scene load_steps=40 format=3 uid="uid://b4jiisobpgg31"]
 
 [ext_resource type="Script" path="res://CustomScripts/Logic/KOMStats.gd" id="1_2itm6"]
-[ext_resource type="PackedScene" uid="uid://d1m1r3psoqh4d" path="res://CustomMercScenes/CustomScenes/MenuLabelBase.tscn" id="2_x08jr"]
+[ext_resource type="PackedScene" uid="uid://d1m1r3psoqh4d" path="res://DeadStars/prefabs/system/MenuLabelBase.tscn" id="2_x08jr"]
 [ext_resource type="Texture2D" uid="uid://chkdhx61d66tt" path="res://DeadStars/sprites/UI/PsychopompFaceAlt.png" id="4_6nwp0"]
 [ext_resource type="Theme" uid="uid://bkrmgobma4l0y" path="res://Fonts/DBStyles.tres" id="4_u0om8"]
 [ext_resource type="Script" path="res://DeadStars/scripts/SpriteShake.gd" id="5_80qa7"]
@@ -12,17 +12,17 @@
 [ext_resource type="Texture2D" uid="uid://bdhw4bysid07f" path="res://Sprites/UI/RefreshButton.png" id="9_8rc0y"]
 [ext_resource type="Script" path="res://CustomScripts/SceneLoaderTextureButtonFullPath.gd" id="10_eglhn"]
 [ext_resource type="Script" path="res://DeadStars/scripts/toggleUI.gd" id="11_odu46"]
-[ext_resource type="Script" path="res://Scenes/ButtonPlayer.gd" id="11_ora3i"]
-[ext_resource type="Script" path="res://Scenes/ProgressChanger.gd" id="13_thrlw"]
+[ext_resource type="Script" path="res://DeadStars/scripts/ButtonPlayer.gd" id="11_ora3i"]
+[ext_resource type="Script" path="res://DeadStars/scripts/ProgressChanger.gd" id="13_thrlw"]
 [ext_resource type="AudioStream" uid="uid://b6u3qkb0mte27" path="res://Sounds/Pickup.ogg" id="14_isgpy"]
 [ext_resource type="Script" path="res://CustomScripts/CreditsButton.gd" id="15_oa1k5"]
 [ext_resource type="FontFile" uid="uid://dku4ohp5rmpr5" path="res://Fonts/DBStylez.ttf" id="16_5bfp3"]
 [ext_resource type="Texture2D" uid="uid://h1qhsfsy30ya" path="res://Sprites/UI/X.png" id="17_jvxj2"]
 [ext_resource type="Texture2D" uid="uid://d3muaq04ysnyt" path="res://KOMSprites/UI/XInvert.png" id="18_cxj2d"]
 [ext_resource type="Script" path="res://CustomScripts/CreditsButtontexture.gd" id="19_rgqqy"]
-[ext_resource type="PackedScene" uid="uid://dp73sjcnqhv0f" path="res://CustomMercScenes/CustomScenes/SetCountField.tscn" id="22_w61ve"]
+[ext_resource type="PackedScene" uid="uid://dp73sjcnqhv0f" path="res://DeadStars/prefabs/system/SetCountField.tscn" id="22_w61ve"]
 [ext_resource type="Texture2D" uid="uid://8r5jhp6ga36p" path="res://Sprites/UI/PlayButton.png" id="23_bom7o"]
-[ext_resource type="Texture2D" uid="uid://bv4y27x06n8a5" path="res://Sprites/UI/PlayButtonInvert.png" id="24_3w3wq"]
+[ext_resource type="Texture2D" uid="uid://bv4y27x06n8a5" path="res://DeadStars/sprites/UI/PlayButtonInvert.png" id="24_3w3wq"]
 [ext_resource type="Script" path="res://CustomScripts/EmeraldKeysCollectedChanger.gd" id="25_7jcuc"]
 [ext_resource type="AudioStream" uid="uid://cwu83yi6qfjwb" path="res://Sounds/tick3.ogg" id="26_kcrvy"]
 [ext_resource type="Script" path="res://Scripts/game_progress.gd" id="27_cs4nj"]
@@ -55,7 +55,7 @@
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_l081l")
-volume_db = -10.0
+volume_db = -5.0
 autoplay = true
 
 [node name="KOMStats" type="Node" parent="." node_paths=PackedStringArray("DeadStarsLabel")]
@@ -80,20 +80,6 @@ mouse_filter = 2
 theme_override_colors/default_color = Color(0.0313726, 0.380392, 0.34902, 1)
 theme_override_font_sizes/normal_font_size = 32
 text = "[shake rate=20] PLACEHOLDER"
-
-[node name="VerLabel2" type="RichTextLabel" parent="."]
-z_index = 5
-offset_left = 195.0
-offset_top = 60.0
-offset_right = 695.0
-offset_bottom = 121.0
-scale = Vector2(0.635, 0.635)
-mouse_filter = 2
-theme_override_colors/default_color = Color(0.0313726, 0.380392, 0.34902, 1)
-theme_override_fonts/normal_font = ExtResource("16_5bfp3")
-theme_override_font_sizes/normal_font_size = 32
-bbcode_enabled = true
-text = "[shake rate=20] Dev Build"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -5

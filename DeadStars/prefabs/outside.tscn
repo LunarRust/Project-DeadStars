@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=4 uid="uid://crhsjtsfj45yo"]
 
-[ext_resource type="PackedScene" uid="uid://cuj5qvddd8o8p" path="res://Models/Tree2.glb" id="1_dpdk7"]
-[ext_resource type="PackedScene" uid="uid://6c2b3bf2v6k7" path="res://Models/Ferns.glb" id="2_dylil"]
+[ext_resource type="PackedScene" uid="uid://cuj5qvddd8o8p" path="res://DeadStars/models/Trees/Tree2.glb" id="1_dpdk7"]
+[ext_resource type="PackedScene" uid="uid://6c2b3bf2v6k7" path="res://DeadStars/models/Fern/Ferns.glb" id="2_dylil"]
 [ext_resource type="Material" uid="uid://w67tge64bscx" path="res://textures/Grate.tres" id="3_ii60j"]
 [ext_resource type="Texture2D" uid="uid://crxbg1jt8f3df" path="res://KOMSprites/Trees/Tree_4 (2).PNG" id="4_q5vig"]
 [ext_resource type="Texture2D" uid="uid://blrurxsx4yddd" path="res://KOMSprites/Trees/Tree_2 (5).PNG" id="5_lmn43"]

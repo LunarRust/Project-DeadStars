@@ -90,7 +90,7 @@
 [ext_resource type="Script" path="res://CustomScripts/Logic/Player/DisplayMover.gd" id="86_7nspa"]
 [ext_resource type="Texture2D" uid="uid://d08uqmhpg2wkn" path="res://Sprites/DialogueBox.png" id="86_myms0"]
 [ext_resource type="FontFile" uid="uid://dg3h8s7di2p7v" path="res://Fonts/DBStylez2.ttf" id="87_waqp6"]
-[ext_resource type="Texture2D" uid="uid://be70mwavslv7m" path="res://Sprites/Faces/Psychopomp FaceSprite.png" id="88_snhl5"]
+[ext_resource type="Texture2D" uid="uid://be70mwavslv7m" path="res://Sprites/Faces/Psychopomp FaceSprite3.png" id="88_snhl5"]
 [ext_resource type="Texture2D" uid="uid://h1qhsfsy30ya" path="res://Sprites/UI/X.png" id="89_i5wes"]
 [ext_resource type="Script" path="res://Scripts/XButton.cs" id="90_k35p4"]
 [ext_resource type="Script" path="res://Scripts/CursorFollower.cs" id="92_n2ac4"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dnf3e332dofwf"]
 
 [ext_resource type="Script" path="res://DeadStars/scripts/message_trigger.gd" id="1_qtba5"]
-[ext_resource type="Texture2D" uid="uid://dlxwxvfcxaciw" path="res://Sprites/Faces/Psychopomp FaceSprite3.png" id="2_k3pjg"]
+[ext_resource type="Texture2D" uid="uid://dlxwxvfcxaciw" path="res://Sprites/Faces/Psychopomp FaceSprite.png" id="2_k3pjg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e1sdh"]
 resource_local_to_scene = true

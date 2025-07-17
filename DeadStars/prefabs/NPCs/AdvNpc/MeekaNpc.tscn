@@ -16,7 +16,7 @@
 [ext_resource type="Script" path="res://DeadStars/scripts/Item_transfer.gd" id="18_x46v8"]
 [ext_resource type="Texture2D" uid="uid://bofd4xxv6rmbl" path="res://Sprites/DownArrow.png" id="19_ieq22"]
 [ext_resource type="AudioStream" uid="uid://ky4thiwhty25" path="res://Sounds/tick.ogg" id="19_nb3al"]
-[ext_resource type="Script" path="res://CustomMercScenes/CustomScenes/3dgui/gui_3d.gd" id="20_f5ykm"]
+[ext_resource type="Script" path="res://DeadStars/3dgui/gui_3d.gd" id="20_f5ykm"]
 [ext_resource type="Script" path="res://addons/gloot/ui/ctrl_inventory_grid_ex.gd" id="21_1ejyr"]
 [ext_resource type="Texture2D" uid="uid://bo7ngnq4uajfs" path="res://Sprites/Items/Generic.png" id="22_fwm27"]
 [ext_resource type="Script" path="res://CustomScripts/Logic/AppearOnPress.gd" id="23_i85xn"]
@@ -15496,14 +15496,14 @@ _data = {
 [sub_resource type="QuadMesh" id="1"]
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_bvjmu"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_4ixrq"]
 viewport_path = NodePath("VenusModel/OrderPanel/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6u86j"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ox6k"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_bvjmu")
+albedo_texture = SubResource("ViewportTexture_4ixrq")
 billboard_mode = 1
 billboard_keep_scale = true
 
@@ -16610,7 +16610,7 @@ text = "Take Items
 [node name="Quad" type="MeshInstance3D" parent="VenusModel/OrderPanel"]
 transform = Transform3D(0.57, 0, 0, 0, 0.85, 0, 0, 0, 0.756, 0, 0, 0)
 mesh = SubResource("1")
-surface_material_override/0 = SubResource("StandardMaterial3D_6u86j")
+surface_material_override/0 = SubResource("StandardMaterial3D_7ox6k")
 
 [node name="Area3D" type="Area3D" parent="VenusModel/OrderPanel/Quad"]
 collision_layer = 2

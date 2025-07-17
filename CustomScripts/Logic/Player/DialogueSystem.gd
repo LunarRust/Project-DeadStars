@@ -1,10 +1,11 @@
 extends Node3D
 @export_category("DialogueSystem")
 @export var npcName : String
-@export_multiline var Dialogue : Array[String]
+@export_subgroup("Text values")
+@export_multiline var Dialogue : Array[String] = ["[placeholder]"]
 @export var DialogueVA : Array[AudioStream]
-@export_multiline var LookDescription : Array[String]
-@export_multiline var TouchDescription : Array[String]
+@export_multiline var LookDescription : Array[String] = ["[placeholder]"]
+@export_multiline var TouchDescription : Array[String] = ["[placeholder]"]
 @export_category("DialogueParameters")
 @export var DoDialogue : bool = true
 @export var DoLook : bool = true

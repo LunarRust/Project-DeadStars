@@ -16,7 +16,7 @@ universal_fade/patterns_directory="res://addons/UniversalFade/Patterns"
 
 config/name="DeadStars Adaptation"
 config/tags=PackedStringArray("mod")
-run/main_scene="res://DeadStars/scenes/Chapter1/Level0.tscn"
+run/main_scene="res://DeadStars/scenes/DebugMenu.tscn"
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false

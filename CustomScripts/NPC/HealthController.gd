@@ -30,28 +30,30 @@ func _ready():
 	shake = get_tree().get_first_node_in_group("CameraShake")
 func _process(delta):
 	if HP < 1 && !dead:
-		Death()
 		dead = true
+		Death()
+
 
 
 
 
 func Hurt(amount : int,doShake : bool = false):
-	if DialogueSystem != null:
-		DialogueSystem.CloseDialogue()
-	if HP > 1:
-		var node : Node = gibRoot2.instantiate()
-		#var node = gib2.instantiate(PackedScene.GEN_EDIT_STATE_DISABLED)
-		get_node("/root").add_child(node)
-		node.global_position = self.global_position
-		SoundSource.stream = HurtSound
-		SoundSource.play()
-	print("Hurt for " + str(amount))
-	HP -= amount
-	print(HP)
-	if doShake == true:
-		shake.Shake(0.08)
-	SkinCheck()
+	if !dead:
+		if DialogueSystem != null:
+			DialogueSystem.CloseDialogue()
+		if HP > 1:
+			var node : Node = gibRoot2.instantiate()
+			#var node = gib2.instantiate(PackedScene.GEN_EDIT_STATE_DISABLED)
+			get_node("/root").add_child(node)
+			node.global_position = self.global_position
+			SoundSource.stream = HurtSound
+			SoundSource.play()
+		print("Hurt for " + str(amount))
+		HP -= amount
+		print(HP)
+		if doShake == true:
+			shake.Shake(0.08)
+		SkinCheck()
 
 ###################################
 ###Change NPC's material based on Health
@@ -81,5 +83,6 @@ func Death():
 	if removeOnDeath:
 		get_parent().queue_free()
 	else:
-		get_parent().animTrigger("Death")
-		get_parent().running = false
+		if get_parent().has_method("animSet"):
+			get_parent().animSet("Death")
+			get_parent().running = false

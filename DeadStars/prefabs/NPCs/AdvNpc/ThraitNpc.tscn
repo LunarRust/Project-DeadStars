@@ -12,7 +12,7 @@
 [ext_resource type="AnimationNodeStateMachine" uid="uid://bhewspng8q8xo" path="res://Animations/ThraitSystem2.tres" id="10_mf0hj"]
 [ext_resource type="Texture2D" uid="uid://bopwqidmmwu41" path="res://KOMModels/PsychopompPlayerModel_0.png" id="11_diefg"]
 [ext_resource type="Texture2D" uid="uid://bofd4xxv6rmbl" path="res://Sprites/DownArrow.png" id="12_hbfsy"]
-[ext_resource type="Script" path="res://CustomMercScenes/CustomScenes/3dgui/gui_3d.gd" id="13_c5tgn"]
+[ext_resource type="Script" path="res://DeadStars/3dgui/gui_3d.gd" id="13_c5tgn"]
 [ext_resource type="Script" path="res://addons/gloot/ui/ctrl_inventory_grid_ex.gd" id="14_xxp0c"]
 [ext_resource type="Texture2D" uid="uid://bo7ngnq4uajfs" path="res://Sprites/Items/Generic.png" id="15_8qgsb"]
 [ext_resource type="Texture2D" uid="uid://neas634pjtgp" path="res://Sprites/UI/EmptyButton.png" id="16_nkxwi"]

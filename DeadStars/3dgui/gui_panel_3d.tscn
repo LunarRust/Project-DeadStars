@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dvl383ispakmn"]
 
-[ext_resource type="Script" path="res://CustomMercScenes/CustomScenes/3dgui/gui_3d.gd" id="1"]
+[ext_resource type="Script" path="res://DeadStars/3dgui/gui_3d.gd" id="1"]
 [ext_resource type="FontFile" uid="uid://dku4ohp5rmpr5" path="res://Fonts/DBStylez.ttf" id="2_hutgd"]
 [ext_resource type="Script" path="res://addons/gloot/ui/ctrl_inventory_grid_ex.gd" id="3_j4ppp"]
 [ext_resource type="Texture2D" uid="uid://bo7ngnq4uajfs" path="res://Sprites/Items/Generic.png" id="4_tq0q0"]

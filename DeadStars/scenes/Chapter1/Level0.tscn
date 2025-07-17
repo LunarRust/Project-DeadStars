@@ -26,7 +26,7 @@
 [ext_resource type="AudioStream" uid="uid://byaypi50ps5kd" path="res://Sounds/tick4.ogg" id="25_8fcc6"]
 [ext_resource type="PackedScene" uid="uid://ce142bwsodkb1" path="res://KOMPrefabs/building.tscn" id="26_0gyym"]
 [ext_resource type="Script" path="res://DeadStars/scripts/message_trigger.gd" id="27_atb2k"]
-[ext_resource type="Texture2D" uid="uid://dlxwxvfcxaciw" path="res://Sprites/Faces/Psychopomp FaceSprite3.png" id="28_yq041"]
+[ext_resource type="Texture2D" uid="uid://dlxwxvfcxaciw" path="res://Sprites/Faces/Psychopomp FaceSprite.png" id="28_yq041"]
 [ext_resource type="Script" path="res://DeadStars/scripts/SceneLoaderBody.gd" id="29_ofe1m"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ufsr1"]
@@ -697,9 +697,6 @@ shape = SubResource("ConvexPolygonShape3D_kp2sf")
 [node name="entity_0_brush_5_collision_shape" type="CollisionShape3D" parent="FuncGodotMap2/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_le1om")
 
-[node name="PlayerObject" parent="." instance=ExtResource("19_08cmr")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.83387, 1, 4.65412)
-
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.20981, 2.80803, 5)
 light_color = Color(0.737255, 0.603922, 0.443137, 1)
@@ -804,7 +801,7 @@ You're out of touch, I'm out of time (time!)
 But I'm out of my head when you're not around
 Oh, oh-oh, oh, oh-oh, oh!"])
 LookDescription = Array[String](["Am I out of touch?... No, it’s those children who are wrong. What were they doing in that place and who were they?"])
-TouchDescription = Array[String]([])
+TouchDescription = Array[String](["[placeholder]"])
 DoTouch = false
 DialogueSound = ExtResource("25_8fcc6")
 
@@ -859,7 +856,10 @@ shape = SubResource("BoxShape3D_gd3tp")
 
 [node name="Behavior" type="Node" parent="ExitDoor"]
 script = ExtResource("29_ofe1m")
-destination = "res://DeadStars/scenes/WorldMap1.tscn"
+destination = "res://DeadStars/scenes/tutorial.tscn"
+
+[node name="PlayerObject" parent="." instance=ExtResource("19_08cmr")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.63993, 1, 4.768)
 
 [connection signal="area_entered" from="Transfer" to="Transfer" method="OnBodyEntered"]
 [connection signal="area_entered" from="Message Trigger" to="Message Trigger" method="_on_area_entered"]

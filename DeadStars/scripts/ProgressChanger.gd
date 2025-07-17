@@ -39,10 +39,10 @@ func _on_toggled(toggled_on):
 		ValueStr = str(PlayerPrefs.get_pref(Setting, false) == true)
 		print(Setting + " " + str(Value))
 		SavePoint.Save()
-	
+
 	pass
 #
-#Creating Toggle functions for each level explicitly because I cannot 
+#Creating Toggle functions for each level explicitly because I cannot
 #figure out a more elegent way to do this within the confines of a mod
 #
 func _on_toggled_school(toggled_on):
@@ -60,7 +60,7 @@ func _on_toggled_school(toggled_on):
 		ValueStr = str(PlayerPrefs.get_pref(Setting, false) == true)
 		print(Setting + " " + str(Value))
 		SavePoint.Save()
-	
+
 	pass
 
 
@@ -79,7 +79,7 @@ func _on_toggled_sewer(toggled_on):
 		ValueStr = str(PlayerPrefs.get_pref(Setting, false) == true)
 		print(Setting + " " + str(Value))
 		SavePoint.Save()
-	
+
 	pass
 
 
@@ -98,7 +98,7 @@ func _on_toggled_hospital(toggled_on):
 		ValueStr = str(PlayerPrefs.get_pref(Setting, false) == true)
 		print(Setting + " " + str(Value))
 		SavePoint.Save()
-	
+
 	pass
 
 
@@ -117,7 +117,7 @@ func _on_toggled_building(toggled_on):
 		ValueStr = str(PlayerPrefs.get_pref(Setting, false) == true)
 		print(Setting + " " + str(Value))
 		SavePoint.Save()
-	
+
 	pass
 
 
@@ -136,7 +136,7 @@ func _on_toggled_dna(toggled_on):
 		ValueStr = str(PlayerPrefs.get_pref(Setting, false) == true)
 		print(Setting + " " + str(Value))
 		SavePoint.Save()
-	
+
 	pass
 
 
@@ -155,5 +155,5 @@ func _on_toggled_symbol(toggled_on):
 		ValueStr = str(PlayerPrefs.get_pref(Setting, false) == true)
 		print(Setting + " " + str(Value))
 		SavePoint.Save()
-	
+
 	pass

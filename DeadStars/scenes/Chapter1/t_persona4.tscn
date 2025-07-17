@@ -1,10 +1,10 @@
 [gd_scene load_steps=355 format=4 uid="uid://ghfi6j4r31pi"]
 
-[ext_resource type="PackedScene" uid="uid://cuj5qvddd8o8p" path="res://Models/Tree2.glb" id="1_1newe"]
+[ext_resource type="PackedScene" uid="uid://cuj5qvddd8o8p" path="res://DeadStars/models/Trees/Tree2.glb" id="1_1newe"]
 [ext_resource type="Script" path="res://addons/func_godot/src/map/func_godot_map.gd" id="1_jthyl"]
 [ext_resource type="PackedScene" uid="uid://bk40wll0gyt74" path="res://DeadStars/prefabs/system/npc_scene_rules.tscn" id="1_y6oqa"]
 [ext_resource type="Resource" uid="uid://b7b1eyuwdw2s4" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="2_s47is"]
-[ext_resource type="PackedScene" uid="uid://6c2b3bf2v6k7" path="res://Models/Ferns.glb" id="2_yfmal"]
+[ext_resource type="PackedScene" uid="uid://6c2b3bf2v6k7" path="res://DeadStars/models/Fern/Ferns.glb" id="2_yfmal"]
 [ext_resource type="Material" uid="uid://w67tge64bscx" path="res://textures/Grate.tres" id="3_e7h1n"]
 [ext_resource type="Material" path="res://textures/Carpet.tres" id="3_g87ah"]
 [ext_resource type="Material" path="res://textures/Grass1.tres" id="4_0kjrt"]
@@ -20,7 +20,7 @@
 [ext_resource type="Material" path="res://textures/Marble2.tres" id="11_4ygrp"]
 [ext_resource type="Material" path="res://textures/CliffRock.tres" id="12_gbbu8"]
 [ext_resource type="Material" path="res://textures/Concrete06.tres" id="13_6jlwm"]
-[ext_resource type="Material" uid="uid://xigm5uiy3o2e" path="res://textures/Red.tres" id="14_ocrn4"]
+[ext_resource type="Material" uid="uid://xigm5uiy3o2e" path="res://DeadStars/textures/Red.tres" id="14_ocrn4"]
 [ext_resource type="Material" path="res://textures/Wood3.tres" id="15_hlp03"]
 [ext_resource type="Material" path="res://textures/Fence.tres" id="16_7xttv"]
 [ext_resource type="Material" path="res://textures/Tile1.tres" id="17_s22um"]
@@ -1229,14 +1229,14 @@ points = PackedVector3Array(-30, 4, 13, -30, 1, 13, -29, 1, 13, -29, 4, 13, -30,
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bs3vk"]
 points = PackedVector3Array(-11, 5, 2, -11, 4, 2, -7, 4, 2, -7, 5, 2, -11, 5, 17, -11, 4, 17, -7, 4, 17, -7, 5, 17)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_84e7f"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ot4nb"]
 viewport_path = NodePath("Node3D/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ybvtt"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m2561"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_84e7f")
+albedo_texture = SubResource("ViewportTexture_ot4nb")
 
 [sub_resource type="Animation" id="Animation_jggox"]
 resource_name = "Fade"
@@ -2895,7 +2895,7 @@ volume_db = 10.0
 max_distance = 30.0
 
 [node name="Quad" parent="TvTower/TvPlayerMaster" index="3"]
-surface_material_override/0 = SubResource("StandardMaterial3D_ybvtt")
+surface_material_override/0 = SubResource("StandardMaterial3D_m2561")
 
 [node name="Node3D" parent="TvTower/TvPlayerMaster" index="4" node_paths=PackedStringArray("node_quad")]
 node_quad = [NodePath("../../TvPlayer2/Node3D/Quad"), NodePath("../../TvPlayer12/Node3D/Quad"), NodePath("../../TvPlayer13/Node3D/Quad"), NodePath("../../TvPlayer20/Node3D/Quad"), NodePath("../../TvPlayer21/Node3D/Quad"), NodePath("../../TvPlayer22/Node3D/Quad"), NodePath("../../TvPlayer23/Node3D/Quad"), NodePath("../../TvPlayer24/Node3D/Quad"), NodePath("../../TvPlayer25/Node3D/Quad"), NodePath("../../TvPlayer26/Node3D/Quad"), NodePath("../../TvPlayer27/Node3D/Quad"), NodePath("../../TvPlayer28/Node3D/Quad"), NodePath("../../TvPlayer29/Node3D/Quad"), NodePath("../../TvPlayer30/Node3D/Quad"), NodePath("../../TvPlayer31/Node3D/Quad"), NodePath("../../TvPlayer32/Node3D/Quad"), NodePath("../../TvPlayer33/Node3D/Quad"), NodePath("../../TvPlayer34/Node3D/Quad"), NodePath("../../TvPlayer17/Node3D/Quad"), NodePath("../../TvPlayer18/Node3D/Quad"), NodePath("../../TvPlayer19/Node3D/Quad"), NodePath("../../TvPlayer15/Node3D/Quad"), NodePath("../../TvPlayer16/Node3D/Quad"), NodePath("../../TvPlayer3/Node3D/Quad"), NodePath("../../TvPlayer11/Node3D/Quad"), NodePath("../../TvPlayer14/Node3D/Quad"), NodePath("../../TvPlayer9/Node3D/Quad"), NodePath("../../TvPlayer4/Node3D/Quad"), NodePath("../../TvPlayer5/Node3D/Quad"), NodePath("../../TvPlayer6/Node3D/Quad"), NodePath("../../TvPlayer7/Node3D/Quad"), NodePath("../../TvPlayer8/Node3D/Quad"), NodePath("../../TvPlayer10/Node3D/Quad"), NodePath("../Quad")]
@@ -2999,9 +2999,9 @@ transform = Transform3D(2.03614, 0, -0.806371, 0, 2.19, 0, 0.806371, 0, 2.03614,
 [node name="TvPlayer10" parent="TvTower" instance=ExtResource("29_ijrb2")]
 transform = Transform3D(2.18901, 0, 0.0657709, 0, 2.19, 0, -0.0657709, 0, 2.18901, 0.227779, 1.03835, 2.27346)
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Transient_title" type="Node2D" parent="."]
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Node2D"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Transient_title"]
 offset_left = 342.0
 offset_top = 78.0
 offset_right = 649.0
@@ -3015,7 +3015,7 @@ text = "[wave][center]Transient Location:
 Inaba"
 metadata/_edit_use_anchors_ = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Transient_title"]
 libraries = {
 "": SubResource("AnimationLibrary_x7qow")
 }
@@ -3165,8 +3165,8 @@ shape = SubResource("BoxShape3D_1sida")
 [connection signal="area_exited" from="EnableExitTrigger" to="EnableExitTrigger" method="_on_area_exited"]
 [connection signal="body_entered" from="EnableExitTrigger" to="EnableExitTrigger" method="_on_body_entered"]
 [connection signal="body_exited" from="EnableExitTrigger" to="EnableExitTrigger" method="_on_body_exited"]
-[connection signal="area_entered" from="ExitTrigger" to="ExitTrigger" method="_on_area_entered"]
 [connection signal="area_entered" from="ExitTrigger" to="ExitTrigger" method="OnBodyEntered"]
+[connection signal="area_entered" from="ExitTrigger" to="ExitTrigger" method="_on_area_entered"]
 [connection signal="VolumeBeenEntered" from="OpenExitDoorTrigger" to="AtriumDoor2/DoorGlass/Behavior" method="OpenDoor"]
 [connection signal="VolumeBeenEntered" from="OpenExitDoorTrigger" to="AtriumDoor2/AreaTrigger" method="open"]
 [connection signal="area_entered" from="OpenExitDoorTrigger" to="OpenExitDoorTrigger" method="_on_area_entered"]

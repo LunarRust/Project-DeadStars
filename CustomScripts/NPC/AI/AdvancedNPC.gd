@@ -260,14 +260,14 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity):
 ###INTERACTION METHODS
 ###################################
 func Attack():
-	if (anim != null && TargetEntity.has_node("HealthHandler")):
+	if (anim != null && TargetEntity.has_node("HealthController")):
 		animTrigger(attackName)
 	if (position.distance_to(TargetEntity.position) < AttackDistance && TargetEntity.is_in_group("player")):
 		animTrigger(attackName)
 		playerHealthInstance.notsostatichealth(attackPower)
 	else:
-		if position.distance_to(TargetEntity.position) < AttackDistance && TargetEntity.has_node("NpcToNpcHealthHandler"):
-			TargetEntity.get_node("NpcToNpcHealthHandler").Hurt(1)
+		if position.distance_to(TargetEntity.position) < AttackDistance && TargetEntity.has_node("HealthController"):
+			TargetEntity.get_node("HealthController").Hurt(1)
 		elif position.distance_to(TargetEntity.position) < AttackDistance && TargetEntity.has_node("HealthHandler"):
 			TargetEntity.get_node("HealthHandler").Hurt(1)
 	await get_tree().create_timer(1.0).timeout
@@ -639,6 +639,9 @@ func animTrigger(triggername : String):
 	animTree["parameters/conditions/" + triggername] = true;
 	await get_tree().create_timer(0.1).timeout
 	animTree["parameters/conditions/" + triggername] = false;
+
+func animSet(triggername : String, toggle : bool = true):
+	animTree["parameters/conditions/" + triggername] = toggle;
 
 func get_all_children(in_node, array := []):
 	if in_node != null:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://br20xgntamej3"]
+[gd_scene load_steps=52 format=3 uid="uid://br20xgntamej3"]
 
 [ext_resource type="Texture2D" uid="uid://lgt33gnqe66k" path="res://Sprites/MapBack1new.png" id="1_jrwy6"]
 [ext_resource type="Script" path="res://Scripts/Tweener2D.cs" id="2_3gnr1"]
@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://bk3kng3rw1oc0" path="res://DeadStars/sprites/stadiumSmall.png" id="10_pclkl"]
 [ext_resource type="Texture2D" uid="uid://ba00b88k0dqmv" path="res://Sprites/Home.png" id="11_cl6il"]
 [ext_resource type="Script" path="res://CustomScripts/SceneLoaderTextureButtonFullPath.gd" id="11_loshc"]
-[ext_resource type="Texture2D" uid="uid://baxyvc10kwgej" path="res://Sprites/Phone.png" id="12_qdary"]
 [ext_resource type="Texture2D" uid="uid://cypodpd0uc1q8" path="res://Sprites/Hospital.png" id="14_5jcwr"]
 [ext_resource type="AudioStream" uid="uid://2lovkjkbv2a4" path="res://Music/UnderSkinSkies.ogg" id="16_av7qt"]
 [ext_resource type="Script" path="res://Scripts/game_progress.gd" id="17_47de0"]
@@ -21,9 +20,20 @@
 [ext_resource type="Texture2D" uid="uid://cy2vqc8pk5ygw" path="res://Sprites/UI/Fullscreen1.png" id="20_hdbxf"]
 [ext_resource type="Texture2D" uid="uid://be3jf3qr3gbmy" path="res://Sprites/UI/Fullscreen2.png" id="21_f3nt1"]
 [ext_resource type="Script" path="res://Scripts/Fullscreen.gd" id="22_1pia8"]
-[ext_resource type="PackedScene" uid="uid://d1m1r3psoqh4d" path="res://CustomMercScenes/CustomScenes/MenuLabelBase.tscn" id="22_j1v08"]
 [ext_resource type="Script" path="res://CustomScripts/Logic/KOMStats.gd" id="23_haann"]
 [ext_resource type="Texture2D" uid="uid://dgl6r7ahs626j" path="res://Sprites/TrnsSheet1.png" id="24_linmy"]
+
+[sub_resource type="Environment" id="Environment_4bkj6"]
+background_mode = 3
+glow_intensity = 5.25
+glow_strength = 0.58
+glow_bloom = 0.11
+glow_blend_mode = 3
+glow_hdr_threshold = 4.0
+glow_hdr_scale = 4.0
+glow_hdr_luminance_cap = 17.3
+adjustment_enabled = true
+adjustment_saturation = 1.21
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5mmss"]
 shader = ExtResource("3_kni28")
@@ -70,18 +80,6 @@ _data = {
 "RESET": SubResource("Animation_pqmtr"),
 "Walky": SubResource("Animation_0mcxc")
 }
-
-[sub_resource type="Environment" id="Environment_4bkj6"]
-background_mode = 3
-glow_intensity = 5.25
-glow_strength = 0.58
-glow_bloom = 0.11
-glow_blend_mode = 3
-glow_hdr_threshold = 4.0
-glow_hdr_scale = 4.0
-glow_hdr_luminance_cap = 17.3
-adjustment_enabled = true
-adjustment_saturation = 1.21
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gwov3"]
 atlas = ExtResource("24_linmy")
@@ -254,10 +252,26 @@ animations = [{
 
 [node name="Node2D" type="Node2D"]
 
-[node name="KOMStats" type="Node" parent="." node_paths=PackedStringArray("DeadStarsLabel")]
+[node name="VerLabel2" type="RichTextLabel" parent="."]
+z_index = 5
+offset_left = 628.0
+offset_top = 8.0
+offset_right = 1178.99
+offset_bottom = 107.0
+scale = Vector2(0.635, 0.635)
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.686275, 0.247059, 0.247059, 1)
+theme_override_fonts/normal_font = ExtResource("7_lwdof")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[shake rate=20] PLACEHOLDER"
+
+[node name="KOMStats" type="Node" parent="VerLabel2" node_paths=PackedStringArray("DeadStarsLabel")]
 script = ExtResource("23_haann")
-DeadStarsLabel = NodePath("../VerLabel")
-DeadStars = "InDev"
+DeadStarsLabel = NodePath("..")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4bkj6")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(480, 270)
@@ -314,6 +328,7 @@ text = "[wave][rainbow][center]Select A Destination!"
 scroll_active = false
 
 [node name="Descend" type="Sprite2D" parent="."]
+visible = false
 texture_filter = 1
 position = Vector2(480, 279)
 scale = Vector2(2, 2)
@@ -344,42 +359,6 @@ theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
 text = "
 [wave]DESCEND"
-
-[node name="School" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(321, 159)
-scale = Vector2(2, 2)
-texture = ExtResource("10_pclkl")
-script = ExtResource("2_3gnr1")
-Time = 3.0
-tweenPosition = true
-endPosition = Vector2(0, 10)
-
-[node name="TextureButton" type="TextureButton" parent="School"]
-offset_left = -33.0
-offset_top = -30.0
-offset_right = 32.0
-offset_bottom = 34.0
-script = ExtResource("11_loshc")
-destination = "res://DeadStars/scenes/Chapter1/StadiumFoyer.tscn"
-sceneLoader = "res://DeadStars/scenes/TSLC_Venus.tscn"
-metadata/_edit_use_anchors_ = true
-
-[node name="School Label" type="RichTextLabel" parent="School"]
-anchors_preset = -1
-anchor_right = 0.891719
-offset_left = -39.5
-offset_top = 19.0
-offset_right = 50.43
-offset_bottom = 82.0
-scale = Vector2(0.59, 0.59)
-theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_fonts/normal_font = ExtResource("7_lwdof")
-theme_override_font_sizes/normal_font_size = 16
-bbcode_enabled = true
-text = "
-[wave]1. Sports Stadium"
-metadata/_edit_use_anchors_ = true
 
 [node name="Home" type="Sprite2D" parent="."]
 position = Vector2(54, 476)
@@ -412,66 +391,6 @@ destination = "res://DeadStars/scenes/House1.tscn"
 sceneLoader = "res://DeadStars/scenes/TSLC_Venus.tscn"
 metadata/_edit_use_anchors_ = true
 
-[node name="Phone" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(906, 476)
-scale = Vector2(1.07831, 1.07868)
-texture = ExtResource("12_qdary")
-script = ExtResource("2_3gnr1")
-Time = 3.0
-tweenPosition = true
-endPosition = Vector2(0, 10)
-
-[node name="Phone Label" type="RichTextLabel" parent="Phone"]
-offset_left = -34.0
-offset_top = 23.0
-offset_right = 38.0
-offset_bottom = 86.0
-theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_fonts/normal_font = ExtResource("7_lwdof")
-theme_override_font_sizes/normal_font_size = 10
-bbcode_enabled = true
-text = "[wave][center]Call"
-metadata/_edit_use_anchors_ = true
-
-[node name="TextureButton" type="TextureButton" parent="Phone"]
-offset_left = -33.0
-offset_top = -30.0
-offset_right = 32.0
-offset_bottom = 34.0
-script = ExtResource("9_ttwu1")
-destination = "Phone"
-metadata/_edit_use_anchors_ = true
-
-[node name="Hospital" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(639, 167)
-scale = Vector2(2, 2)
-texture = ExtResource("14_5jcwr")
-script = ExtResource("2_3gnr1")
-Time = 4.0
-tweenPosition = true
-endPosition = Vector2(0, 10)
-
-[node name="Hospital Label" type="RichTextLabel" parent="Hospital"]
-offset_left = -45.0
-offset_top = 27.0
-offset_right = 47.0
-offset_bottom = 80.0
-theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_fonts/normal_font = ExtResource("7_lwdof")
-theme_override_font_sizes/normal_font_size = 10
-bbcode_enabled = true
-text = "[wave]2. Children's Hospital"
-
-[node name="TextureButton" type="TextureButton" parent="Hospital"]
-offset_left = -33.0
-offset_top = -30.0
-offset_right = 32.0
-offset_bottom = 34.0
-script = ExtResource("9_ttwu1")
-destination = "HospitalFloor"
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_av7qt")
 volume_db = -11.556
@@ -479,8 +398,8 @@ autoplay = true
 
 [node name="Progression" type="Node" parent="." node_paths=PackedStringArray("SchoolButton", "HospitalButton", "FinalButton")]
 script = ExtResource("17_47de0")
-SchoolButton = NodePath("../School")
-HospitalButton = NodePath("../Hospital")
+SchoolButton = NodePath("../Levels/School")
+HospitalButton = NodePath("../Levels/Hospital")
 FinalButton = NodePath("../Descend")
 
 [node name="Button" type="Button" parent="."]
@@ -518,24 +437,79 @@ texture_normal = ExtResource("20_hdbxf")
 texture_pressed = ExtResource("21_f3nt1")
 script = ExtResource("22_1pia8")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_4bkj6")
+[node name="Levels" type="Node2D" parent="."]
 
-[node name="VerLabel" parent="." instance=ExtResource("22_j1v08")]
-offset_left = 781.0
-offset_top = 11.0
-offset_right = 1281.0
-offset_bottom = 72.0
-scale = Vector2(0.635, 0.635)
-mouse_filter = 2
-theme_override_colors/default_color = Color(0.686275, 0.247059, 0.247059, 1)
-theme_override_font_sizes/normal_font_size = 32
-text = "[shake rate=20] PLACEHOLDER"
+[node name="School" type="Sprite2D" parent="Levels"]
+texture_filter = 1
+position = Vector2(385, 143)
+scale = Vector2(2, 2)
+texture = ExtResource("10_pclkl")
+script = ExtResource("2_3gnr1")
+Time = 3.0
+tweenPosition = true
+endPosition = Vector2(0, 10)
 
-[node name="Transient 2" type="AnimatedSprite2D" parent="."]
+[node name="TextureButton" type="TextureButton" parent="Levels/School"]
+offset_left = -33.0
+offset_top = -30.0
+offset_right = 32.0
+offset_bottom = 34.0
+script = ExtResource("11_loshc")
+destination = "res://DeadStars/scenes/Chapter1/StadiumFoyer.tscn"
+sceneLoader = "res://DeadStars/scenes/TSLC_Venus.tscn"
+metadata/_edit_use_anchors_ = true
+
+[node name="School Label" type="RichTextLabel" parent="Levels/School"]
+anchors_preset = -1
+anchor_right = 0.891719
+offset_left = -39.5
+offset_top = 19.0
+offset_right = 50.43
+offset_bottom = 82.0
+scale = Vector2(0.59, 0.59)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("7_lwdof")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "
+[wave]1. Sports Stadium"
+metadata/_edit_use_anchors_ = true
+
+[node name="Hospital" type="Sprite2D" parent="Levels"]
+visible = false
+position = Vector2(639, 167)
+scale = Vector2(2, 2)
+texture = ExtResource("14_5jcwr")
+script = ExtResource("2_3gnr1")
+Time = 4.0
+tweenPosition = true
+endPosition = Vector2(0, 10)
+
+[node name="Hospital Label" type="RichTextLabel" parent="Levels/Hospital"]
+offset_left = -45.0
+offset_top = 27.0
+offset_right = 47.0
+offset_bottom = 80.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("7_lwdof")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "[wave]2. Children's Hospital"
+
+[node name="TextureButton" type="TextureButton" parent="Levels/Hospital"]
+offset_left = -33.0
+offset_top = -30.0
+offset_right = 32.0
+offset_bottom = 34.0
+script = ExtResource("9_ttwu1")
+destination = "HospitalFloor"
+
+[node name="Transients" type="Node2D" parent="."]
+
+[node name="Transient 2" type="AnimatedSprite2D" parent="Transients"]
 modulate = Color(0.890196, 0.4, 0.0941176, 1)
-position = Vector2(755, 131)
-scale = Vector2(2.505, 2.505)
+position = Vector2(800, 161)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_fcfl6")
 autoplay = "default"
 frame_progress = 0.484949
@@ -544,7 +518,7 @@ Time = 3.0
 tweenPosition = true
 endPosition = Vector2(0, 10)
 
-[node name="TrnsLabel" type="RichTextLabel" parent="Transient 2"]
+[node name="TrnsLabel" type="RichTextLabel" parent="Transients/Transient 2"]
 offset_left = -40.5
 offset_top = 23.0
 offset_right = 100.5
@@ -555,8 +529,9 @@ theme_override_fonts/normal_font = ExtResource("7_lwdof")
 theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
 text = "[wave]Transient Location"
+metadata/_edit_use_anchors_ = true
 
-[node name="TextureButton" type="TextureButton" parent="Transient 2"]
+[node name="TextureButton" type="TextureButton" parent="Transients/Transient 2"]
 offset_left = -33.0
 offset_top = -30.0
 offset_right = 32.0
@@ -564,3 +539,39 @@ offset_bottom = 34.0
 script = ExtResource("11_loshc")
 destination = "res://DeadStars/scenes/Chapter1/t_persona4.tscn"
 sceneLoader = "res://DeadStars/scenes/TSLC_Venus.tscn"
+metadata/_edit_use_anchors_ = true
+
+[node name="Transient 3" type="AnimatedSprite2D" parent="Transients"]
+modulate = Color(0, 0.709804, 0.443137, 1)
+position = Vector2(162, 115)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_fcfl6")
+autoplay = "default"
+frame_progress = 0.484949
+script = ExtResource("2_3gnr1")
+Time = 3.0
+tweenPosition = true
+endPosition = Vector2(0, 10)
+
+[node name="TrnsLabel" type="RichTextLabel" parent="Transients/Transient 3"]
+offset_left = -40.5
+offset_top = 23.0
+offset_right = 100.5
+offset_bottom = 62.0
+scale = Vector2(0.59, 0.59)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("7_lwdof")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[wave]Transient Location"
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureButton" type="TextureButton" parent="Transients/Transient 3"]
+offset_left = -33.0
+offset_top = -30.0
+offset_right = 32.0
+offset_bottom = 34.0
+script = ExtResource("11_loshc")
+destination = "res://DeadStars/scenes/Chapter1/GraveYard.tscn"
+sceneLoader = "res://DeadStars/scenes/TSLC_Venus.tscn"
+metadata/_edit_use_anchors_ = true
