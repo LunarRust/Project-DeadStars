@@ -1,4 +1,4 @@
-[gd_scene load_steps=355 format=4 uid="uid://ghfi6j4r31pi"]
+[gd_scene load_steps=361 format=4 uid="uid://ghfi6j4r31pi"]
 
 [ext_resource type="PackedScene" uid="uid://cuj5qvddd8o8p" path="res://DeadStars/models/Trees/Tree2.glb" id="1_1newe"]
 [ext_resource type="Script" path="res://addons/func_godot/src/map/func_godot_map.gd" id="1_jthyl"]
@@ -14,10 +14,14 @@
 [ext_resource type="PackedScene" uid="uid://dl3cv1es01xh6" path="res://KOMPrefabs/StreetLight.tscn" id="6_3qko6"]
 [ext_resource type="Material" uid="uid://d2mx7mk86kvkg" path="res://textures/Concrete03.tres" id="6_8riwy"]
 [ext_resource type="Material" path="res://textures/Stucco.tres" id="7_avhda"]
+[ext_resource type="AudioStream" uid="uid://bwf44cbb4w1uc" path="res://KOMSounds/speaker-buzz-82989.mp3" id="8_egbwb"]
 [ext_resource type="Material" uid="uid://blctc3ku4ht7n" path="res://textures/Flour.tres" id="8_syu3e"]
+[ext_resource type="Texture2D" uid="uid://qkwmgbnn657x" path="res://textures/Signs/WetFloor.png" id="9_lsc6x"]
 [ext_resource type="Material" path="res://textures/Flour2.tres" id="9_rle6n"]
 [ext_resource type="Material" path="res://textures/Concrete05.tres" id="10_5cjp5"]
+[ext_resource type="PackedScene" uid="uid://chae3ii4osocs" path="res://KOMPrefabs/flicker_light.tscn" id="10_nj72i"]
 [ext_resource type="Material" path="res://textures/Marble2.tres" id="11_4ygrp"]
+[ext_resource type="Material" uid="uid://dn806g2hoa80f" path="res://KOMTextures/caution_tapes.tres" id="11_thbpe"]
 [ext_resource type="Material" path="res://textures/CliffRock.tres" id="12_gbbu8"]
 [ext_resource type="Material" path="res://textures/Concrete06.tres" id="13_6jlwm"]
 [ext_resource type="Material" uid="uid://xigm5uiy3o2e" path="res://DeadStars/textures/Red.tres" id="14_ocrn4"]
@@ -34,7 +38,6 @@
 [ext_resource type="PackedScene" uid="uid://bsbcgu7jvwv3q" path="res://DeadStars/prefabs/player/DS_Venus_player_object.scn" id="25_i6mb6"]
 [ext_resource type="PackedScene" uid="uid://dcjm8urxnk4cn" path="res://DeadStars/prefabs/world/TV_player_dummy.tscn" id="29_ijrb2"]
 [ext_resource type="FontFile" uid="uid://dku4ohp5rmpr5" path="res://Fonts/DBStylez.ttf" id="30_4iybp"]
-[ext_resource type="PackedScene" uid="uid://w4stohhs5ynh" path="res://DeadStars/prefabs/hallway.tscn" id="31_hhc38"]
 [ext_resource type="PackedScene" uid="uid://2p8rl2gpbnxv" path="res://KOMPrefabs/DoorGlass.tscn" id="38_ae545"]
 [ext_resource type="PackedScene" uid="uid://bjwu2ait6stxh" path="res://KOMPrefabs/Interactables/DoorTrigger.tscn" id="39_ngr7h"]
 [ext_resource type="Material" path="res://textures/Signs/Exit.tres" id="41_0wqn5"]
@@ -97,6 +100,41 @@ size = Vector3(7.5, 3.5, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h37i1"]
 size = Vector3(7.20709, 2.65424, 1.0498)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_c54hw"]
+_surfaces = [{
+"aabb": AABB(-0.0425, -0.07, -0.000274769, 0.00788581, 0.14001, 0.000284784),
+"format": 34896613377,
+"index_count": 108,
+"index_data": PackedByteArray("AAACAAEAAQACAAMABAAGAAUABQAHAAQACAAJAAYABgAEAAgAAQADAAgAAwAJAAgACgAMAAsADAAKAA0ADgAQAA8ADwARAA4AEAATABIAEgAPABAACwASABMAEgALAAwACAAMAAEACAASAAwAAwACAAoACgALAAMACQADAAsACwATAAkABAASAAgABAAPABIAAAAKAAIAAAANAAoABwAPAAQABwARAA8ABQAGABAAEAAOAAUAAQANAAAAAQAMAA0ABwAFAA4ADgARAAcABgAJABMAEwAQAAYA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray("AAD6/wH3AABJSfu/APcAAFCi+v8C9wAAmuv7vwH3AABJSf4//vYAAFCiAAD+9gAAmuv+P//2AAAAAAAA/vYAAK5d/X//9gAA///9fwD3AABQovr/BAAAAJrr+78DAAAASUn7vwIAAAAAAPr/AwAAAFCiAAAAAAAASUn+PwAAAACa6/4/AQAAAAAAAAAAAAAArl39fwEAAAD///1/AgAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_kvfm1"]
+resource_name = "Root Scene_Warning"
+_surfaces = [{
+"aabb": AABB(-0.0425, -0.07, -0.000274769, 0.00788581, 0.14001, 0.000284784),
+"attribute_data": PackedByteArray("5f/Y8v9/2PL/////GID+/+X/2PIYgP7///////9/2PLl/9jyGID+////////f9jy5f/Y8v9/2PL/////GID+//9////l//7//v/Y8hiA2PLl//7/GIDY8v9////+/9jy5f/+/xiA2PL/f////v/Y8v9////l//7//v/Y8hiA2PL/f9jy5f/Y8uX/2PL/f9jyGID+////////////GID+/xiA/v///////////xiA/v//f9jy5f/Y8uX/2PL/f9jy5f/Y8v//////////5f/Y8v9/2PLl/9jy5f/Y8v9/2PIYgP7///////////8YgP7//3/Y8uX/2PLl/9jy/3/Y8v9/2PIYgP7/GID+//9/2PIYgP7///////////8YgP7/"),
+"format": 34896613399,
+"index_count": 108,
+"index_data": PackedByteArray("AAACAAEAAQACAAMABAAGAAUABQAHAAQACAAKAAkACQALAAgADAAOAA0ADgAPAA0AEAASABEAEgAQABMAFAAWABUAFQAXABQAGAAaABkAGQAbABgAHAAeAB0AHgAcAB8AIAAiACEAIAAjACIAJAAmACUAJQAnACQAKAAqACkAKQArACgALAAuAC0ALAAvAC4AMAAyADEAMAAzADIANAA2ADUANAA3ADYAOAA6ADkAOQA7ADgAPAA+AD0APAA/AD4AQABCAEEAQQBDAEAARABGAEUARQBHAEQA"),
+"material": ExtResource("11_thbpe"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(2.00155, 1.98343, 0, 0),
+"vertex_count": 72,
+"vertex_data": PackedByteArray("AAD6/wH3n8JJSfu/APefwlCi+v8C95/Cmuv7vwH3n8JJSf4//vZfvVCiAAD+9l+9muv+P//2X70AAAAA/vZfva5d/X//9kS/muv+P//2RL////1/APdEv0lJ/j/+9kS/SUn7vwD3usCuXf1///a6wJrr+78B97rA///9fwD3usBQovr/BAD//5rr+78DAP//SUn7vwIA//8AAPr/AwD//1CiAAAAAP//SUn+PwAA//+a6/4/AQD//wAAAAAAAP//muv+PwEA//+uXf1/AQD//////X8CAP//SUn+PwAA//+a6/u/AwD//////X8CAP//rl39fwEA//9JSfu/AgD//65d/X//9v+/SUn7vwD3/79JSfu/AgD/v65d/X8BAP+/muv7vwH3/79Qovr/BAD/v1Ci+v8C9/+/muv7vwMA/7////1/APf/v5rr+78DAP+/muv7vwH3/7////1/AgD/v0lJ/j/+9v+/rl39f//2/7+uXf1/AQD/v0lJ/j8AAP+/AAD6/wH3/79Qovr/Avf/v1Ci+v8EAP+/AAD6/wMA/78AAAAA/vb/v0lJ/j/+9v+/SUn+PwAA/78AAAAAAAD/v1CiAAD+9v+/muv+PwEA/7+a6/4///b/v1CiAAAAAP+/SUn7vwD3/78AAPr/Aff/vwAA+v8DAP+/SUn7vwIA/78AAAAA/vb/v1CiAAAAAP+/UKIAAP72/78AAAAAAAD/v5rr/j//9v+////9fwIA/7////1/APf/v5rr/j8BAP+//v/+//7//v/+//7//v/+//7//v/+//7//v/+//7//v/+//7//v/+//7//v/+//7//v/+//7//v/+//7//v/+/w/CD0IPwg9CD8IPQg/CD0IPQg/CD0IPwg9CD8IPQg/CkkCSwJJAksCSQJLAkkCSwJLAkkCSwJJAksCSQJLAkkBsP2y/bD9sv2w/bL9sP2y/D8IPQg/CD0IPwg9CD8IPQpLAkkCSwJJAksCSQJLAkkCSwGy/ksBsv5LAbL+SwGy/////f////3////9/////fw/C770Pwu+9D8LvvQ/C773vPQ9C7z0PQu89D0LvPQ9C7z3vve89773vPe+97z3vvQAA/38AAP9/AAD/fwAA/39sP5JAbD+SQGw/kkBsP5JA")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_c54hw")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o5pd4"]
+size = Vector3(1.21545, 4.83728, 15.7076)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ptya"]
 albedo_texture = ExtResource("20_wkhj7")
@@ -1229,14 +1267,14 @@ points = PackedVector3Array(-30, 4, 13, -30, 1, 13, -29, 1, 13, -29, 4, 13, -30,
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bs3vk"]
 points = PackedVector3Array(-11, 5, 2, -11, 4, 2, -7, 4, 2, -7, 5, 2, -11, 5, 17, -11, 4, 17, -7, 4, 17, -7, 5, 17)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ot4nb"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_c0fqw"]
 viewport_path = NodePath("Node3D/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m2561"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7khqc"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_ot4nb")
+albedo_texture = SubResource("ViewportTexture_c0fqw")
 
 [sub_resource type="Animation" id="Animation_jggox"]
 resource_name = "Fade"
@@ -1680,7 +1718,78 @@ transform = Transform3D(0.331706, 0, -0.426111, 0, 0.54, 0, 0.426111, 0, 0.33170
 [node name="StreetLight2" parent="outside/StreetlightParent" instance=ExtResource("6_3qko6")]
 transform = Transform3D(0.342798, 0, 0.41724, 0, 0.54, 0, -0.41724, 0, 0.342798, 39.969, 4.98983, -10.9482)
 
-[node name="hallway" parent="." instance=ExtResource("31_hhc38")]
+[node name="hallway" type="Node3D" parent="."]
+
+[node name="SpotLight3D" type="OmniLight3D" parent="hallway"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4.01954, 4.03333, -0.0273097)
+light_color = Color(0.65098, 0.498039, 0.227451, 1)
+light_energy = 2.845
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="hallway/SpotLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.24266)
+stream = ExtResource("8_egbwb")
+volume_db = -35.0
+autoplay = true
+max_distance = 7.0
+
+[node name="SpotLight3D2" type="OmniLight3D" parent="hallway"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 17.0153, 4.03333, -0.0273097)
+light_color = Color(0.65098, 0.498039, 0.227451, 1)
+light_energy = 3.86
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="hallway/SpotLight3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.24266)
+stream = ExtResource("8_egbwb")
+volume_db = -35.794
+autoplay = true
+max_distance = 7.0
+
+[node name="Sprite3D" type="Sprite3D" parent="hallway"]
+transform = Transform3D(0.196205, -0.0919663, 0.207475, 0, 0.274263, 0.121571, -0.226945, -0.0795093, 0.179372, 3.65915, 1.36265, -4.51963)
+modulate = Color(0.207843, 0.207843, 0.207843, 1)
+texture = ExtResource("9_lsc6x")
+
+[node name="Sprite3D2" type="Sprite3D" parent="hallway"]
+transform = Transform3D(0.196205, 0.0790289, 0.21274, 0, 0.281223, -0.104469, -0.226945, 0.0683243, 0.183924, 3.43919, 1.35522, -4.7098)
+modulate = Color(0.207843, 0.207843, 0.207843, 1)
+texture = ExtResource("9_lsc6x")
+
+[node name="Sprite3D3" type="Sprite3D" parent="hallway"]
+transform = Transform3D(0.262652, 0.0587438, -0.132526, 0, 0.274263, 0.121571, 0.144962, -0.106436, 0.240119, 4.92567, 1.36265, -6.34643)
+modulate = Color(0.121569, 0.121569, 0.121569, 1)
+texture = ExtResource("9_lsc6x")
+
+[node name="Sprite3D4" type="Sprite3D" parent="hallway"]
+transform = Transform3D(0.262652, -0.05048, -0.135889, 0, 0.281223, -0.104469, 0.144962, 0.0914633, 0.246213, 5.06617, 1.35522, -6.601)
+modulate = Color(0.121569, 0.121569, 0.121569, 1)
+texture = ExtResource("9_lsc6x")
+
+[node name="PatientLight" parent="hallway" instance=ExtResource("10_nj72i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.98501, 2.37661, -7.76881)
+light_color = Color(0.952941, 0.0823529, 0.0823529, 1)
+omni_range = 2.65
+
+[node name="CautionTapes" type="StaticBody3D" parent="hallway"]
+transform = Transform3D(-1.48619e-08, 0.0689942, -0.332926, -2.22045e-16, 0.332926, 0.0689942, 0.34, 3.01583e-09, -1.45527e-08, 3.96585, 1.41945, -3.00643)
+
+[node name="RootNode" type="Node3D" parent="hallway/CautionTapes"]
+
+[node name="Warning" type="MeshInstance3D" parent="hallway/CautionTapes/RootNode"]
+transform = Transform3D(5.96046e-06, -3.27826e-05, 100, -100, 0, 8.9407e-06, 0, -100, -3.57628e-05, 0, -2, 0)
+mesh = SubResource("ArrayMesh_kvfm1")
+skeleton = NodePath("")
+
+[node name="RootNode2" type="Node3D" parent="hallway/CautionTapes"]
+transform = Transform3D(1, -4.44089e-16, 0, 8.88178e-16, 0.944239, -0.329262, 3.55271e-15, 0.329262, 0.944239, -0.0212069, -0.809071, 0.0759716)
+
+[node name="Warning" type="MeshInstance3D" parent="hallway/CautionTapes/RootNode2"]
+transform = Transform3D(5.96046e-06, -3.27826e-05, 100, -100, 0, 8.9407e-06, 0, -100, -3.57628e-05, 0, -2, 0)
+mesh = SubResource("ArrayMesh_kvfm1")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hallway/CautionTapes"]
+transform = Transform3D(1, -3.64292e-14, -3.35021e-12, -1.09246e-13, 0.979709, -0.200429, 3.66285e-12, 0.200429, 0.979709, 0.107727, 1.11612, 0.717533)
+shape = SubResource("BoxShape3D_o5pd4")
 
 [node name="FuncGodotMap" type="Node3D" parent="."]
 script = ExtResource("1_jthyl")
@@ -2895,7 +3004,7 @@ volume_db = 10.0
 max_distance = 30.0
 
 [node name="Quad" parent="TvTower/TvPlayerMaster" index="3"]
-surface_material_override/0 = SubResource("StandardMaterial3D_m2561")
+surface_material_override/0 = SubResource("StandardMaterial3D_7khqc")
 
 [node name="Node3D" parent="TvTower/TvPlayerMaster" index="4" node_paths=PackedStringArray("node_quad")]
 node_quad = [NodePath("../../TvPlayer2/Node3D/Quad"), NodePath("../../TvPlayer12/Node3D/Quad"), NodePath("../../TvPlayer13/Node3D/Quad"), NodePath("../../TvPlayer20/Node3D/Quad"), NodePath("../../TvPlayer21/Node3D/Quad"), NodePath("../../TvPlayer22/Node3D/Quad"), NodePath("../../TvPlayer23/Node3D/Quad"), NodePath("../../TvPlayer24/Node3D/Quad"), NodePath("../../TvPlayer25/Node3D/Quad"), NodePath("../../TvPlayer26/Node3D/Quad"), NodePath("../../TvPlayer27/Node3D/Quad"), NodePath("../../TvPlayer28/Node3D/Quad"), NodePath("../../TvPlayer29/Node3D/Quad"), NodePath("../../TvPlayer30/Node3D/Quad"), NodePath("../../TvPlayer31/Node3D/Quad"), NodePath("../../TvPlayer32/Node3D/Quad"), NodePath("../../TvPlayer33/Node3D/Quad"), NodePath("../../TvPlayer34/Node3D/Quad"), NodePath("../../TvPlayer17/Node3D/Quad"), NodePath("../../TvPlayer18/Node3D/Quad"), NodePath("../../TvPlayer19/Node3D/Quad"), NodePath("../../TvPlayer15/Node3D/Quad"), NodePath("../../TvPlayer16/Node3D/Quad"), NodePath("../../TvPlayer3/Node3D/Quad"), NodePath("../../TvPlayer11/Node3D/Quad"), NodePath("../../TvPlayer14/Node3D/Quad"), NodePath("../../TvPlayer9/Node3D/Quad"), NodePath("../../TvPlayer4/Node3D/Quad"), NodePath("../../TvPlayer5/Node3D/Quad"), NodePath("../../TvPlayer6/Node3D/Quad"), NodePath("../../TvPlayer7/Node3D/Quad"), NodePath("../../TvPlayer8/Node3D/Quad"), NodePath("../../TvPlayer10/Node3D/Quad"), NodePath("../Quad")]
@@ -3180,6 +3289,7 @@ shape = SubResource("BoxShape3D_1sida")
 [editable path="outside/StreetlightParent/StreetLight6"]
 [editable path="outside/StreetlightParent/StreetLight4"]
 [editable path="outside/StreetlightParent/StreetLight2"]
+[editable path="hallway/PatientLight"]
 [editable path="TvTower/TvPlayerMaster"]
 [editable path="AtriumDoor/DoorGlass"]
 [editable path="AtriumDoor/DoorGlass2"]

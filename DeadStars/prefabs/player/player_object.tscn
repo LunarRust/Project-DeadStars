@@ -79,7 +79,7 @@
 [ext_resource type="Script" path="res://Scripts/InventoryCursor.cs" id="76"]
 [ext_resource type="Texture2D" uid="uid://d08uqmhpg2wkn" path="res://Sprites/DialogueBox.png" id="77"]
 [ext_resource type="Script" path="res://Scripts/DialogueBox.cs" id="78"]
-[ext_resource type="Texture2D" uid="uid://be70mwavslv7m" path="res://Sprites/Faces/Psychopomp FaceSprite3.png" id="79"]
+[ext_resource type="Texture2D" uid="uid://be70mwavslv7m" path="res://DeadStars/sprites/Faces/Psychopomp FaceSprite3.png" id="79"]
 [ext_resource type="Texture2D" uid="uid://h1qhsfsy30ya" path="res://Sprites/UI/X.png" id="80"]
 [ext_resource type="Script" path="res://Scripts/XButton.cs" id="81"]
 [ext_resource type="Script" path="res://Scripts/CursorFollower.cs" id="82"]

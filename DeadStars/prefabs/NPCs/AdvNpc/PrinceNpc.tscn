@@ -1,9 +1,9 @@
-[gd_scene load_steps=152 format=4 uid="uid://b5iwtojklmsg"]
+[gd_scene load_steps=156 format=4 uid="uid://b5iwtojklmsg"]
 
 [ext_resource type="Script" path="res://CustomScripts/NPC/AI/AdvancedNPC.gd" id="1_ps0j0"]
 [ext_resource type="Script" path="res://CustomScripts/Logic/Player/DialogueSystem.gd" id="2_rw77g"]
 [ext_resource type="AudioStream" uid="uid://dbopvfg8xi6rp" path="res://Sounds/PrinceGrunt.ogg" id="3_fb430"]
-[ext_resource type="Texture2D" uid="uid://bskgyst4cti2i" path="res://DeadStars/sprites/UI/PrinceTalk.png" id="4_jlcpl"]
+[ext_resource type="Texture2D" uid="uid://bskgyst4cti2i" path="res://DeadStars/sprites/Faces/PrinceTalk.png" id="4_jlcpl"]
 [ext_resource type="PackedScene" uid="uid://c6waxry3i607y" path="res://DeadStars/prefabs/NpcObjects/blood_splatter_Prince.scn" id="6_bookk"]
 [ext_resource type="Script" path="res://CustomScripts/NPC/HealthController.gd" id="10_756g6"]
 [ext_resource type="Script" path="res://DeadStars/scripts/Behaviors/PrinceBehavior.gd" id="12_k3rth"]
@@ -45,7 +45,7 @@ animation = &"Prince_Attack"
 animation = &"Prince_Death"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n8i78"]
-animation = &"T"
+animation = &"Prince_Flashlight"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3uuip"]
 animation = &"Prince_StopAttackingMe"
@@ -132,8 +132,27 @@ blend_point_3/pos = Vector2(1, 0)
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6o0sn"]
 animation = &"Prince_Touch"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4erwc"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hmo77"]
 animation = &"Prince_Touch"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6qwbv"]
+animation = &"Prince_Touch"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_55jjj"]
+animation = &"Prince_LookBackLeft"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_67466"]
+animation = &"Prince_LookBackRight"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_srs5d"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_hmo77")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_6qwbv")
+blend_point_1/pos = Vector2(0, -1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_55jjj")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_67466")
+blend_point_3/pos = Vector2(-1, 0)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nd8mm"]
 animation = &"Walk"
@@ -153,16 +172,6 @@ advance_mode = 2
 xfade_time = 0.3
 advance_mode = 2
 advance_condition = &"Death"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wgnio"]
-xfade_time = 0.3
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2lnii"]
-xfade_time = 0.1
-advance_mode = 2
-advance_condition = &"Touch"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wl2dl"]
 xfade_time = 0.2
@@ -289,6 +298,16 @@ xfade_time = 0.2
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c2vun"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"Touch"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s381g"]
+xfade_time = 0.3
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_k8rlb"]
 states/Attack/node = SubResource("AnimationNodeAnimation_qw327")
 states/Attack/position = Vector2(892, 159)
@@ -310,16 +329,16 @@ states/Shrug/position = Vector2(708, 68)
 states/Start/position = Vector2(324, 127)
 states/TalkBlend/node = SubResource("AnimationNodeBlendSpace2D_g6djx")
 states/TalkBlend/position = Vector2(302, -7)
-states/Touch/node = SubResource("AnimationNodeAnimation_4erwc")
-states/Touch/position = Vector2(572, -12)
 "states/Touch 2/node" = SubResource("AnimationNodeAnimation_6o0sn")
 "states/Touch 2/position" = Vector2(811, 390.627)
+states/TouchBlend/node = SubResource("AnimationNodeBlendSpace2D_srs5d")
+states/TouchBlend/position = Vector2(541.586, -102.373)
 states/Walk/node = SubResource("AnimationNodeAnimation_t4r5l")
 states/Walk/position = Vector2(700, 213)
 "states/Walk 2/node" = SubResource("AnimationNodeAnimation_nd8mm")
 "states/Walk 2/position" = Vector2(550, 263)
-transitions = ["Start", "Normal2D", SubResource("AnimationNodeStateMachineTransition_mbyqs"), "Attack", "Normal2D", SubResource("AnimationNodeStateMachineTransition_uj3gr"), "Normal2D", "Death", SubResource("AnimationNodeStateMachineTransition_mb51m"), "Touch", "Normal2D", SubResource("AnimationNodeStateMachineTransition_wgnio"), "Normal2D", "Touch", SubResource("AnimationNodeStateMachineTransition_2lnii"), "Normal2D", "Attack", SubResource("AnimationNodeStateMachineTransition_wl2dl"), "Hurt", "Normal2D", SubResource("AnimationNodeStateMachineTransition_7aqr0"), "Shrug", "Normal2D", SubResource("AnimationNodeStateMachineTransition_vh7an"), "Normal2D", "Shrug", SubResource("AnimationNodeStateMachineTransition_sx071"), "Normal2D", "Walk", SubResource("AnimationNodeStateMachineTransition_v3re0"), "Walk", "Normal2D", SubResource("AnimationNodeStateMachineTransition_m8q76"), "Normal2D", "Hurt", SubResource("AnimationNodeStateMachineTransition_g20r0"), "IdleLowHealth", "Attack 2", SubResource("AnimationNodeStateMachineTransition_nc4kf"), "Attack 2", "IdleLowHealth", SubResource("AnimationNodeStateMachineTransition_4rp1m"), "Walk 2", "IdleLowHealth", SubResource("AnimationNodeStateMachineTransition_qjmwh"), "IdleLowHealth", "Walk 2", SubResource("AnimationNodeStateMachineTransition_3138f"), "Normal2D", "Walk 2", SubResource("AnimationNodeStateMachineTransition_rypnw"), "Walk 2", "Normal2D", SubResource("AnimationNodeStateMachineTransition_nvaat"), "Walk", "IdleLowHealth", SubResource("AnimationNodeStateMachineTransition_fcbcr"), "Normal2D", "IdleLowHealth", SubResource("AnimationNodeStateMachineTransition_ncstq"), "Hurt", "IdleLowHealth", SubResource("AnimationNodeStateMachineTransition_ng778"), "IdleLowHealth", "Hurt", SubResource("AnimationNodeStateMachineTransition_g2rpd"), "Walk", "Attack", SubResource("AnimationNodeStateMachineTransition_jdvhy"), "Attack", "Walk", SubResource("AnimationNodeStateMachineTransition_6gotd"), "IdleLowHealth", "Touch 2", SubResource("AnimationNodeStateMachineTransition_ud8yg"), "Touch 2", "IdleLowHealth", SubResource("AnimationNodeStateMachineTransition_cssx1"), "Normal2D", "Flashlight", SubResource("AnimationNodeStateMachineTransition_cyjco"), "Flashlight", "Normal2D", SubResource("AnimationNodeStateMachineTransition_q2vuu"), "Normal2D", "TalkBlend", SubResource("AnimationNodeStateMachineTransition_akscw"), "TalkBlend", "Normal2D", SubResource("AnimationNodeStateMachineTransition_vqnau")]
-graph_offset = Vector2(-187.414, 33.627)
+transitions = ["Start", "Normal2D", SubResource("AnimationNodeStateMachineTransition_mbyqs"), "Attack", "Normal2D", SubResource("AnimationNodeStateMachineTransition_uj3gr"), "Normal2D", "Death", SubResource("AnimationNodeStateMachineTransition_mb51m"), "Normal2D", "Attack", SubResource("AnimationNodeStateMachineTransition_wl2dl"), "Hurt", "Normal2D", SubResource("AnimationNodeStateMachineTransition_7aqr0"), "Shrug", "Normal2D", SubResource("AnimationNodeStateMachineTransition_vh7an"), "Normal2D", "Shrug", SubResource("AnimationNodeStateMachineTransition_sx071"), "Normal2D", "Walk", SubResource("AnimationNodeStateMachineTransition_v3re0"), "Walk", "Normal2D", SubResource("AnimationNodeStateMachineTransition_m8q76"), "Normal2D", "Hurt", SubResource("AnimationNodeStateMachineTransition_g20r0"), "IdleLowHealth", "Attack 2", SubResource("AnimationNodeStateMachineTransition_nc4kf"), "Attack 2", "IdleLowHealth", SubResource("AnimationNodeStateMachineTransition_4rp1m"), "Walk 2", "IdleLowHealth", SubResource("AnimationNodeStateMachineTransition_qjmwh"), "IdleLowHealth", "Walk 2", SubResource("AnimationNodeStateMachineTransition_3138f"), "Normal2D", "Walk 2", SubResource("AnimationNodeStateMachineTransition_rypnw"), "Walk 2", "Normal2D", SubResource("AnimationNodeStateMachineTransition_nvaat"), "Walk", "IdleLowHealth", SubResource("AnimationNodeStateMachineTransition_fcbcr"), "Normal2D", "IdleLowHealth", SubResource("AnimationNodeStateMachineTransition_ncstq"), "Hurt", "IdleLowHealth", SubResource("AnimationNodeStateMachineTransition_ng778"), "IdleLowHealth", "Hurt", SubResource("AnimationNodeStateMachineTransition_g2rpd"), "Walk", "Attack", SubResource("AnimationNodeStateMachineTransition_jdvhy"), "Attack", "Walk", SubResource("AnimationNodeStateMachineTransition_6gotd"), "IdleLowHealth", "Touch 2", SubResource("AnimationNodeStateMachineTransition_ud8yg"), "Touch 2", "IdleLowHealth", SubResource("AnimationNodeStateMachineTransition_cssx1"), "Normal2D", "Flashlight", SubResource("AnimationNodeStateMachineTransition_cyjco"), "Flashlight", "Normal2D", SubResource("AnimationNodeStateMachineTransition_q2vuu"), "Normal2D", "TalkBlend", SubResource("AnimationNodeStateMachineTransition_akscw"), "TalkBlend", "Normal2D", SubResource("AnimationNodeStateMachineTransition_vqnau"), "Normal2D", "TouchBlend", SubResource("AnimationNodeStateMachineTransition_c2vun"), "TouchBlend", "Normal2D", SubResource("AnimationNodeStateMachineTransition_s381g")]
+graph_offset = Vector2(-203.414, -125.373)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_trvpb"]
 resource_name = "Lit"
@@ -15499,14 +15518,14 @@ _data = {
 [sub_resource type="QuadMesh" id="QuadMesh_ta28s"]
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_rdqmn"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ekb5p"]
 viewport_path = NodePath("VenusModel/OrderPanel/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6bcpf"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rqsug"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_rdqmn")
+albedo_texture = SubResource("ViewportTexture_ekb5p")
 billboard_mode = 1
 billboard_keep_scale = true
 
@@ -15521,8 +15540,10 @@ height = 1.54129
 radius = 0.183445
 height = 1.45607
 
-[node name="PrinceNPC" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent", "anim", "animTree", "modelRoot", "HealthHandler", "PompBehavior", "DialogueSystem", "InvManager", "FlashLight", "DebugLabelParent") groups=["PompNPC"]]
+[node name="PrinceNPC" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent", "anim", "animTree", "modelRoot", "HealthHandler", "PompBehavior", "DialogueSystem", "SoundSource", "InvManager", "FlashLight", "DebugLabelParent") groups=["PompNPC"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.970638, 0)
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("1_ps0j0")
 nav_agent = NodePath("NavigationAgent3D")
 anim = NodePath("VenusModel/Prince Rigging Project Solo/AnimationPlayer")
@@ -15531,6 +15552,7 @@ modelRoot = NodePath("VenusModel")
 HealthHandler = NodePath("HealthController")
 PompBehavior = NodePath("Behavior")
 DialogueSystem = NodePath("DialogueSystem")
+SoundSource = NodePath("GeneralAudio")
 InvManager = NodePath("InventoryManager")
 FlashLight = NodePath("VenusModel/FlashLightFPS")
 DebugLabelParent = NodePath("DebugLabels")
@@ -15564,7 +15586,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.290638, 0.271893)
 max_distance = 5.0
 max_polyphony = 2
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+[node name="GeneralAudio" type="AudioStreamPlayer3D" parent="."]
 max_distance = 6.0
 
 [node name="HealthController" type="Node3D" parent="." node_paths=PackedStringArray("DialogueSystem", "SoundSource", "Body")]
@@ -15572,7 +15594,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.219449, 0)
 script = ExtResource("10_756g6")
 removeOnDeath = false
 DialogueSystem = NodePath("../DialogueSystem")
-SoundSource = NodePath("../AudioStreamPlayer3D")
+SoundSource = NodePath("../GeneralAudio")
 gibRoot = ExtResource("6_bookk")
 HurtSound = ExtResource("12_ubxtj")
 Body = NodePath("../VenusModel/PompRig/Skeleton3D/Body")
@@ -15587,48 +15609,6 @@ PompAI = NodePath("..")
 dialogue = NodePath("../DialogueSystem")
 HealthController = NodePath("../HealthController")
 follow = true
-
-[node name="AnimationTree" type="AnimationTree" parent="."]
-root_node = NodePath("../VenusModel")
-tree_root = SubResource("AnimationNodeStateMachine_k8rlb")
-anim_player = NodePath("../VenusModel/AnimationPlayer")
-parameters/conditions/Attack = false
-parameters/conditions/AttackLow = false
-parameters/conditions/Death = false
-parameters/conditions/Flashlight = false
-parameters/conditions/Hurt = false
-parameters/conditions/Idle = true
-parameters/conditions/IdleLow = false
-parameters/conditions/Shrug = false
-parameters/conditions/Talk = false
-parameters/conditions/Touch = false
-parameters/conditions/TouchLow = false
-parameters/conditions/Walk = false
-parameters/conditions/WalkLow = false
-parameters/Normal2D/blend_position = Vector2(0, 0)
-parameters/Normal2D/4/blend_position = 9.0
-parameters/TalkBlend/blend_position = Vector2(0.00199997, 0.026455)
-
-[node name="AnimationTree2" type="AnimationTree" parent="."]
-root_node = NodePath("../VenusModel/PsychopompPlayerModel")
-tree_root = SubResource("AnimationNodeStateMachine_k8rlb")
-anim_player = NodePath("../VenusModel/PsychopompPlayerModel/AnimationPlayer2")
-parameters/conditions/Attack = false
-parameters/conditions/AttackLow = false
-parameters/conditions/Death = false
-parameters/conditions/Flashlight = false
-parameters/conditions/Hurt = false
-parameters/conditions/Idle = true
-parameters/conditions/IdleLow = false
-parameters/conditions/Shrug = false
-parameters/conditions/Talk = false
-parameters/conditions/Touch = false
-parameters/conditions/TouchLow = false
-parameters/conditions/Walk = false
-parameters/conditions/WalkLow = false
-parameters/Normal2D/blend_position = Vector2(0, 0.268293)
-parameters/Normal2D/4/blend_position = 9.0
-parameters/TalkBlend/blend_position = Vector2(0, 0)
 
 [node name="PrinceAnimationTree" type="AnimationTree" parent="."]
 root_node = NodePath("../VenusModel/Prince Rigging Project Solo")
@@ -15650,6 +15630,51 @@ parameters/conditions/WalkLow = false
 parameters/Normal2D/blend_position = Vector2(-0.00395513, 0.0264151)
 parameters/Normal2D/4/blend_position = 7.6627
 parameters/TalkBlend/blend_position = Vector2(0, 0)
+parameters/TouchBlend/blend_position = Vector2(0, 0)
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../VenusModel")
+tree_root = SubResource("AnimationNodeStateMachine_k8rlb")
+anim_player = NodePath("../VenusModel/AnimationPlayer")
+parameters/conditions/Attack = false
+parameters/conditions/AttackLow = false
+parameters/conditions/Death = false
+parameters/conditions/Flashlight = false
+parameters/conditions/Hurt = false
+parameters/conditions/Idle = true
+parameters/conditions/IdleLow = false
+parameters/conditions/Shrug = false
+parameters/conditions/Talk = false
+parameters/conditions/Touch = false
+parameters/conditions/TouchLow = false
+parameters/conditions/Walk = false
+parameters/conditions/WalkLow = false
+parameters/Normal2D/blend_position = Vector2(0, 0)
+parameters/Normal2D/4/blend_position = 9.0
+parameters/TalkBlend/blend_position = Vector2(0.00199997, 0.026455)
+parameters/TouchBlend/blend_position = Vector2(0, 0)
+
+[node name="AnimationTree2" type="AnimationTree" parent="."]
+root_node = NodePath("../VenusModel/PsychopompPlayerModel")
+tree_root = SubResource("AnimationNodeStateMachine_k8rlb")
+anim_player = NodePath("../VenusModel/PsychopompPlayerModel/AnimationPlayer2")
+parameters/conditions/Attack = false
+parameters/conditions/AttackLow = false
+parameters/conditions/Death = false
+parameters/conditions/Flashlight = false
+parameters/conditions/Hurt = false
+parameters/conditions/Idle = true
+parameters/conditions/IdleLow = false
+parameters/conditions/Shrug = false
+parameters/conditions/Talk = false
+parameters/conditions/Touch = false
+parameters/conditions/TouchLow = false
+parameters/conditions/Walk = false
+parameters/conditions/WalkLow = false
+parameters/Normal2D/blend_position = Vector2(0, 0.268293)
+parameters/Normal2D/4/blend_position = 9.0
+parameters/TalkBlend/blend_position = Vector2(0, 0)
+parameters/TouchBlend/blend_position = Vector2(0, 0)
 
 [node name="VenusModel" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -15658,23 +15683,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="VenusModel/Prince Rigging Project Solo/princeface/Posable Face Prince" index="0"]
-bones/0/position = Vector3(6.3426e-11, 1.00942, -0.0552051)
-bones/0/rotation = Quaternion(-0.513286, 0.000598921, 0.0226513, 0.857919)
-bones/1/rotation = Quaternion(0.474893, 0.0116258, 0.00729678, 0.879937)
-bones/2/rotation = Quaternion(0.420006, -0.000671406, 3.93816e-06, 0.907521)
-bones/3/rotation = Quaternion(-0.317203, 0.000399368, -0.000122496, 0.948357)
-bones/4/position = Vector3(1.19507e-08, 0.218705, -0.0277516)
-bones/4/rotation = Quaternion(0.106228, -0.396303, 0.122328, 0.903712)
-bones/5/position = Vector3(0.0750549, 0.146836, 0.0514141)
+bones/0/position = Vector3(6.07942e-11, 1.00996, -0.055205)
+bones/0/rotation = Quaternion(-0.506444, 0.000549185, 0.0207705, 0.862022)
+bones/1/rotation = Quaternion(0.46213, 0.0105912, 0.00664691, 0.886724)
+bones/2/rotation = Quaternion(0.420002, -0.000665124, 0.000155696, 0.907523)
+bones/3/rotation = Quaternion(-0.317202, 0.000404242, -9.36332e-05, 0.948358)
+bones/4/position = Vector3(1.10386e-08, 0.218705, -0.0277516)
+bones/4/rotation = Quaternion(0.150024, -0.562539, 0.113044, 0.805148)
+bones/5/position = Vector3(0.0749928, 0.146794, 0.0513966)
 bones/5/rotation = Quaternion(0.673374, 0.0937485, -0.13196, 0.721363)
 bones/5/scale = Vector3(0.998385, 0.998384, 0.998385)
-bones/6/position = Vector3(0.0550938, 0.193981, 0.0217185)
+bones/6/position = Vector3(0.055083, 0.193885, 0.0217113)
 bones/6/rotation = Quaternion(0.715581, 0.0894096, 0.0855852, 0.687478)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/position = Vector3(0.0536584, 0.119042, 0.0264235)
 bones/7/rotation = Quaternion(0.715463, 0.091843, 0.0874574, 0.687044)
 bones/7/scale = Vector3(1, 1, 1)
-bones/8/position = Vector3(-0.000463504, 0.044492, 0.0302867)
+bones/8/position = Vector3(-0.000458208, 0.0446486, 0.0303525)
 bones/8/rotation = Quaternion(0.723722, -0.042522, -0.0559394, 0.686506)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/position = Vector3(0.0271906, 0.0426377, -0.01402)
@@ -15696,10 +15721,10 @@ bones/14/scale = Vector3(1, 1, 1)
 bones/15/position = Vector3(0.000369317, 0.0686539, 0.0979173)
 bones/15/rotation = Quaternion(0.696722, -0.0822343, -0.071236, 0.709042)
 bones/15/scale = Vector3(1, 1, 1)
-bones/16/position = Vector3(-0.0406595, 0.14595, 0.0780132)
+bones/16/position = Vector3(-0.0407406, 0.145893, 0.0779076)
 bones/16/rotation = Quaternion(0.698181, -0.0085361, -0.0354287, 0.714993)
 bones/16/scale = Vector3(0.998385, 0.998385, 0.998385)
-bones/17/position = Vector3(-0.0550938, 0.193981, 0.0217184)
+bones/17/position = Vector3(-0.055083, 0.193885, 0.0217113)
 bones/17/rotation = Quaternion(0.715581, -0.0894096, -0.0855852, 0.687478)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/position = Vector3(-0.0536584, 0.119042, 0.0264235)
@@ -15709,26 +15734,26 @@ bones/19/position = Vector3(-0.0197356, 0.0684325, 0.0784334)
 bones/20/position = Vector3(-0.0368017, 0.0720669, 0.0726454)
 bones/21/position = Vector3(-0.0532757, 0.0769569, 0.0694027)
 bones/21/rotation = Quaternion(0.685984, 0.0491488, 0.110256, 0.717533)
-bones/22/rotation = Quaternion(-0.605686, -0.344674, -0.357646, 0.621638)
+bones/22/rotation = Quaternion(-0.605467, -0.345222, -0.35724, 0.62178)
 bones/22/scale = Vector3(1, 1, 1)
-bones/23/rotation = Quaternion(-0.184652, 0.7209, -0.486061, 0.458204)
-bones/24/position = Vector3(0.000518272, 0.398541, -1.71023e-05)
-bones/24/rotation = Quaternion(0.58041, -0.0273781, 0.0739305, 0.810499)
-bones/25/rotation = Quaternion(-0.605842, 0.34485, 0.357339, 0.621565)
+bones/23/rotation = Quaternion(-0.187622, 0.718105, -0.489023, 0.458235)
+bones/24/position = Vector3(0.000475172, 0.398477, -1.58289e-05)
+bones/24/rotation = Quaternion(0.547758, -0.0323719, 0.0637669, 0.833575)
+bones/25/rotation = Quaternion(-0.605561, 0.345127, 0.357483, 0.621602)
 bones/25/scale = Vector3(1, 1, 1)
-bones/26/rotation = Quaternion(-0.185287, -0.71952, 0.486779, 0.459353)
+bones/26/rotation = Quaternion(-0.188128, -0.716704, 0.490259, 0.458901)
 bones/26/scale = Vector3(1, 1, 1)
-bones/27/position = Vector3(-0.000519848, 0.398541, -1.67759e-05)
-bones/27/rotation = Quaternion(0.580978, 0.0286897, -0.0728258, 0.810147)
+bones/27/position = Vector3(-0.000476747, 0.398477, -1.54993e-05)
+bones/27/rotation = Quaternion(0.547621, 0.0326647, -0.0637954, 0.833651)
 bones/27/scale = Vector3(1, 1, 1)
 bones/28/rotation = Quaternion(0.149646, -0.514163, -0.668223, 0.516449)
 bones/29/rotation = Quaternion(0.149646, 0.514163, 0.668223, 0.516449)
 bones/29/scale = Vector3(1, 1, 1)
-bones/30/rotation = Quaternion(0.878044, 0.0200568, -0.0377791, -0.476665)
-bones/31/rotation = Quaternion(0.0692685, 0.00143973, -0.0210571, 0.997375)
+bones/30/rotation = Quaternion(0.879587, 0.018555, -0.0344371, -0.474127)
+bones/31/rotation = Quaternion(0.066774, 0.00132717, -0.0206977, 0.997553)
 bones/31/scale = Vector3(1, 1, 1)
-bones/32/rotation = Quaternion(0.871947, -0.0277963, -0.0207427, -0.48837)
-bones/33/rotation = Quaternion(0.069279, -0.00156737, 0.021061, 0.997374)
+bones/32/rotation = Quaternion(0.875106, -0.0253436, -0.0194985, -0.482874)
+bones/33/rotation = Quaternion(0.0697849, -0.00155399, 0.0207075, 0.997346)
 bones/33/scale = Vector3(1, 1, 1)
 
 [node name="Cylinder" parent="VenusModel/Prince Rigging Project Solo/princeface/Posable Face Prince/Skeleton3D" index="0"]
@@ -16723,7 +16748,7 @@ text = "Take Items
 [node name="Quad" type="MeshInstance3D" parent="VenusModel/OrderPanel"]
 transform = Transform3D(0.57, 0, 0, 0, 0.85, 0, 0, 0, 0.756, 0, 0, 0)
 mesh = SubResource("QuadMesh_ta28s")
-surface_material_override/0 = SubResource("StandardMaterial3D_6bcpf")
+surface_material_override/0 = SubResource("StandardMaterial3D_rqsug")
 
 [node name="Area3D" type="Area3D" parent="VenusModel/OrderPanel/Quad"]
 collision_layer = 2

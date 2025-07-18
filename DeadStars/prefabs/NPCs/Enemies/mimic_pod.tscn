@@ -1,0 +1,217 @@
+[gd_scene load_steps=29 format=3 uid="uid://cfnpfffrxi5lg"]
+
+[ext_resource type="AudioStream" uid="uid://btmkak6fttu2b" path="res://Sounds/DogOpen.ogg" id="1_45d82"]
+[ext_resource type="Script" path="res://CustomScripts/Logic/Player/DialogueSystem.gd" id="1_slorn"]
+[ext_resource type="Script" path="res://CustomScripts/NPC/HealthController.gd" id="2_vvu1u"]
+[ext_resource type="PackedScene" uid="uid://dbrrtfnihdheq" path="res://KOMPrefabs/blood_splatter_KOM.tscn" id="3_6xhvh"]
+[ext_resource type="AudioStream" uid="uid://cnq4ok8ggd6bs" path="res://Sounds/Gore02.ogg" id="4_g774m"]
+[ext_resource type="Script" path="res://DeadStars/scripts/Behaviors/mimic_pod_behavior.gd" id="5_cwqs1"]
+[ext_resource type="PackedScene" uid="uid://c7ltdx2msggbi" path="res://DeadStars/models/Mimic_Pod/Mimic_Pod.glb" id="5_tsrjo"]
+[ext_resource type="PackedScene" uid="uid://dm0ks56ht7kq0" path="res://DeadStars/prefabs/system/scene_instantiator.tscn" id="7_v5ogf"]
+[ext_resource type="Script" path="res://CustomScripts/Objects/TriggerVolume.gd" id="9_ah638"]
+[ext_resource type="PackedScene" uid="uid://dd5twwaacs6x4" path="res://DeadStars/prefabs/NPCs/Enemies/mimic_shambler_enemy.tscn" id="9_dmeg3"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b53q0"]
+radius = 0.476608
+height = 1.75373
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_j16kl"]
+animation = &"Pod_Close"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_my7b1"]
+animation = &"Pod_Die"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r38fg"]
+animation = &"Pod_Idle_Closed"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4keha"]
+animation = &"Pod_Idle_Open"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ar28e"]
+animation = &"Pod_Open"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t3dhr"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3n2t2"]
+advance_mode = 2
+advance_condition = &"open"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_37ufg"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6x1xl"]
+advance_mode = 2
+advance_condition = &"die"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8rieh"]
+xfade_time = 0.3
+advance_mode = 2
+advance_condition = &"close"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ohxrc"]
+xfade_time = 0.3
+advance_mode = 2
+advance_condition = &"die"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6a3du"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xs8ie"]
+xfade_time = 0.3
+advance_mode = 2
+advance_condition = &"die"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ljenq"]
+xfade_time = 0.5
+advance_mode = 2
+advance_condition = &"open"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bbvms"]
+xfade_time = 0.5
+advance_mode = 2
+advance_condition = &"close"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ty7u7"]
+states/End/position = Vector2(1145, 100)
+states/Pod_Close/node = SubResource("AnimationNodeAnimation_j16kl")
+states/Pod_Close/position = Vector2(986, 87)
+states/Pod_Die/node = SubResource("AnimationNodeAnimation_my7b1")
+states/Pod_Die/position = Vector2(815, 18)
+states/Pod_Idle_Closed/node = SubResource("AnimationNodeAnimation_r38fg")
+states/Pod_Idle_Closed/position = Vector2(815, 174)
+states/Pod_Idle_Open/node = SubResource("AnimationNodeAnimation_4keha")
+states/Pod_Idle_Open/position = Vector2(598, 18)
+states/Pod_Open/node = SubResource("AnimationNodeAnimation_ar28e")
+states/Pod_Open/position = Vector2(598, 174)
+states/Start/position = Vector2(442, 100)
+transitions = ["Start", "Pod_Idle_Open", SubResource("AnimationNodeStateMachineTransition_t3dhr"), "Pod_Idle_Open", "Pod_Open", SubResource("AnimationNodeStateMachineTransition_3n2t2"), "Pod_Open", "Pod_Idle_Closed", SubResource("AnimationNodeStateMachineTransition_37ufg"), "Pod_Idle_Open", "Pod_Die", SubResource("AnimationNodeStateMachineTransition_6x1xl"), "Pod_Idle_Closed", "Pod_Close", SubResource("AnimationNodeStateMachineTransition_8rieh"), "Pod_Close", "Pod_Die", SubResource("AnimationNodeStateMachineTransition_ohxrc"), "Pod_Close", "Pod_Idle_Open", SubResource("AnimationNodeStateMachineTransition_6a3du"), "Pod_Idle_Closed", "Pod_Die", SubResource("AnimationNodeStateMachineTransition_xs8ie"), "Pod_Close", "Pod_Open", SubResource("AnimationNodeStateMachineTransition_ljenq"), "Pod_Open", "Pod_Close", SubResource("AnimationNodeStateMachineTransition_bbvms")]
+graph_offset = Vector2(-86, -90)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8a214"]
+height = 2.24608
+radius = 2.69144
+
+[node name="MimicPod" type="StaticBody3D"]
+
+[node name="Hurting" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+autoplay = true
+max_distance = 5.0
+
+[node name="OpenSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("1_45d82")
+
+[node name="DialogueSystem" type="Node3D" parent="." node_paths=PackedStringArray("soundSource")]
+script = ExtResource("1_slorn")
+npcName = "Pod"
+soundSource = NodePath("../Hurting")
+looking = false
+
+[node name="Col" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.858521, 0)
+shape = SubResource("CapsuleShape3D_b53q0")
+
+[node name="HealthController" type="Node3D" parent="." node_paths=PackedStringArray("DialogueSystem", "SoundSource")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("2_vvu1u")
+Innocent = true
+HP = 1
+removeOnDeath = false
+DialogueSystem = NodePath("../DialogueSystem")
+SoundSource = NodePath("../Hurting")
+gibRoot = ExtResource("3_6xhvh")
+HurtSound = ExtResource("4_g774m")
+
+[node name="Behavior" type="Node" parent="." node_paths=PackedStringArray("AnimTree", "DialogueSystem", "instantiator", "SoundPlayer")]
+script = ExtResource("5_cwqs1")
+AnimTree = NodePath("../AnimationTree")
+DialogueSystem = NodePath("../DialogueSystem")
+instantiator = NodePath("../SceneInstantiator")
+SoundPlayer = NodePath("../OpenSound")
+OpenSoundEffect = ExtResource("1_45d82")
+MaxSpawnTime = 10.0
+
+[node name="Mimic_Pod" parent="." instance=ExtResource("5_tsrjo")]
+
+[node name="Skeleton3D" parent="Mimic_Pod/Mimic Pod/rig" index="0"]
+bones/3/rotation = Quaternion(0.574892, -0.0585891, -0.457147, 0.676079)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(0.0393602, 0.00921373, -0.00273378, 0.999179)
+bones/5/rotation = Quaternion(-0.0736277, -0.0155661, -0.00346594, 0.997158)
+bones/6/rotation = Quaternion(0.0402271, 0.260674, -0.163246, 0.950674)
+bones/7/rotation = Quaternion(-0.0396841, -0.191168, -0.0851281, 0.977053)
+bones/8/rotation = Quaternion(0.000365499, -0.233329, -0.118854, 0.965107)
+bones/9/rotation = Quaternion(0.109559, -0.0288776, -0.279739, 0.953367)
+bones/10/rotation = Quaternion(-0.15406, -0.0421143, -0.0309072, 0.98668)
+bones/11/rotation = Quaternion(-0.149989, -0.19404, 0.0405212, 0.968612)
+bones/12/rotation = Quaternion(-0.378749, 0.0845714, -0.529991, 0.753993)
+bones/13/rotation = Quaternion(-0.00792319, -0.0729214, -0.0316339, 0.996804)
+bones/14/rotation = Quaternion(-0.152187, -0.0626427, -0.0248591, 0.986051)
+bones/15/rotation = Quaternion(0.119702, -0.0499515, -0.238852, 0.962355)
+bones/16/rotation = Quaternion(0.0187864, 0.158844, 0.0428748, 0.986193)
+bones/17/rotation = Quaternion(-0.187391, -0.0120323, -0.170303, 0.967335)
+bones/18/rotation = Quaternion(-0.304063, -0.0265561, -0.135866, 0.94254)
+bones/19/rotation = Quaternion(-0.0796394, 0.0374215, 0.090855, 0.991969)
+bones/20/rotation = Quaternion(-0.204494, 0.187162, 0.0251033, 0.960481)
+bones/21/rotation = Quaternion(-0.741196, 0.032475, 0.109501, 0.661501)
+bones/21/scale = Vector3(1, 1, 1)
+bones/22/rotation = Quaternion(0.0975557, -0.139316, -0.0801908, 0.982163)
+bones/23/rotation = Quaternion(0.00102659, -0.0546427, 0.0340279, 0.997925)
+bones/24/rotation = Quaternion(-0.127382, -0.10677, 0.0891629, 0.982051)
+bones/25/rotation = Quaternion(0.0061187, 0.170332, 0.0654809, 0.98319)
+bones/26/rotation = Quaternion(-0.160311, -0.00310369, 0.0672875, 0.984766)
+bones/27/rotation = Quaternion(0.0887773, 0.226505, 0.60013, 0.762009)
+bones/27/scale = Vector3(1, 1, 1)
+bones/28/rotation = Quaternion(-0.033418, -0.166199, 0.233231, 0.95753)
+bones/29/rotation = Quaternion(0.0184238, -0.179149, -0.0376508, 0.982929)
+bones/30/rotation = Quaternion(-0.00330405, 0.0290936, 0.012162, 0.999497)
+bones/31/rotation = Quaternion(-0.0203541, 0.447032, 0.110783, 0.887398)
+bones/32/rotation = Quaternion(-0.0280368, 0.631842, 0.0200018, 0.774332)
+bones/33/rotation = Quaternion(0.241204, -0.0495965, 0.120639, 0.961669)
+bones/34/rotation = Quaternion(0.20164, 0.164541, -0.0779057, 0.962392)
+bones/35/rotation = Quaternion(0.171711, 0.260513, 0.0740467, 0.947188)
+bones/36/rotation = Quaternion(0.488988, -0.0727455, 0.11704, 0.861336)
+bones/36/scale = Vector3(1, 1, 1)
+bones/37/rotation = Quaternion(0.181605, 0.00749954, 0.0640842, 0.981252)
+bones/38/rotation = Quaternion(0.137226, 0.0235221, 0.0370521, 0.989567)
+bones/39/rotation = Quaternion(0.034287, 0.0271014, 0.0509378, 0.997745)
+bones/40/rotation = Quaternion(-0.0215745, 0.0936717, 0.0127011, 0.995288)
+bones/41/rotation = Quaternion(0.100265, -0.201274, -0.0451545, 0.973343)
+bones/42/rotation = Quaternion(-0.0662088, 0.0797289, -0.138044, 0.984989)
+bones/43/rotation = Quaternion(-0.233296, 0.128485, -0.116983, 0.956755)
+bones/52/rotation = Quaternion(0.232115, 0.612874, 0.696568, -0.292064)
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../Mimic_Pod")
+tree_root = SubResource("AnimationNodeStateMachine_ty7u7")
+anim_player = NodePath("../Mimic_Pod/AnimationPlayer")
+parameters/conditions/close = false
+parameters/conditions/die = false
+parameters/conditions/open = false
+
+[node name="SceneInstantiator" parent="." instance=ExtResource("7_v5ogf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0146652, 0.826364, 0.0322757)
+Scene = ExtResource("9_dmeg3")
+AutoSpawn = false
+
+[node name="TriggerVolume" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17305, 0)
+collision_layer = 8192
+collision_mask = 8192
+script = ExtResource("9_ah638")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerVolume"]
+shape = SubResource("CylinderShape3D_8a214")
+
+[connection signal="death" from="HealthController" to="Behavior" method="Die"]
+[connection signal="VolumeBeenEntered" from="TriggerVolume" to="Behavior" method="Open"]
+[connection signal="VolumeBeenExited" from="TriggerVolume" to="Behavior" method="Close"]
+[connection signal="area_entered" from="TriggerVolume" to="TriggerVolume" method="_on_area_entered"]
+[connection signal="area_exited" from="TriggerVolume" to="TriggerVolume" method="_on_area_exited"]
+[connection signal="body_entered" from="TriggerVolume" to="TriggerVolume" method="_on_body_entered"]
+[connection signal="body_exited" from="TriggerVolume" to="TriggerVolume" method="_on_body_exited"]
+
+[editable path="Mimic_Pod"]

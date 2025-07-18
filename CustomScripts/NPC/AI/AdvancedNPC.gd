@@ -9,6 +9,7 @@ extends CharacterBody3D
 @export var HealthHandler : Node3D
 @export var PompBehavior : Node
 @export var DialogueSystem : Node3D
+@export var SoundSource : AudioStreamPlayer3D
 @export var InvManager : Node3D
 @export var FlashLight : SpotLight3D
 @export var DebugLabelParent : Node3D
@@ -64,7 +65,6 @@ var player
 var RandFloat : float
 var PathFindClock : float
 var ActionOnArrive : int = 0
-@onready var SoundSource : AudioStreamPlayer3D = self.get_node("AudioStreamPlayer3D")
 @onready var playerHealthInstance = get_tree().get_first_node_in_group("PlayerHealthHandler")
 
 var LightSound = preload("res://Sounds/FlashLight.ogg")
@@ -75,31 +75,38 @@ func _ready():
 	instance = self
 	InstID = self.get_instance_id()
 	self.add_to_group(str(InstID))
-	SignalBusKOM = get_tree().get_first_node_in_group("player").get_node("KOMSignalBus")
+	var player = get_tree().get_first_node_in_group("player")
+	if player != null:
+		SignalBusKOM = player.get_node("KOMSignalBus")
 	if get_tree().get_first_node_in_group("InnOutSignalBus") != null:
 		SignalBusInnout = get_tree().get_first_node_in_group("InnOutSignalBus")
 		InnoutExists = true
 	else:
 		InnoutExists = false
 	player = get_tree().get_first_node_in_group("player")
-	SignalBusKOM.PompNpcInstances.append(InstID)
+	if SignalBusKOM != null:
+		SignalBusKOM.PompNpcInstances.append(InstID)
+		SignalBusKOM.Activate_Pomp_Target.connect(TargetEnimies)
+		SignalBusKOM.Activate_Player_Target.connect(TargetPlayer)
+		SignalBusKOM.Light_Toggle.connect(FlashLightToggle)
+		SignalBusKOM.Kill_pomp.connect(KillSelf)
+		SignalBusKOM.Item_Grab.connect(LocateItem)
+		SignalBusKOM.Light_On.connect(FlashLightOn)
+		SignalBusKOM.Light_Off.connect(FlashLightOff)
+		SignalBusKOM.NavToPoint.connect(NavToPoint)
+		SignalBusKOM.ItemSpef.connect(NavToItem)
+		SignalBusKOM.TargetCreature.connect(TargetCreature)
 	MaxDistance = MaxDistanceDef
 	AttackDistanceDefault = AttackDistance
 	speed = MaxSpeed
-	SignalBusKOM.Activate_Pomp_Target.connect(TargetEnimies)
-	SignalBusKOM.Activate_Player_Target.connect(TargetPlayer)
-	SignalBusKOM.Light_Toggle.connect(FlashLightToggle)
-	SignalBusKOM.Kill_pomp.connect(KillSelf)
-	SignalBusKOM.Item_Grab.connect(LocateItem)
-	SignalBusKOM.Light_On.connect(FlashLightOn)
-	SignalBusKOM.Light_Off.connect(FlashLightOff)
-	SignalBusKOM.NavToPoint.connect(NavToPoint)
-	SignalBusKOM.ItemSpef.connect(NavToItem)
-	SignalBusKOM.TargetCreature.connect(TargetCreature)
+
 	nav_agent.target_desired_distance = MaxDistance
 	if (TargetEntity == null):
 		print("Ouchie wawa! There's no defined player object for this enemy to chase! Trying to find one now.")
-		running = true
+		if player != null:
+			running = true
+		else:
+			running = false
 	else:
 		running = true
 	CheckGlobals()
@@ -207,7 +214,7 @@ func AnimAndVelocity(delta):
 			velV2.y = 0
 		if self.position == LastLocation:
 			velocity = Vector3(0,0,0)
-		if DoLookAt:
+		if DoLookAt && LookTarget != null:
 			velV2.x = lerp(velV2.x,find_rotation_to(self,LookTarget),delta * 3)
 		else:
 			velV2.x = 0
@@ -215,6 +222,7 @@ func AnimAndVelocity(delta):
 			animTree["parameters/Normal2D/blend_position"] = velV2
 			animTree["parameters/Normal2D/4/blend_position"] = float(HealthHandler.HP)
 			animTree["parameters/TalkBlend/blend_position"] = velV2
+			animTree["parameters/TouchBlend/blend_position"] = velV2
 
 		if speed > 1.2:
 			AttackDistance = 3
@@ -261,13 +269,19 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity):
 ###################################
 func Attack():
 	if (anim != null && TargetEntity.has_node("HealthController")):
-		animTrigger(attackName)
+		if !TargetEntity.get_node("HealthController").dead:
+			animTrigger(attackName)
+		else:
+			pass
 	if (position.distance_to(TargetEntity.position) < AttackDistance && TargetEntity.is_in_group("player")):
 		animTrigger(attackName)
 		playerHealthInstance.notsostatichealth(attackPower)
 	else:
 		if position.distance_to(TargetEntity.position) < AttackDistance && TargetEntity.has_node("HealthController"):
-			TargetEntity.get_node("HealthController").Hurt(1)
+			if !TargetEntity.get_node("HealthController").dead:
+				TargetEntity.get_node("HealthController").Hurt(1)
+			else:
+				TargetPlayer()
 		elif position.distance_to(TargetEntity.position) < AttackDistance && TargetEntity.has_node("HealthHandler"):
 			TargetEntity.get_node("HealthHandler").Hurt(1)
 	await get_tree().create_timer(1.0).timeout
@@ -302,15 +316,17 @@ func FlashLightToggle():
 
 func FlashLightOff():
 	animTrigger("Flashlight");
-	SoundSource.stream = LightSound
-	SoundSource.play()
+	if SoundSource !=null:
+		SoundSource.stream = LightSound
+		SoundSource.play()
 	FlashLight.visible = false
 	print_rich("Flashlight toggled: [color=red]" + "OFF" + "[/color]")
 
 func FlashLightOn():
 	animTrigger("Flashlight");
-	SoundSource.stream = LightSound
-	SoundSource.play()
+	if SoundSource !=null:
+		SoundSource.stream = LightSound
+		SoundSource.play()
 	FlashLight.visible = true
 	print_rich("Flashlight toggled: [color=red]" + "ON" + "[/color]")
 
@@ -445,7 +461,7 @@ func TargetLocator(SpefTarget = "default",MaxDist = MaxDistanceDef):
 		DoLookAt = true
 	Tset = false
 	if NearestTarget != null:
-		print_rich("new target: [color=red]" + (NearestTarget.name) + "[/color]")
+		#print_rich("new target: [color=red]" + (NearestTarget.name) + "[/color]")
 		TargetIsCreature = true
 		TargetIsItem = false
 		PreviousTarget = TargetEntity
@@ -574,9 +590,10 @@ func find_closest_or_furthest(node: Object,group_name = "default",item = false, 
 		for i in get_all_children(get_tree().get_root()):
 			if i.is_class("Node3D"):
 				if i.has_method("Hurt"):
-					if !i.get_parent().is_in_group("player") && !i.is_in_group("player"):
-						if !i.get_parent().is_in_group("PompNPC"):
-							PossibleTargets.append(i.get_parent())
+					if !i.dead:
+						if !i.get_parent().is_in_group("player") && !i.is_in_group("player"):
+							if !i.get_parent().is_in_group("PompNPC"):
+								PossibleTargets.append(i.get_parent())
 		if !PossibleTargets.is_empty():
 			var target_group = PossibleTargets
 			var distance_away = node.global_transform.origin.distance_to(target_group[0].global_transform.origin)

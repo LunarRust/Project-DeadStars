@@ -73,7 +73,7 @@
 [ext_resource type="Script" path="res://Scripts/InventoryCursor.cs" id="71_x5hx0"]
 [ext_resource type="Texture2D" uid="uid://d08uqmhpg2wkn" path="res://Sprites/DialogueBox.png" id="72_ftw18"]
 [ext_resource type="Script" path="res://Scripts/DialogueBox.cs" id="73_qiolq"]
-[ext_resource type="Texture2D" uid="uid://be70mwavslv7m" path="res://Sprites/Faces/Psychopomp FaceSprite3.png" id="74_oypcs"]
+[ext_resource type="Texture2D" uid="uid://be70mwavslv7m" path="res://DeadStars/sprites/Faces/Psychopomp FaceSprite3.png" id="74_oypcs"]
 [ext_resource type="Texture2D" uid="uid://h1qhsfsy30ya" path="res://Sprites/UI/X.png" id="75_0uq28"]
 [ext_resource type="Script" path="res://Scripts/XButton.cs" id="76_ctloo"]
 [ext_resource type="Script" path="res://Scripts/CursorFollower.cs" id="77_4616y"]

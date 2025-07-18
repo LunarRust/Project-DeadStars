@@ -12,9 +12,10 @@ func _ready():
 
 func ChangeDialogue():
 
-	if !NewDialogue.is_empty():
-		NPCDialogue.Dialogue = NewDialogue
-	if !NewLook.is_empty():
-		NPCDialogue.LookDescription = NewLook
-	if !NewTouch.is_empty():
-		NPCDialogue.TouchDescription = NewTouch
+	if NPC != null:
+		if !NewDialogue.is_empty():
+			NPCDialogue.Dialogue = NewDialogue
+		if !NewLook.is_empty():
+			NPCDialogue.LookDescription = NewLook
+		if !NewTouch.is_empty():
+			NPCDialogue.TouchDescription = NewTouch

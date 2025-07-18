@@ -55,8 +55,9 @@ func _process(delta):
 	if active:
 		if looking:
 			parentnode.look_at(lookTarget,Vector3.UP,true)
-		if self.global_position.distance_to(PlayerObject.global_position) > CloseDistance && isTalking && Distance:
-			CloseDialogue()
+			if PlayerObject != null:
+				if self.global_position.distance_to(PlayerObject.global_position) > CloseDistance && isTalking && Distance:
+					CloseDialogue()
 
 func OpenDialogue():
 	DialogueBox.show()
@@ -86,11 +87,13 @@ func  DialogueProcessing():
 					soundSource.stream = DialogueVA[num]
 					soundSource.play()
 				else:
-					soundSource.stream = null
+					if soundSource != null:
+						soundSource.stream = null
 				if DialogueVA.size() == 0:
-					soundSource.stream = DialogueSound
-					soundSource.pitch_scale = randf_range(0.8,1.2)
-					soundSource.play()
+					if soundSource != null:
+						soundSource.stream = DialogueSound
+						soundSource.pitch_scale = randf_range(0.8,1.2)
+						soundSource.play()
 				DialogueBox.get_node("NameText").text = npcName
 				DialogueBox.get_node("MainText").text = Dialogue[num]
 				DialogueBox.get_node("FaceSprite").texture = faceSprite

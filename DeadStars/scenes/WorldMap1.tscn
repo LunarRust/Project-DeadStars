@@ -572,6 +572,6 @@ offset_top = -30.0
 offset_right = 32.0
 offset_bottom = 34.0
 script = ExtResource("11_loshc")
-destination = "res://DeadStars/scenes/Chapter1/GraveYard.tscn"
+destination = "res://DeadStars/scenes/Chapter1/t_GraveYard.tscn"
 sceneLoader = "res://DeadStars/scenes/TSLC_Venus.tscn"
 metadata/_edit_use_anchors_ = true

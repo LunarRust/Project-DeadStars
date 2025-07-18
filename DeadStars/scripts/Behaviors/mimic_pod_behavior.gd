@@ -7,33 +7,53 @@ extends Node
 @export_category("parameters")
 @export var DoSpawn : bool = true
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+var SpawnTimer : float = 0
+@export var MaxSpawnTime : float = 5
+var hasSpawned : bool = false
+var dead : bool = false
+var closed : bool = true
 
+func _process(delta):
+	if SpawnTimer <= MaxSpawnTime:
+		SpawnTimer += delta * 1
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func Hurt():
 	DialogueSystem.CloseDialogue()
 
 
 func Die():
 	self.get_parent().get_node("Col").disabled = true
-	animTrigger("die")
-	if DoSpawn:
+	dead = true
+	animSet("die")
+	if DoSpawn && hasSpawned == false:
 		instantiator.Packload()
 
 
 func Open():
-	self.get_parent().get_node("Col").disabled = true
-	SoundPlayer.stream = OpenSoundEffect
-	SoundPlayer.play()
-	animTrigger("open")
-	if DoSpawn:
-		instantiator.Packload()
+	if SpawnTimer >= MaxSpawnTime && !dead:
+		closed = false
+		self.get_parent().get_node("Col").disabled = true
+		SoundPlayer.stream = OpenSoundEffect
+		SoundPlayer.play()
+		animTrigger("open")
+		if DoSpawn:
+			SpawnTimer = 0
+			instantiator.Packload()
+			hasSpawned = true
+
+func Close():
+	if !dead && !closed:
+		closed = true
+		self.get_parent().get_node("Col").disabled = false
+		SoundPlayer.stream = OpenSoundEffect
+		SoundPlayer.play()
+		animTrigger("close")
 
 
 func animTrigger(triggername : String):
 	AnimTree["parameters/conditions/" + triggername] = true;
 	await get_tree().create_timer(0.1).timeout
 	AnimTree["parameters/conditions/" + triggername] = false;
+
+func animSet(triggername : String):
+	AnimTree["parameters/conditions/" + triggername] = true;

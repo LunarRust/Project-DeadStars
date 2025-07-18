@@ -26,12 +26,16 @@ func _physics_process(delta):
 				space_state = get_world_3d().direct_space_state
 				cam = get_viewport().get_camera_3d()
 				mousepos = get_viewport().get_mouse_position()
-				self.global_position = RCS.get_mouse_world_position(space_state,cam,mousepos)
+				var mouseWorldPos = RCS.get_mouse_world_position(space_state,cam,mousepos)
+				if mouseWorldPos != null:
+					self.global_position = RCS.get_mouse_world_position(space_state,cam,mousepos)
 		else:
 			space_state = get_world_3d().direct_space_state
 			cam = get_viewport().get_camera_3d()
 			mousepos = get_viewport().get_mouse_position()
-			self.global_position = RCS.get_mouse_world_position(space_state,cam,mousepos)
+			var mouseWorldPos = RCS.get_mouse_world_position(space_state,cam,mousepos)
+			if mouseWorldPos != null:
+				self.global_position = RCS.get_mouse_world_position(space_state,cam,mousepos)
 
 
 func _process(delta):
