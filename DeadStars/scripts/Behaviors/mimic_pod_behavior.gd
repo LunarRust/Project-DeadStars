@@ -40,6 +40,8 @@ func Open():
 			SpawnTimer = 0
 			instantiator.Packload()
 			hasSpawned = true
+			await get_tree().create_timer(3.0).timeout
+			Close()
 
 func Close():
 	if !dead && !closed:

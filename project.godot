@@ -26,6 +26,8 @@ config/icon="res://icon.png"
 
 PlayerPrefs="*res://addons/PlayerPrefs/PlayerPrefs.tscn"
 GLoot="*res://addons/gloot/gloot_autoload.gd"
+RuntimeDebugTools="*res://addons/runtime_debug_tools/scenes/remote_inspector.tscn"
+Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
 
 [display]
 
@@ -47,7 +49,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/PlayerPrefs/plugin.cfg", "res://addons/anthonyec.camera_preview/plugin.cfg", "res://addons/func_godot/plugin.cfg", "res://addons/gloot/plugin.cfg", "res://addons/qodot/plugin.cfg")
+enabled=PackedStringArray("res://addons/PlayerPrefs/plugin.cfg", "res://addons/SignalVisualizer/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/anthonyec.camera_preview/plugin.cfg", "res://addons/func_godot/plugin.cfg", "res://addons/gloot/plugin.cfg", "res://addons/qodot/plugin.cfg", "res://addons/runtime_debug_tools/plugin.cfg")
 
 [file_customization]
 
