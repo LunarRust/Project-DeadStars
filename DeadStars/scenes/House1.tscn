@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=4 uid="uid://bnccp67wtfuem"]
+[gd_scene load_steps=94 format=4 uid="uid://bnccp67wtfuem"]
 
 [ext_resource type="PackedScene" uid="uid://bk40wll0gyt74" path="res://DeadStars/prefabs/system/npc_scene_rules.tscn" id="1_hsqku"]
 [ext_resource type="Script" path="res://addons/func_godot/src/map/func_godot_map.gd" id="1_s6c8b"]
@@ -16,9 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://cyg2snr1w5xw5" path="res://addons/func_godot/textures/default_texture.png" id="12_oi2n0"]
 [ext_resource type="Material" path="res://textures/Plastic2.tres" id="13_vxivy"]
 [ext_resource type="PackedScene" uid="uid://bsbcgu7jvwv3q" path="res://DeadStars/prefabs/player/DS_Venus_player_object.scn" id="14_fakuk"]
-[ext_resource type="Texture2D" uid="uid://dd0v6opyk4v0e" path="res://Models/textures/PompTexture.png" id="15_442hc"]
-[ext_resource type="Texture2D" uid="uid://c8lgnrltnqdwj" path="res://Models/textures/PompTextureDamage1.png" id="16_nbjn1"]
-[ext_resource type="Texture2D" uid="uid://cwojaxyfda0hr" path="res://Models/textures/PompTextureDamage2.png" id="17_o3v5x"]
 [ext_resource type="AudioStream" uid="uid://c4qn5qraldeqp" path="res://Music/Sickened Radio Kill it.ogg" id="18_d4vuw"]
 [ext_resource type="AudioStream" uid="uid://di0xbbbqmsgex" path="res://Sounds/SoftWind.ogg" id="19_nyu2s"]
 [ext_resource type="Script" path="res://Scripts/SceneTransfer.cs" id="20_h1our"]
@@ -350,29 +347,6 @@ points = PackedVector3Array(3.125, 1.8125, 2.625, 4.125, 0.9375, 2.625, 4.25, 0.
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_nlvt7"]
 points = PackedVector3Array(3.125, 1.8125, 5.25, 4.125, 0.9375, 5.25, 4.25, 0.9375, 5.25, 3.25, 1.8125, 5.25, 3.125, 1.8125, 5.375, 4.125, 0.9375, 5.375, 4.25, 0.9375, 5.375, 3.25, 1.8125, 5.375)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ms3mw"]
-resource_local_to_scene = true
-cull_mode = 2
-albedo_texture = ExtResource("15_442hc")
-texture_filter = 0
-texture_repeat = false
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ngrw"]
-resource_local_to_scene = true
-cull_mode = 2
-albedo_texture = ExtResource("16_nbjn1")
-rim = 0.42
-rim_tint = 0.1
-subsurf_scatter_strength = 0.67
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vfnrn"]
-resource_local_to_scene = true
-cull_mode = 2
-albedo_texture = ExtResource("17_o3v5x")
-rim = 0.42
-rim_tint = 0.1
-subsurf_scatter_strength = 0.67
-
 [sub_resource type="Environment" id="Environment_k2bn7"]
 background_mode = 1
 ambient_light_source = 2
@@ -553,6 +527,7 @@ size = Vector3(1.08496, 1.97681, 0.47168)
 size = Vector3(1, 2.0155, 0.216309)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bo2oi"]
+resource_name = "_albedo"
 load_path = "res://.godot/imported/Door01.png-be8f2df94b33cd0f1ab1cc732eb7598f.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r0334"]
@@ -738,45 +713,6 @@ shape = SubResource("ConvexPolygonShape3D_nlvt7")
 [node name="PlayerObject" parent="." instance=ExtResource("14_fakuk")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.83387, 1, 4.65412)
 
-[node name="HealthHandler" parent="PlayerObject/UI Overlay/CanvasLayer/UIPARENT/UI" index="2"]
-skin1 = SubResource("StandardMaterial3D_ms3mw")
-skin2 = SubResource("StandardMaterial3D_7ngrw")
-skin3 = SubResource("StandardMaterial3D_vfnrn")
-
-[node name="PompFriendParent" parent="PlayerObject/UI Overlay/CanvasLayer" index="6"]
-visible = false
-
-[node name="Skeleton3D" parent="PlayerObject/Venus Custom Death Overwrite/PsychopompPlayerModel/PompRig" index="0"]
-bones/0/position = Vector3(2.4725e-09, 0.879496, -0.158666)
-bones/2/rotation = Quaternion(-0.118932, -0.0790233, -0.00592545, 0.989735)
-bones/3/rotation = Quaternion(-0.00207754, -0.000151253, -0.00042427, 0.999998)
-bones/5/rotation = Quaternion(0.16439, -0.131927, 0.0247637, 0.97722)
-bones/6/position = Vector3(0.0545743, 0.0799085, 0.0816271)
-bones/7/position = Vector3(0.0229212, 0.0751497, 0.100349)
-bones/13/position = Vector3(-0.000397812, 0.0733279, -0.0163698)
-bones/14/position = Vector3(-0.0568205, 0.0813545, 0.0816547)
-bones/15/position = Vector3(-0.0228204, 0.0751592, 0.100332)
-bones/16/position = Vector3(0.0448481, 0.144422, 0.0369532)
-bones/16/scale = Vector3(0.714717, 0.714717, 0.714717)
-bones/17/position = Vector3(0.0694334, 0.121755, 0.0647558)
-bones/18/position = Vector3(-0.0694334, 0.121755, 0.0647557)
-bones/19/position = Vector3(-0.0766505, 0.139614, 0.0238542)
-bones/19/scale = Vector3(0.714704, 0.714704, 0.714704)
-bones/20/position = Vector3(0.000216995, 0.0852309, 0.0935673)
-bones/21/position = Vector3(0.0690415, 0.170769, 0.0458357)
-bones/22/position = Vector3(-0.0692863, 0.17723, 0.0446536)
-bones/24/rotation = Quaternion(-0.390153, 0.650255, -0.476356, 0.445011)
-bones/25/rotation = Quaternion(0.0749596, -0.111725, 0.000782879, 0.990908)
-bones/28/position = Vector3(0.00331226, 0.131265, -0.0413233)
-bones/28/rotation = Quaternion(-0.385078, -0.652661, 0.477827, 0.444331)
-bones/29/rotation = Quaternion(0.0784731, 0.109399, 0.00519177, 0.990882)
-bones/35/rotation = Quaternion(0.9775, -2.78761e-08, 3.55945e-07, 0.210937)
-bones/36/rotation = Quaternion(0.209747, 3.1372e-09, 3.72087e-08, 0.977756)
-bones/37/rotation = Quaternion(-0.591845, 2.61098e-07, -3.25937e-07, 0.806052)
-bones/40/rotation = Quaternion(0.978638, -6.27828e-08, 9.19185e-08, 0.205591)
-bones/41/rotation = Quaternion(0.208443, 2.36837e-08, -2.95065e-08, 0.978034)
-bones/42/rotation = Quaternion(-0.591846, -1.9324e-07, 2.82854e-07, 0.806051)
-
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.20981, 2.80803, 5)
 light_color = Color(0.737255, 0.603922, 0.443137, 1)
@@ -919,7 +855,5 @@ skeleton = NodePath("../../..")
 
 [connection signal="area_entered" from="Transfer" to="Transfer" method="OnBodyEntered"]
 
-[editable path="PlayerObject"]
-[editable path="PlayerObject/Venus Custom Death Overwrite"]
 [editable path="DialogueObject"]
 [editable path="CamGrabber"]

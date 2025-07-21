@@ -25,7 +25,6 @@ operator = 2
 constant = -1.0
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_yemq2"]
-texture = SubResource("NoiseTexture2D_nosmb")
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_1ek5x"]
 input_name = "time"

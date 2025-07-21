@@ -15520,14 +15520,14 @@ _data = {
 [sub_resource type="QuadMesh" id="1"]
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_wb4yc"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_u65p5"]
 viewport_path = NodePath("VenusModel/OrderPanel/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j7ecl"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1etox"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_wb4yc")
+albedo_texture = SubResource("ViewportTexture_u65p5")
 billboard_mode = 1
 billboard_keep_scale = true
 
@@ -16664,7 +16664,7 @@ text = "Take Items
 [node name="Quad" type="MeshInstance3D" parent="VenusModel/OrderPanel"]
 transform = Transform3D(0.57, 0, 0, 0, 0.85, 0, 0, 0, 0.756, 0, 0, 0)
 mesh = SubResource("1")
-surface_material_override/0 = SubResource("StandardMaterial3D_j7ecl")
+surface_material_override/0 = SubResource("StandardMaterial3D_1etox")
 
 [node name="Area3D" type="Area3D" parent="VenusModel/OrderPanel/Quad"]
 collision_layer = 2

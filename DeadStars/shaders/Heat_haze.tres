@@ -12,9 +12,9 @@ noise = SubResource("FastNoiseLite_vqlpy")
 [resource]
 render_priority = 0
 shader = ExtResource("1_oxd06")
-shader_parameter/alpha = 0.194
+shader_parameter/alpha = 0.266
 shader_parameter/speed = 0.081
-shader_parameter/distortion = 0.0
+shader_parameter/distortion = 0.055
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = null
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_epnlk")

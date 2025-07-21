@@ -434,14 +434,14 @@ bind/65/name = &"shin_R-IKPole"
 bind/65/bone = -1
 bind/65/pose = Transform3D(1, -2.36601e-06, 4.7187e-07, 4.7187e-07, 0.383616, 0.923493, -2.36601e-06, -0.923494, 0.383616, 0.0802554, -0.45369, 0.942757)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_qf5y2"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_yvlrg"]
 viewport_path = NodePath("VenusModel/OrderPanel/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8fweh"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2rv74"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_qf5y2")
+albedo_texture = SubResource("ViewportTexture_yvlrg")
 billboard_mode = 1
 billboard_keep_scale = true
 
@@ -807,7 +807,7 @@ skin = SubResource("Skin_ar75a")
 blend_times = [&"Attack", &"Hurt", 0.2, &"Attack", &"Idle", 0.5, &"Attack", &"Shrug", 0.2, &"Attack", &"Talk", 0.2, &"Attack", &"Touch", 0.2, &"Attack", &"Walk", 0.5, &"Idle", &"Attack", 0.3, &"Idle", &"Idle", 0.5, &"Idle", &"Shrug", 0.2, &"Idle", &"Talk", 0.2, &"Idle", &"Touch", 0.2, &"Idle", &"Walk", 0.5]
 
 [node name="Quad" parent="PompNPC/VenusModel/OrderPanel" index="1"]
-surface_material_override/0 = SubResource("StandardMaterial3D_8fweh")
+surface_material_override/0 = SubResource("StandardMaterial3D_2rv74")
 
 [node name="Area3D" parent="PompNPC/VenusModel/OrderPanel/Quad" index="0"]
 transform = Transform3D(1, 1.84476e-09, -7.54056e-08, 0, 0.999701, 0.0244572, 7.54282e-08, -0.0244572, 0.999701, 0, 0, 0)

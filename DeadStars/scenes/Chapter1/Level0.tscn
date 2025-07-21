@@ -1,7 +1,8 @@
-[gd_scene load_steps=93 format=4 uid="uid://dru6rcl5us26a"]
+[gd_scene load_steps=101 format=4 uid="uid://dru6rcl5us26a"]
 
 [ext_resource type="PackedScene" uid="uid://bk40wll0gyt74" path="res://DeadStars/prefabs/system/npc_scene_rules.tscn" id="1_he7iy"]
 [ext_resource type="Script" path="res://addons/func_godot/src/map/func_godot_map.gd" id="1_mavbw"]
+[ext_resource type="Script" path="res://DeadStars/scripts/Chapter1/WakeUpCoordinator.gd" id="2_b03og"]
 [ext_resource type="Resource" uid="uid://b7b1eyuwdw2s4" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="2_ioiui"]
 [ext_resource type="Material" path="res://textures/AbstractConcrete.tres" id="3_ctcfu"]
 [ext_resource type="Material" path="res://textures/Black.tres" id="4_w362h"]
@@ -28,6 +29,10 @@
 [ext_resource type="Script" path="res://DeadStars/scripts/message_trigger.gd" id="27_atb2k"]
 [ext_resource type="Texture2D" uid="uid://dlxwxvfcxaciw" path="res://Sprites/Faces/Psychopomp FaceSprite.png" id="28_yq041"]
 [ext_resource type="Script" path="res://DeadStars/scripts/SceneLoaderBody.gd" id="29_ofe1m"]
+[ext_resource type="Texture2D" uid="uid://dd0v6opyk4v0e" path="res://Models/textures/PompTexture.png" id="30_ichsh"]
+[ext_resource type="PackedScene" uid="uid://dcnmq7yyduo4o" path="res://DeadStars/models/VenusWakeUp/Venus WakeUp.glb" id="30_kpbrv"]
+[ext_resource type="Texture2D" uid="uid://c8lgnrltnqdwj" path="res://Models/textures/PompTextureDamage1.png" id="31_vxy7d"]
+[ext_resource type="Texture2D" uid="uid://cwojaxyfda0hr" path="res://Models/textures/PompTextureDamage2.png" id="32_v0rdd"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ufsr1"]
 _surfaces = [{
@@ -530,11 +535,45 @@ size = Vector3(5.506, 1, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_gd3tp"]
 size = Vector3(1.08496, 1.97681, 0.47168)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_maqek"]
+resource_local_to_scene = true
+cull_mode = 2
+albedo_texture = ExtResource("30_ichsh")
+texture_filter = 0
+texture_repeat = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o3ihs"]
+resource_local_to_scene = true
+cull_mode = 2
+albedo_texture = ExtResource("31_vxy7d")
+rim = 0.42
+rim_tint = 0.1
+subsurf_scatter_strength = 0.67
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jj400"]
+resource_local_to_scene = true
+cull_mode = 2
+albedo_texture = ExtResource("32_v0rdd")
+rim = 0.42
+rim_tint = 0.1
+subsurf_scatter_strength = 0.67
+
 [node name="Node3D" type="Node3D"]
 
 [node name="NpcSceneRules" parent="." instance=ExtResource("1_he7iy")]
 FlashLightsEnabled = false
 AllowPlayerControl = false
+
+[node name="SceneController" type="Node" parent="." node_paths=PackedStringArray("animPlayer", "PlayerObject", "PompyAnim", "PlayerCamera", "CineCamera")]
+script = ExtResource("2_b03og")
+animPlayer = NodePath("../Venus WakeUp/AnimationPlayer")
+PlayerObject = NodePath("../PlayerObject/UI Overlay/CanvasLayer/UIPARENT")
+PompyAnim = NodePath("../Venus WakeUp")
+PlayerCamera = NodePath("../PlayerObject/Head/SpringArm3D Z/MainCamera")
+CineCamera = NodePath("../Camera3D")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.656803, -0.212822, 0.723407, 0.0127199, 0.962336, 0.271565, -0.753955, -0.169163, 0.634772, -5.69183, 1.15217, 3.31691)
 
 [node name="FuncGodotMap" type="Node3D" parent="."]
 script = ExtResource("1_mavbw")
@@ -861,9 +900,139 @@ destination = "res://DeadStars/scenes/tutorial.tscn"
 [node name="PlayerObject" parent="." instance=ExtResource("19_08cmr")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.63993, 1, 4.768)
 
+[node name="UIPARENT" parent="PlayerObject/UI Overlay/CanvasLayer" index="2"]
+visible = false
+
+[node name="HealthHandler" parent="PlayerObject/UI Overlay/CanvasLayer/UIPARENT/UI" index="2"]
+skin1 = SubResource("StandardMaterial3D_maqek")
+skin2 = SubResource("StandardMaterial3D_o3ihs")
+skin3 = SubResource("StandardMaterial3D_jj400")
+
+[node name="Skeleton3D" parent="PlayerObject/Venus Custom Death Overwrite/PsychopompPlayerModel/PompRig" index="0"]
+bones/0/position = Vector3(6.92174e-09, 0.843944, -0.158666)
+bones/2/rotation = Quaternion(-0.077815, -0.00769817, 0.00153404, 0.996937)
+bones/3/rotation = Quaternion(-0.0868574, -0.0962356, 0.00556423, 0.991546)
+bones/5/rotation = Quaternion(-0.0613073, -0.313679, 0.0562155, 0.945879)
+bones/6/position = Vector3(0.0496224, 0.0651682, 0.0865382)
+bones/7/position = Vector3(0.0307921, 0.0827281, 0.0979538)
+bones/13/position = Vector3(-0.000192027, 0.0735671, -0.015584)
+bones/14/position = Vector3(-0.0497292, 0.0658133, 0.0862847)
+bones/15/position = Vector3(-0.0228554, 0.0760027, 0.099955)
+bones/16/position = Vector3(0.0541442, 0.154244, 0.0367189)
+bones/16/scale = Vector3(0.714242, 0.714242, 0.714242)
+bones/17/position = Vector3(0.0690373, 0.11913, 0.0655329)
+bones/18/position = Vector3(-0.0690374, 0.11913, 0.0655328)
+bones/19/position = Vector3(-0.0548477, 0.15411, 0.0364676)
+bones/19/scale = Vector3(0.714135, 0.714135, 0.714135)
+bones/20/position = Vector3(1.3241e-05, 0.0859879, 0.09327)
+bones/21/position = Vector3(0.0694264, 0.179884, 0.0436759)
+bones/22/position = Vector3(-0.0694537, 0.180529, 0.0435233)
+bones/24/rotation = Quaternion(-0.342525, 0.620995, -0.499956, 0.497077)
+bones/25/rotation = Quaternion(0.308889, -0.213716, 0.0215712, 0.926525)
+bones/28/position = Vector3(0.0164705, 0.132462, -0.0407393)
+bones/28/rotation = Quaternion(-0.394739, -0.67469, 0.431679, 0.450142)
+bones/29/rotation = Quaternion(0.308336, 0.213329, -0.0201875, 0.926829)
+bones/35/rotation = Quaternion(0.964174, -4.77418e-08, 3.53833e-07, 0.26527)
+bones/36/rotation = Quaternion(0.344559, 8.97088e-09, 3.79227e-08, 0.938765)
+bones/37/rotation = Quaternion(-0.649146, 2.53287e-07, -3.48109e-07, 0.760664)
+bones/40/rotation = Quaternion(0.963273, -6.9941e-08, 8.7759e-08, 0.268524)
+bones/41/rotation = Quaternion(0.337442, 1.95223e-08, -3.24103e-08, 0.941346)
+bones/42/rotation = Quaternion(-0.649127, -1.82466e-07, 3.10088e-07, 0.76068)
+
+[node name="Venus WakeUp" parent="." instance=ExtResource("30_kpbrv")]
+
+[node name="Skeleton3D" parent="Venus WakeUp/Node3D/PlayerObject/Venus Custom Death Overwrite/PsychopompPlayerModel/PompRig" index="0"]
+bones/0/position = Vector3(0.314555, 0.788559, -0.202736)
+bones/0/rotation = Quaternion(-0.178051, -0.00635771, 0.0894062, 0.979931)
+bones/1/rotation = Quaternion(0.134697, 0.0217682, 0.00258657, 0.990644)
+bones/2/rotation = Quaternion(0.0581472, -0.10776, 0.00781617, 0.992444)
+bones/3/rotation = Quaternion(-0.00213327, -0.000214406, -0.000422297, 0.999998)
+bones/4/rotation = Quaternion(0.0298244, 5.81129e-08, 4.01941e-09, 0.999555)
+bones/5/rotation = Quaternion(0.430931, 0.0484861, 0.00317027, 0.901076)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/position = Vector3(0.0542526, 0.0718879, 0.0851481)
+bones/7/position = Vector3(0.0230302, 0.0752547, 0.100316)
+bones/8/position = Vector3(-0.00158698, 0.0726892, 0.110179)
+bones/9/position = Vector3(1.32818e-05, 0.0278597, 0.0345192)
+bones/9/rotation = Quaternion(0.678721, 4.59548e-07, 6.10402e-07, 0.734396)
+bones/10/position = Vector3(0.0268068, 0.0699162, -0.043146)
+bones/10/rotation = Quaternion(-0.133423, -6.46061e-07, -1.11827e-07, 0.991059)
+bones/10/scale = Vector3(1, 1, 1)
+bones/11/position = Vector3(7.38426e-05, 0.0832169, -0.039418)
+bones/11/rotation = Quaternion(-0.133423, -6.5029e-07, -1.21225e-07, 0.991059)
+bones/12/position = Vector3(-0.0268333, 0.0699162, -0.0431461)
+bones/12/rotation = Quaternion(-0.133423, -8.85221e-07, -9.06835e-08, 0.991059)
+bones/12/scale = Vector3(1, 1, 1)
+bones/13/position = Vector3(-0.0013083, 0.0722698, -0.0198466)
+bones/13/rotation = Quaternion(-0.785934, -4.01711e-07, -7.09808e-07, 0.618311)
+bones/14/position = Vector3(-0.0542525, 0.0718878, 0.0851483)
+bones/14/rotation = Quaternion(0.574667, -2.31582e-07, 3.98299e-08, 0.818387)
+bones/15/position = Vector3(-0.0228251, 0.0752738, 0.100281)
+bones/15/rotation = Quaternion(0.574667, -1.94029e-07, -1.2518e-08, 0.818387)
+bones/16/position = Vector3(0.0557212, 0.141601, 0.0365343)
+bones/16/scale = Vector3(0.714622, 0.714622, 0.714622)
+bones/17/position = Vector3(0.0635511, 0.155913, 0.05724)
+bones/18/position = Vector3(-0.0635511, 0.155913, 0.05724)
+bones/18/scale = Vector3(1, 1, 1)
+bones/19/position = Vector3(-0.0557212, 0.141601, 0.0365344)
+bones/19/rotation = Quaternion(0.570114, -2.22459e-07, 5.42976e-10, 0.821565)
+bones/19/scale = Vector3(0.714622, 0.714622, 0.714622)
+bones/20/position = Vector3(0.000568538, 0.0839249, 0.0940801)
+bones/20/rotation = Quaternion(0.986162, 5.66635e-09, 2.76707e-07, 0.165785)
+bones/20/scale = Vector3(1, 1, 0.999996)
+bones/21/position = Vector3(0.0698375, 0.109385, 0.067524)
+bones/21/rotation = Quaternion(0.575023, 0.00641636, 0.00502932, 0.818097)
+bones/22/position = Vector3(-0.0698374, 0.109385, 0.0675242)
+bones/22/rotation = Quaternion(0.575023, -0.00641663, -0.00502909, 0.818097)
+bones/23/position = Vector3(0.014986, 0.113654, 0.0159795)
+bones/23/rotation = Quaternion(-0.535559, -0.44195, -0.458366, 0.554759)
+bones/24/position = Vector3(-0.00317055, 0.131251, -0.0413299)
+bones/24/rotation = Quaternion(-0.331801, 0.72485, -0.373206, 0.474571)
+bones/24/scale = Vector3(1, 1, 1)
+bones/25/rotation = Quaternion(0.265604, 0.339804, 0.0420864, 0.901231)
+bones/26/rotation = Quaternion(-0.0076151, 0.0729627, -0.0929699, 0.992963)
+bones/26/scale = Vector3(1, 1, 1)
+bones/27/position = Vector3(-0.014986, 0.113654, 0.0159795)
+bones/27/rotation = Quaternion(-0.53556, 0.441949, 0.458366, 0.554759)
+bones/27/scale = Vector3(1, 1, 1)
+bones/28/position = Vector3(0.00345882, 0.131278, -0.0413168)
+bones/28/rotation = Quaternion(-0.21848, -0.814436, 0.350937, 0.40719)
+bones/28/scale = Vector3(1, 1, 1)
+bones/29/rotation = Quaternion(0.369042, -0.562715, -0.125591, 0.728963)
+bones/29/scale = Vector3(1, 1, 1)
+bones/30/position = Vector3(1.16821e-07, 0.228056, 3.38835e-08)
+bones/30/rotation = Quaternion(-0.00711008, -0.0729187, 0.0929765, 0.992969)
+bones/30/scale = Vector3(1, 1, 1)
+bones/31/rotation = Quaternion(1.85818e-08, 0.61389, 0.789391, 1.20929e-07)
+bones/32/rotation = Quaternion(-1.99169e-07, 0.61389, 0.789391, -3.26253e-08)
+bones/32/scale = Vector3(1, 1, 1)
+bones/33/rotation = Quaternion(-0.152455, -0.793331, -0.285504, 0.515627)
+bones/33/scale = Vector3(1, 1, 1)
+bones/34/scale = Vector3(1, 1, 1)
+bones/35/position = Vector3(0.0802529, 0.0579935, 0.0212447)
+bones/35/rotation = Quaternion(0.998491, 0.0358415, 0.00468578, -0.0413356)
+bones/35/scale = Vector3(1, 1, 0.999999)
+bones/36/rotation = Quaternion(0.111647, 0.0235499, 0.0294696, 0.993032)
+bones/37/rotation = Quaternion(-0.66953, 2.68057e-07, -3.62186e-07, 0.742785)
+bones/38/rotation = Quaternion(1.93773e-07, 0.961249, -0.275683, 1.89656e-07)
+bones/39/rotation = Quaternion(0.679705, 0.679705, -0.194937, 0.194938)
+bones/40/position = Vector3(-0.0802528, 0.0579934, 0.0212446)
+bones/40/rotation = Quaternion(0.998491, -0.0358415, -0.00468528, -0.0413355)
+bones/41/rotation = Quaternion(0.111647, -0.0235499, -0.0294695, 0.993032)
+bones/42/rotation = Quaternion(-0.66953, -1.89414e-07, 3.25166e-07, 0.742785)
+bones/42/scale = Vector3(1, 1, 1)
+bones/43/rotation = Quaternion(-1.50311e-07, 0.961249, -0.275683, -1.78463e-07)
+bones/44/rotation = Quaternion(-0.679705, 0.679706, -0.194937, -0.194938)
+
+[node name="AnimationPlayer" parent="Venus WakeUp" index="4"]
+autoplay = "WakeUp"
+
 [connection signal="area_entered" from="Transfer" to="Transfer" method="OnBodyEntered"]
 [connection signal="area_entered" from="Message Trigger" to="Message Trigger" method="_on_area_entered"]
 [connection signal="area_entered" from="Message Trigger2" to="Message Trigger2" method="_on_area_entered"]
 
 [editable path="Door_animated"]
 [editable path="DialogueObject"]
+[editable path="PlayerObject"]
+[editable path="PlayerObject/Venus Custom Death Overwrite"]
+[editable path="Venus WakeUp"]

@@ -5737,8 +5737,8 @@ destination = "res://DeadStars/scenes/WorldMap1.tscn"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.70327, 0.480713, 0.154373)
 shape = SubResource("BoxShape3D_aj7ng")
 
-[connection signal="area_entered" from="ExitTrigger" to="ExitTrigger" method="OnBodyEntered"]
 [connection signal="area_entered" from="ExitTrigger" to="ExitTrigger" method="_on_area_entered"]
+[connection signal="area_entered" from="ExitTrigger" to="ExitTrigger" method="OnBodyEntered"]
 
 [editable path="GraveStone"]
 [editable path="GraveStone2"]

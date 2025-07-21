@@ -66,6 +66,7 @@ func Cast():
 						print_rich("Touched object is: [color=red]" + str(node) + "[/color]")
 		4:
 			if canAttack:
+				canAttack = false
 				animTrigger("Attack")
 				HammerAnim.stop()
 				HammerAnim.play("Attack")
@@ -95,7 +96,7 @@ func Cast():
 							node.Hurt()
 							print_rich("Attacked object is: [color=red]" + str(node) + "[/color]")
 
-				canAttack = false
+
 				await get_tree().create_timer(AttackDelay).timeout
 				canAttack = true
 		2:

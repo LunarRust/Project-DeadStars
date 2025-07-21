@@ -17,7 +17,7 @@ radius = 0.419521
 transform = Transform3D(0.835, 0, 0, 0, 0.835, 0, 0, 0, 0.835, 0, 0.813096, 0.0494666)
 shape = SubResource("CapsuleShape3D_l3xhg")
 
-[node name="DialogueSystem" type="Node3D" parent="." node_paths=PackedStringArray("soundSource", "ObjectRoot")]
+[node name="DialogueSystem" type="Node3D" parent="." node_paths=PackedStringArray("soundSource")]
 transform = Transform3D(0.835, 0, 0, 0, 0.835, 0, 0, 0, 0.835, 0, 0.813096, 0.0494666)
 script = ExtResource("2_1rqga")
 npcName = "Lil' Squick"
@@ -25,7 +25,6 @@ Dialogue = Array[String](["Idk"])
 LookDescription = Array[String](["stupid idiot."])
 TouchDescription = Array[String](["nasty 🤮🤮🤮"])
 soundSource = NodePath("../DialogueSource")
-ObjectRoot = NodePath("")
 DialogueSound = ExtResource("3_4oetn")
 
 [node name="DialogueSource" type="AudioStreamPlayer3D" parent="."]

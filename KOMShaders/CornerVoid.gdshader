@@ -102,7 +102,7 @@ float fbm3d(vec3 x, const in int it) {
     float a = 0.5;
     vec3 shift = vec3(100);
 
-    
+
     for (int i = 0; i < 32; ++i) {
         if(i<it) {
             v += a * snoise(x);
@@ -116,15 +116,15 @@ float fbm3d(vec3 x, const in int it) {
 void fragment()
 {
     float t = TIME * .2;
-    
+
     vec2 uv = (FRAGCOORD.xy * 0.3) / 1080.0;
     vec2 st = vec2(
         length( uv ) * 1.5,
         atan( uv.y, uv.x )
     );
-    
+
     st.y += st.x * 1.1;
-        
+
     float x = fbm3d(
         vec3(
             sin( st.y ),
@@ -141,7 +141,7 @@ void fragment()
         ),
         4
     );
-    
+
     float r = fbm3d(
         vec3(
             x,
@@ -158,9 +158,9 @@ void fragment()
         ),
         6
     );
-    
+
     float c = ( r + st.x * 5. ) / 6.;
-    
+
     COLOR = vec4(
         smoothstep( .3, .5, c ),
         smoothstep( .4, .55, c ),

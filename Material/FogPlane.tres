@@ -1,8 +1,15 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://biaw1atl6ys4k"]
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://biaw1atl6ys4k"]
 
 [ext_resource type="Shader" uid="uid://bdub1xoptusot" path="res://Shaders/TextureScroll.tres" id="1"]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_owfp8"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ionx4"]
+seamless = true
+noise = SubResource("FastNoiseLite_owfp8")
+
 [resource]
-render_priority = 0
+render_priority = 1
 shader = ExtResource("1")
 shader_parameter/Speed = 0.025
+shader_parameter/tex_frg_2 = SubResource("NoiseTexture2D_ionx4")

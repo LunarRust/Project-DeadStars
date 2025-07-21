@@ -8,4 +8,4 @@ func _ready():
 
 func Anim_Play():
 	self.active = true
-	self.play("Open")
+	self.play(Anim)

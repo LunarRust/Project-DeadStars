@@ -15518,14 +15518,14 @@ _data = {
 [sub_resource type="QuadMesh" id="QuadMesh_ta28s"]
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_a3xeq"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_te50a"]
 viewport_path = NodePath("VenusModel/OrderPanel/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aolca"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l4ocq"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_a3xeq")
+albedo_texture = SubResource("ViewportTexture_te50a")
 billboard_mode = 1
 billboard_keep_scale = true
 
@@ -15683,23 +15683,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="VenusModel/Prince Rigging Project Solo/princeface/Posable Face Prince" index="0"]
-bones/0/position = Vector3(2.11241e-11, 1.00946, -0.055238)
-bones/0/rotation = Quaternion(-0.524138, 0.000676633, 0.0255672, 0.851249)
-bones/1/rotation = Quaternion(0.494178, 0.0131999, 0.0082856, 0.869221)
-bones/2/rotation = Quaternion(0.420003, -0.00066804, 0.000105301, 0.907523)
-bones/3/rotation = Quaternion(-0.3172, 0.000347709, -0.000227678, 0.948359)
-bones/4/position = Vector3(1.64866e-08, 0.218705, -0.0277516)
-bones/4/rotation = Quaternion(0.256189, 0.214354, -0.0968048, 0.937576)
-bones/5/position = Vector3(0.0600719, 0.146962, 0.0610221)
-bones/5/rotation = Quaternion(0.676639, 0.0774126, -0.0762804, 0.72825)
+bones/0/position = Vector3(1.34841e-10, 1.0082, -0.0531362)
+bones/0/rotation = Quaternion(-0.439995, 6.53244e-05, 0.00231182, 0.897997)
+bones/1/rotation = Quaternion(0.336908, 0.000930491, -0.000102776, 0.941537)
+bones/2/rotation = Quaternion(0.418754, -0.000124136, 0.00246923, 0.908096)
+bones/3/rotation = Quaternion(-0.317201, 0.000533582, 0.000121999, 0.948358)
+bones/4/position = Vector3(-9.47075e-05, 0.218519, -0.026779)
+bones/4/rotation = Quaternion(0.0790307, 0.00756363, -0.00107632, 0.996843)
+bones/5/position = Vector3(0.0496294, 0.154383, 0.06571)
+bones/5/rotation = Quaternion(0.676845, 0.0488455, 0.0195963, 0.734242)
 bones/5/scale = Vector3(0.998385, 0.998384, 0.998385)
-bones/6/position = Vector3(0.0550883, 0.193932, 0.0217148)
+bones/6/position = Vector3(0.0550842, 0.193895, 0.0217121)
 bones/6/rotation = Quaternion(0.715581, 0.0894096, 0.0855852, 0.687478)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/position = Vector3(0.0536584, 0.119042, 0.0264235)
 bones/7/rotation = Quaternion(0.715463, 0.091843, 0.0874574, 0.687044)
 bones/7/scale = Vector3(1, 1, 1)
-bones/8/position = Vector3(-0.000460179, 0.0446198, 0.0303437)
+bones/8/position = Vector3(-0.000458593, 0.044666, 0.0303444)
 bones/8/rotation = Quaternion(0.723722, -0.042522, -0.0559394, 0.686506)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/position = Vector3(0.0271906, 0.0426377, -0.01402)
@@ -15721,10 +15721,10 @@ bones/14/scale = Vector3(1, 1, 1)
 bones/15/position = Vector3(0.000369317, 0.0686539, 0.0979173)
 bones/15/rotation = Quaternion(0.696722, -0.0822343, -0.071236, 0.709042)
 bones/15/scale = Vector3(1, 1, 1)
-bones/16/position = Vector3(-0.0535131, 0.146613, 0.0678918)
-bones/16/rotation = Quaternion(0.685406, -0.0471794, 0.0180678, 0.726407)
+bones/16/position = Vector3(-0.0496626, 0.154375, 0.0656201)
+bones/16/rotation = Quaternion(0.676845, -0.0488455, -0.0195963, 0.734242)
 bones/16/scale = Vector3(0.998385, 0.998385, 0.998385)
-bones/17/position = Vector3(-0.0550883, 0.193932, 0.0217148)
+bones/17/position = Vector3(-0.0550842, 0.193895, 0.0217121)
 bones/17/rotation = Quaternion(0.715581, -0.0894096, -0.0855852, 0.687478)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/position = Vector3(-0.0536584, 0.119042, 0.0264235)
@@ -15734,26 +15734,26 @@ bones/19/position = Vector3(-0.0197356, 0.0684325, 0.0784334)
 bones/20/position = Vector3(-0.0368017, 0.0720669, 0.0726454)
 bones/21/position = Vector3(-0.0532757, 0.0769569, 0.0694027)
 bones/21/rotation = Quaternion(0.685984, 0.0491488, 0.110256, 0.717533)
-bones/22/rotation = Quaternion(-0.605626, -0.34492, -0.357492, 0.621649)
+bones/22/rotation = Quaternion(-0.614995, -0.326168, -0.369392, 0.615585)
 bones/22/scale = Vector3(1, 1, 1)
-bones/23/rotation = Quaternion(-0.193344, 0.776913, -0.419128, 0.428201)
-bones/24/position = Vector3(0.0007326, 0.398861, -2.34348e-05)
-bones/24/rotation = Quaternion(0.680285, -0.100272, 0.115661, 0.716785)
-bones/25/rotation = Quaternion(-0.605682, 0.344946, 0.35747, 0.621592)
+bones/23/rotation = Quaternion(-0.194185, 0.694624, -0.520177, 0.457391)
+bones/24/position = Vector3(3.55557e-06, 0.397773, -1.90012e-06)
+bones/24/rotation = Quaternion(0.187566, -0.0605326, -0.0359752, 0.979725)
+bones/25/rotation = Quaternion(-0.618064, 0.324823, 0.369821, 0.61296)
 bones/25/scale = Vector3(1, 1, 1)
-bones/26/rotation = Quaternion(-0.194043, -0.775488, 0.420597, 0.429028)
+bones/26/rotation = Quaternion(-0.190124, -0.696519, 0.517865, 0.458835)
 bones/26/scale = Vector3(1, 1, 1)
-bones/27/position = Vector3(-0.000734175, 0.398861, -2.3124e-05)
-bones/27/rotation = Quaternion(0.680719, 0.102013, -0.114804, 0.716265)
+bones/27/position = Vector3(-5.13293e-06, 0.397773, -1.53391e-06)
+bones/27/rotation = Quaternion(0.207236, 0.0411617, 0.0330761, 0.976865)
 bones/27/scale = Vector3(1, 1, 1)
 bones/28/rotation = Quaternion(0.149646, -0.514163, -0.668223, 0.516449)
 bones/29/rotation = Quaternion(0.149646, 0.514163, 0.668223, 0.516449)
 bones/29/scale = Vector3(1, 1, 1)
-bones/30/rotation = Quaternion(0.872241, 0.0225275, -0.0422801, -0.486724)
-bones/31/rotation = Quaternion(0.070301, 0.00156219, -0.0207611, 0.997309)
+bones/30/rotation = Quaternion(0.907264, 0.00373219, 0.000999181, -0.420543)
+bones/31/rotation = Quaternion(0.076071, 0.00233758, -0.0202062, 0.996895)
 bones/31/scale = Vector3(1, 1, 1)
-bones/32/rotation = Quaternion(0.866946, -0.0315066, -0.0239861, -0.496826)
-bones/33/rotation = Quaternion(0.0674885, -0.000889962, 0.0207644, 0.997504)
+bones/32/rotation = Quaternion(0.907655, -0.00395184, -0.00077603, -0.419697)
+bones/33/rotation = Quaternion(0.0799969, -0.00187656, 0.0203685, 0.996585)
 bones/33/scale = Vector3(1, 1, 1)
 
 [node name="Cylinder" parent="VenusModel/Prince Rigging Project Solo/princeface/Posable Face Prince/Skeleton3D" index="0"]
@@ -16748,7 +16748,7 @@ text = "Take Items
 [node name="Quad" type="MeshInstance3D" parent="VenusModel/OrderPanel"]
 transform = Transform3D(0.57, 0, 0, 0, 0.85, 0, 0, 0, 0.756, 0, 0, 0)
 mesh = SubResource("QuadMesh_ta28s")
-surface_material_override/0 = SubResource("StandardMaterial3D_aolca")
+surface_material_override/0 = SubResource("StandardMaterial3D_l4ocq")
 
 [node name="Area3D" type="Area3D" parent="VenusModel/OrderPanel/Quad"]
 collision_layer = 2
