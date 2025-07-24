@@ -4,6 +4,9 @@ extends Node
 @export var Daddy2 : Node3D
 @export var ChildrenKiller : Node3D
 @export var CameraMover : StaticBody3D
+@export var RockWall : StaticBody3D
+@export var RockPile : FuncGodotMap
+@export var RockCamTrigger : Area3D
 var CameraShaker
 
 # Called when the node enters the scene tree for the first time.
@@ -18,6 +21,10 @@ func _process(delta):
 
 
 func Begin():
+	RockCamTrigger.Enabled = true
+	RockPile.position.y =- 3
+	if RockWall != null:
+		RockWall.get_node("HealthControllerHeHaa").Hurt(999)
 	CameraMover.get_node("Behavior").Touch()
 	FireAnimPlayer.Anim_Play()
 	if Daddy1 != null:

@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://dd1w5f1t4ouem"]
+
+[ext_resource type="Texture2D" uid="uid://cxmyvrrtebhje" path="res://Skyboxes/Purple.png" id="1_glq21"]
+[ext_resource type="Texture2D" uid="uid://c8u2morb7eg1f" path="res://Sprites/Moon.png" id="2_imv4d"]
+[ext_resource type="Script" path="res://Scripts/Tweener3D.cs" id="3_h5eik"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_egdjb"]
+panorama = ExtResource("1_glq21")
+
+[sub_resource type="Sky" id="Sky_0bji7"]
+sky_material = SubResource("PanoramaSkyMaterial_egdjb")
+
+[sub_resource type="Environment" id="Environment_4vw8g"]
+background_mode = 2
+background_energy_multiplier = 1.03
+sky = SubResource("Sky_0bji7")
+tonemap_white = 8.28
+ssr_fade_in = 0.219613
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 0.1003
+fog_sky_affect = 0.0
+adjustment_brightness = 1.26
+adjustment_contrast = 1.1
+
+[node name="HosptialEnv" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4vw8g")
+
+[node name="Moon" type="Sprite3D" parent="."]
+transform = Transform3D(-15.0396, 0, 22.383, 0, 26.9665, 0, -22.383, 0, -15.0396, -164.781, 39.6128, 45.4146)
+texture = ExtResource("2_imv4d")
+script = ExtResource("3_h5eik")
+Time = 10.0
+tweenPosition = true
+endPosition = Vector3(0, 10, 0)
+
+[node name="Moon2" type="Sprite3D" parent="."]
+transform = Transform3D(-15.0396, 0, 22.383, 0, -25.5784, 0, -22.383, 0, -15.0396, -164.781, -63.5427, 45.4146)
+modulate = Color(1, 1, 1, 0.0235294)
+texture = ExtResource("2_imv4d")
+script = ExtResource("3_h5eik")
+Time = 10.0
+tweenPosition = true
+endPosition = Vector3(0, -10, 0)

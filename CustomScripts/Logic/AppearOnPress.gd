@@ -10,6 +10,8 @@ var KOMSignalBus
 func _ready():
 	KOMSignalBus = get_tree().get_first_node_in_group("SignalBusKOM")
 
+
+
 func _process(delta):
 	if KOMSignalBus == null || KOMSignalBus.AllowDebug == true:
 		if Input.is_physical_key_pressed(key):

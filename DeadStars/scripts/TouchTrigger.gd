@@ -3,7 +3,7 @@ signal touched
 @export var OnlyOnce : bool = false
 var used : bool = false
 
-func Touch():
+func Talk():
 	if used == false:
 		touched.emit()
 		if OnlyOnce:

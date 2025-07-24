@@ -48,6 +48,7 @@ var running : bool = false
 var hurt : bool = false
 var Tset : bool = false
 var TargetIsItem : bool = false
+var TargetIsUsable : bool = false
 var TargetIsCreature : bool = false
 var TargetReached : bool = false
 var velV2 : Vector2
@@ -62,6 +63,7 @@ var SignalBusInnout
 var InnoutExists : bool = false
 var instance
 var player
+var NewDialogueSystemActive : bool = false
 var RandFloat : float
 var PathFindClock : float
 var ActionOnArrive : int = 0
@@ -78,6 +80,8 @@ func _ready():
 	var player = get_tree().get_first_node_in_group("player")
 	if player != null:
 		SignalBusKOM = player.get_node("KOMSignalBus")
+	if self.get_node("Behavior").NewDialogueSystem == true:
+		NewDialogueSystemActive = true
 	if get_tree().get_first_node_in_group("InnOutSignalBus") != null:
 		SignalBusInnout = get_tree().get_first_node_in_group("InnOutSignalBus")
 		InnoutExists = true
@@ -128,6 +132,7 @@ func _physics_process(delta):
 				hostile = false
 				DoLookAt = false
 				TargetEntity = TargetLocator("NpcMarker",1.2)
+				attacking = true
 		running_handling(delta)
 
 
@@ -187,6 +192,18 @@ func running_handling(delta):
 			if (attackTimer > attackThreshold && position.distance_to(TargetEntity.position) < AttackDistance):
 				GrabItem()
 				attackTimer = 0
+
+	elif TargetIsUsable:
+		if TargetEntity != null:
+			if (position.distance_to(TargetEntity.position) > MaxDistance && !hurt):
+				handle_Move(delta)
+			else:
+				velocity = velocity.lerp(Vector3.ZERO, delta)
+			if (position.distance_to(TargetEntity.position) < AttackDistance):
+				attackTimer += 1 * delta
+			if (attackTimer > attackThreshold && position.distance_to(TargetEntity.position) < AttackDistance):
+				UseItem()
+				attackTimer = 0
 	else:
 		TargetFallback()
 
@@ -223,6 +240,10 @@ func AnimAndVelocity(delta):
 			animTree["parameters/Normal2D/4/blend_position"] = float(HealthHandler.HP)
 			animTree["parameters/TalkBlend/blend_position"] = velV2
 			animTree["parameters/TouchBlend/blend_position"] = velV2
+			if NewDialogueSystemActive:
+				animTree["parameters/DialogueIdleBlend/blend_position"] = float(HealthHandler.HP)
+				animTree["parameters/DialogueTalkBlend/blend_position"] = float(HealthHandler.HP)
+				animTree["parameters/DialogueTalkBlend2/blend_position"] = float(HealthHandler.HP)
 
 		if speed > 1.2:
 			AttackDistance = 3
@@ -297,8 +318,28 @@ func GrabItem():
 	hostile = false
 	TargetIsItem = false
 	TargetIsCreature = true
-	TargetEntity = PreviousTarget
-	NavNodeTarget = PreviousNavNodeTarget
+	TargetPlayer()
+	LookTarget = player
+
+func UseItem():
+	if (anim != null):
+		animTrigger("Touch")
+	await get_tree().create_timer(1.0).timeout
+	if TargetEntity != null:
+		for i in get_all_children(TargetEntity):
+			if (i.has_method("Item")):
+				var ChallengeItem = create_item(i.itemMatch)
+				var itemMatches : bool = false
+				for items in self.get_node("InventoryGrid").get_items():
+					if itemMatches == false:
+						if items.prototype_id == ChallengeItem.prototype_id:
+							if i.Item(items.prototype_id) == true:
+								itemMatches = true
+								self.get_node("InventoryGrid").remove_item(items)
+	hostile = false
+	TargetIsItem = false
+	TargetIsCreature = true
+	TargetPlayer()
 	LookTarget = player
 
 ###################################
@@ -526,13 +567,63 @@ func ItemLocator():
 		PreviousTarget = TargetEntity
 		return NearestTarget
 
+func UsableLocator():
+	var NearestTarget
+	DoLookAt = true
+	NearestTarget = find_closest_or_furthest(self,"default",false,true,true)
+	if NearestTarget != null:
+		print_rich("new target: [color=red]" + (NearestTarget.name) + "[/color]")
+		TargetIsCreature = false
+		TargetIsItem = false
+		TargetIsUsable = true
+		for i in get_all_children(NearestTarget):
+			if i.name == "Behavior":
+				var ChallengeItem = create_item(i.itemMatch)
+				var itemMatches : bool = false
+				print("looking for: " + str(i.itemMatch))
+				for items in self.get_node("InventoryGrid").get_items():
+					print("casting with " + str(items.prototype_id))
+					if items.prototype_id == ChallengeItem.prototype_id:
+				#if self.get_node("InventoryGrid").has_item(ChallengeItem):
+						itemMatches = true
+						LookTarget = NearestTarget
+						return NearestTarget
+				if itemMatches == false:
+					print("We do not have that Item!")
+					animTrigger("Shrug")
+					DoLookAt = false
+					NearestTarget = null
+					TargetIsItem = false
+					TargetIsCreature = false
+					TargetIsUsable = false
+					PreviousTarget = TargetEntity
+					return NearestTarget
+	else:
+		print("Usable is Null!")
+		animTrigger("Shrug")
+		hostile = false
+		TargetIsItem = false
+		TargetIsCreature = false
+		TargetIsUsable = false
+		DoLookAt = false
+		NearestTarget = null
+		PreviousTarget = TargetEntity
+		return NearestTarget
+
 ###################################
 ###
 ###################################
 func LocateItem():
 	hostile = false
 	TargetIsItem = true
+	TargetIsUsable = false
 	TargetEntity = ItemLocator()
+
+func LocateUsable():
+	hostile = false
+	TargetIsItem = false
+	TargetIsUsable = true
+	TargetEntity = UsableLocator()
 
 ###################################
 ###
@@ -583,10 +674,10 @@ func TargetPlayer(MaxDist = MaxDistanceDef):
 ###################################
 ###Yikes. would like to compress this function down.
 ###################################
-func find_closest_or_furthest(node: Object,group_name = "default",item = false, get_closest:= true) -> Object:
+func find_closest_or_furthest(node: Object,group_name = "default",item = false, get_closest:= true,itemUsable : bool = false) -> Object:
 	@warning_ignore("unassigned_variable")
 	var PossibleTargets : Array
-	if group_name == "default" && item == false:
+	if group_name == "default" && item == false && itemUsable == false:
 		for i in get_all_children(get_tree().get_root()):
 			if i.is_class("Node3D"):
 				if i.has_method("Hurt"):
@@ -610,7 +701,7 @@ func find_closest_or_furthest(node: Object,group_name = "default",item = false, 
 		else:
 			animTrigger("Shrug")
 			return null
-	if item == false:
+	if item == false && itemUsable == false:
 		var target_group = get_tree().get_nodes_in_group(group_name)
 		var distance_away = node.global_transform.origin.distance_to(target_group[0].global_transform.origin)
 		var return_node = target_group[0]
@@ -624,9 +715,31 @@ func find_closest_or_furthest(node: Object,group_name = "default",item = false, 
 				return_node = target_group[index]
 		return return_node
 	else:
-		if group_name == "default" && item == true:
+		if group_name == "default" && item == true && itemUsable == false:
 			for i in get_all_children(get_tree().get_root()):
 				if "ItemID" in i:
+					if !("DoNotTarget" in i):
+						PossibleTargets.append(i.get_parent())
+			if !PossibleTargets.is_empty():
+				var target_group = PossibleTargets
+				var distance_away = node.global_transform.origin.distance_to(target_group[0].global_transform.origin)
+				var return_node = target_group[0]
+				for index in target_group.size():
+					var distance = node.global_transform.origin.distance_to(target_group[index].global_transform.origin)
+					if get_closest == true && distance < distance_away:
+						distance_away = distance
+						return_node = target_group[index]
+					elif get_closest == false && distance > distance_away:
+						distance_away = distance
+						return_node = target_group[index]
+				return return_node
+			else:
+				animTrigger("Shrug")
+				return null
+
+		elif group_name == "default" && itemUsable == true:
+			for i in get_all_children(get_tree().get_root()):
+				if "itemMatch" in i:
 					if !("DoNotTarget" in i):
 						PossibleTargets.append(i.get_parent())
 			if !PossibleTargets.is_empty():
@@ -691,3 +804,12 @@ func find_rotation_to(node1 : Node3D,node2 : Node3D,degree = false):
 		return angle_degrees
 	else:
 		return angle
+
+
+func _on_dialog_object_dialogue_active():
+	running = false
+
+
+func _on_dialog_object_dialogue_deactivated():
+	if !HealthHandler.dead:
+		running = true

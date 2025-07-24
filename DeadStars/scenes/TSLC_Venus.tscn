@@ -123,7 +123,50 @@ rotation = -0.95295
 scale = Vector2(86.5, 215.25)
 mesh = SubResource("8")
 
+[node name="RichTextLabel5" type="RichTextLabel" parent="."]
+offset_left = 217.0
+offset_top = 161.0
+offset_right = 598.0
+offset_bottom = 342.0
+theme_override_colors/default_color = Color(0.647059, 0.121569, 0.196078, 1)
+theme_override_fonts/normal_font = ExtResource("3_pveot")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[wave amp=20.0]Real World Tip:
+The Real JFK's then aborted Foetus was found by the Department of Justice in 2006"
+scroll_active = false
+script = ExtResource("10_wuwae")
+tips = Array[String](["Drink Water. Your Friend’s Life May Depend On It.
+", "Do not ride elevators when there’s a fire in the building. 
+That’s how you’ll guarantee a spot in your town’s local annual Best Corpse Competition. 
+Someone will always die better than you. 
+You will not win first prize.", "If someone tells you that frog legs taste like chicken, they are lying and literally made of shit. Consider ditching them and finding a new friend that doesn’t smell like sewer oil. 
+", "“You only live once” is a phrase that was tossed around a long time ago. It’s not applicable to me.
+", "Sleepwalkers are actually explorers of parallel universe versions of your world. Waking one up could lead to unimaginable consequences for the families and friends they leave behind in that other universe.", "You are your own worst friend. The worst thing about betrayal is that it never comes from an enemy. Remember a prior tip: Not all enemies are friends.
+", "If you are visited by a sleep paralysis demon that holds you in the morning, whispers sweet nothings in your ear, or playfully tells you he’s going to kill you, you’ve got a keeper.", "You can slow cook a person in a bath tub if you give it enough time.
+", "Give a man a fire and he will stay warm for a day. Set a man on fire and he will stay warm for the rest of his life.
+", "If you talk to the wind, the wind will hear. They can hear. In time, they will answer. You may not like what they have to say.
+"])
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="."]
+auto_translate_mode = 1
+offset_left = 223.0
+offset_top = 108.0
+offset_right = 603.0
+offset_bottom = 151.0
+theme_override_colors/default_color = Color(0.984314, 0.552941, 0.560784, 1)
+theme_override_fonts/normal_font = ExtResource("3_pveot")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[wave amp=20.0]Gameplay Tip:
+Make sure to use items sparingly. They're rare!"
+scroll_active = false
+script = ExtResource("10_wuwae")
+Preface = "Gameplay Tip:"
+tips = Array[String](["Make sure to use items sparingly. They're rare!", "The world can be dangerous, be careful!", "Look for false walls. Secrets are everywhere!", "There are multiple solutions to a problem.", "Not every enemy is a friend.", "Sanity Medication hurts your health.", "Sometimes you shouldn't touch things.", "Some creatures do not like light.", "Some Tips are outright lies.", "Inanimate objects feel pain. Make sure to hit them against things as hard as you can, they deserve it."])
+
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+visible = false
 offset_left = 217.0
 offset_top = 101.0
 offset_right = 597.0
@@ -136,6 +179,7 @@ text = "[wave]Real World Tip:"
 scroll_active = false
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="."]
+visible = false
 offset_left = 211.0
 offset_top = 120.0
 offset_right = 601.0
@@ -148,10 +192,17 @@ text = "[wave][center]
 If you work in the food service industry, you can sue you're employer for mental health damages."
 scroll_active = false
 script = ExtResource("10_wuwae")
-tips = Array[String](["You should try estrogen.", "Do not ride elevators when there’s a fire in the building. 
+tips = Array[String](["Drink Water. Your Friend’s Life May Depend On It.
+", "Do not ride elevators when there’s a fire in the building. 
 That’s how you’ll guarantee a spot in your town’s local annual Best Corpse Competition. 
 Someone will always die better than you. 
-You will not win first prize."])
+You will not win first prize.", "If someone tells you that frog legs taste like chicken, they are lying and literally made of shit. Consider ditching them and finding a new friend that doesn’t smell like sewer oil. 
+", "“You only live once” is a phrase that was tossed around a long time ago. It’s not applicable to me.
+", "Sleepwalkers are actually explorers of parallel universe versions of your world. Waking one up could lead to unimaginable consequences for the families and friends they leave behind in that other universe.", "You are your own worst friend. The worst thing about betrayal is that it never comes from an enemy. Remember a prior tip: Not all enemies are friends.
+", "If you are visited by a sleep paralysis demon that holds you in the morning, whispers sweet nothings in your ear, or playfully tells you he’s going to kill you, you’ve got a keeper.", "You can slow cook a person in a bath tub if you give it enough time.
+", "Give a man a fire and he will stay warm for a day. Set a man on fire and he will stay warm for the rest of his life.
+", "If you talk to the wind, the wind will hear. They can hear. In time, they will answer. You may not like what they have to say.
+"])
 
 [node name="MeshInstance2D5" type="MeshInstance2D" parent="."]
 modulate = Color(0.156863, 0, 0.00784314, 1)

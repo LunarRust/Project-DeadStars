@@ -8,6 +8,7 @@ var SignalBusKOM
 @export var HealthController : Node3D
 @export_category("Parameters")
 @export var follow : bool
+@export var NewDialogueSystem : bool = false
 #@export var PlayerObject : MeshInstance3D
 
 var SignalBusInnout
@@ -39,6 +40,16 @@ func Talk(DoDiolouge : bool = true):
 	AnimTrigger("Talk")
 	if DoDiolouge:
 		dialogue.DialogueProcessing()
+	if NewDialogueSystem:
+		AnimSet("Dialogue",true)
+		AnimSet("Idle",false)
+		await get_tree().create_timer(0.1).timeout
+		AnimTrigger("DialogueTalk")
+
+func StopTalking():
+	if NewDialogueSystem:
+		AnimSet("Dialogue",false)
+		AnimSet("Idle",true)
 
 func Hurt():
 	if HealthController.HP >= 1:
@@ -58,7 +69,8 @@ func AnimTrigger(triggerName : String):
 	await get_tree().create_timer(0.1).timeout
 	anim["parameters/conditions/" + triggerName] = false;
 
-
+func AnimSet(triggerName : String,toggle : bool = true):
+	anim["parameters/conditions/" + triggerName] = toggle;
 #func _process(delta):
 	#if InteractionButton.get_propertylist("interactionMode") != 1:
 		#pass

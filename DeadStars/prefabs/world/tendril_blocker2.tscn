@@ -1135,7 +1135,7 @@ shape = SubResource("BoxShape3D_o4ady")
 
 [node name="Behavior" type="Node" parent="StaticBody3D"]
 script = ExtResource("5_dx3sk")
-itemID = "Lighter"
+itemID = "lighter"
 ItemToGive = "lighter"
 OneUse = true
 

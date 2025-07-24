@@ -1,7 +1,5 @@
-[gd_scene load_steps=9 format=3 uid="uid://jur7vxccf5uw"]
+[gd_scene load_steps=7 format=3 uid="uid://jur7vxccf5uw"]
 
-[ext_resource type="Texture2D" uid="uid://cvu28dwc8s2y5" path="res://KOMSprites/innout/Register.png" id="1_24lo2"]
-[ext_resource type="Script" path="res://CustomScripts/Objects/In'nOut/RegisterCon.gd" id="2_xxd42"]
 [ext_resource type="AudioStream" uid="uid://cwu83yi6qfjwb" path="res://Sounds/tick3.ogg" id="3_pdmdl"]
 [ext_resource type="FontFile" uid="uid://dku4ohp5rmpr5" path="res://Fonts/DBStylez.ttf" id="3_tjaj0"]
 [ext_resource type="Script" path="res://CustomScripts/Objects/In'nOut/MenuGrabber.gd" id="4_kpyi6"]
@@ -18,14 +16,6 @@ transform = Transform3D(-0.7, 0, -1.05697e-07, 0, 0.7, 0, 1.05697e-07, 0, -0.7, 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
 visible = false
-
-[node name="Register2" type="TextureButton" parent="CanvasLayer"]
-offset_left = 270.0
-offset_top = 254.0
-offset_right = 720.0
-offset_bottom = 704.0
-texture_normal = ExtResource("1_24lo2")
-script = ExtResource("2_xxd42")
 
 [node name="Sound" type="AudioStreamPlayer" parent="CanvasLayer"]
 
@@ -59,5 +49,3 @@ CollisionShape = NodePath("../CollisionShape3D")
 
 [node name="SoundSource" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_pdmdl")
-
-[connection signal="pressed" from="CanvasLayer/Register2" to="CanvasLayer/Register2" method="_on_pressed"]

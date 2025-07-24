@@ -17,7 +17,7 @@ var textboxDest
 func _ready():
 	start = true
 	pass
-	
+
 func _process(delta):
 	if start == true:
 		if self.get_parent().running == true:
@@ -25,8 +25,8 @@ func _process(delta):
 				Spawned = true
 				Packload()
 
-	
-	
+
+
 func Packload():
 	id = self.get_parent().InstID
 	var node : Node = Scene.instantiate()

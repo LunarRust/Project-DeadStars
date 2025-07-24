@@ -13,6 +13,9 @@ func Item(item: String):
 	print("Trying Key")
 	if item == itemMatch && !opened:
 		Open()
+		return true
+	else:
+		return false
 
 func Open():
 	if !opened:

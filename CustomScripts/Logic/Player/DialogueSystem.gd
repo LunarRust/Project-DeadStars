@@ -33,6 +33,7 @@ var parentnode : Node3D
 var ActionButtonMaster : Node
 var RandNum : RandomNumberGenerator
 var num : int
+var enabled : bool = true
 
 func _ready():
 	RandNum = RandomNumberGenerator.new()
@@ -60,60 +61,66 @@ func _process(delta):
 					CloseDialogue()
 
 func OpenDialogue():
-	DialogueBox.show()
-	DialogueBox.modulate = Color.TRANSPARENT
-	var tween : Tween = create_tween()
-	tween.tween_property(DialogueBox,"modulate",Color.WHITE,1.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+	if enabled:
+		DialogueBox.show()
+		DialogueBox.modulate = Color.TRANSPARENT
+		var tween : Tween = create_tween()
+		tween.tween_property(DialogueBox,"modulate",Color.WHITE,1.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
 
 func  DialogueProcessing():
-	if looking:
-		var tween : Tween = create_tween()
-		tween.tween_property(self,"lookTarget",Vector3(PlayerObject.position.x,self.global_position.y,PlayerObject.position.z),0.5).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
-	match ActionButtonMaster.interactionMode:
-		1:
-			if DoLook:
-				num = RandNum.randi_range(0,LookDescription.size() - 1)
-				DialogueBox.get_node("NameText").text = "Look"
-				DialogueBox.get_node("MainText").text = LookDescription[num]
-				DialogueBox.get_node("FaceSprite").texture = load("res://Sprites/Faces/Eye.png")
-				OpenDialogue()
-			if DamageOnLook:
-				PlayerHealthController.notsostatichealth(Damage)
+	if enabled:
+		if looking:
+			var tween : Tween = create_tween()
+			tween.tween_property(self,"lookTarget",Vector3(PlayerObject.position.x,self.global_position.y,PlayerObject.position.z),0.5).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+		match ActionButtonMaster.interactionMode:
+			1:
+				if DoLook:
+					num = RandNum.randi_range(0,LookDescription.size() - 1)
+					DialogueBox.get_node("NameText").text = "Look"
+					DialogueBox.get_node("MainText").text = LookDescription[num]
+					DialogueBox.get_node("FaceSprite").texture = load("res://Sprites/Faces/Eye.png")
+					OpenDialogue()
+				if DamageOnLook:
+					PlayerHealthController.notsostatichealth(Damage)
 
-		2:
-			if DoDialogue:
-				num = RandNum.randi_range(0,Dialogue.size() - 1)
-				if DialogueVA.size() - 1 >= num:
-					soundSource.stream = DialogueVA[num]
-					soundSource.play()
-				else:
-					if soundSource != null:
-						soundSource.stream = null
-				if DialogueVA.size() == 0:
-					if soundSource != null:
-						soundSource.stream = DialogueSound
-						soundSource.pitch_scale = randf_range(0.8,1.2)
+			2:
+				if DoDialogue:
+					num = RandNum.randi_range(0,Dialogue.size() - 1)
+					if DialogueVA.size() - 1 >= num:
+						soundSource.stream = DialogueVA[num]
 						soundSource.play()
-				DialogueBox.get_node("NameText").text = npcName
-				DialogueBox.get_node("MainText").text = Dialogue[num]
-				DialogueBox.get_node("FaceSprite").texture = faceSprite
-				OpenDialogue()
-			if DamageOnDialogue:
-				PlayerHealthController.notsostatichealth(Damage)
+					else:
+						if soundSource != null:
+							soundSource.stream = null
+					if DialogueVA.size() == 0:
+						if soundSource != null:
+							soundSource.stream = DialogueSound
+							soundSource.pitch_scale = randf_range(0.8,1.2)
+							soundSource.play()
+					DialogueBox.get_node("NameText").text = npcName
+					DialogueBox.get_node("MainText").text = Dialogue[num]
+					DialogueBox.get_node("FaceSprite").texture = faceSprite
+					OpenDialogue()
+				if DamageOnDialogue:
+					PlayerHealthController.notsostatichealth(Damage)
 
-		3:
-			if DoTouch:
-				num = RandNum.randi_range(0,TouchDescription.size() - 1)
-				DialogueBox.get_node("NameText").text = "Touch"
-				DialogueBox.get_node("MainText").text = TouchDescription[num]
-				DialogueBox.get_node("FaceSprite").texture = load("res://Sprites/Faces/Touch.png")
-				OpenDialogue()
-			if DamageOnTouch:
-				PlayerHealthController.notsostatichealth(Damage)
-	isTalking = true
+			3:
+				if DoTouch:
+					num = RandNum.randi_range(0,TouchDescription.size() - 1)
+					DialogueBox.get_node("NameText").text = "Touch"
+					DialogueBox.get_node("MainText").text = TouchDescription[num]
+					DialogueBox.get_node("FaceSprite").texture = load("res://Sprites/Faces/Touch.png")
+					OpenDialogue()
+				if DamageOnTouch:
+					PlayerHealthController.notsostatichealth(Damage)
+		isTalking = true
 
 func CloseDialogue():
 	DialogueBox.hide()
 	if soundSource != null:
 		soundSource.stop()
 	isTalking = false
+
+
+func _on_health_controller_death():
+	enabled = false

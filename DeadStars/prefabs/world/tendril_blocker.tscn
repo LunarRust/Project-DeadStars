@@ -1128,6 +1128,8 @@ skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5857, 1.49045, 10.6399)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.137756, 0.778885, -0.0295048)
@@ -1135,7 +1137,7 @@ shape = SubResource("BoxShape3D_o4ady")
 
 [node name="Behavior" type="Node" parent="StaticBody3D"]
 script = ExtResource("5_2mrm1")
-itemID = "Lighter"
+itemID = "lighter"
 ItemToGive = "lighter"
 OneUse = true
 

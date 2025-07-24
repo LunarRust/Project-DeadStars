@@ -2,6 +2,7 @@ extends Node
 @export var AnimPlayer : AnimationPlayer
 @export var AnimTree : AnimationTree
 @export var DialogueSystem : Node3D
+@export var NewDialogueSystem : bool = false
 
 
 

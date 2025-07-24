@@ -10,6 +10,7 @@ static var itemArray : Dictionary
 @export var health_handler : Node2D
 @export var MouseCasting : Node3D
 var camCast : Camera3D
+var EnableFaceDrop : bool = true
 
 
 # Called when the node enters the scene tree for the first time.
@@ -66,10 +67,12 @@ func UseButton():
 
 func OnItemDrop(item, offset):
 	#allows for dropping syringes on the main character's face. This wasn't originally intended, but a ton of players tried to use the syringes that way.
-	###Disabled to stop getting in way of griddle, re-implement later.
-	#if item.prototype_id == "Syringe1":
-		#if ((offset.x > 64) && (offset.x < 180) && (offset.y < 375) && (offset.y > 250)):
-			#OnItemActivate(item.get_ref())
+	###Disabled to stop getting in way of griddle, re-implement later - me
+	###Great Fix Einstein - me, later.
+	#if EnableFaceDrop:
+		#if item.prototype_id == "Syringe1":
+			#if ((offset.x > 64) && (offset.x < 180) && (offset.y < 375) && (offset.y > 250)):
+				#OnItemActivate(item.get_ref())
 	print(item.get_ref())
 	print(offset)
 	ItemCast(item)
@@ -77,8 +80,8 @@ func OnItemDrop(item, offset):
 	pass # Replace with function body.
 
 func ItemCast(item):
-	var cast = MouseCasting.ItemCast(item.get_ref().get_title());
-	if (cast == true):
+	var cast = MouseCasting.ItemCast(item.get_ref());
+	if (cast == true && !OS.has_feature("editor")):
 		inv.remove_item(item.get_ref())
 	else:
 		print("Not true!")
@@ -91,6 +94,11 @@ func OnItemLeave(_item):
 	itemName.text = ""
 	itemDescription.text = ""
 
+func create_item(prototype_id: String) -> InventoryItem:
+	var item: InventoryItem = InventoryItem.new()
+	item.protoset = self.inv.item_protoset
+	item.prototype_id = prototype_id
+	return item
 
 func _on_flash_light_button_2_pressed():
 	pass # Replace with function body.

@@ -3,6 +3,7 @@ signal VolumeBeenEntered
 signal VolumeBeenExited
 
 @export var TriggerOnce : bool = false
+@export var Enabled : bool = true
 @export var TriggerResetTime : float = 0.0
 @export var TriggerDelay : float = 0.0
 @export var TriggerByGroup : Array[String]
@@ -26,41 +27,43 @@ func _process(delta):
 
 
 func _on_area_entered(area):
-	if !BeenEntered:
-		print("TriggerVolume: Area Entered")
-		if !TriggerByGroup.is_empty():
-			for i in TriggerByGroup:
-				if area.get_parent().is_in_group(i):
-					await get_tree().create_timer(TriggerDelay).timeout
-					VolumeBeenEntered.emit()
-					if TriggerOnce:
-						BeenEntered = true
-						self.queue_free()
-		else:
-			await get_tree().create_timer(TriggerDelay).timeout
-			VolumeBeenEntered.emit()
-			if TriggerOnce:
-				self.queue_free()
-				BeenEntered = true
+	if Enabled:
+		if !BeenEntered:
+			print("TriggerVolume: Area Entered")
+			if !TriggerByGroup.is_empty():
+				for i in TriggerByGroup:
+					if area.get_parent().is_in_group(i):
+						await get_tree().create_timer(TriggerDelay).timeout
+						VolumeBeenEntered.emit()
+						if TriggerOnce:
+							BeenEntered = true
+							self.queue_free()
+			else:
+				await get_tree().create_timer(TriggerDelay).timeout
+				VolumeBeenEntered.emit()
+				if TriggerOnce:
+					self.queue_free()
+					BeenEntered = true
 
 
 func _on_area_exited(area):
-	if  !BeenExited:
-		print("TriggerVolume: Area Exited")
-		if !TriggerByGroup.is_empty():
-			for i in TriggerByGroup:
-				if area.get_parent().is_in_group(i):
-					await get_tree().create_timer(TriggerDelay).timeout
-					VolumeBeenExited.emit()
-					if TriggerOnce:
-						self.queue_free()
-						BeenExited = true
-		else:
-			await get_tree().create_timer(TriggerDelay).timeout
-			VolumeBeenExited.emit()
-			if TriggerOnce:
-				self.queue_free()
-				BeenExited = true
+	if Enabled:
+		if  !BeenExited:
+			print("TriggerVolume: Area Exited")
+			if !TriggerByGroup.is_empty():
+				for i in TriggerByGroup:
+					if area.get_parent().is_in_group(i):
+						await get_tree().create_timer(TriggerDelay).timeout
+						VolumeBeenExited.emit()
+						if TriggerOnce:
+							self.queue_free()
+							BeenExited = true
+			else:
+				await get_tree().create_timer(TriggerDelay).timeout
+				VolumeBeenExited.emit()
+				if TriggerOnce:
+					self.queue_free()
+					BeenExited = true
 
 
 func _on_body_exited(body):

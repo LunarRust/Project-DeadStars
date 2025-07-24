@@ -2,22 +2,27 @@ extends Node3D
 @export var RCS : Node3D
 var active : bool = false
 @export var CharParent : Node3D
+@export var PosLabel : Label
 var space_state
 var cam
 var mousepos
+var mousepos2D
 var NpcRules
 var CheckRules : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
+
 	if get_tree().get_first_node_in_group("NpcSceneRules") != null:
 		CheckRules = true
 		NpcRules = get_tree().get_first_node_in_group("NpcSceneRules")
 		if NpcRules.AllowPlayerControl == true:
 			if Input.is_mouse_button_pressed(2):
 				active = true
-		pass # Replace with function body.
+		mousepos2D = self.get_node("mousepos2D")
 	else:
 		active = false
+	if !OS.has_feature("editor"):
+		PosLabel.hide()
 
 func _physics_process(delta):
 	if active:
@@ -25,17 +30,18 @@ func _physics_process(delta):
 			if NpcRules.AllowPlayerControl == true:
 				space_state = get_world_3d().direct_space_state
 				cam = get_viewport().get_camera_3d()
-				mousepos = get_viewport().get_mouse_position()
+				mousepos = get_window().get_mouse_position()
 				var mouseWorldPos = RCS.get_mouse_world_position(space_state,cam,mousepos)
 				if mouseWorldPos != null:
-					self.global_position = RCS.get_mouse_world_position(space_state,cam,mousepos)
+					PosLabel.text = str(mouseWorldPos)
+					self.global_position = RCS.get_mouse_world_position(space_state,cam,mousepos) - cam.position
 		else:
 			space_state = get_world_3d().direct_space_state
 			cam = get_viewport().get_camera_3d()
 			mousepos = get_viewport().get_mouse_position()
 			var mouseWorldPos = RCS.get_mouse_world_position(space_state,cam,mousepos)
 			if mouseWorldPos != null:
-				self.global_position = RCS.get_mouse_world_position(space_state,cam,mousepos)
+				self.global_position = RCS.get_mouse_world_position(space_state,cam,mousepos) - cam.global_position
 
 
 func _process(delta):

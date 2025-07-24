@@ -212,7 +212,7 @@ json_data = "[
         \"height\": 1,
         \"id\": \"lighter\",
         \"image\": \"res://DeadStars/sprites/Items/LighterRenderTiltedCroppedResizedx128.png\",
-        \"name\": \"Lighter\",
+        \"name\": \"lighter\",
         \"usable\": \"false\",
         \"width\": 1
     }

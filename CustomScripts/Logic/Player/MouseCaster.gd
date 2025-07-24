@@ -113,7 +113,7 @@ func Cast():
 	TouchedObject = CurrentIntersectedObject
 
 
-func ItemCast(item : String):
+func ItemCast(item):
 	var zDepth : float
 	zDepth = 2
 	var from : Vector3 = cam.project_ray_origin(mousepos)
@@ -122,14 +122,24 @@ func ItemCast(item : String):
 	physicsRayQueryParameters3D.hit_back_faces = false
 	var dictionary : Dictionary = space_state.intersect_ray(physicsRayQueryParameters3D)
 	print_rich("[color=red]" + str(dictionary) + "[/color]")
-	print_rich("Casting with:[color=red] " + item + "[/color]")
+	print_rich("Casting with:[color=red] " + item.prototype_id + "[/color]")
+	#print(str(item.get_property("health")) + " type: " + str(type_string(item.get_property("health"))))
+	if item.get_property("health") is float || item.get_property("health") is int:
+		if !dictionary.is_empty() && (dictionary["collider"] as CollisionObject3D).has_node("HealthController"):
+			var node : Node = (dictionary["collider"] as CollisionObject3D).get_node("HealthController")
+			if node.has_method("Item"):
+				node.Item(item)
+				return true
+		else:
+			return false
 	if !dictionary.is_empty() && (dictionary["collider"] as CollisionObject3D).has_node("Behavior"):
 		var node : Node = (dictionary["collider"] as CollisionObject3D).get_node("Behavior")
 		if node.has_method("Item"):
-			node.Item(item)
+			node.Item(item.prototype_id)
 			return true
 	else:
 		return false
+
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT && event.is_pressed():

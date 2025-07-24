@@ -6,7 +6,9 @@ extends Node3D
 @export var removeOnDeath : bool = true
 @export_category("Assignments")
 @export var DialogueSystem : Node3D
+@export var Behavior : Node
 @export var SoundSource : AudioStreamPlayer3D
+@export var HealthLabel : Label
 var shake
 @export var gibRoot = preload("res://prefabs/blood_splatter.tscn")
 @export var gibRoot2 = preload("res://prefabs/blood_splatter2.tscn")
@@ -21,6 +23,7 @@ var shake
 @export var Skin1Num : int = 4
 @export var Skin2Num : int = 2
 
+var MaxHP : int
 var gib = PackedScene
 var gib2 = PackedScene
 signal death
@@ -28,13 +31,40 @@ var dead : bool
 
 func _ready():
 	shake = get_tree().get_first_node_in_group("CameraShake")
+	MaxHP = HP
+	if HealthLabel != null:
+		HealthLabel.text = str(HP)
 func _process(delta):
 	if HP < 1 && !dead:
 		dead = true
 		Death()
 
 
+func Item(item):
+	if item.get_property("health") is float || item.get_property("health") is int:
+		changeHealth(convert(item.get_property("health"),TYPE_INT))
+		return true
+	else:
+		return false
 
+
+func changeHealth(amount : int):
+	if dead:
+		return
+	var num : int = HP
+	if amount < 0:
+		if Behavior != null:
+			Behavior.AnimTrigger("Hurt")
+		SoundSource.stream = load("res://Sounds/Hurt1.ogg")
+		SoundSource.play()
+	elif amount > 0:
+		SoundSource.stream = load("res://Sounds/Pickup.ogg")
+		SoundSource.play()
+	HP += amount
+	HP = clampf(HP,0,MaxHP)
+	if HealthLabel != null:
+		HealthLabel.text = str(HP)
+	SkinCheck()
 
 
 func Hurt(amount : int,doShake : bool = false):

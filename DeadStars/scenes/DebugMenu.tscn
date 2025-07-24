@@ -350,11 +350,11 @@ theme_override_styles/pressed = SubResource("9")
 theme_override_styles/normal = SubResource("7")
 action_mode = 0
 text = "
-Load Intro Level
+Load Intro
 
 "
 script = ExtResource("29_ypgot")
-destination = "res://DeadStars/scenes/Chapter1/Level0.tscn"
+destination = "res://DeadStars/scenes/Chapter1/Intro.tscn"
 
 [node name="ColorRect3" type="ColorRect" parent="PrimaryLoads/LoadCustomDebugRoomButton2"]
 show_behind_parent = true
@@ -367,6 +367,44 @@ mouse_filter = 2
 color = Color(0.0235294, 0.12549, 0.121569, 1)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="PrimaryLoads/LoadCustomDebugRoomButton2"]
+script = ExtResource("11_ora3i")
+
+[node name="LoadCustomDebugRoomButton4" type="Button" parent="PrimaryLoads"]
+top_level = true
+z_as_relative = false
+offset_left = 221.0
+offset_top = 146.0
+offset_right = 434.999
+offset_bottom = 194.0
+theme = ExtResource("4_u0om8")
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.0313726, 0.380392, 0.34902, 1)
+theme_override_colors/font_color = Color(0.0313726, 0.380392, 0.34902, 1)
+theme_override_styles/focus = SubResource("11")
+theme_override_styles/disabled = SubResource("10")
+theme_override_styles/hover = SubResource("8")
+theme_override_styles/pressed = SubResource("9")
+theme_override_styles/normal = SubResource("7")
+action_mode = 0
+text = "
+Load NewDialogTest
+
+"
+script = ExtResource("29_ypgot")
+destination = "res://DeadStars/scenes/DialogicTest.tscn"
+
+[node name="ColorRect3" type="ColorRect" parent="PrimaryLoads/LoadCustomDebugRoomButton4"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 210.0
+offset_bottom = 41.0
+mouse_filter = 2
+color = Color(0.0235294, 0.12549, 0.121569, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="PrimaryLoads/LoadCustomDebugRoomButton4"]
 script = ExtResource("11_ora3i")
 
 [node name="oldUI" type="Node2D" parent="."]
@@ -729,6 +767,7 @@ script = ExtResource("11_ora3i")
 [connection signal="pressed" from="PrimaryLoads/LoadCustomDebugRoomButton" to="PrimaryLoads/LoadCustomDebugRoomButton/AudioStreamPlayer" method="_on_button_pressed"]
 [connection signal="pressed" from="PrimaryLoads/LoadCustomDebugRoomButton3" to="PrimaryLoads/LoadCustomDebugRoomButton3/AudioStreamPlayer" method="_on_button_pressed"]
 [connection signal="pressed" from="PrimaryLoads/LoadCustomDebugRoomButton2" to="PrimaryLoads/LoadCustomDebugRoomButton2/AudioStreamPlayer" method="_on_button_pressed"]
+[connection signal="pressed" from="PrimaryLoads/LoadCustomDebugRoomButton4" to="PrimaryLoads/LoadCustomDebugRoomButton4/AudioStreamPlayer" method="_on_button_pressed"]
 [connection signal="pressed" from="oldUI/SaveDataButtonsParent/CheckBox" to="oldUI/SaveDataButtonsParent/CheckBox" method="_on_pressed"]
 [connection signal="pressed" from="oldUI/SaveDataButtonsParent/CheckBox" to="oldUI/SaveDataButtonsParent/CheckBox/AudioStreamPlayer" method="_on_check_box_pressed"]
 [connection signal="toggled" from="oldUI/SaveDataButtonsParent/CheckBox" to="oldUI/SaveDataButtonsParent/CheckBox" method="_on_toggled"]

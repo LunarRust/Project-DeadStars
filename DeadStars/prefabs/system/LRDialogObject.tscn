@@ -1,0 +1,355 @@
+[gd_scene load_steps=31 format=3 uid="uid://vbego2bh0k4x"]
+
+[ext_resource type="Script" path="res://DeadStars/scripts/NewDialogueSystem/MainTextHandler.gd" id="1_ifjvt"]
+[ext_resource type="FontFile" uid="uid://dku4ohp5rmpr5" path="res://Fonts/DBStylez.ttf" id="2_i4suv"]
+[ext_resource type="Script" path="res://CustomScripts/Objects/In'nOut/MenuGrabber.gd" id="3_6rpwc"]
+[ext_resource type="Curve" uid="uid://iwl6freusb4t" path="res://KOMResources/Curves/CamGrabberCurve.tres" id="4_3rjlx"]
+[ext_resource type="AudioStream" uid="uid://cwu83yi6qfjwb" path="res://Sounds/tick3.ogg" id="5_a4f2x"]
+[ext_resource type="Script" path="res://DeadStars/scripts/TouchTrigger.gd" id="6_v0x7p"]
+[ext_resource type="Texture2D" uid="uid://d08uqmhpg2wkn" path="res://Sprites/DialogueBox.png" id="7_ss6e3"]
+[ext_resource type="Script" path="res://CustomScripts/Logic/Player/DialogueBox.gd" id="8_i2erl"]
+[ext_resource type="Texture2D" uid="uid://h1qhsfsy30ya" path="res://Sprites/UI/X.png" id="9_igiua"]
+[ext_resource type="Script" path="res://DeadStars/scripts/Tweener2D.gd" id="9_kqruf"]
+[ext_resource type="Script" path="res://Scripts/XButton.cs" id="10_u1j6r"]
+[ext_resource type="Texture2D" uid="uid://dlxwxvfcxaciw" path="res://Sprites/Faces/Psychopomp FaceSprite.png" id="11_18lv3"]
+[ext_resource type="Texture2D" uid="uid://bdprua1xq1wim" path="res://Sprites/UI/Gear.png" id="12_aws4n"]
+[ext_resource type="Script" path="res://Scripts/Tweener2D.cs" id="13_gsauh"]
+[ext_resource type="FontFile" uid="uid://dg3h8s7di2p7v" path="res://Fonts/DBStylez2.ttf" id="14_5k0u5"]
+[ext_resource type="Texture2D" uid="uid://fpjyw8ttbo8r" path="res://Sprites/Speak3.png" id="15_6renm"]
+[ext_resource type="Texture2D" uid="uid://bn030tg8lovt0" path="res://Sprites/Speak2.png" id="16_rd4i0"]
+[ext_resource type="Texture2D" uid="uid://cq1g0r5ketc72" path="res://Sprites/Speak1.png" id="17_0vs54"]
+[ext_resource type="PackedScene" uid="uid://bab2dq5qur6ok" path="res://DeadStars/prefabs/UI/MenuButton.tscn" id="18_q3g78"]
+[ext_resource type="Script" path="res://addons/gloot/core/inventory_item.gd" id="19_062wc"]
+[ext_resource type="PackedScene" uid="uid://d02do5ugamivi" path="res://DeadStars/prefabs/UI/ShopController.tscn" id="19_tbcac"]
+[ext_resource type="Resource" uid="uid://1vk2qehuhumm" path="res://ItemsNew.tres" id="20_hefbt"]
+[ext_resource type="Script" path="res://DeadStars/scripts/NewDialogueSystem/DialogChanger.gd" id="21_yd8xs"]
+[ext_resource type="Script" path="res://DeadStars/scripts/AnimToggle.gd" id="22_hwl5x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s47yy"]
+size = Vector3(0.15069, 0.129352, 0.175421)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ao1tl"]
+size = Vector3(2.3667, 2.20679, 1)
+
+[sub_resource type="Animation" id="Animation_m5dpk"]
+resource_name = "Close"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShopController:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.00833333, 0.0166667, 0.025, 0.0333333, 0.0416667, 0.05, 0.0583333, 0.0666667, 0.075, 0.0833333, 0.0916667, 0.1, 0.108333, 0.116667, 0.125, 0.133333, 0.141667, 0.15, 0.158333, 0.166667, 0.175, 0.183333, 0.191667, 0.2, 0.208333, 0.216667, 0.225, 0.233333, 0.241667, 0.25, 0.258333, 0.266667, 0.275, 0.283333, 0.291667, 0.3, 0.308333, 0.316667, 0.325, 0.333333, 0.341667, 0.35, 0.358333, 0.366667, 0.375, 0.383333, 0.391667, 0.4, 0.408333, 0.416667, 0.425, 0.433333, 0.441667, 0.45, 0.458333, 0.466667, 0.475, 0.483333, 0.491667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(757, 0), Vector2(757, 0), Vector2(757.002, 0), Vector2(757.011, 0), Vector2(757.035, 0), Vector2(757.086, 0), Vector2(757.178, 0), Vector2(757.331, 0), Vector2(757.564, 0), Vector2(757.903, 0), Vector2(758.377, 0), Vector2(759.015, 0), Vector2(759.854, 0), Vector2(760.932, 0), Vector2(762.288, 0), Vector2(763.969, 0), Vector2(766.021, 0), Vector2(768.497, 0), Vector2(771.45, 0), Vector2(774.939, 0), Vector2(779.025, 0), Vector2(783.771, 0), Vector2(789.246, 0), Vector2(795.521, 0), Vector2(802.67, 0), Vector2(810.771, 0), Vector2(819.905, 0), Vector2(830.155, 0), Vector2(841.61, 0), Vector2(854.36, 0), Vector2(868.5, 0), Vector2(882.64, 0), Vector2(895.39, 0), Vector2(906.845, 0), Vector2(917.095, 0), Vector2(926.229, 0), Vector2(934.33, 0), Vector2(941.479, 0), Vector2(947.754, 0), Vector2(953.229, 0), Vector2(957.975, 0), Vector2(962.061, 0), Vector2(965.55, 0), Vector2(968.503, 0), Vector2(970.979, 0), Vector2(973.031, 0), Vector2(974.712, 0), Vector2(976.068, 0), Vector2(977.146, 0), Vector2(977.985, 0), Vector2(978.623, 0), Vector2(979.097, 0), Vector2(979.436, 0), Vector2(979.669, 0), Vector2(979.822, 0), Vector2(979.914, 0), Vector2(979.965, 0), Vector2(979.989, 0), Vector2(979.998, 0), Vector2(980, 0), Vector2(980, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gnyjc"]
+resource_name = "Open"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShopController:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.00833333, 0.0166667, 0.025, 0.0333333, 0.0416667, 0.05, 0.0583333, 0.0666667, 0.075, 0.0833333, 0.0916667, 0.1, 0.108333, 0.116667, 0.125, 0.133333, 0.141667, 0.15, 0.158333, 0.166667, 0.175, 0.183333, 0.191667, 0.2, 0.208333, 0.216667, 0.225, 0.233333, 0.241667, 0.25, 0.258333, 0.266667, 0.275, 0.283333, 0.291667, 0.3, 0.308333, 0.316667, 0.325, 0.333333, 0.341667, 0.35, 0.358333, 0.366667, 0.375, 0.383333, 0.391667, 0.4, 0.408333, 0.416667, 0.425, 0.433333, 0.441667, 0.45, 0.458333, 0.466667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(980, 0), Vector2(980, 0), Vector2(979.997, 0), Vector2(979.985, 0), Vector2(979.954, 0), Vector2(979.887, 0), Vector2(979.765, 0), Vector2(979.564, 0), Vector2(979.257, 0), Vector2(978.81, 0), Vector2(978.186, 0), Vector2(977.344, 0), Vector2(976.238, 0), Vector2(974.819, 0), Vector2(973.031, 0), Vector2(970.817, 0), Vector2(968.112, 0), Vector2(964.849, 0), Vector2(960.957, 0), Vector2(956.359, 0), Vector2(950.976, 0), Vector2(944.721, 0), Vector2(937.505, 0), Vector2(929.236, 0), Vector2(919.815, 0), Vector2(909.14, 0), Vector2(897.104, 0), Vector2(883.595, 0), Vector2(868.5, 0), Vector2(853.405, 0), Vector2(839.897, 0), Vector2(827.86, 0), Vector2(817.185, 0), Vector2(807.764, 0), Vector2(799.495, 0), Vector2(792.279, 0), Vector2(786.024, 0), Vector2(780.641, 0), Vector2(776.043, 0), Vector2(772.151, 0), Vector2(768.888, 0), Vector2(766.184, 0), Vector2(763.969, 0), Vector2(762.181, 0), Vector2(760.762, 0), Vector2(759.656, 0), Vector2(758.814, 0), Vector2(758.19, 0), Vector2(757.743, 0), Vector2(757.436, 0), Vector2(757.235, 0), Vector2(757.113, 0), Vector2(757.047, 0), Vector2(757.015, 0), Vector2(757.003, 0), Vector2(757, 0), Vector2(757, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_65jwt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShopController:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(980, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ko6aw"]
+_data = {
+"Close": SubResource("Animation_m5dpk"),
+"Open": SubResource("Animation_gnyjc"),
+"RESET": SubResource("Animation_65jwt")
+}
+
+[node name="DialogObject" type="Node3D" node_paths=PackedStringArray("ShopController", "NPCInvDisplay", "MainText", "NameText", "DialogueBox", "soundSource", "Sprite")]
+script = ExtResource("1_ifjvt")
+Dialogue = Array[String](["1", "2", "3", "4"])
+ShopController = NodePath("UI/ModeSelectInterface")
+NPCInvDisplay = NodePath("UI/ModeSelectInterface/ShopController/TextureRect/InvDisplay")
+ShopEnabled = true
+MainText = NodePath("UI/DialogInterface/DialogueParent/DialogueBox/TextParent/MainText")
+NameText = NodePath("UI/DialogInterface/DialogueParent/DialogueBox/TextParent/NameText")
+DialogueBox = NodePath("UI/DialogInterface/DialogueParent/DialogueBox")
+soundSource = NodePath("DialogueSounds")
+Sprite = NodePath("UI/DialogInterface/DialogueParent/DialogueBox/FaceSprite")
+
+[node name="UI_ModeSelectInterface_ShopController_TextureRect_InventoryGrid#_Node_171302" type="Node" parent="."]
+script = ExtResource("19_062wc")
+protoset = ExtResource("20_hefbt")
+prototype_id = "Syringe1"
+
+[node name="UI_ModeSelectInterface_ShopController_TextureRect_InventoryGrid#_Node_171581" type="Node" parent="."]
+script = ExtResource("19_062wc")
+protoset = ExtResource("20_hefbt")
+prototype_id = "Syringe1"
+properties = {
+"grid_position": Vector2i(2, 0)
+}
+
+[node name="UI_ModeSelectInterface_ShopController_TextureRect_InventoryGrid#_Node_171890" type="Node" parent="."]
+script = ExtResource("19_062wc")
+protoset = ExtResource("20_hefbt")
+prototype_id = "Syringe1"
+properties = {
+"grid_position": Vector2i(1, 0)
+}
+
+[node name="DialogueSounds" type="AudioStreamPlayer3D" parent="."]
+
+[node name="CamGrabber" type="StaticBody3D" parent="."]
+transform = Transform3D(0.7, 0, 1.66893e-07, 0, 0.7, 0, -1.66893e-07, 0, 0.7, 0, 0, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CamGrabber"]
+layer = 2
+visible = false
+
+[node name="Sound" type="AudioStreamPlayer" parent="CamGrabber/CanvasLayer"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CamGrabber/CanvasLayer"]
+offset_left = 10.0
+offset_top = 510.0
+offset_right = 250.0
+offset_bottom = 540.0
+theme_override_fonts/normal_font = ExtResource("2_i4suv")
+theme_override_font_sizes/normal_font_size = 23
+bbcode_enabled = true
+text = "[shake rate=1]press [color=red]space[/color] to exit."
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CamGrabber"]
+transform = Transform3D(1, 0, 3.58114e-12, 0, 1, 0, -3.58114e-12, 0, 1, -1.47981, -16.7924, -0.0355649)
+shape = SubResource("BoxShape3D_s47yy")
+
+[node name="Camera3D" type="Camera3D" parent="CamGrabber"]
+transform = Transform3D(1.42858, 0, 0, 0, 1.42857, 0, 0, 0, 1.42857, 0, 0, 0)
+
+[node name="Behavior" type="Node" parent="CamGrabber" node_paths=PackedStringArray("PlayerCam", "SoundSource", "MenuCam", "CanvasToShow", "CollisionShape")]
+script = ExtResource("3_6rpwc")
+PlayerCam = NodePath("../Camera3D")
+SoundSource = NodePath("../CanvasLayer/Sound")
+MenuCam = NodePath("../Camera3D")
+CanvasToShow = NodePath("../CanvasLayer")
+CamCurve = ExtResource("4_3rjlx")
+CollisionShape = NodePath("../CollisionShape3D")
+DistanceToClose = 4.0
+
+[node name="SoundSource" type="AudioStreamPlayer3D" parent="CamGrabber"]
+stream = ExtResource("5_a4f2x")
+
+[node name="MainTrigger" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.40055, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10376, -4.67687, 0)
+shape = SubResource("BoxShape3D_ao1tl")
+
+[node name="Behavior" type="Node" parent="MainTrigger"]
+script = ExtResource("6_v0x7p")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="DialogInterface" type="Node2D" parent="UI"]
+
+[node name="DialogueParent" type="Node2D" parent="UI/DialogInterface"]
+position = Vector2(0, 0.00440625)
+script = ExtResource("9_kqruf")
+time = 5.0
+tweenPosition = true
+endPosition = Vector2(0, 10)
+
+[node name="DialogueBox" type="Sprite2D" parent="UI/DialogInterface/DialogueParent" groups=["DialogueBox"]]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+position = Vector2(-75, 305)
+scale = Vector2(1.155, 1.155)
+texture = ExtResource("7_ss6e3")
+offset = Vector2(480, 270)
+script = ExtResource("8_i2erl")
+
+[node name="X Button" type="TextureButton" parent="UI/DialogInterface/DialogueParent/DialogueBox"]
+offset_left = 124.0
+offset_top = 141.0
+offset_right = 156.0
+offset_bottom = 173.0
+texture_normal = ExtResource("9_igiua")
+script = ExtResource("10_u1j6r")
+
+[node name="FaceSprite" type="Sprite2D" parent="UI/DialogInterface/DialogueParent/DialogueBox"]
+position = Vector2(740.26, 89.1775)
+scale = Vector2(0.718594, 0.718594)
+texture = ExtResource("11_18lv3")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="UI/DialogInterface/DialogueParent/DialogueBox"]
+offset_left = 695.238
+offset_top = 47.619
+offset_right = 695.238
+offset_bottom = 47.619
+scale = Vector2(1.095, 1.095)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+ratio = 0.001
+
+[node name="Gear1" type="Sprite2D" parent="UI/DialogInterface/DialogueParent/DialogueBox"]
+modulate = Color(0.666667, 0.639216, 0.760784, 1)
+z_index = -1
+position = Vector2(828, 94)
+scale = Vector2(0.675, 0.675)
+texture = ExtResource("12_aws4n")
+script = ExtResource("13_gsauh")
+Time = 5.0
+tweenRotation = true
+endrotation = 2.0
+
+[node name="Gear2" type="Sprite2D" parent="UI/DialogInterface/DialogueParent/DialogueBox"]
+modulate = Color(0.666667, 0.639216, 0.760784, 1)
+z_index = -1
+position = Vector2(135, 94)
+scale = Vector2(0.675, 0.675)
+texture = ExtResource("12_aws4n")
+script = ExtResource("13_gsauh")
+Time = 5.0
+tweenRotation = true
+endrotation = -2.0
+
+[node name="TextParent" type="Node2D" parent="UI/DialogInterface/DialogueParent/DialogueBox"]
+
+[node name="NameText" type="RichTextLabel" parent="UI/DialogInterface/DialogueParent/DialogueBox/TextParent"]
+modulate = Color(0.658824, 0.658824, 0.658824, 1)
+self_modulate = Color(0.654902, 0.403922, 0.647059, 1)
+offset_left = 172.294
+offset_top = 25.1082
+offset_right = 534.294
+offset_bottom = 44.1082
+theme_override_fonts/normal_font = ExtResource("14_5k0u5")
+bbcode_enabled = true
+text = "NAME:"
+
+[node name="MainText" type="RichTextLabel" parent="UI/DialogInterface/DialogueParent/DialogueBox/TextParent"]
+offset_left = 170.0
+offset_top = 59.0
+offset_right = 701.0
+offset_bottom = 140.0
+theme_override_colors/default_color = Color(0.613281, 0.5625, 0.605469, 1)
+theme_override_fonts/normal_font = ExtResource("2_i4suv")
+bbcode_enabled = true
+text = "Dialogue goes here."
+
+[node name="NextTextButton" type="TextureButton" parent="UI/DialogInterface/DialogueParent/DialogueBox/TextParent"]
+offset_left = 632.9
+offset_top = 89.1775
+offset_right = 664.9
+offset_bottom = 121.177
+scale = Vector2(1.78, 1.78)
+texture_normal = ExtResource("15_6renm")
+texture_pressed = ExtResource("16_rd4i0")
+texture_hover = ExtResource("17_0vs54")
+
+[node name="HP Number" type="Label" parent="UI/DialogInterface/DialogueParent/DialogueBox"]
+offset_left = 667.888
+offset_top = 44.152
+offset_right = 707.888
+offset_bottom = 70.152
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_i4suv")
+text = "00"
+
+[node name="HP Label" type="Label" parent="UI/DialogInterface/DialogueParent/DialogueBox"]
+offset_left = 645.888
+offset_top = 44.152
+offset_right = 663.888
+offset_bottom = 63.152
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_i4suv")
+text = "HP"
+
+[node name="ModeSelectInterface" type="Node2D" parent="UI"]
+visible = false
+position = Vector2(0, 0.00440625)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/ModeSelectInterface"]
+offset_right = 200.0
+offset_bottom = 300.0
+theme_override_constants/separation = 20
+alignment = 2
+
+[node name="ScoreContainer" parent="UI/ModeSelectInterface/VBoxContainer" instance=ExtResource("18_q3g78")]
+layout_mode = 2
+
+[node name="TextureButton" parent="UI/ModeSelectInterface/VBoxContainer/ScoreContainer/UIParent" index="0" node_paths=PackedStringArray("DialogParent")]
+script = ExtResource("21_yd8xs")
+DialogParent = NodePath("../../../../../..")
+
+[node name="ScoreEntry" parent="UI/ModeSelectInterface/VBoxContainer/ScoreContainer/UIParent" index="1"]
+text = "Dialog2
+"
+
+[node name="ScoreContainer2" parent="UI/ModeSelectInterface/VBoxContainer" instance=ExtResource("18_q3g78")]
+layout_mode = 2
+
+[node name="TextureButton" parent="UI/ModeSelectInterface/VBoxContainer/ScoreContainer2/UIParent" index="0" node_paths=PackedStringArray("AnimPlayer")]
+script = ExtResource("22_hwl5x")
+AnimPlayer = NodePath("../../../../ShopController/AnimationPlayer")
+Anim1 = "Open"
+Anim2 = "Close"
+
+[node name="ScoreEntry" parent="UI/ModeSelectInterface/VBoxContainer/ScoreContainer2/UIParent" index="1"]
+offset_left = 10.0
+offset_top = 10.9956
+offset_right = 78.89
+offset_bottom = 39.3806
+scale = Vector2(1.61, 1.61)
+theme_override_font_sizes/font_size = 16
+text = "Inventory"
+
+[node name="ShopController" parent="UI/ModeSelectInterface" instance=ExtResource("19_tbcac")]
+position = Vector2(980, 0)
+scale = Vector2(0.74, 0.74)
+
+[node name="ScoreEntry2" parent="UI/ModeSelectInterface/ShopController" index="10"]
+offset_left = 97.2974
+offset_top = 144.595
+offset_right = 148.297
+offset_bottom = 175.595
+theme_override_font_sizes/font_size = 16
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/ModeSelectInterface/ShopController"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_ko6aw")
+}
+
+[connection signal="TooFar" from="CamGrabber/Behavior" to="." method="CloseDialogue"]
+[connection signal="touched" from="MainTrigger/Behavior" to="." method="OpenDialogue"]
+[connection signal="touched" from="MainTrigger/Behavior" to="CamGrabber/Behavior" method="Touch"]
+[connection signal="pressed" from="UI/DialogInterface/DialogueParent/DialogueBox/X Button" to="." method="CloseDialogue"]
+[connection signal="pressed" from="UI/DialogInterface/DialogueParent/DialogueBox/X Button" to="CamGrabber/Behavior" method="ReturnCamera"]
+[connection signal="pressed" from="UI/DialogInterface/DialogueParent/DialogueBox/TextParent/NextTextButton" to="." method="_on_next_text_button_pressed"]
+[connection signal="pressed" from="UI/DialogInterface/DialogueParent/DialogueBox/TextParent/NextTextButton" to="." method="Next"]
+[connection signal="pressed" from="UI/ModeSelectInterface/VBoxContainer/ScoreContainer/UIParent/TextureButton" to="." method="_on_NewText1_pressed"]
+
+[editable path="UI/ModeSelectInterface/VBoxContainer/ScoreContainer"]
+[editable path="UI/ModeSelectInterface/VBoxContainer/ScoreContainer2"]
+[editable path="UI/ModeSelectInterface/ShopController"]

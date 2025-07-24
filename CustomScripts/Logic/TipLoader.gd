@@ -1,4 +1,5 @@
 extends RichTextLabel
+@export var Preface : String = "Real World Tip:"
 @export_multiline var tips : Array[String]
 
 
@@ -6,4 +7,4 @@ extends RichTextLabel
 func _ready():
 	var RandNum : RandomNumberGenerator = RandomNumberGenerator.new()
 	var num : int = RandNum.randi_range(0,tips.size() - 1)
-	self.text = "[wave][center]" + "\n" + tips[num]
+	self.text = "[wave]" + Preface + "\n" + tips[num]

@@ -9,6 +9,8 @@ extends Node
 @export var CamCurve : Curve
 @export var CollisionShape : CollisionShape3D
 @export_category("Parameters")
+@export var ReturnAfterTime : bool = false
+@export var ReturnTime : float = 0
 @export var UIToToggle : Array[Node2D] = []
 @export var MoveCamera : bool = true
 @export var DistanceToClose : float = 2
@@ -17,7 +19,7 @@ extends Node
 @export var RandomizeSoundPitch : bool = false
 @export var SoundEffect : AudioStream
 
-
+var timer : float = 0
 var PlayerInvCtlGrid
 
 var CamIsInterpolating : bool = false
@@ -26,6 +28,7 @@ var t = 0.0
 var MenuCamCurrentTransform
 var PlayerCamCurrentTransform
 var playerObject : Node3D
+signal TooFar
 
 var hudmanager = load("res://prefabs/hudmanager.cs")
 
@@ -52,6 +55,12 @@ func Touch():
 
 
 func _process(delta):
+	if timer <= ReturnTime && used:
+		timer += delta
+	elif used && ReturnAfterTime:
+		timer = 0
+		ReturnCamera()
+
 	if used:
 		if Input.is_physical_key_pressed(KEY_SPACE):
 			used = false
@@ -86,6 +95,7 @@ func _process(delta):
 
 		if !CamIsInterpolating && get_parent().global_position.distance_to(playerObject.global_position) > DistanceToClose:
 			ReturnCamera()
+			TooFar.emit()
 
 
 func ReturnCamera():
