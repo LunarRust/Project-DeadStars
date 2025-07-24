@@ -47,11 +47,12 @@ func OnItemActivate(item):
 		health_handler.changeHealth(item.get_property("health", 0))
 
 	if (item.get_property("usable", false)):
-		inv.remove_item(item)
+		if !OS.has_feature("editor"):
+			inv.remove_item(item)
 	else:
 		print(item)
 		var cast = camCast.call("ItemCast", item.get_title());
-		if (cast == true):
+		if (cast == true && !OS.has_feature("editor")):
 			inv.remove_item(item)
 		else:
 			print("Not true!")
@@ -67,12 +68,12 @@ func UseButton():
 
 func OnItemDrop(item, offset):
 	#allows for dropping syringes on the main character's face. This wasn't originally intended, but a ton of players tried to use the syringes that way.
-	###Disabled to stop getting in way of griddle, re-implement later - me
+	###TODO Disabled to stop getting in way of griddle, re-implement later - me
 	###Great Fix Einstein - me, later.
-	#if EnableFaceDrop:
-		#if item.prototype_id == "Syringe1":
-			#if ((offset.x > 64) && (offset.x < 180) && (offset.y < 375) && (offset.y > 250)):
-				#OnItemActivate(item.get_ref())
+	if EnableFaceDrop:
+		if item.get_ref().get_property("health") is float || item.get_ref().get_property("health") is int:
+			if ((offset.x > 64) && (offset.x < 180) && (offset.y < 375) && (offset.y > 250)):
+				OnItemActivate(item.get_ref())
 	print(item.get_ref())
 	print(offset)
 	ItemCast(item)

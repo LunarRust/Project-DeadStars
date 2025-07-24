@@ -269,14 +269,14 @@ bind/65/name = &"shin_R-IKPole"
 bind/65/bone = -1
 bind/65/pose = Transform3D(1, -2.36601e-06, 4.7187e-07, 4.7187e-07, 0.383616, 0.923493, -2.36601e-06, -0.923494, 0.383616, 0.0802554, -0.45369, 0.942757)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ropmv"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_uepv3"]
 viewport_path = NodePath("VenusModel/OrderPanel/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iw1y4"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pwxkk"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_ropmv")
+albedo_texture = SubResource("ViewportTexture_uepv3")
 billboard_mode = 1
 billboard_keep_scale = true
 
@@ -506,14 +506,14 @@ bind/65/name = &"shin_R-IKPole"
 bind/65/bone = -1
 bind/65/pose = Transform3D(1, -2.36601e-06, 4.7187e-07, 4.7187e-07, 0.383616, 0.923493, -2.36601e-06, -0.923494, 0.383616, 0.0802554, -0.45369, 0.942757)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_v2ys4"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ep76j"]
 viewport_path = NodePath("VenusModel/OrderPanel/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ix0pp"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tfo5u"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_v2ys4")
+albedo_texture = SubResource("ViewportTexture_ep76j")
 billboard_mode = 1
 billboard_keep_scale = true
 
@@ -583,116 +583,68 @@ shape = SubResource("ConvexPolygonShape3D_svdnn")
 [node name="PrinceNPC" parent="." instance=ExtResource("25_b0gnf")]
 transform = Transform3D(-0.995346, 0, -0.096367, 0, 1, 0, 0.096367, 0, -0.995346, 0, 2.04125, 3.29597)
 
-[node name="DialogueSystem" parent="PrinceNPC" index="2"]
-DoDialogue = false
-
 [node name="HealthController" parent="PrinceNPC" index="4"]
 Skin0 = SubResource("StandardMaterial3D_1ynt8")
 Skin1 = SubResource("StandardMaterial3D_xl5xw")
 Skin2 = SubResource("StandardMaterial3D_evyak")
 
-[node name="Behavior" parent="PrinceNPC" index="5" node_paths=PackedStringArray("dialogue")]
-dialogue = NodePath("../VenusModel/DialogObject")
-
 [node name="PrinceAnimationTree" parent="PrinceNPC" index="6"]
-parameters/conditions/Dialogue = false
-parameters/conditions/DialogueTalk = false
-parameters/conditions/DialogueTalk2 = false
 parameters/DialogueIdleBlend/blend_position = 0
 parameters/DialogueTalkBlend/blend_position = 0
-parameters/DialogueTalkBlend2/blend_position = 0
-
-[node name="AnimationTree" parent="PrinceNPC" index="7"]
-parameters/conditions/Dialogue = false
-parameters/conditions/DialogueTalk = false
-parameters/conditions/DialogueTalk2 = false
-parameters/DialogueIdleBlend/blend_position = 0
-parameters/DialogueTalkBlend/blend_position = 0
-parameters/DialogueTalkBlend2/blend_position = 0
-
-[node name="AnimationTree2" parent="PrinceNPC" index="8"]
-parameters/conditions/Dialogue = false
-parameters/conditions/DialogueTalk = false
-parameters/conditions/DialogueTalk2 = false
-parameters/DialogueIdleBlend/blend_position = 0
-parameters/DialogueTalkBlend/blend_position = 0
-parameters/DialogueTalkBlend2/blend_position = 0
 
 [node name="Prince Rigging Project Solo" parent="PrinceNPC/VenusModel" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(-0.997065, 0, 0.0765625, 0, 1, 0, -0.0765625, 0, -0.997065, 0, 0, 0)
 
 [node name="Skeleton3D" parent="PrinceNPC/VenusModel/Prince Rigging Project Solo/princeface/Posable Face Prince" index="0"]
-bones/0/position = Vector3(2.53539e-11, 1.0084, -0.0552453)
-bones/0/rotation = Quaternion(-0.523664, 0.000674667, 0.0255144, 0.851543)
-bones/1/rotation = Quaternion(0.494079, 0.0131918, 0.0082805, 0.869278)
-bones/2/rotation = Quaternion(0.420002, -0.000666578, 0.000133291, 0.907523)
-bones/3/rotation = Quaternion(-0.317199, 0.000291187, -0.000331819, 0.948359)
-bones/4/position = Vector3(1.35349e-08, 0.218705, -0.0277516)
-bones/4/rotation = Quaternion(-0.0470034, 0.0960127, -0.0486511, 0.993079)
-bones/5/position = Vector3(0.075065, 0.146851, 0.0514116)
+bones/0/position = Vector3(-1.13132e-11, 1.00973, -0.0552393)
+bones/0/rotation = Quaternion(-0.523642, 0.000674579, 0.025512, 0.851556)
+bones/1/rotation = Quaternion(0.494075, 0.0131914, 0.00828027, 0.86928)
+bones/2/rotation = Quaternion(0.420003, -0.000667772, 0.000109442, 0.907523)
+bones/3/rotation = Quaternion(-0.317199, 0.000314138, -0.000286005, 0.948359)
+bones/4/position = Vector3(1.34035e-08, 0.218705, -0.0277516)
+bones/4/rotation = Quaternion(-0.0511712, 0.0684217, -0.0382267, 0.99561)
+bones/5/position = Vector3(0.0750219, 0.146838, 0.0513954)
 bones/5/rotation = Quaternion(0.673374, 0.0937485, -0.13196, 0.721363)
-bones/5/scale = Vector3(1, 1, 1)
-bones/6/position = Vector3(0.0550913, 0.193959, 0.0217168)
-bones/6/rotation = Quaternion(0.715463, 0.0918419, 0.0874562, 0.687044)
+bones/6/position = Vector3(0.055084, 0.193893, 0.021712)
 bones/6/scale = Vector3(1, 1, 1)
-bones/7/position = Vector3(0.0536584, 0.119042, 0.0264235)
-bones/7/rotation = Quaternion(0.715463, 0.0918431, 0.0874575, 0.687043)
 bones/7/scale = Vector3(1, 1, 1)
-bones/8/position = Vector3(-0.000462827, 0.0445221, 0.0303049)
-bones/8/rotation = Quaternion(0.723722, -0.042522, -0.0559394, 0.686505)
+bones/8/position = Vector3(-0.000458547, 0.0446674, 0.0303443)
 bones/8/scale = Vector3(1, 1, 1)
-bones/9/position = Vector3(0.0271873, 0.042585, -0.0139788)
 bones/9/rotation = Quaternion(-0.0499969, -0.040847, -0.029042, 0.997491)
 bones/9/scale = Vector3(1, 1, 1)
-bones/10/position = Vector3(-0.00279811, 0.0571303, -0.00555078)
 bones/10/rotation = Quaternion(-0.0499969, -0.040847, -0.029042, 0.997491)
 bones/10/scale = Vector3(1, 1, 1)
-bones/11/position = Vector3(-0.0303449, 0.0416985, -0.00588164)
 bones/11/rotation = Quaternion(-0.0460792, 0.17868, 0.0509417, 0.981507)
-bones/12/position = Vector3(0.0197396, 0.0683974, 0.0784275)
 bones/12/scale = Vector3(1, 1, 1)
-bones/13/position = Vector3(0.0368331, 0.0720881, 0.072574)
-bones/13/rotation = Quaternion(0.686532, -0.0466416, -0.107424, 0.717606)
 bones/13/scale = Vector3(1, 1, 1)
-bones/14/position = Vector3(0.053364, 0.0771617, 0.069341)
-bones/14/rotation = Quaternion(0.686532, -0.0466416, -0.107424, 0.717606)
 bones/14/scale = Vector3(1, 1, 1)
-bones/15/position = Vector3(0.000367091, 0.0686516, 0.0978902)
 bones/15/rotation = Quaternion(0.696722, -0.0822343, -0.071236, 0.709042)
 bones/15/scale = Vector3(1, 1, 1)
-bones/16/position = Vector3(-0.0406494, 0.145954, 0.0779794)
+bones/16/position = Vector3(-0.0406938, 0.145935, 0.0779117)
 bones/16/rotation = Quaternion(0.698181, -0.0085361, -0.0354287, 0.714993)
-bones/16/scale = Vector3(1, 1, 1)
-bones/17/position = Vector3(-0.0550913, 0.193959, 0.0217168)
-bones/17/rotation = Quaternion(0.715463, -0.0918419, -0.0874562, 0.687044)
+bones/17/position = Vector3(-0.055084, 0.193893, 0.021712)
 bones/17/scale = Vector3(1, 1, 1)
-bones/18/position = Vector3(-0.0536584, 0.119042, 0.0264235)
-bones/18/rotation = Quaternion(0.715463, -0.0918431, -0.0874574, 0.687043)
 bones/18/scale = Vector3(1, 1, 1)
-bones/19/position = Vector3(-0.0197396, 0.0683974, 0.0784275)
-bones/20/position = Vector3(-0.0368331, 0.0720881, 0.072574)
-bones/21/position = Vector3(-0.053364, 0.0771617, 0.069341)
-bones/21/rotation = Quaternion(0.686533, 0.0466415, 0.107424, 0.717606)
-bones/22/rotation = Quaternion(-0.605575, -0.344892, -0.357593, 0.621656)
+bones/22/rotation = Quaternion(-0.605696, -0.344793, -0.357614, 0.621581)
 bones/22/scale = Vector3(1, 1, 1)
-bones/23/rotation = Quaternion(-0.182746, 0.724645, -0.479799, 0.459659)
-bones/24/position = Vector3(0.000593126, 0.398653, -1.93139e-05)
-bones/24/rotation = Quaternion(0.630693, -0.0264266, 0.0878504, 0.770591)
-bones/25/rotation = Quaternion(-0.605825, 0.344854, 0.357709, 0.621366)
+bones/23/rotation = Quaternion(-0.182079, 0.722747, -0.481604, 0.461022)
+bones/24/position = Vector3(0.00058692, 0.398644, -1.91306e-05)
+bones/24/rotation = Quaternion(0.62925, -0.0225592, 0.0876473, 0.771915)
+bones/25/rotation = Quaternion(-0.605766, 0.344824, 0.357589, 0.621509)
 bones/25/scale = Vector3(1, 1, 1)
-bones/26/rotation = Quaternion(-0.183005, -0.723132, 0.480805, 0.460886)
+bones/26/rotation = Quaternion(-0.182838, -0.721115, 0.483133, 0.461677)
 bones/26/scale = Vector3(1, 1, 1)
-bones/27/position = Vector3(-0.000594701, 0.398653, -1.8993e-05)
-bones/27/rotation = Quaternion(0.630342, 0.026619, -0.0877326, 0.770885)
+bones/27/position = Vector3(-0.000588495, 0.398643, -1.88091e-05)
+bones/27/rotation = Quaternion(0.629798, 0.0240016, -0.0866634, 0.771536)
 bones/27/scale = Vector3(1, 1, 1)
 bones/28/rotation = Quaternion(0.149646, -0.514163, -0.668223, 0.516449)
 bones/29/rotation = Quaternion(0.149646, 0.514163, 0.668223, 0.516449)
 bones/29/scale = Vector3(1, 1, 1)
-bones/30/rotation = Quaternion(0.871581, 0.0227398, -0.0424087, -0.487884)
-bones/31/rotation = Quaternion(0.0701245, 0.00132414, -0.0208173, 0.99732)
+bones/30/rotation = Quaternion(0.871889, 0.0224545, -0.0419915, -0.487383)
+bones/31/rotation = Quaternion(0.0701929, 0.00150325, -0.0206237, 0.997319)
 bones/31/scale = Vector3(1, 1, 1)
-bones/32/rotation = Quaternion(0.868076, -0.0316774, -0.0236685, -0.494854)
-bones/33/rotation = Quaternion(0.0668994, -0.000883784, 0.0207886, 0.997543)
+bones/32/rotation = Quaternion(0.86677, -0.0313647, -0.0242176, -0.497131)
+bones/33/rotation = Quaternion(0.0661643, -0.000857915, 0.0206133, 0.997595)
 bones/33/scale = Vector3(1, 1, 1)
 
 [node name="Cylinder" parent="PrinceNPC/VenusModel/Prince Rigging Project Solo/princeface/Posable Face Prince/Skeleton3D" index="0"]
@@ -756,7 +708,7 @@ skin = SubResource("Skin_n4jut")
 skin = SubResource("Skin_n4jut")
 
 [node name="Quad" parent="PrinceNPC/VenusModel/OrderPanel" index="1"]
-surface_material_override/0 = SubResource("StandardMaterial3D_iw1y4")
+surface_material_override/0 = SubResource("StandardMaterial3D_pwxkk")
 
 [node name="Area3D" parent="PrinceNPC/VenusModel/OrderPanel/Quad" index="0"]
 transform = Transform3D(0.995911, 0.0034228, -0.0902282, 0, 0.99928, 0.0379072, 0.0902933, -0.0377526, 0.995193, 0, 0, 0)
@@ -780,104 +732,62 @@ Skin1 = SubResource("StandardMaterial3D_tj8ie")
 Skin2 = SubResource("StandardMaterial3D_j2eo3")
 
 [node name="PrinceAnimationTree" parent="PrinceNPC2" index="6"]
-parameters/conditions/Dialogue = false
-parameters/conditions/DialogueTalk = false
-parameters/conditions/DialogueTalk2 = false
 parameters/DialogueIdleBlend/blend_position = 0
 parameters/DialogueTalkBlend/blend_position = 0
-parameters/DialogueTalkBlend2/blend_position = 0
-
-[node name="AnimationTree" parent="PrinceNPC2" index="7"]
-parameters/conditions/Dialogue = false
-parameters/conditions/DialogueTalk = false
-parameters/conditions/DialogueTalk2 = false
-parameters/DialogueIdleBlend/blend_position = 0
-parameters/DialogueTalkBlend/blend_position = 0
-parameters/DialogueTalkBlend2/blend_position = 0
-
-[node name="AnimationTree2" parent="PrinceNPC2" index="8"]
-parameters/conditions/Dialogue = false
-parameters/conditions/DialogueTalk = false
-parameters/conditions/DialogueTalk2 = false
-parameters/DialogueIdleBlend/blend_position = 0
-parameters/DialogueTalkBlend/blend_position = 0
-parameters/DialogueTalkBlend2/blend_position = 0
 
 [node name="Prince Rigging Project Solo" parent="PrinceNPC2/VenusModel" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(-1, 0, 7.45058e-08, 0, 1, 0, -7.45058e-08, 0, -1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="PrinceNPC2/VenusModel/Prince Rigging Project Solo/princeface/Posable Face Prince" index="0"]
-bones/0/position = Vector3(2.53539e-11, 1.0084, -0.0552453)
-bones/0/rotation = Quaternion(-0.523664, 0.000674667, 0.0255144, 0.851543)
-bones/1/rotation = Quaternion(0.494079, 0.0131918, 0.0082805, 0.869278)
-bones/2/rotation = Quaternion(0.420002, -0.000666578, 0.000133291, 0.907523)
-bones/3/rotation = Quaternion(-0.317199, 0.000291187, -0.000331819, 0.948359)
-bones/4/position = Vector3(1.35349e-08, 0.218705, -0.0277516)
-bones/4/rotation = Quaternion(-0.0470034, 0.0960127, -0.0486511, 0.993079)
-bones/5/position = Vector3(0.075065, 0.146851, 0.0514116)
+bones/0/position = Vector3(-1.13132e-11, 1.00973, -0.0552393)
+bones/0/rotation = Quaternion(-0.523642, 0.000674579, 0.025512, 0.851556)
+bones/1/rotation = Quaternion(0.494075, 0.0131914, 0.00828027, 0.86928)
+bones/2/rotation = Quaternion(0.420003, -0.000667772, 0.000109442, 0.907523)
+bones/3/rotation = Quaternion(-0.317199, 0.000314138, -0.000286005, 0.948359)
+bones/4/position = Vector3(1.34035e-08, 0.218705, -0.0277516)
+bones/4/rotation = Quaternion(-0.0511712, 0.0684217, -0.0382267, 0.99561)
+bones/5/position = Vector3(0.0750219, 0.146838, 0.0513954)
 bones/5/rotation = Quaternion(0.673374, 0.0937485, -0.13196, 0.721363)
-bones/5/scale = Vector3(1, 1, 1)
-bones/6/position = Vector3(0.0550913, 0.193959, 0.0217168)
-bones/6/rotation = Quaternion(0.715463, 0.0918419, 0.0874562, 0.687044)
+bones/6/position = Vector3(0.055084, 0.193893, 0.021712)
 bones/6/scale = Vector3(1, 1, 1)
-bones/7/position = Vector3(0.0536584, 0.119042, 0.0264235)
-bones/7/rotation = Quaternion(0.715463, 0.0918431, 0.0874575, 0.687043)
 bones/7/scale = Vector3(1, 1, 1)
-bones/8/position = Vector3(-0.000462827, 0.0445221, 0.0303049)
-bones/8/rotation = Quaternion(0.723722, -0.042522, -0.0559394, 0.686505)
+bones/8/position = Vector3(-0.000458547, 0.0446674, 0.0303443)
 bones/8/scale = Vector3(1, 1, 1)
-bones/9/position = Vector3(0.0271873, 0.042585, -0.0139788)
 bones/9/rotation = Quaternion(-0.0499969, -0.040847, -0.029042, 0.997491)
 bones/9/scale = Vector3(1, 1, 1)
-bones/10/position = Vector3(-0.00279811, 0.0571303, -0.00555078)
 bones/10/rotation = Quaternion(-0.0499969, -0.040847, -0.029042, 0.997491)
 bones/10/scale = Vector3(1, 1, 1)
-bones/11/position = Vector3(-0.0303449, 0.0416985, -0.00588164)
 bones/11/rotation = Quaternion(-0.0460792, 0.17868, 0.0509417, 0.981507)
-bones/12/position = Vector3(0.0197396, 0.0683974, 0.0784275)
 bones/12/scale = Vector3(1, 1, 1)
-bones/13/position = Vector3(0.0368331, 0.0720881, 0.072574)
-bones/13/rotation = Quaternion(0.686532, -0.0466416, -0.107424, 0.717606)
 bones/13/scale = Vector3(1, 1, 1)
-bones/14/position = Vector3(0.053364, 0.0771617, 0.069341)
-bones/14/rotation = Quaternion(0.686532, -0.0466416, -0.107424, 0.717606)
 bones/14/scale = Vector3(1, 1, 1)
-bones/15/position = Vector3(0.000367091, 0.0686516, 0.0978902)
 bones/15/rotation = Quaternion(0.696722, -0.0822343, -0.071236, 0.709042)
 bones/15/scale = Vector3(1, 1, 1)
-bones/16/position = Vector3(-0.0406494, 0.145954, 0.0779794)
+bones/16/position = Vector3(-0.0406938, 0.145935, 0.0779117)
 bones/16/rotation = Quaternion(0.698181, -0.0085361, -0.0354287, 0.714993)
-bones/16/scale = Vector3(1, 1, 1)
-bones/17/position = Vector3(-0.0550913, 0.193959, 0.0217168)
-bones/17/rotation = Quaternion(0.715463, -0.0918419, -0.0874562, 0.687044)
+bones/17/position = Vector3(-0.055084, 0.193893, 0.021712)
 bones/17/scale = Vector3(1, 1, 1)
-bones/18/position = Vector3(-0.0536584, 0.119042, 0.0264235)
-bones/18/rotation = Quaternion(0.715463, -0.0918431, -0.0874574, 0.687043)
 bones/18/scale = Vector3(1, 1, 1)
-bones/19/position = Vector3(-0.0197396, 0.0683974, 0.0784275)
-bones/20/position = Vector3(-0.0368331, 0.0720881, 0.072574)
-bones/21/position = Vector3(-0.053364, 0.0771617, 0.069341)
-bones/21/rotation = Quaternion(0.686533, 0.0466415, 0.107424, 0.717606)
-bones/22/rotation = Quaternion(-0.605575, -0.344892, -0.357593, 0.621656)
+bones/22/rotation = Quaternion(-0.605696, -0.344793, -0.357614, 0.621581)
 bones/22/scale = Vector3(1, 1, 1)
-bones/23/rotation = Quaternion(-0.182746, 0.724645, -0.479799, 0.459659)
-bones/24/position = Vector3(0.000593126, 0.398653, -1.93139e-05)
-bones/24/rotation = Quaternion(0.630693, -0.0264266, 0.0878504, 0.770591)
-bones/25/rotation = Quaternion(-0.605825, 0.344854, 0.357709, 0.621366)
+bones/23/rotation = Quaternion(-0.182079, 0.722747, -0.481604, 0.461022)
+bones/24/position = Vector3(0.00058692, 0.398644, -1.91306e-05)
+bones/24/rotation = Quaternion(0.62925, -0.0225592, 0.0876473, 0.771915)
+bones/25/rotation = Quaternion(-0.605766, 0.344824, 0.357589, 0.621509)
 bones/25/scale = Vector3(1, 1, 1)
-bones/26/rotation = Quaternion(-0.183005, -0.723132, 0.480805, 0.460886)
+bones/26/rotation = Quaternion(-0.182838, -0.721115, 0.483133, 0.461677)
 bones/26/scale = Vector3(1, 1, 1)
-bones/27/position = Vector3(-0.000594701, 0.398653, -1.8993e-05)
-bones/27/rotation = Quaternion(0.630342, 0.026619, -0.0877326, 0.770885)
+bones/27/position = Vector3(-0.000588495, 0.398643, -1.88091e-05)
+bones/27/rotation = Quaternion(0.629798, 0.0240016, -0.0866634, 0.771536)
 bones/27/scale = Vector3(1, 1, 1)
 bones/28/rotation = Quaternion(0.149646, -0.514163, -0.668223, 0.516449)
 bones/29/rotation = Quaternion(0.149646, 0.514163, 0.668223, 0.516449)
 bones/29/scale = Vector3(1, 1, 1)
-bones/30/rotation = Quaternion(0.871581, 0.0227398, -0.0424087, -0.487884)
-bones/31/rotation = Quaternion(0.0701245, 0.00132414, -0.0208173, 0.99732)
+bones/30/rotation = Quaternion(0.871889, 0.0224545, -0.0419915, -0.487383)
+bones/31/rotation = Quaternion(0.0701929, 0.00150325, -0.0206237, 0.997319)
 bones/31/scale = Vector3(1, 1, 1)
-bones/32/rotation = Quaternion(0.868076, -0.0316774, -0.0236685, -0.494854)
-bones/33/rotation = Quaternion(0.0668994, -0.000883784, 0.0207886, 0.997543)
+bones/32/rotation = Quaternion(0.86677, -0.0313647, -0.0242176, -0.497131)
+bones/33/rotation = Quaternion(0.0661643, -0.000857915, 0.0206133, 0.997595)
 bones/33/scale = Vector3(1, 1, 1)
 
 [node name="Cylinder" parent="PrinceNPC2/VenusModel/Prince Rigging Project Solo/princeface/Posable Face Prince/Skeleton3D" index="0"]
@@ -941,7 +851,7 @@ skin = SubResource("Skin_yfkbd")
 skin = SubResource("Skin_yfkbd")
 
 [node name="Quad" parent="PrinceNPC2/VenusModel/OrderPanel" index="1"]
-surface_material_override/0 = SubResource("StandardMaterial3D_ix0pp")
+surface_material_override/0 = SubResource("StandardMaterial3D_tfo5u")
 
 [node name="Area3D" parent="PrinceNPC2/VenusModel/OrderPanel/Quad" index="0"]
 transform = Transform3D(0.965319, -0.00974438, 0.260862, 0, 0.99926, 0.0373282, -0.261049, -0.0360332, 0.964629, 0, 0, 0)

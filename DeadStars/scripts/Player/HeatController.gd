@@ -14,6 +14,10 @@ func _process(delta):
 		Activate(delta)
 	else:
 		Deactivate(delta)
+	if alpha < 0:
+		self.hide()
+	else:
+		self.show()
 
 func Activate(delta : float):
 	if ShaderParameter.get_shader_parameter("distortion") <= MaxAlpha:

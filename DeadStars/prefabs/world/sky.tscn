@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://br5m365xp0216"]
 
-[ext_resource type="Shader" uid="uid://bxq6kvhrc8j45" path="res://Shaders/TextureScroll2.tres" id="1_jbuv5"]
-[ext_resource type="Texture2D" uid="uid://bxy3bf6wykvxa" path="res://textures/Water.png" id="2_0bqwa"]
+[ext_resource type="Shader" uid="uid://d4glhpwsysqbj" path="res://Shaders/TextureScroll2.tres" id="1_jbuv5"]
+[ext_resource type="Texture2D" uid="uid://bkxtnshpoon17" path="res://textures/Water.png" id="2_0bqwa"]
 [ext_resource type="Script" path="res://Scripts/Tweener3D.cs" id="3_pt7o1"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kw1lj"]

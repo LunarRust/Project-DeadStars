@@ -5,7 +5,7 @@ extends Node
 @export var ChildrenKiller : Node3D
 @export var CameraMover : StaticBody3D
 @export var RockWall : StaticBody3D
-@export var RockPile : FuncGodotMap
+@export var RockPile : StaticBody3D
 @export var RockCamTrigger : Area3D
 var CameraShaker
 
@@ -22,7 +22,7 @@ func _process(delta):
 
 func Begin():
 	RockCamTrigger.Enabled = true
-	RockPile.position.y =- 3
+	RockPile.position.y =- 4.525
 	if RockWall != null:
 		RockWall.get_node("HealthControllerHeHaa").Hurt(999)
 	CameraMover.get_node("Behavior").Touch()
