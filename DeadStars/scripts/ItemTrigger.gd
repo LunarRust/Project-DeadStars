@@ -1,5 +1,5 @@
 extends Node
-@export var itemID : String
+@export var itemMatch : String
 @export var ItemToGive : String = "default"
 @export var OneUse : bool = false
 signal ItemSuccess
@@ -13,7 +13,7 @@ func _ready():
 func Item(item : String):
 	if used == false:
 		print("trying item")
-		if item == itemID:
+		if item == itemMatch:
 			if ItemToGive != "default":
 				var newItem = inv.create_and_add_item(ItemToGive)
 			print("Item Valid!")

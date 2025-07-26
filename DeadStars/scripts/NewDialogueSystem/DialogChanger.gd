@@ -3,5 +3,6 @@ extends TextureButton
 @export var DialogParent : Node3D
 
 func _on_pressed():
-	self.DialogParent.Dialogue = Dialogue
-	self.DialogParent.OpenDialogue(false)
+	pass
+	#self.DialogParent.Dialogue = Dialogue
+	#self.DialogParent.OpenDialogue(false)

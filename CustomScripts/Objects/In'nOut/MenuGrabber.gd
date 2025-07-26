@@ -34,12 +34,12 @@ var hudmanager = load("res://prefabs/hudmanager.cs")
 
 func _ready():
 	CamCurve.bake_resolution = 100
-	MenuCam.set_process(false)
 	PlayerCam = get_viewport().get_camera_3d()
 	playerObject = get_tree().get_first_node_in_group("player") as Node3D
 	head = get_tree().get_first_node_in_group("PlayerHead") as Node3D
 
 	await get_tree().create_timer(0.3).timeout
+	MenuCam.set_process(false)
 
 	MenuCamCurrentTransform = MenuCam.global_transform
 	PlayerCamCurrentTransform = PlayerCam.global_transform

@@ -8,6 +8,7 @@ extends Node3D
 @export var SoundSource : AudioStreamPlayer
 @export_category("Settings")
 @export var DoCamShake : bool = true
+var CastAllowed : bool = true
 var active : bool = false
 var space_state
 var canAttack : bool = true
@@ -19,6 +20,10 @@ var TouchedObject
 var ViewButton = preload("res://Scripts/ViewButton.cs")
 @export var WooshSound : AudioStream = preload("res://Sounds/Woosh.ogg") as AudioStream
 @export var ImpactSound : AudioStream = preload("res://Sounds/Impact.ogg") as AudioStream
+@export var CastFailSound : AudioStream = preload("res://Sounds/DNAchange.ogg") as AudioStream
+
+signal BehaviorNode(node)
+signal TalkNode(node)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -43,75 +48,94 @@ func _physics_process(delta):
 		CurrentIntersectedObject = RCS.get_raycast_hit_object(space_state,cam,mousepos)
 
 func Cast():
-	var node : Node
-	var zDepth : float
-	zDepth = 2
-	var from : Vector3 = cam.project_ray_origin(mousepos)
-	var to = cam.project_position(mousepos,zDepth)
-	var physicsRayQueryParameters3D : PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(from,to)
-	physicsRayQueryParameters3D.hit_back_faces = false
-	var dictionary : Dictionary = space_state.intersect_ray(physicsRayQueryParameters3D)
-	print_rich("[color=red]" + str(dictionary) + "[/color]")
-	if !dictionary.is_empty() && (dictionary["collider"] as CollisionObject3D).has_node("DialogueSystem"):
-		(dictionary["collider"] as CollisionObject3D).get_node("DialogueSystem").DialogueProcessing()
-	if !dictionary.is_empty() && (dictionary["collider"] as CollisionObject3D).has_node("Behavior"):
-		node = (dictionary["collider"] as CollisionObject3D).get_node("Behavior")
-	match  interactionButtonKOM.interactionMode:
-		3:
-			if !dictionary.is_empty():
-				if node != null:
-					if node.has_method("Touch"):
-						animTrigger("Touch")
-						node.Touch()
-						print_rich("Touched object is: [color=red]" + str(node) + "[/color]")
-		4:
-			if canAttack:
-				canAttack = false
-				animTrigger("Attack")
-				HammerAnim.stop()
-				HammerAnim.play("Attack")
-				SoundSource.stream = WooshSound
-				SoundSource.play()
-				await get_tree().create_timer(0.15000000596046448).timeout
+	if CastAllowed:
+		var node : Node
+		var zDepth : float
+		zDepth = 2
+		var from : Vector3 = cam.project_ray_origin(mousepos)
+		var to = cam.project_position(mousepos,zDepth)
+		var physicsRayQueryParameters3D : PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(from,to)
+		physicsRayQueryParameters3D.hit_back_faces = false
+		var dictionary : Dictionary = space_state.intersect_ray(physicsRayQueryParameters3D)
+		print_rich("[color=red]" + str(dictionary) + "[/color]")
+	###TODO: Reimplement these col checks with new IdentifyCollider() func
+		if !dictionary.is_empty() && (dictionary["collider"] as CollisionObject3D).has_node("DialogueSystem"):
+			(dictionary["collider"] as CollisionObject3D).get_node("DialogueSystem").DialogueProcessing()
+		if !dictionary.is_empty() && (dictionary["collider"] as CollisionObject3D).has_node("Behavior"):
+			node = (dictionary["collider"] as CollisionObject3D).get_node("Behavior")
+		match  interactionButtonKOM.interactionMode:
+			3:
 				if !dictionary.is_empty():
-					if (dictionary["collider"] as CollisionObject3D).has_node("HealthController"):
-						var health : Node = (dictionary["collider"] as CollisionObject3D).get_node("HealthController")
-						health.Hurt(HurtFor,DoCamShake)
-						print("Hitting DeadStars creature")
-
-					elif (dictionary["collider"] as CollisionObject3D).has_node("HealthHandler"):
-						var health : Node = (dictionary["collider"] as CollisionObject3D).get_node("HealthHandler")
-						health.Hurt(HurtFor)
-						print("Hitting base game creature")
-
-
-
-					else:
-						SoundSource.stream = ImpactSound
-						SoundSource.play()
-						print("Hitting object")
-
 					if node != null:
-						if node.has_method("Hurt"):
-							node.Hurt()
-							print_rich("Attacked object is: [color=red]" + str(node) + "[/color]")
+						if node.has_method("Touch"):
+							animTrigger("Touch")
+							node.Touch()
+							BehaviorNode.emit(node)
+							print_rich("Touched object is: [color=red]" + str(node) + "[/color]")
+
+			4:
+				if canAttack:
+					canAttack = false
+					animTrigger("Attack")
+					HammerAnim.stop()
+					HammerAnim.play("Attack")
+					SoundSource.stream = WooshSound
+					SoundSource.play()
+					await get_tree().create_timer(0.15000000596046448).timeout
+					if !dictionary.is_empty():
+						if (dictionary["collider"] as CollisionObject3D).has_node("HealthController"):
+							var health : Node = (dictionary["collider"] as CollisionObject3D).get_node("HealthController")
+							health.Hurt(HurtFor,DoCamShake)
+							print("Hitting DeadStars creature")
+
+						elif (dictionary["collider"] as CollisionObject3D).has_node("HealthHandler"):
+							var health : Node = (dictionary["collider"] as CollisionObject3D).get_node("HealthHandler")
+							health.Hurt(HurtFor)
+							print("Hitting base game creature")
 
 
-				await get_tree().create_timer(AttackDelay).timeout
-				canAttack = true
-		2:
-			if !dictionary.is_empty():
-				if node != null:
-					if node.has_method("Talk"):
-						animTrigger("Talk")
-						node.Talk()
-		1:
-			if !dictionary.is_empty():
-				if node != null:
-					if node.has_method("Look"):
-						node.Look()
-	TouchedObject = CurrentIntersectedObject
 
+						else:
+							SoundSource.stream = ImpactSound
+							SoundSource.play()
+							print("Hitting object")
+
+						if node != null:
+							if node.has_method("Hurt"):
+								node.Hurt()
+								print_rich("Attacked object is: [color=red]" + str(node) + "[/color]")
+
+
+					await get_tree().create_timer(AttackDelay).timeout
+					canAttack = true
+			2:
+				var DialogueNode
+				if IdentifyCollider(dictionary,"AdvancedDialogueSystem") != null:
+					DialogueNode = IdentifyCollider(dictionary,"AdvancedDialogueSystem")
+					DialogueNode.DialogueProcessing()
+					TalkNode.emit(DialogueNode)
+					if node != null:
+						if node.has_method("Talk"):
+							animTrigger("Talk")
+							BehaviorNode.emit(node)
+							node.Talk()
+				else:
+					print("No AdvancedDialogueSystem identified.")
+			1:
+				if !dictionary.is_empty():
+					if node != null:
+						if node.has_method("Look"):
+							node.Look()
+		TouchedObject = CurrentIntersectedObject
+
+
+func IdentifyCollider(dictionary : Dictionary,NodeName : String):
+	var node
+	if !dictionary.is_empty() && (dictionary["collider"] as CollisionObject3D).has_node(NodeName):
+		node = (dictionary["collider"] as CollisionObject3D).get_node(NodeName)
+		return node
+	else:
+		return null
 
 func ItemCast(item):
 	var zDepth : float
@@ -131,6 +155,8 @@ func ItemCast(item):
 				node.Item(item)
 				return true
 		else:
+			SoundSource.stream = CastFailSound
+			SoundSource.play()
 			return false
 	if !dictionary.is_empty() && (dictionary["collider"] as CollisionObject3D).has_node("Behavior"):
 		var node : Node = (dictionary["collider"] as CollisionObject3D).get_node("Behavior")
@@ -156,3 +182,11 @@ func animTrigger(triggername : String):
 	PlayerAnim["parameters/conditions/" + triggername] = true;
 	await get_tree().create_timer(0.1).timeout
 	PlayerAnim["parameters/conditions/" + triggername] = false;
+
+
+func _on_new_dialog_ui_dialogue_active():
+	CastAllowed = false
+
+
+func _on_new_dialog_ui_dialogue_deactivated():
+	CastAllowed = true

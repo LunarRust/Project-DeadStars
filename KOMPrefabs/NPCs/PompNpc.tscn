@@ -13,7 +13,9 @@
 [ext_resource type="Material" uid="uid://bainlikocj7tf" path="res://Material/PlayerSkin2.tres" id="7_5kxsm"]
 [ext_resource type="Texture2D" uid="uid://bopwqidmmwu41" path="res://KOMModels/PsychopompPlayerModel_0.png" id="8_33phf"]
 [ext_resource type="Material" uid="uid://d2p52ayasjkpy" path="res://Material/PlayerSkin3.tres" id="8_nludv"]
+[ext_resource type="PackedScene" uid="uid://cwk4lexr53y5f" path="res://DeadStars/prefabs/system/NPC_advanced_dialogue_system.tscn" id="9_8fltw"]
 [ext_resource type="Texture2D" uid="uid://bofd4xxv6rmbl" path="res://Sprites/DownArrow.png" id="9_scptm"]
+[ext_resource type="AudioStream" uid="uid://ky4thiwhty25" path="res://Sounds/tick.ogg" id="10_1u22j"]
 [ext_resource type="PackedScene" uid="uid://bs0twlhcuni56" path="res://DeadStars/prefabs/NpcObjects/blood_splatter_Venus.scn" id="10_2mixi"]
 [ext_resource type="Script" path="res://CustomScripts/NpcInventoryManager.gd" id="10_npuu8"]
 [ext_resource type="FontFile" uid="uid://1mk6dr4ng8sv" path="res://Fonts/GlasstownNbpRegular-RyMM.ttf" id="11_3t4nj"]
@@ -28,11 +30,9 @@
 [ext_resource type="AnimationLibrary" uid="uid://df7mqepgamhet" path="res://DeadStars/models/Venus/Venus_Anim_Tracks.res" id="17_eo43i"]
 [ext_resource type="Script" path="res://CustomScripts/NPC/NavNodeGenerator.gd" id="18_lvjyy"]
 [ext_resource type="PackedScene" uid="uid://jy8x8s03u4ar" path="res://KOMPrefabs/NPCs/NpcObjects/nav_node.tscn" id="19_vuncq"]
-[ext_resource type="AudioStream" uid="uid://ky4thiwhty25" path="res://Sounds/tick.ogg" id="20_7gk32"]
 [ext_resource type="Script" path="res://CustomScripts/Logic/AppearOnPress.gd" id="20_m08pi"]
 [ext_resource type="Animation" uid="uid://gdjyaukqfnr0" path="res://DeadStars/models/Venus/LookLeft.anim" id="21_ihmwb"]
 [ext_resource type="Script" path="res://DeadStars/3dgui/gui_3d.gd" id="21_vf5mg"]
-[ext_resource type="PackedScene" uid="uid://vbego2bh0k4x" path="res://DeadStars/prefabs/system/LRDialogObject.tscn" id="23_crt0c"]
 [ext_resource type="Resource" uid="uid://d0dopalp8qv22" path="res://DeadStars/ItemList.tres" id="26_4cnnf"]
 [ext_resource type="Animation" uid="uid://bq4x168847roe" path="res://DeadStars/models/Venus/LookRight.res" id="31_s0k7s"]
 [ext_resource type="Script" path="res://DeadStars/scripts/NPC_Object_Detector.gd" id="34_5c3ki"]
@@ -15219,21 +15219,21 @@ radius = 1.44695
 [sub_resource type="QuadMesh" id="1"]
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_53247"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_k5eol"]
 viewport_path = NodePath("OrderPanel/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g1udv"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xx1fh"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_53247")
+albedo_texture = SubResource("ViewportTexture_k5eol")
 billboard_mode = 1
 billboard_keep_scale = true
 
 [sub_resource type="BoxShape3D" id="4"]
 size = Vector3(3, 2, 0.1)
 
-[node name="PompNPC" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent", "anim", "animTree", "modelRoot", "HealthHandler", "PompBehavior", "DialogueSystem", "SoundSource", "InvManager", "FlashLight", "DebugLabelParent") groups=["PompNPC"]]
+[node name="PompNPC" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent", "anim", "animTree", "modelRoot", "HealthHandler", "PompBehavior", "DialogueSystem", "SoundSource", "InvManager", "FlashLight", "DebugLabelParent") groups=["PlayerAlly", "PompNPC"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.970638, 0)
 collision_layer = 4
 collision_mask = 4
@@ -15247,12 +15247,14 @@ PompBehavior = NodePath("Behavior")
 DialogueSystem = NodePath("DialogueSystem")
 SoundSource = NodePath("GeneralAudio")
 InvManager = NodePath("InventoryManager")
-FlashLight = NodePath("VenusModel/FlashLightFPS")
+FlashLight = NodePath("Venus Custom Death Overwrite/FlashLightFPS")
 DebugLabelParent = NodePath("DebugLabels")
 hostile = false
+MaxSpeed = 3.5
 acceleration = 10.0
-NavUpdateInterval = 0.1
-AttackDistance = 1.5
+NavUpdateInterval = 0.2
+attackThreshold = 0.8
+attackPower = 2
 aggroRange = 30
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
@@ -15278,18 +15280,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.290638, 0.271893)
 max_distance = 5.0
 max_polyphony = 2
 
+[node name="AdvancedDialogueSystem" parent="." node_paths=PackedStringArray("NPCInv", "Camera") instance=ExtResource("9_8fltw")]
+NPCName = "..."
+Dialogue = Array[String](["...", "What are you lookin at?", "This thing is sweaty!", "Why do you look like that?", "God I NEED a pepsi.", "You want one? I'll make one for you!", "You're face is weird. I wanna smash it.", "I wonder what that dog is up to...", "Why are you melting?"])
+TalkSound = ExtResource("10_1u22j")
+CharSprite = ExtResource("3_4bj1b")
+NPCInv = NodePath("../InventoryGrid")
+Camera = NodePath("../Venus Custom Death Overwrite/DialogCamera")
+
 [node name="GeneralAudio" type="AudioStreamPlayer3D" parent="."]
 unique_name_in_owner = true
 max_distance = 6.0
 
-[node name="HealthController" type="Node3D" parent="." node_paths=PackedStringArray("DialogueSystem", "Behavior", "SoundSource", "HealthLabel", "Body")]
+[node name="HealthController" type="Node3D" parent="." node_paths=PackedStringArray("DialogueSystem", "Behavior", "SoundSource", "Body")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.156982, 0)
 script = ExtResource("5_yiqxo")
 removeOnDeath = false
 DialogueSystem = NodePath("../DialogueSystem")
 Behavior = NodePath("../Behavior")
 SoundSource = NodePath("../GeneralAudio")
-HealthLabel = NodePath("../Venus Custom Death Overwrite/DialogObject/UI/DialogInterface/DialogueParent/DialogueBox/HP Number")
 gibRoot = ExtResource("10_2mixi")
 HurtSound = ExtResource("11_jm30a")
 Body = NodePath("../Venus Custom Death Overwrite/PsychopompPlayerModel/PompRig/Skeleton3D/Body_001")
@@ -15301,7 +15310,7 @@ Skin2 = ExtResource("8_nludv")
 script = ExtResource("16_omk1k")
 anim = NodePath("../Lat_Anim_Tree")
 PompAI = NodePath("..")
-dialogue = NodePath("../Venus Custom Death Overwrite/DialogObject")
+dialogue = NodePath("../DialogueSystem")
 HealthController = NodePath("../HealthController")
 follow = true
 NewDialogueSystem = true
@@ -15396,57 +15405,57 @@ parameters/TouchBlend/blend_position = Vector2(0, 0)
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, -0.966439, 0)
 
 [node name="Skeleton3D" parent="Venus Custom Death Overwrite/PsychopompPlayerModel/PompRig" index="0"]
-bones/0/position = Vector3(-1.20135e-08, 0.888624, -0.158666)
+bones/0/position = Vector3(-6.87581e-09, 0.845981, -0.158666)
 bones/1/rotation = Quaternion(-0.0644492, -0.000275465, 7.8341e-05, 0.997921)
 bones/1/scale = Vector3(1, 1, 1)
-bones/2/rotation = Quaternion(-0.0775293, 6.1281e-06, -3.82449e-05, 0.99699)
-bones/3/rotation = Quaternion(0.0119514, 0.0345697, 0.00943788, 0.999286)
+bones/2/rotation = Quaternion(-0.0721455, 0.0901578, -0.0133346, 0.993222)
+bones/3/rotation = Quaternion(-0.00235693, -0.000313525, 9.85957e-06, 0.999997)
 bones/4/rotation = Quaternion(0.0298412, -0.000111681, -1.23337e-06, 0.999555)
-bones/5/rotation = Quaternion(0.181433, -0.01707, -0.00145065, 0.983254)
+bones/5/rotation = Quaternion(0.159553, 0.0279719, -0.11243, 0.980367)
 bones/5/scale = Vector3(1, 1, 1)
-bones/6/position = Vector3(0.0551667, 0.0803428, 0.0811031)
-bones/7/position = Vector3(0.0228993, 0.0767005, 0.099588)
-bones/9/rotation = Quaternion(0.678721, 3.80021e-07, 5.43285e-07, 0.734396)
+bones/6/position = Vector3(0.0543059, 0.0791217, 0.0818966)
+bones/7/position = Vector3(0.0233566, 0.0755691, 0.100217)
+bones/9/rotation = Quaternion(0.678721, 3.73433e-07, 5.88632e-07, 0.734396)
 bones/10/rotation = Quaternion(-0.133423, -5.21855e-07, -1.04531e-07, 0.991059)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/rotation = Quaternion(-0.133423, -5.21516e-07, -1.02013e-07, 0.991059)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/rotation = Quaternion(-0.133423, -7.58142e-07, -7.272e-08, 0.991059)
-bones/13/position = Vector3(-3.27391e-05, 0.0737521, -0.014976)
+bones/13/position = Vector3(-0.00250156, 0.070883, -0.024403)
 bones/13/rotation = Quaternion(-0.785934, -3.25149e-07, -6.01236e-07, 0.618311)
-bones/14/position = Vector3(-0.0551624, 0.0802933, 0.0810251)
-bones/15/position = Vector3(-0.0229196, 0.0775385, 0.0992688)
-bones/16/position = Vector3(0.0592513, 0.140815, 0.0408365)
-bones/16/scale = Vector3(0.685255, 0.685255, 0.685255)
-bones/17/position = Vector3(0.0691678, 0.119995, 0.0652768)
+bones/14/position = Vector3(-0.070534, 0.0890853, 0.0793877)
+bones/15/position = Vector3(-0.0228394, 0.0756176, 0.100127)
+bones/16/position = Vector3(0.0828649, 0.141693, 0.0187898)
+bones/16/scale = Vector3(0.714442, 0.714442, 0.714442)
+bones/17/position = Vector3(0.0693497, 0.1212, 0.06492)
 bones/17/scale = Vector3(1, 1, 1)
-bones/18/position = Vector3(-0.0691678, 0.119995, 0.0652768)
+bones/18/position = Vector3(-0.0693497, 0.1212, 0.0649199)
 bones/18/rotation = Quaternion(0.574496, -0.00427104, -0.00299763, 0.81849)
 bones/18/scale = Vector3(1, 1, 1)
-bones/19/position = Vector3(-0.0501128, 0.141236, 0.0407286)
+bones/19/position = Vector3(-0.0448, 0.147406, 0.0423014)
 bones/19/rotation = Quaternion(0.570123, 1.9938e-05, 5.17754e-07, 0.821559)
-bones/19/scale = Vector3(0.679396, 0.679396, 0.679396)
-bones/20/position = Vector3(1.3241e-05, 0.0859877, 0.09327)
+bones/19/scale = Vector3(0.714375, 0.714375, 0.714375)
+bones/20/position = Vector3(0.00102316, 0.0822356, 0.0947434)
 bones/20/rotation = Quaternion(0.986162, 2.10843e-09, 2.56546e-07, 0.165785)
 bones/20/scale = Vector3(1, 1, 1)
-bones/21/position = Vector3(0.069449, 0.180419, 0.0435493)
+bones/21/position = Vector3(0.0692984, 0.176854, 0.0443941)
 bones/21/rotation = Quaternion(0.574497, 0.00427078, 0.00299786, 0.81849)
 bones/21/scale = Vector3(1, 1, 1)
-bones/22/position = Vector3(-0.0694537, 0.180529, 0.0435233)
+bones/22/position = Vector3(-0.067469, 0.14142, 0.0569254)
 bones/22/rotation = Quaternion(0.574497, -0.00427104, -0.00299763, 0.81849)
 bones/22/scale = Vector3(1, 1, 1)
 bones/23/rotation = Quaternion(-0.535559, -0.441949, -0.458366, 0.554759)
-bones/24/rotation = Quaternion(-0.35804, 0.606464, -0.520793, 0.482477)
+bones/24/rotation = Quaternion(-0.383508, 0.64365, -0.486937, 0.448919)
 bones/24/scale = Vector3(1, 1, 1)
-bones/25/rotation = Quaternion(0.0387741, -0.111756, 0.000783249, 0.992979)
+bones/25/rotation = Quaternion(0.197308, -0.123419, 0.000548417, 0.972542)
 bones/26/rotation = Quaternion(-0.0076151, 0.0729629, -0.0929698, 0.992963)
 bones/26/scale = Vector3(1, 1, 1)
 bones/27/rotation = Quaternion(-0.535559, 0.441949, 0.458366, 0.554759)
 bones/27/scale = Vector3(1, 1, 1)
-bones/28/position = Vector3(0.00676555, 0.131579, -0.0411701)
-bones/28/rotation = Quaternion(-0.373167, -0.621137, 0.502789, 0.471316)
+bones/28/position = Vector3(0.00389812, 0.131318, -0.0412973)
+bones/28/rotation = Quaternion(-0.383493, -0.643677, 0.486917, 0.448915)
 bones/28/scale = Vector3(1, 1, 1)
-bones/29/rotation = Quaternion(0.0389381, 0.111743, -0.000729946, 0.992974)
+bones/29/rotation = Quaternion(0.197529, 0.123398, -0.000494463, 0.972499)
 bones/30/rotation = Quaternion(-0.00761505, -0.072963, 0.0929698, 0.992963)
 bones/30/scale = Vector3(1, 1, 1)
 bones/31/rotation = Quaternion(2.79069e-08, 0.61389, 0.789391, 1.9271e-07)
@@ -15455,13 +15464,13 @@ bones/33/rotation = Quaternion(-0.152455, -0.793331, -0.285504, 0.515627)
 bones/33/scale = Vector3(1, 1, 1)
 bones/34/rotation = Quaternion(-0.152455, 0.793331, 0.285504, 0.515627)
 bones/34/scale = Vector3(1, 1, 1)
-bones/35/rotation = Quaternion(0.980725, 2.08626e-08, 3.50009e-07, 0.195395)
-bones/36/rotation = Quaternion(0.180599, -1.04357e-08, 1.34359e-07, 0.983557)
-bones/37/rotation = Quaternion(-0.579157, 2.62591e-07, -3.2096e-07, 0.815216)
-bones/40/rotation = Quaternion(0.980725, -1.06303e-07, 9.91067e-08, 0.195395)
+bones/35/rotation = Quaternion(0.96468, -3.87492e-09, 3.4751e-07, 0.263424)
+bones/36/rotation = Quaternion(0.332942, -4.79714e-09, 1.34773e-07, 0.942947)
+bones/37/rotation = Quaternion(-0.647322, 2.53565e-07, -3.47411e-07, 0.762217)
+bones/40/rotation = Quaternion(0.964679, -1.12729e-07, 9.45397e-08, 0.263427)
 bones/40/scale = Vector3(1, 1, 0.999999)
-bones/41/rotation = Quaternion(0.180599, 3.69979e-08, -1.26168e-07, 0.983557)
-bones/42/rotation = Quaternion(-0.579158, -1.95415e-07, 2.7682e-07, 0.815216)
+bones/41/rotation = Quaternion(0.332943, 3.23166e-08, -1.30859e-07, 0.942947)
+bones/42/rotation = Quaternion(-0.647343, -1.82827e-07, 3.0924e-07, 0.762199)
 bones/43/rotation = Quaternion(-1.44189e-07, 0.961249, -0.275682, -1.87162e-07)
 bones/44/rotation = Quaternion(0.679706, -0.679706, 0.194936, 0.194937)
 bones/44/scale = Vector3(1, 1, 1)
@@ -15517,13 +15526,14 @@ libraries = {
 "Venus_Anim_Tracks": ExtResource("17_eo43i")
 }
 
-[node name="DialogObject" parent="Venus Custom Death Overwrite" node_paths=PackedStringArray("NPCInv") instance=ExtResource("23_crt0c")]
-transform = Transform3D(1.11111, 0, 0, 0, 1.11111, 0, 0, 0, 1.11111, -0.0251451, 1.39241, 0.647077)
-ShopSystem = true
-NPCName = " ..."
-TalkSound = ExtResource("20_7gk32")
-FaceSprite = ExtResource("3_4bj1b")
-NPCInv = NodePath("../../InventoryGrid")
+[node name="DialogCamera" type="Camera3D" parent="Venus Custom Death Overwrite"]
+transform = Transform3D(1.11111, -2.02955e-13, 2.6491e-07, 3.09574e-10, 1.11111, -0.0012976, -2.64909e-07, 0.0012976, 1.11111, 0.001187, 1.37415, 0.598806)
+
+[node name="FlashLightFPS" type="SpotLight3D" parent="Venus Custom Death Overwrite"]
+transform = Transform3D(-1.11111, 0, -9.7137e-08, 0, 1.11111, 0, 9.7137e-08, 0, -1.11111, 0, 1.71739, -1.08264)
+light_color = Color(1, 0.929412, 0.74902, 1)
+light_cull_mask = 4294967199
+spot_range = 8.0
 
 [node name="VenusModel" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -16044,12 +16054,6 @@ libraries = {
 "": SubResource("AnimationLibrary_8x54f")
 }
 
-[node name="FlashLightFPS" type="SpotLight3D" parent="VenusModel"]
-transform = Transform3D(-1.18672, 0, -1.03747e-07, 0, 1.18672, 0, 1.03747e-07, 0, -1.18672, 0, 1.57921, -0.974378)
-light_color = Color(1, 0.929412, 0.74902, 1)
-light_cull_mask = 4294967199
-spot_range = 8.0
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="VenusModel"]
 libraries = {
 "": SubResource("AnimationLibrary_17qq7")
@@ -16213,10 +16217,10 @@ default_item_texture = ExtResource("15_7c6vw")
 [node name="Quad" type="MeshInstance3D" parent="OrderPanel"]
 transform = Transform3D(0.57, 0, 0, 0, 0.57, 0, 0, 0, 0.756, 0, 0, 0)
 mesh = SubResource("1")
-surface_material_override/0 = SubResource("StandardMaterial3D_g1udv")
+surface_material_override/0 = SubResource("StandardMaterial3D_xx1fh")
 
 [node name="Area3D" type="Area3D" parent="OrderPanel/Quad"]
-transform = Transform3D(1, -3.55583e-09, 2.23235e-07, 0, 0.999873, 0.0159266, -2.23263e-07, -0.0159266, 0.999873, 0, 0, 0)
+transform = Transform3D(1, -3.63789e-09, 2.23238e-07, 2.78585e-10, 0.999887, 0.0150463, -2.23267e-07, -0.0150463, 0.999887, 0, 0, 0)
 collision_layer = 2
 input_capture_on_drag = true
 
@@ -16229,15 +16233,7 @@ key = 4194335
 OtherNodes = [null]
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
-[connection signal="death" from="HealthController" to="Venus Custom Death Overwrite/DialogObject" method="_on_health_controller_death"]
-[connection signal="DialogueActive" from="Venus Custom Death Overwrite/DialogObject" to="." method="_on_dialog_object_dialogue_active"]
-[connection signal="DialogueDeactivated" from="Venus Custom Death Overwrite/DialogObject" to="." method="_on_dialog_object_dialogue_deactivated"]
-[connection signal="DialogueDeactivated" from="Venus Custom Death Overwrite/DialogObject" to="Behavior" method="StopTalking"]
 [connection signal="area_entered" from="InteractableDetection" to="InteractableDetection" method="_on_area_entered"]
 [connection signal="body_entered" from="InteractableDetection" to="InteractableDetection" method="_on_body_entered"]
 
 [editable path="Venus Custom Death Overwrite"]
-[editable path="Venus Custom Death Overwrite/DialogObject"]
-[editable path="Venus Custom Death Overwrite/DialogObject/UI/ModeSelectInterface/VBoxContainer/ScoreContainer"]
-[editable path="Venus Custom Death Overwrite/DialogObject/UI/ModeSelectInterface/VBoxContainer/ScoreContainer2"]
-[editable path="Venus Custom Death Overwrite/DialogObject/UI/ModeSelectInterface/ShopController"]

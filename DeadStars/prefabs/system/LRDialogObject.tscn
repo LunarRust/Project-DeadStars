@@ -43,7 +43,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.00833333, 0.0166667, 0.025, 0.0333333, 0.0416667, 0.05, 0.0583333, 0.0666667, 0.075, 0.0833333, 0.0916667, 0.1, 0.108333, 0.116667, 0.125, 0.133333, 0.141667, 0.15, 0.158333, 0.166667, 0.175, 0.183333, 0.191667, 0.2, 0.208333, 0.216667, 0.225, 0.233333, 0.241667, 0.25, 0.258333, 0.266667, 0.275, 0.283333, 0.291667, 0.3, 0.308333, 0.316667, 0.325, 0.333333, 0.341667, 0.35, 0.358333, 0.366667, 0.375, 0.383333, 0.391667, 0.4, 0.408333, 0.416667, 0.425, 0.433333, 0.441667, 0.45, 0.458333, 0.466667, 0.475, 0.483333, 0.491667, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(757, 0), Vector2(757, 0), Vector2(757.002, 0), Vector2(757.011, 0), Vector2(757.035, 0), Vector2(757.086, 0), Vector2(757.178, 0), Vector2(757.331, 0), Vector2(757.564, 0), Vector2(757.903, 0), Vector2(758.377, 0), Vector2(759.015, 0), Vector2(759.854, 0), Vector2(760.932, 0), Vector2(762.288, 0), Vector2(763.969, 0), Vector2(766.021, 0), Vector2(768.497, 0), Vector2(771.45, 0), Vector2(774.939, 0), Vector2(779.025, 0), Vector2(783.771, 0), Vector2(789.246, 0), Vector2(795.521, 0), Vector2(802.67, 0), Vector2(810.771, 0), Vector2(819.905, 0), Vector2(830.155, 0), Vector2(841.61, 0), Vector2(854.36, 0), Vector2(868.5, 0), Vector2(882.64, 0), Vector2(895.39, 0), Vector2(906.845, 0), Vector2(917.095, 0), Vector2(926.229, 0), Vector2(934.33, 0), Vector2(941.479, 0), Vector2(947.754, 0), Vector2(953.229, 0), Vector2(957.975, 0), Vector2(962.061, 0), Vector2(965.55, 0), Vector2(968.503, 0), Vector2(970.979, 0), Vector2(973.031, 0), Vector2(974.712, 0), Vector2(976.068, 0), Vector2(977.146, 0), Vector2(977.985, 0), Vector2(978.623, 0), Vector2(979.097, 0), Vector2(979.436, 0), Vector2(979.669, 0), Vector2(979.822, 0), Vector2(979.914, 0), Vector2(979.965, 0), Vector2(979.989, 0), Vector2(979.998, 0), Vector2(980, 0), Vector2(980, 0)]
+"values": [Vector2(757, 0), Vector2(757, -9.06636e-11), Vector2(757, -2.90124e-09), Vector2(757.001, -2.20313e-08), Vector2(757.006, -9.28395e-08), Vector2(757.018, -2.83324e-07), Vector2(757.044, -7.05e-07), Vector2(757.094, -1.52378e-06), Vector2(757.183, -2.97086e-06), Vector2(757.331, -5.3536e-06), Vector2(757.56, -9.06636e-06), Vector2(757.901, -1.46015e-05), Vector2(758.393, -2.256e-05), Vector2(759.078, -3.36628e-05), Vector2(760.01, -4.87611e-05), Vector2(761.25, -6.88477e-05), Vector2(762.869, -9.50677e-05), Vector2(764.947, -0.000128729), Vector2(767.575, -0.000171315), Vector2(770.858, -0.000224492), Vector2(774.909, -0.000290124), Vector2(779.858, -0.000370279), Vector2(785.843, -0.000467247), Vector2(793.022, -0.000583542), Vector2(801.564, -0.00072192), Vector2(811.655, -0.000885386), Vector2(823.497, -0.00107721), Vector2(837.307, -0.00130092), Vector2(853.321, -0.00156035), Vector2(871.795, -0.00185961), Vector2(893, -0.00220313), Vector2(914.205, -0.00254664), Vector2(932.679, -0.0028459), Vector2(948.693, -0.00310533), Vector2(962.503, -0.00332904), Vector2(974.345, -0.00352086), Vector2(984.436, -0.00368433), Vector2(992.978, -0.00382271), Vector2(1000.16, -0.003939), Vector2(1006.14, -0.00403597), Vector2(1011.09, -0.00411613), Vector2(1015.14, -0.00418176), Vector2(1018.42, -0.00423494), Vector2(1021.05, -0.00427752), Vector2(1023.13, -0.00431118), Vector2(1024.75, -0.0043374), Vector2(1025.99, -0.00435749), Vector2(1026.92, -0.00437259), Vector2(1027.61, -0.00438369), Vector2(1028.1, -0.00439165), Vector2(1028.44, -0.00439718), Vector2(1028.67, -0.0044009), Vector2(1028.82, -0.00440328), Vector2(1028.91, -0.00440473), Vector2(1028.96, -0.00440555), Vector2(1028.98, -0.00440597), Vector2(1028.99, -0.00440616), Vector2(1029, -0.00440623), Vector2(1029, -0.00440625), Vector2(1029, -0.00440625), Vector2(1029, -0.00440625)]
 }
 
 [sub_resource type="Animation" id="Animation_gnyjc"]
@@ -59,7 +59,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.00833333, 0.0166667, 0.025, 0.0333333, 0.0416667, 0.05, 0.0583333, 0.0666667, 0.075, 0.0833333, 0.0916667, 0.1, 0.108333, 0.116667, 0.125, 0.133333, 0.141667, 0.15, 0.158333, 0.166667, 0.175, 0.183333, 0.191667, 0.2, 0.208333, 0.216667, 0.225, 0.233333, 0.241667, 0.25, 0.258333, 0.266667, 0.275, 0.283333, 0.291667, 0.3, 0.308333, 0.316667, 0.325, 0.333333, 0.341667, 0.35, 0.358333, 0.366667, 0.375, 0.383333, 0.391667, 0.4, 0.408333, 0.416667, 0.425, 0.433333, 0.441667, 0.45, 0.458333, 0.466667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(980, 0), Vector2(980, 0), Vector2(979.997, 0), Vector2(979.985, 0), Vector2(979.954, 0), Vector2(979.887, 0), Vector2(979.765, 0), Vector2(979.564, 0), Vector2(979.257, 0), Vector2(978.81, 0), Vector2(978.186, 0), Vector2(977.344, 0), Vector2(976.238, 0), Vector2(974.819, 0), Vector2(973.031, 0), Vector2(970.817, 0), Vector2(968.112, 0), Vector2(964.849, 0), Vector2(960.957, 0), Vector2(956.359, 0), Vector2(950.976, 0), Vector2(944.721, 0), Vector2(937.505, 0), Vector2(929.236, 0), Vector2(919.815, 0), Vector2(909.14, 0), Vector2(897.104, 0), Vector2(883.595, 0), Vector2(868.5, 0), Vector2(853.405, 0), Vector2(839.897, 0), Vector2(827.86, 0), Vector2(817.185, 0), Vector2(807.764, 0), Vector2(799.495, 0), Vector2(792.279, 0), Vector2(786.024, 0), Vector2(780.641, 0), Vector2(776.043, 0), Vector2(772.151, 0), Vector2(768.888, 0), Vector2(766.184, 0), Vector2(763.969, 0), Vector2(762.181, 0), Vector2(760.762, 0), Vector2(759.656, 0), Vector2(758.814, 0), Vector2(758.19, 0), Vector2(757.743, 0), Vector2(757.436, 0), Vector2(757.235, 0), Vector2(757.113, 0), Vector2(757.047, 0), Vector2(757.015, 0), Vector2(757.003, 0), Vector2(757, 0), Vector2(757, 0)]
+"values": [Vector2(1030, -0.00440625), Vector2(1030, -0.00440625), Vector2(1030, -0.00440619), Vector2(1029.98, -0.00440596), Vector2(1029.94, -0.00440533), Vector2(1029.86, -0.00440401), Vector2(1029.71, -0.0044016), Vector2(1029.47, -0.00439764), Vector2(1029.09, -0.00439157), Vector2(1028.54, -0.00438273), Vector2(1027.78, -0.00437041), Vector2(1026.75, -0.00435377), Vector2(1025.4, -0.00433193), Vector2(1023.66, -0.00430388), Vector2(1021.47, -0.00426855), Vector2(1018.76, -0.00422479), Vector2(1015.45, -0.00417135), Vector2(1011.45, -0.00410688), Vector2(1006.69, -0.00402998), Vector2(1001.06, -0.00393914), Vector2(994.468, -0.00383276), Vector2(986.811, -0.00370917), Vector2(977.978, -0.0035666), Vector2(967.854, -0.00340321), Vector2(956.321, -0.00321706), Vector2(943.252, -0.00300613), Vector2(928.517, -0.00276831), Vector2(911.98, -0.0025014), Vector2(893.5, -0.00220313), Vector2(875.02, -0.00190486), Vector2(858.483, -0.00163795), Vector2(843.749, -0.00140013), Vector2(830.68, -0.0011892), Vector2(819.146, -0.00100304), Vector2(809.023, -0.000839652), Vector2(800.19, -0.000697086), Vector2(792.532, -0.000573494), Vector2(785.941, -0.000467115), Vector2(780.313, -0.00037627), Vector2(775.548, -0.000299368), Vector2(771.554, -0.000234904), Vector2(768.243, -0.000181458), Vector2(765.531, -0.000137697), Vector2(763.343, -0.000102373), Vector2(761.605, -7.43256e-05), Vector2(760.251, -5.24786e-05), Vector2(759.221, -3.58438e-05), Vector2(758.457, -2.35173e-05), Vector2(757.91, -1.46818e-05), Vector2(757.533, -8.60635e-06), Vector2(757.288, -4.64544e-06), Vector2(757.139, -2.2403e-06), Vector2(757.057, -9.17818e-07), Vector2(757.018, -2.90573e-07), Vector2(757.004, -5.72763e-08), Vector2(757, -3.72529e-09), Vector2(757, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_65jwt"]
@@ -74,7 +74,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(980, 0)]
+"values": [Vector2(1051, 11)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ko6aw"]
@@ -84,7 +84,7 @@ _data = {
 "RESET": SubResource("Animation_65jwt")
 }
 
-[node name="DialogObject" type="Node3D" node_paths=PackedStringArray("ShopController", "NPCInvDisplay", "MainText", "NameText", "DialogueBox", "soundSource", "Sprite")]
+[node name="DialogObject" type="Node3D" node_paths=PackedStringArray("ShopController", "NPCInvDisplay", "MainText", "NameText", "soundSource", "Sprite")]
 script = ExtResource("1_ifjvt")
 Dialogue = Array[String](["1", "2", "3", "4"])
 ShopController = NodePath("UI/ModeSelectInterface")
@@ -92,7 +92,6 @@ NPCInvDisplay = NodePath("UI/ModeSelectInterface/ShopController/TextureRect/InvD
 ShopEnabled = true
 MainText = NodePath("UI/DialogInterface/DialogueParent/DialogueBox/TextParent/MainText")
 NameText = NodePath("UI/DialogInterface/DialogueParent/DialogueBox/TextParent/NameText")
-DialogueBox = NodePath("UI/DialogInterface/DialogueParent/DialogueBox")
 soundSource = NodePath("DialogueSounds")
 Sprite = NodePath("UI/DialogInterface/DialogueParent/DialogueBox/FaceSprite")
 
@@ -173,6 +172,7 @@ script = ExtResource("6_v0x7p")
 [node name="DialogInterface" type="Node2D" parent="UI"]
 
 [node name="DialogueParent" type="Node2D" parent="UI/DialogInterface"]
+visible = false
 position = Vector2(0, 0.00440625)
 script = ExtResource("9_kqruf")
 time = 5.0
@@ -181,9 +181,8 @@ endPosition = Vector2(0, 10)
 
 [node name="DialogueBox" type="Sprite2D" parent="UI/DialogInterface/DialogueParent" groups=["DialogueBox"]]
 unique_name_in_owner = true
-visible = false
 texture_filter = 1
-position = Vector2(-75, 305)
+position = Vector2(-75, 308.996)
 scale = Vector2(1.155, 1.155)
 texture = ExtResource("7_ss6e3")
 offset = Vector2(480, 270)
@@ -198,7 +197,7 @@ texture_normal = ExtResource("9_igiua")
 script = ExtResource("10_u1j6r")
 
 [node name="FaceSprite" type="Sprite2D" parent="UI/DialogInterface/DialogueParent/DialogueBox"]
-position = Vector2(740.26, 89.1775)
+position = Vector2(740.26, 93.5065)
 scale = Vector2(0.718594, 0.718594)
 texture = ExtResource("11_18lv3")
 
@@ -235,6 +234,7 @@ tweenRotation = true
 endrotation = -2.0
 
 [node name="TextParent" type="Node2D" parent="UI/DialogInterface/DialogueParent/DialogueBox"]
+position = Vector2(0, -3.46701)
 
 [node name="NameText" type="RichTextLabel" parent="UI/DialogInterface/DialogueParent/DialogueBox/TextParent"]
 modulate = Color(0.658824, 0.658824, 0.658824, 1)
@@ -258,36 +258,35 @@ bbcode_enabled = true
 text = "Dialogue goes here."
 
 [node name="NextTextButton" type="TextureButton" parent="UI/DialogInterface/DialogueParent/DialogueBox/TextParent"]
-offset_left = 632.9
-offset_top = 89.1775
-offset_right = 664.9
-offset_bottom = 121.177
+offset_left = 634.632
+offset_top = 93.5103
+offset_right = 666.632
+offset_bottom = 125.51
 scale = Vector2(1.78, 1.78)
 texture_normal = ExtResource("15_6renm")
 texture_pressed = ExtResource("16_rd4i0")
 texture_hover = ExtResource("17_0vs54")
 
 [node name="HP Number" type="Label" parent="UI/DialogInterface/DialogueParent/DialogueBox"]
-offset_left = 667.888
-offset_top = 44.152
-offset_right = 707.888
-offset_bottom = 70.152
+offset_left = 668.753
+offset_top = 47.619
+offset_right = 708.753
+offset_bottom = 73.619
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_i4suv")
 text = "00"
 
 [node name="HP Label" type="Label" parent="UI/DialogInterface/DialogueParent/DialogueBox"]
-offset_left = 645.888
-offset_top = 44.152
-offset_right = 663.888
-offset_bottom = 63.152
+offset_left = 646.753
+offset_top = 47.619
+offset_right = 664.753
+offset_bottom = 66.619
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_i4suv")
 text = "HP"
 
 [node name="ModeSelectInterface" type="Node2D" parent="UI"]
 visible = false
-position = Vector2(0, 0.00440625)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/ModeSelectInterface"]
 offset_right = 200.0
@@ -324,15 +323,16 @@ scale = Vector2(1.61, 1.61)
 theme_override_font_sizes/font_size = 16
 text = "Inventory"
 
-[node name="ShopController" parent="UI/ModeSelectInterface" instance=ExtResource("19_tbcac")]
-position = Vector2(980, 0)
-scale = Vector2(0.74, 0.74)
+[node name="ShopController" parent="UI/ModeSelectInterface" node_paths=PackedStringArray("PlayerDisplay") instance=ExtResource("19_tbcac")]
+z_index = 1
+position = Vector2(1051, 11)
+PlayerDisplay = NodePath("TextureRect2/CtrlInventoryGridEx")
 
-[node name="ScoreEntry2" parent="UI/ModeSelectInterface/ShopController" index="10"]
-offset_left = 97.2974
-offset_top = 144.595
-offset_right = 148.297
-offset_bottom = 175.595
+[node name="ScoreEntry2" parent="UI/ModeSelectInterface/ShopController" index="7"]
+offset_left = 62.0
+offset_top = 69.9956
+offset_right = 113.0
+offset_bottom = 100.996
 theme_override_font_sizes/font_size = 16
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/ModeSelectInterface/ShopController"]
@@ -346,8 +346,8 @@ libraries = {
 [connection signal="touched" from="MainTrigger/Behavior" to="CamGrabber/Behavior" method="Touch"]
 [connection signal="pressed" from="UI/DialogInterface/DialogueParent/DialogueBox/X Button" to="." method="CloseDialogue"]
 [connection signal="pressed" from="UI/DialogInterface/DialogueParent/DialogueBox/X Button" to="CamGrabber/Behavior" method="ReturnCamera"]
-[connection signal="pressed" from="UI/DialogInterface/DialogueParent/DialogueBox/TextParent/NextTextButton" to="." method="_on_next_text_button_pressed"]
 [connection signal="pressed" from="UI/DialogInterface/DialogueParent/DialogueBox/TextParent/NextTextButton" to="." method="Next"]
+[connection signal="pressed" from="UI/DialogInterface/DialogueParent/DialogueBox/TextParent/NextTextButton" to="." method="_on_next_text_button_pressed"]
 [connection signal="pressed" from="UI/ModeSelectInterface/VBoxContainer/ScoreContainer/UIParent/TextureButton" to="." method="_on_NewText1_pressed"]
 
 [editable path="UI/ModeSelectInterface/VBoxContainer/ScoreContainer"]

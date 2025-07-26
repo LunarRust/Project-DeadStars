@@ -4891,7 +4891,6 @@ size = Vector3(1, 2.92139, 1.96439)
 [node name="GraveYard" type="Node3D"]
 
 [node name="NpcSceneRules" parent="." instance=ExtResource("1_t7uhh")]
-AllowPlayerControl = false
 
 [node name="PlayerSceneRules" parent="." instance=ExtResource("2_2sl7l")]
 FlashlightOn = true
@@ -5158,26 +5157,28 @@ transform = Transform3D(0.748134, 0, 0.663548, 0, 1, 0, -0.663548, 0, 0.748134, 
 HP = 3
 
 [node name="Skeleton3D" parent="Thrait Woman/Thrait/ThraitArm" index="0"]
-bones/1/rotation = Quaternion(0.255286, -3.87449e-09, -3.46733e-08, 0.966866)
-bones/3/rotation = Quaternion(0.51045, -0.157242, -0.599114, 0.596472)
-bones/5/rotation = Quaternion(-0.146189, -0.0279587, 0.639044, 0.754632)
-bones/6/rotation = Quaternion(0.195715, -0.044241, -0.371762, 0.906384)
-bones/7/rotation = Quaternion(0.0926339, -1.14194e-07, -8.29891e-08, 0.9957)
-bones/8/rotation = Quaternion(0.0546027, 0.000457557, -0.000307558, 0.998508)
-bones/9/rotation = Quaternion(0.1708, -0.004134, 0.0273446, 0.984918)
-bones/10/position = Vector3(0.000470729, 0.28051, 0.132223)
-bones/10/rotation = Quaternion(0.409334, 0.000466939, 0.000196801, 0.912385)
-bones/12/position = Vector3(0.0976325, 0.139924, -0.100451)
-bones/12/rotation = Quaternion(0.0817249, -0.0379669, 0.202032, 0.975224)
-bones/13/position = Vector3(0.164491, 0.15093, -0.00257173)
-bones/14/position = Vector3(-0.0976328, 0.139924, -0.100451)
-bones/14/rotation = Quaternion(0.0817246, 0.0379686, -0.202032, 0.975224)
-bones/15/position = Vector3(-0.164491, 0.15093, -0.00257116)
-bones/16/position = Vector3(0.0848448, 0.24885, 0.127373)
-bones/17/position = Vector3(-0.0848444, 0.24885, 0.127374)
-bones/18/rotation = Quaternion(0.51045, 0.157242, 0.599114, 0.596472)
-bones/20/rotation = Quaternion(-0.146189, 0.0279586, -0.639044, 0.754632)
-bones/21/rotation = Quaternion(0.195715, 0.0442411, 0.371762, 0.906384)
+bones/1/rotation = Quaternion(0.249222, 2.46751e-10, -6.10873e-08, 0.968446)
+bones/2/rotation = Quaternion(0.0920063, -5.24122e-15, -2.1936e-08, 0.995758)
+bones/3/rotation = Quaternion(0.487582, -0.110619, -0.607011, 0.617709)
+bones/5/rotation = Quaternion(-0.133865, -0.025595, 0.625838, 0.767953)
+bones/6/rotation = Quaternion(0.297524, -0.0652208, -0.512335, 0.802956)
+bones/7/rotation = Quaternion(0.0892741, 0.106693, -0.0590704, 0.988513)
+bones/8/rotation = Quaternion(0.0522745, 0.0895347, -0.0601442, 0.992791)
+bones/9/rotation = Quaternion(0.139899, 0.0345563, -0.124857, 0.981654)
+bones/10/position = Vector3(0.0147857, 0.290495, 0.135095)
+bones/10/rotation = Quaternion(0.508148, 0.0898699, 0.0380081, 0.855724)
+bones/11/rotation = Quaternion(0.28363, 4.80209e-12, -4.7336e-07, 0.958934)
+bones/12/position = Vector3(0.0975745, 0.140013, -0.101436)
+bones/12/rotation = Quaternion(0.0865123, -0.0388309, 0.202358, 0.97471)
+bones/13/position = Vector3(0.164481, 0.150798, -0.000990501)
+bones/14/position = Vector3(-0.097575, 0.140013, -0.101436)
+bones/14/rotation = Quaternion(0.0865119, 0.0388325, -0.202358, 0.97471)
+bones/15/position = Vector3(-0.164481, 0.150798, -0.00098983)
+bones/16/position = Vector3(0.0826486, 0.245856, 0.151328)
+bones/17/position = Vector3(-0.0826481, 0.245856, 0.151329)
+bones/18/rotation = Quaternion(0.487577, 0.11061, 0.607013, 0.617713)
+bones/20/rotation = Quaternion(-0.133865, 0.025595, -0.625838, 0.767953)
+bones/21/rotation = Quaternion(0.297524, 0.0652209, 0.512335, 0.802956)
 
 [node name="Thrait Youngling" parent="." instance=ExtResource("17_kewof")]
 transform = Transform3D(-0.999987, 0, 0.0049565, 0, 1, 0, -0.0049565, 0, -0.999987, 7.52347, 1.99063, -2.45208)

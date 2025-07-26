@@ -23,6 +23,7 @@ var LookTarget : Node3D
 
 @export_category("Characteristics")
 @export var hostile : bool = true
+@export var RespectPlayerController : bool = true
 @export var MaxSpeed: float = 3
 var speed : float
 @export var acceleration: float = 5
@@ -88,7 +89,7 @@ func _ready():
 	else:
 		InnoutExists = false
 	player = get_tree().get_first_node_in_group("player")
-	if SignalBusKOM != null:
+	if SignalBusKOM != null && RespectPlayerController:
 		SignalBusKOM.PompNpcInstances.append(InstID)
 		SignalBusKOM.Activate_Pomp_Target.connect(TargetEnimies)
 		SignalBusKOM.Activate_Player_Target.connect(TargetPlayer)
@@ -128,7 +129,7 @@ func _physics_process(delta):
 			if Input.is_physical_key_pressed(KEY_6):
 				hostile = false
 				TargetEntity = TargetLocator("player")
-			if Input.is_mouse_button_pressed(2):
+			if Input.is_mouse_button_pressed(2) && RespectPlayerController:
 				hostile = false
 				DoLookAt = false
 				TargetEntity = TargetLocator("NpcMarker",1.2)

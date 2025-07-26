@@ -8,9 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://doojuqynft083" path="res://Sounds/Gore01.ogg" id="3_ra5ce"]
 [ext_resource type="AudioStream" uid="uid://bpv04g5kovnq8" path="res://Sounds/TastySpit.ogg" id="4_sp3lk"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g8gsl"]
-radius = 0.793261
-height = 2.00987
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2dllj"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_twl0t"]
 animation = &"Attack"
@@ -153,10 +151,12 @@ _data = {
 }
 
 [node name="TurretEnemy" type="StaticBody3D"]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_g8gsl")
+shape = SubResource("CapsuleShape3D_2dllj")
 
 [node name="HealthController" type="Node3D" parent="." node_paths=PackedStringArray("SoundSource")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32495, 0)
@@ -186,17 +186,17 @@ transform = Transform3D(0.333493, 0, 0, 0, 0.333493, 0, 0, 0, 0.333493, 0, 0, 0)
 [node name="Skeleton3D" parent="TurretEnemy/Tasty/Armature" index="0"]
 bones/0/rotation = Quaternion(0.187168, 1.17103e-07, 2.23122e-08, 0.982328)
 bones/0/scale = Vector3(1, 1, 1)
-bones/1/rotation = Quaternion(-0.158042, 5.18489e-14, -3.76802e-08, 0.987432)
-bones/2/rotation = Quaternion(-0.081774, -8.56429e-16, -1.94964e-08, 0.996651)
-bones/3/rotation = Quaternion(0.0449807, -1.65125e-14, 1.07242e-08, 0.998988)
+bones/1/rotation = Quaternion(-0.157405, 0.0185571, 0.0797797, 0.984131)
+bones/2/rotation = Quaternion(0.0602534, -0.0119087, -0.00109576, 0.998112)
+bones/3/rotation = Quaternion(0.0629316, 0.0175978, 0.243745, 0.967636)
 bones/3/scale = Vector3(1, 1, 1)
-bones/4/rotation = Quaternion(-0.00314044, -0.00165793, -0.747091, 0.664712)
+bones/4/rotation = Quaternion(-0.018398, 0.0177267, -0.785147, 0.618782)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.00612907, -0.00154658, 0.887412, -0.460935)
+bones/5/rotation = Quaternion(0.00105403, 0.000197309, 0.87803, -0.478604)
 bones/5/scale = Vector3(1, 1, 1)
-bones/6/rotation = Quaternion(-0.00314062, 0.00165777, 0.747091, 0.664712)
+bones/6/rotation = Quaternion(-0.0184056, -0.0177363, 0.785165, 0.618759)
 bones/6/scale = Vector3(1, 1, 1)
-bones/7/rotation = Quaternion(-0.00612928, -0.00154669, 0.887411, 0.460935)
+bones/7/rotation = Quaternion(-0.00105425, 0.000197189, 0.87803, 0.478604)
 bones/7/scale = Vector3(1, 1, 1)
 
 [node name="AnimationTree" type="AnimationTree" parent="TurretEnemy"]

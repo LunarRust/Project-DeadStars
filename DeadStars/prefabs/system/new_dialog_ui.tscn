@@ -1,0 +1,280 @@
+[gd_scene load_steps=23 format=3 uid="uid://ciutoaf75b7ql"]
+
+[ext_resource type="Script" path="res://DeadStars/scripts/NewDialogueSystem/NewDialogUIControl.gd" id="1_4mqm0"]
+[ext_resource type="Script" path="res://DeadStars/scripts/Tweener2D.gd" id="2_to4ef"]
+[ext_resource type="Texture2D" uid="uid://d08uqmhpg2wkn" path="res://Sprites/DialogueBox.png" id="3_i307u"]
+[ext_resource type="Script" path="res://CustomScripts/Logic/Player/DialogueBox.gd" id="4_llhma"]
+[ext_resource type="Texture2D" uid="uid://h1qhsfsy30ya" path="res://Sprites/UI/X.png" id="5_gn1hr"]
+[ext_resource type="Script" path="res://Scripts/XButton.cs" id="6_gbixv"]
+[ext_resource type="Texture2D" uid="uid://dlxwxvfcxaciw" path="res://Sprites/Faces/Psychopomp FaceSprite.png" id="7_vyj05"]
+[ext_resource type="Texture2D" uid="uid://bdprua1xq1wim" path="res://Sprites/UI/Gear.png" id="8_105vo"]
+[ext_resource type="Script" path="res://Scripts/Tweener2D.cs" id="9_oslq0"]
+[ext_resource type="FontFile" uid="uid://dg3h8s7di2p7v" path="res://Fonts/DBStylez2.ttf" id="10_rubnq"]
+[ext_resource type="FontFile" uid="uid://dku4ohp5rmpr5" path="res://Fonts/DBStylez.ttf" id="11_0i0v8"]
+[ext_resource type="Texture2D" uid="uid://fpjyw8ttbo8r" path="res://Sprites/Speak3.png" id="12_3pywl"]
+[ext_resource type="Texture2D" uid="uid://bn030tg8lovt0" path="res://Sprites/Speak2.png" id="13_dy4pk"]
+[ext_resource type="Texture2D" uid="uid://cq1g0r5ketc72" path="res://Sprites/Speak1.png" id="14_i0kfy"]
+[ext_resource type="PackedScene" uid="uid://bab2dq5qur6ok" path="res://DeadStars/prefabs/UI/MenuButton.tscn" id="15_pwup6"]
+[ext_resource type="Script" path="res://DeadStars/scripts/NewDialogueSystem/DialogChanger.gd" id="16_mftrw"]
+[ext_resource type="Script" path="res://DeadStars/scripts/AnimToggle.gd" id="17_josve"]
+[ext_resource type="PackedScene" uid="uid://d02do5ugamivi" path="res://DeadStars/prefabs/UI/ShopController.tscn" id="18_j4kei"]
+
+[sub_resource type="Animation" id="Animation_m5dpk"]
+resource_name = "Close"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShopController:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.00833333, 0.0166667, 0.025, 0.0333333, 0.0416667, 0.05, 0.0583333, 0.0666667, 0.075, 0.0833333, 0.0916667, 0.1, 0.108333, 0.116667, 0.125, 0.133333, 0.141667, 0.15, 0.158333, 0.166667, 0.175, 0.183333, 0.191667, 0.2, 0.208333, 0.216667, 0.225, 0.233333, 0.241667, 0.25, 0.258333, 0.266667, 0.275, 0.283333, 0.291667, 0.3, 0.308333, 0.316667, 0.325, 0.333333, 0.341667, 0.35, 0.358333, 0.366667, 0.375, 0.383333, 0.391667, 0.4, 0.408333, 0.416667, 0.425, 0.433333, 0.441667, 0.45, 0.458333, 0.466667, 0.475, 0.483333, 0.491667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(757, 0), Vector2(757, -9.06636e-11), Vector2(757, -2.90124e-09), Vector2(757.001, -2.20313e-08), Vector2(757.006, -9.28395e-08), Vector2(757.018, -2.83324e-07), Vector2(757.044, -7.05e-07), Vector2(757.094, -1.52378e-06), Vector2(757.183, -2.97086e-06), Vector2(757.331, -5.3536e-06), Vector2(757.56, -9.06636e-06), Vector2(757.901, -1.46015e-05), Vector2(758.393, -2.256e-05), Vector2(759.078, -3.36628e-05), Vector2(760.01, -4.87611e-05), Vector2(761.25, -6.88477e-05), Vector2(762.869, -9.50677e-05), Vector2(764.947, -0.000128729), Vector2(767.575, -0.000171315), Vector2(770.858, -0.000224492), Vector2(774.909, -0.000290124), Vector2(779.858, -0.000370279), Vector2(785.843, -0.000467247), Vector2(793.022, -0.000583542), Vector2(801.564, -0.00072192), Vector2(811.655, -0.000885386), Vector2(823.497, -0.00107721), Vector2(837.307, -0.00130092), Vector2(853.321, -0.00156035), Vector2(871.795, -0.00185961), Vector2(893, -0.00220313), Vector2(914.205, -0.00254664), Vector2(932.679, -0.0028459), Vector2(948.693, -0.00310533), Vector2(962.503, -0.00332904), Vector2(974.345, -0.00352086), Vector2(984.436, -0.00368433), Vector2(992.978, -0.00382271), Vector2(1000.16, -0.003939), Vector2(1006.14, -0.00403597), Vector2(1011.09, -0.00411613), Vector2(1015.14, -0.00418176), Vector2(1018.42, -0.00423494), Vector2(1021.05, -0.00427752), Vector2(1023.13, -0.00431118), Vector2(1024.75, -0.0043374), Vector2(1025.99, -0.00435749), Vector2(1026.92, -0.00437259), Vector2(1027.61, -0.00438369), Vector2(1028.1, -0.00439165), Vector2(1028.44, -0.00439718), Vector2(1028.67, -0.0044009), Vector2(1028.82, -0.00440328), Vector2(1028.91, -0.00440473), Vector2(1028.96, -0.00440555), Vector2(1028.98, -0.00440597), Vector2(1028.99, -0.00440616), Vector2(1029, -0.00440623), Vector2(1029, -0.00440625), Vector2(1029, -0.00440625), Vector2(1029, -0.00440625)]
+}
+
+[sub_resource type="Animation" id="Animation_gnyjc"]
+resource_name = "Open"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShopController:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.00833333, 0.0166667, 0.025, 0.0333333, 0.0416667, 0.05, 0.0583333, 0.0666667, 0.075, 0.0833333, 0.0916667, 0.1, 0.108333, 0.116667, 0.125, 0.133333, 0.141667, 0.15, 0.158333, 0.166667, 0.175, 0.183333, 0.191667, 0.2, 0.208333, 0.216667, 0.225, 0.233333, 0.241667, 0.25, 0.258333, 0.266667, 0.275, 0.283333, 0.291667, 0.3, 0.308333, 0.316667, 0.325, 0.333333, 0.341667, 0.35, 0.358333, 0.366667, 0.375, 0.383333, 0.391667, 0.4, 0.408333, 0.416667, 0.425, 0.433333, 0.441667, 0.45, 0.458333, 0.466667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1030, -0.00440625), Vector2(1030, -0.00440625), Vector2(1030, -0.00440619), Vector2(1029.98, -0.00440596), Vector2(1029.94, -0.00440533), Vector2(1029.86, -0.00440401), Vector2(1029.71, -0.0044016), Vector2(1029.47, -0.00439764), Vector2(1029.09, -0.00439157), Vector2(1028.54, -0.00438273), Vector2(1027.78, -0.00437041), Vector2(1026.75, -0.00435377), Vector2(1025.4, -0.00433193), Vector2(1023.66, -0.00430388), Vector2(1021.47, -0.00426855), Vector2(1018.76, -0.00422479), Vector2(1015.45, -0.00417135), Vector2(1011.45, -0.00410688), Vector2(1006.69, -0.00402998), Vector2(1001.06, -0.00393914), Vector2(994.468, -0.00383276), Vector2(986.811, -0.00370917), Vector2(977.978, -0.0035666), Vector2(967.854, -0.00340321), Vector2(956.321, -0.00321706), Vector2(943.252, -0.00300613), Vector2(928.517, -0.00276831), Vector2(911.98, -0.0025014), Vector2(893.5, -0.00220313), Vector2(875.02, -0.00190486), Vector2(858.483, -0.00163795), Vector2(843.749, -0.00140013), Vector2(830.68, -0.0011892), Vector2(819.146, -0.00100304), Vector2(809.023, -0.000839652), Vector2(800.19, -0.000697086), Vector2(792.532, -0.000573494), Vector2(785.941, -0.000467115), Vector2(780.313, -0.00037627), Vector2(775.548, -0.000299368), Vector2(771.554, -0.000234904), Vector2(768.243, -0.000181458), Vector2(765.531, -0.000137697), Vector2(763.343, -0.000102373), Vector2(761.605, -7.43256e-05), Vector2(760.251, -5.24786e-05), Vector2(759.221, -3.58438e-05), Vector2(758.457, -2.35173e-05), Vector2(757.91, -1.46818e-05), Vector2(757.533, -8.60635e-06), Vector2(757.288, -4.64544e-06), Vector2(757.139, -2.2403e-06), Vector2(757.057, -9.17818e-07), Vector2(757.018, -2.90573e-07), Vector2(757.004, -5.72763e-08), Vector2(757, -3.72529e-09), Vector2(757, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_65jwt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShopController:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1051, 11)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ko6aw"]
+_data = {
+"Close": SubResource("Animation_m5dpk"),
+"Open": SubResource("Animation_gnyjc"),
+"RESET": SubResource("Animation_65jwt")
+}
+
+[node name="NewDialogUI" type="CanvasLayer" node_paths=PackedStringArray("UISoundSource") groups=["NewDialogUI"]]
+script = ExtResource("1_4mqm0")
+UISoundSource = NodePath("UISoundSource")
+
+[node name="UISoundSource" type="AudioStreamPlayer" parent="."]
+
+[node name="DialogInterface" type="Node2D" parent="."]
+
+[node name="DialogueParent" type="Node2D" parent="DialogInterface"]
+position = Vector2(0, 0.00440625)
+script = ExtResource("2_to4ef")
+time = 5.0
+tweenPosition = true
+endPosition = Vector2(0, 10)
+
+[node name="DialogueBox" type="Sprite2D" parent="DialogInterface/DialogueParent"]
+visible = false
+texture_filter = 1
+position = Vector2(-75, 308.996)
+scale = Vector2(1.155, 1.155)
+texture = ExtResource("3_i307u")
+offset = Vector2(480, 270)
+script = ExtResource("4_llhma")
+
+[node name="X Button" type="TextureButton" parent="DialogInterface/DialogueParent/DialogueBox"]
+offset_left = 124.0
+offset_top = 141.0
+offset_right = 156.0
+offset_bottom = 173.0
+texture_normal = ExtResource("5_gn1hr")
+script = ExtResource("6_gbixv")
+
+[node name="FaceSprite" type="Sprite2D" parent="DialogInterface/DialogueParent/DialogueBox"]
+position = Vector2(740.26, 93.5065)
+scale = Vector2(0.718594, 0.718594)
+texture = ExtResource("7_vyj05")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="DialogInterface/DialogueParent/DialogueBox"]
+offset_left = 695.238
+offset_top = 47.619
+offset_right = 695.238
+offset_bottom = 47.619
+scale = Vector2(1.095, 1.095)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+ratio = 0.001
+
+[node name="Gear1" type="Sprite2D" parent="DialogInterface/DialogueParent/DialogueBox"]
+modulate = Color(0.666667, 0.639216, 0.760784, 1)
+z_index = -1
+position = Vector2(828, 94)
+scale = Vector2(0.675, 0.675)
+texture = ExtResource("8_105vo")
+script = ExtResource("9_oslq0")
+Time = 5.0
+tweenRotation = true
+endrotation = 2.0
+
+[node name="Gear2" type="Sprite2D" parent="DialogInterface/DialogueParent/DialogueBox"]
+modulate = Color(0.666667, 0.639216, 0.760784, 1)
+z_index = -1
+position = Vector2(135, 94)
+scale = Vector2(0.675, 0.675)
+texture = ExtResource("8_105vo")
+script = ExtResource("9_oslq0")
+Time = 5.0
+tweenRotation = true
+endrotation = -2.0
+
+[node name="TextParent" type="Node2D" parent="DialogInterface/DialogueParent/DialogueBox"]
+position = Vector2(0, -3.46701)
+
+[node name="NameText" type="RichTextLabel" parent="DialogInterface/DialogueParent/DialogueBox/TextParent"]
+modulate = Color(0.658824, 0.658824, 0.658824, 1)
+self_modulate = Color(0.654902, 0.403922, 0.647059, 1)
+offset_left = 172.294
+offset_top = 25.1082
+offset_right = 534.294
+offset_bottom = 44.1082
+theme_override_fonts/normal_font = ExtResource("10_rubnq")
+bbcode_enabled = true
+text = "NAME:"
+
+[node name="MainText" type="RichTextLabel" parent="DialogInterface/DialogueParent/DialogueBox/TextParent"]
+offset_left = 170.0
+offset_top = 59.0
+offset_right = 692.0
+offset_bottom = 140.0
+theme_override_colors/default_color = Color(0.613281, 0.5625, 0.605469, 1)
+theme_override_fonts/normal_font = ExtResource("11_0i0v8")
+bbcode_enabled = true
+text = "Dialogue goes here."
+
+[node name="NextTextButton" type="TextureButton" parent="DialogInterface/DialogueParent/DialogueBox/TextParent" groups=["NextTextButton"]]
+offset_left = 634.632
+offset_top = 93.5103
+offset_right = 666.632
+offset_bottom = 125.51
+scale = Vector2(1.78, 1.78)
+texture_normal = ExtResource("12_3pywl")
+texture_pressed = ExtResource("13_dy4pk")
+texture_hover = ExtResource("14_i0kfy")
+
+[node name="HP_Number" type="Label" parent="DialogInterface/DialogueParent/DialogueBox/TextParent"]
+modulate = Color(0.658824, 0.658824, 0.658824, 1)
+self_modulate = Color(0.654902, 0.403922, 0.647059, 1)
+offset_left = 320.701
+offset_top = 25.1121
+offset_right = 360.701
+offset_bottom = 51.1121
+theme_override_fonts/font = ExtResource("11_0i0v8")
+text = "00"
+
+[node name="HP_Label" type="Label" parent="DialogInterface/DialogueParent/DialogueBox/TextParent"]
+modulate = Color(0.658824, 0.658824, 0.658824, 1)
+self_modulate = Color(0.654902, 0.403922, 0.647059, 1)
+offset_left = 298.701
+offset_top = 25.1121
+offset_right = 316.701
+offset_bottom = 44.1121
+theme_override_fonts/font = ExtResource("11_0i0v8")
+text = "HP"
+
+[node name="ModeSelectInterface" type="Node2D" parent="."]
+visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ModeSelectInterface"]
+offset_right = 200.0
+offset_bottom = 300.0
+theme_override_constants/separation = 20
+alignment = 2
+
+[node name="ScoreContainer" parent="ModeSelectInterface/VBoxContainer" instance=ExtResource("15_pwup6")]
+layout_mode = 2
+
+[node name="TextureButton" parent="ModeSelectInterface/VBoxContainer/ScoreContainer/UIParent" index="0"]
+script = ExtResource("16_mftrw")
+
+[node name="ScoreEntry" parent="ModeSelectInterface/VBoxContainer/ScoreContainer/UIParent" index="1"]
+text = "Dialog4
+"
+
+[node name="ScoreContainer3" parent="ModeSelectInterface/VBoxContainer" instance=ExtResource("15_pwup6")]
+layout_mode = 2
+
+[node name="TextureButton" parent="ModeSelectInterface/VBoxContainer/ScoreContainer3/UIParent" index="0"]
+script = ExtResource("16_mftrw")
+
+[node name="ScoreEntry" parent="ModeSelectInterface/VBoxContainer/ScoreContainer3/UIParent" index="1"]
+text = "Dialog3
+"
+
+[node name="ScoreContainer4" parent="ModeSelectInterface/VBoxContainer" instance=ExtResource("15_pwup6")]
+layout_mode = 2
+
+[node name="TextureButton" parent="ModeSelectInterface/VBoxContainer/ScoreContainer4/UIParent" index="0"]
+script = ExtResource("16_mftrw")
+
+[node name="ScoreEntry" parent="ModeSelectInterface/VBoxContainer/ScoreContainer4/UIParent" index="1"]
+text = "Dialog2
+"
+
+[node name="ScoreContainer2" parent="ModeSelectInterface/VBoxContainer" instance=ExtResource("15_pwup6")]
+layout_mode = 2
+
+[node name="TextureButton" parent="ModeSelectInterface/VBoxContainer/ScoreContainer2/UIParent" index="0" node_paths=PackedStringArray("AnimPlayer")]
+script = ExtResource("17_josve")
+AnimPlayer = NodePath("../../../../ShopController/AnimationPlayer")
+Anim1 = "Open"
+Anim2 = "Close"
+
+[node name="ScoreEntry" parent="ModeSelectInterface/VBoxContainer/ScoreContainer2/UIParent" index="1"]
+offset_left = 10.0
+offset_top = 10.9956
+offset_right = 78.89
+offset_bottom = 39.3806
+scale = Vector2(1.61, 1.61)
+theme_override_font_sizes/font_size = 16
+text = "Inventory"
+
+[node name="ShopController" parent="ModeSelectInterface" node_paths=PackedStringArray("PlayerDisplay") instance=ExtResource("18_j4kei")]
+z_index = 1
+position = Vector2(1051, 11)
+PlayerDisplay = NodePath("TextureRect2/CtrlInventoryGridEx")
+
+[node name="CtrlInventoryGridEx" parent="ModeSelectInterface/ShopController/TextureRect2" index="0"]
+inventory_path = NodePath("../../../../../CanvasLayer/UIPARENT/UI/HotbarParent/Hotbar/HotBarContentsParent/InventoryGrid")
+
+[node name="ScoreEntry2" parent="ModeSelectInterface/ShopController" index="7"]
+offset_left = 63.0
+offset_top = 72.0
+offset_right = 114.0
+offset_bottom = 103.0
+theme_override_font_sizes/font_size = 16
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ModeSelectInterface/ShopController"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_ko6aw")
+}
+
+[editable path="ModeSelectInterface/VBoxContainer/ScoreContainer"]
+[editable path="ModeSelectInterface/VBoxContainer/ScoreContainer3"]
+[editable path="ModeSelectInterface/VBoxContainer/ScoreContainer4"]
+[editable path="ModeSelectInterface/VBoxContainer/ScoreContainer2"]
+[editable path="ModeSelectInterface/ShopController"]

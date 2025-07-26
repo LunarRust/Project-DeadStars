@@ -1,21 +1,21 @@
 [gd_scene load_steps=9 format=3 uid="uid://d02do5ugamivi"]
 
 [ext_resource type="Script" path="res://DeadStars/scripts/NewDialogueSystem/ShopController.gd" id="1_0ces8"]
-[ext_resource type="Texture2D" uid="uid://neas634pjtgp" path="res://Sprites/UI/EmptyButton.png" id="1_wp3y7"]
 [ext_resource type="Texture2D" uid="uid://bdprua1xq1wim" path="res://Sprites/UI/Gear.png" id="2_sm4lw"]
 [ext_resource type="Script" path="res://Scripts/Tweener2D.cs" id="3_p5rh0"]
 [ext_resource type="Script" path="res://addons/gloot/ui/ctrl_inventory_grid_ex.gd" id="4_i1ymx"]
 [ext_resource type="Texture2D" uid="uid://bo7ngnq4uajfs" path="res://Sprites/Items/Generic.png" id="5_5xkui"]
+[ext_resource type="Texture2D" uid="uid://dbvl8fk61lygq" path="res://DeadStars/sprites/DialogueBoxold.png" id="5_acp5b"]
 [ext_resource type="Texture2D" uid="uid://2qykwyvomwth" path="res://Sprites/UI/ButtonSmall2.png" id="6_5j1e5"]
 [ext_resource type="Theme" uid="uid://bkrmgobma4l0y" path="res://Fonts/DBStyles.tres" id="7_iwrmg"]
 
-[node name="ShopController" type="Node2D" node_paths=PackedStringArray("PlayerDisplay")]
+[node name="ShopController" type="Node2D"]
+position = Vector2(380, 0)
 script = ExtResource("1_0ces8")
-PlayerDisplay = NodePath("TextureRect2/InvDisplay2")
 
 [node name="Gear1" type="Sprite2D" parent="."]
 modulate = Color(0.666667, 0.639216, 0.760784, 1)
-position = Vector2(57, 152)
+position = Vector2(1, 54)
 scale = Vector2(0.675, 0.675)
 texture = ExtResource("2_sm4lw")
 script = ExtResource("3_p5rh0")
@@ -25,47 +25,17 @@ endrotation = 2.0
 
 [node name="Gear2" type="Sprite2D" parent="."]
 modulate = Color(0.666667, 0.639216, 0.760784, 1)
-position = Vector2(40, 244)
+position = Vector2(-16, 146)
 scale = Vector2(0.675, 0.675)
 texture = ExtResource("2_sm4lw")
 script = ExtResource("3_p5rh0")
 Time = 5.0
 tweenRotation = true
 endrotation = -2.0
-
-[node name="Gear6" type="Sprite2D" parent="."]
-modulate = Color(0.666667, 0.639216, 0.760784, 1)
-position = Vector2(241, 206)
-scale = Vector2(0.675, 0.675)
-texture = ExtResource("2_sm4lw")
-script = ExtResource("3_p5rh0")
-Time = 5.0
-tweenRotation = true
-endrotation = 2.0
-
-[node name="Gear7" type="Sprite2D" parent="."]
-modulate = Color(0.666667, 0.639216, 0.760784, 1)
-position = Vector2(147, 186)
-scale = Vector2(0.675, 0.675)
-texture = ExtResource("2_sm4lw")
-script = ExtResource("3_p5rh0")
-Time = 5.0
-tweenRotation = true
-endrotation = -2.0
-
-[node name="Gear3" type="Sprite2D" parent="."]
-modulate = Color(0.666667, 0.639216, 0.760784, 1)
-position = Vector2(270, 0)
-scale = Vector2(0.465, 0.465)
-texture = ExtResource("2_sm4lw")
-script = ExtResource("3_p5rh0")
-Time = 5.0
-tweenRotation = true
-endrotation = 2.0
 
 [node name="Gear4" type="Sprite2D" parent="."]
 modulate = Color(0.666667, 0.639216, 0.760784, 1)
-position = Vector2(258, 401)
+position = Vector2(186.2, 306.2)
 scale = Vector2(0.465, 0.465)
 texture = ExtResource("2_sm4lw")
 script = ExtResource("3_p5rh0")
@@ -75,7 +45,7 @@ endrotation = 2.0
 
 [node name="Gear5" type="Sprite2D" parent="."]
 modulate = Color(0.666667, 0.639216, 0.760784, 1)
-position = Vector2(194, 415)
+position = Vector2(122.2, 320.2)
 scale = Vector2(0.465, 0.465)
 texture = ExtResource("2_sm4lw")
 script = ExtResource("3_p5rh0")
@@ -84,9 +54,10 @@ tweenRotation = true
 endrotation = -2.0
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 270.0
-offset_bottom = 186.33
-texture = ExtResource("1_wp3y7")
+offset_right = 201.0
+offset_bottom = 117.0
+texture = ExtResource("5_acp5b")
+expand_mode = 1
 
 [node name="InvDisplay" type="Control" parent="TextureRect"]
 unique_name_in_owner = true
@@ -94,10 +65,10 @@ custom_minimum_size = Vector2(236, 134)
 layout_direction = 1
 layout_mode = 3
 anchors_preset = 0
-offset_left = 17.44
-offset_top = 11.0
-offset_right = 253.44
-offset_bottom = 145.0
+offset_left = 17.0
+offset_top = 17.0
+offset_right = 253.0
+offset_bottom = 151.0
 script = ExtResource("4_i1ymx")
 item_spacing = 2
 grid_color = Color(0.494118, 0.415686, 0, 1)
@@ -106,21 +77,22 @@ selection_color = Color(0.492188, 0.414063, 0, 1)
 default_item_texture = ExtResource("5_5xkui")
 
 [node name="TextureRect2" type="TextureRect" parent="."]
-offset_top = 220.0
-offset_right = 270.0
-offset_bottom = 406.33
-texture = ExtResource("1_wp3y7")
+offset_left = -33.0
+offset_top = 125.0
+offset_right = 202.0
+offset_bottom = 322.0
+texture = ExtResource("5_acp5b")
+expand_mode = 1
 
-[node name="InvDisplay2" type="Control" parent="TextureRect2"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(236, 134)
+[node name="CtrlInventoryGridEx" type="Control" parent="TextureRect2"]
+custom_minimum_size = Vector2(202, 134)
 layout_direction = 1
 layout_mode = 3
 anchors_preset = 0
-offset_left = 17.0
-offset_top = 10.0
-offset_right = 253.0
-offset_bottom = 144.0
+offset_left = 16.0
+offset_top = 23.0
+offset_right = 218.0
+offset_bottom = 157.0
 script = ExtResource("4_i1ymx")
 item_spacing = 2
 grid_color = Color(0.494118, 0.415686, 0, 1)
@@ -150,24 +122,26 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ScoreEntry2" type="Label" parent="."]
-offset_left = 100.0
-offset_top = 152.0
-offset_right = 145.065
-offset_bottom = 173.215
+offset_left = 69.0
+offset_top = 81.0
+offset_right = 114.065
+offset_bottom = 102.215
 scale = Vector2(1.485, 1.485)
 theme = ExtResource("7_iwrmg")
+theme_override_colors/font_color = Color(0.494118, 0.415686, 0, 1)
 text = "NPC
 "
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ScoreEntry4" type="Label" parent="."]
-offset_left = 100.0
-offset_top = 373.0
-offset_right = 145.065
-offset_bottom = 394.215
+offset_left = 51.0
+offset_top = 279.0
+offset_right = 96.065
+offset_bottom = 300.215
 scale = Vector2(1.485, 1.485)
 theme = ExtResource("7_iwrmg")
+theme_override_colors/font_color = Color(0.494118, 0.415686, 0, 1)
 text = "You
 "
 horizontal_alignment = 1

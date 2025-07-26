@@ -1,8 +1,9 @@
-[gd_scene load_steps=361 format=4 uid="uid://ghfi6j4r31pi"]
+[gd_scene load_steps=362 format=4 uid="uid://ghfi6j4r31pi"]
 
 [ext_resource type="PackedScene" uid="uid://cuj5qvddd8o8p" path="res://DeadStars/models/Trees/Tree2.glb" id="1_1newe"]
 [ext_resource type="Script" path="res://addons/func_godot/src/map/func_godot_map.gd" id="1_jthyl"]
 [ext_resource type="PackedScene" uid="uid://bk40wll0gyt74" path="res://DeadStars/prefabs/system/npc_scene_rules.tscn" id="1_y6oqa"]
+[ext_resource type="PackedScene" uid="uid://bp4lwj3vx0yhw" path="res://DeadStars/prefabs/system/player_scene_rules.tscn" id="2_cj5qr"]
 [ext_resource type="Resource" uid="uid://b7b1eyuwdw2s4" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="2_s47is"]
 [ext_resource type="PackedScene" uid="uid://6c2b3bf2v6k7" path="res://DeadStars/models/Fern/Ferns.glb" id="2_yfmal"]
 [ext_resource type="Material" uid="uid://w67tge64bscx" path="res://textures/Grate.tres" id="3_e7h1n"]
@@ -1267,14 +1268,14 @@ points = PackedVector3Array(-30, 4, 13, -30, 1, 13, -29, 1, 13, -29, 4, 13, -30,
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bs3vk"]
 points = PackedVector3Array(-11, 5, 2, -11, 4, 2, -7, 4, 2, -7, 5, 2, -11, 5, 17, -11, 4, 17, -7, 4, 17, -7, 5, 17)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_2aat7"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_qh4fa"]
 viewport_path = NodePath("Node3D/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y7eiu"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kevqh"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_2aat7")
+albedo_texture = SubResource("ViewportTexture_qh4fa")
 
 [sub_resource type="Animation" id="Animation_jggox"]
 resource_name = "Fade"
@@ -1349,7 +1350,12 @@ size = Vector3(1, 1, 3.94946)
 
 [node name="NpcSceneRules" parent="." instance=ExtResource("1_y6oqa")]
 FlashLightsEnabled = false
-AllowPlayerControl = false
+
+[node name="PlayerSceneRules" parent="." instance=ExtResource("2_cj5qr")]
+FlashlightOn = true
+Health = 9
+Stamina = 16.0
+FlashlightEnabled = true
 
 [node name="outside" type="Node3D" parent="."]
 
@@ -3004,7 +3010,7 @@ volume_db = 10.0
 max_distance = 30.0
 
 [node name="Quad" parent="TvTower/TvPlayerMaster" index="3"]
-surface_material_override/0 = SubResource("StandardMaterial3D_y7eiu")
+surface_material_override/0 = SubResource("StandardMaterial3D_kevqh")
 
 [node name="Node3D" parent="TvTower/TvPlayerMaster" index="4" node_paths=PackedStringArray("node_quad")]
 node_quad = [NodePath("../../TvPlayer2/Node3D/Quad"), NodePath("../../TvPlayer12/Node3D/Quad"), NodePath("../../TvPlayer13/Node3D/Quad"), NodePath("../../TvPlayer20/Node3D/Quad"), NodePath("../../TvPlayer21/Node3D/Quad"), NodePath("../../TvPlayer22/Node3D/Quad"), NodePath("../../TvPlayer23/Node3D/Quad"), NodePath("../../TvPlayer24/Node3D/Quad"), NodePath("../../TvPlayer25/Node3D/Quad"), NodePath("../../TvPlayer26/Node3D/Quad"), NodePath("../../TvPlayer27/Node3D/Quad"), NodePath("../../TvPlayer28/Node3D/Quad"), NodePath("../../TvPlayer29/Node3D/Quad"), NodePath("../../TvPlayer30/Node3D/Quad"), NodePath("../../TvPlayer31/Node3D/Quad"), NodePath("../../TvPlayer32/Node3D/Quad"), NodePath("../../TvPlayer33/Node3D/Quad"), NodePath("../../TvPlayer34/Node3D/Quad"), NodePath("../../TvPlayer17/Node3D/Quad"), NodePath("../../TvPlayer18/Node3D/Quad"), NodePath("../../TvPlayer19/Node3D/Quad"), NodePath("../../TvPlayer15/Node3D/Quad"), NodePath("../../TvPlayer16/Node3D/Quad"), NodePath("../../TvPlayer3/Node3D/Quad"), NodePath("../../TvPlayer11/Node3D/Quad"), NodePath("../../TvPlayer14/Node3D/Quad"), NodePath("../../TvPlayer9/Node3D/Quad"), NodePath("../../TvPlayer4/Node3D/Quad"), NodePath("../../TvPlayer5/Node3D/Quad"), NodePath("../../TvPlayer6/Node3D/Quad"), NodePath("../../TvPlayer7/Node3D/Quad"), NodePath("../../TvPlayer8/Node3D/Quad"), NodePath("../../TvPlayer10/Node3D/Quad"), NodePath("../Quad")]

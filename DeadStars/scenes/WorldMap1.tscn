@@ -1,8 +1,8 @@
 [gd_scene load_steps=52 format=3 uid="uid://br20xgntamej3"]
 
-[ext_resource type="Texture2D" uid="uid://lgt33gnqe66k" path="res://Sprites/MapBack1new.png" id="1_jrwy6"]
 [ext_resource type="Script" path="res://Scripts/Tweener2D.cs" id="2_3gnr1"]
 [ext_resource type="Shader" path="res://Shaders/WaterCanvas.gdshader" id="3_kni28"]
+[ext_resource type="Texture2D" uid="uid://cjlhxjdu4eu5y" path="res://DeadStars/sprites/MapBack1OG.png" id="3_ohpab"]
 [ext_resource type="Texture2D" uid="uid://bfoa0te0x6h5t" path="res://textures/WaterCaustic.png" id="4_sa7ye"]
 [ext_resource type="Texture2D" uid="uid://ns1tb2tuvio6" path="res://Sprites/MapPsych1.png" id="5_7wuqt"]
 [ext_resource type="Script" path="res://Scripts/WorldMapPlayer.cs" id="6_5bvro"]
@@ -276,7 +276,7 @@ environment = SubResource("Environment_4bkj6")
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(480, 270)
 scale = Vector2(2, 2)
-texture = ExtResource("1_jrwy6")
+texture = ExtResource("3_ohpab")
 script = ExtResource("2_3gnr1")
 Time = 10.0
 tweenScale = true
@@ -441,7 +441,7 @@ script = ExtResource("22_1pia8")
 
 [node name="School" type="Sprite2D" parent="Levels"]
 texture_filter = 1
-position = Vector2(385, 143)
+position = Vector2(484, 161)
 scale = Vector2(2, 2)
 texture = ExtResource("10_pclkl")
 script = ExtResource("2_3gnr1")

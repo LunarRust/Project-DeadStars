@@ -1,6 +1,8 @@
 extends TextureButton
 @export var Scene : PackedScene
-@export var textbox : LineEdit
+@export var List : OptionButton
+@export var SceneList : Array[PackedScene]
+@export var LocOffset : Vector3
 #@export var LocationRelative : Vector3
 @export var TargetLoc : RayCast3D
 var ScenePack
@@ -14,14 +16,14 @@ func create():
 	var node : Node = ScenePack.instantiate()
 	get_tree().current_scene.add_child(node)
 	node.global_position = TargetLoc.get_collision_point()
+	node.position += LocOffset
 	print(node.get_tree_string_pretty())
 	#TargetLoc.get_collision_point()
 
 func Packload():
-	if (textbox != null && textbox.text != "Enter prefab"):
-			textboxDest = "res://prefabs/" + textbox.text + ".tscn"
-			ResourceLoader.load_threaded_request(textboxDest)
-			ScenePack = ResourceLoader.load_threaded_get(textboxDest) as PackedScene
+	if (List != null):
+			ScenePack = SceneList[List.get_selected_id()]
+			#ScenePack = ResourceLoader.load_threaded_get(textboxDest) as PackedScene
 			create()
 	else:
 		var node : Node = Scene.instantiate()

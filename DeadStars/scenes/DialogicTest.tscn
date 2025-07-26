@@ -269,14 +269,14 @@ bind/65/name = &"shin_R-IKPole"
 bind/65/bone = -1
 bind/65/pose = Transform3D(1, -2.36601e-06, 4.7187e-07, 4.7187e-07, 0.383616, 0.923493, -2.36601e-06, -0.923494, 0.383616, 0.0802554, -0.45369, 0.942757)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_uepv3"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_d6fe2"]
 viewport_path = NodePath("VenusModel/OrderPanel/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pwxkk"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_82p8q"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_uepv3")
+albedo_texture = SubResource("ViewportTexture_d6fe2")
 billboard_mode = 1
 billboard_keep_scale = true
 
@@ -506,14 +506,14 @@ bind/65/name = &"shin_R-IKPole"
 bind/65/bone = -1
 bind/65/pose = Transform3D(1, -2.36601e-06, 4.7187e-07, 4.7187e-07, 0.383616, 0.923493, -2.36601e-06, -0.923494, 0.383616, 0.0802554, -0.45369, 0.942757)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ep76j"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_lce08"]
 viewport_path = NodePath("VenusModel/OrderPanel/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tfo5u"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qifha"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_ep76j")
+albedo_texture = SubResource("ViewportTexture_lce08")
 billboard_mode = 1
 billboard_keep_scale = true
 
@@ -583,12 +583,12 @@ shape = SubResource("ConvexPolygonShape3D_svdnn")
 [node name="PrinceNPC" parent="." instance=ExtResource("25_b0gnf")]
 transform = Transform3D(-0.995346, 0, -0.096367, 0, 1, 0, 0.096367, 0, -0.995346, 0, 2.04125, 3.29597)
 
-[node name="HealthController" parent="PrinceNPC" index="4"]
+[node name="HealthController" parent="PrinceNPC" index="5"]
 Skin0 = SubResource("StandardMaterial3D_1ynt8")
 Skin1 = SubResource("StandardMaterial3D_xl5xw")
 Skin2 = SubResource("StandardMaterial3D_evyak")
 
-[node name="PrinceAnimationTree" parent="PrinceNPC" index="6"]
+[node name="PrinceAnimationTree" parent="PrinceNPC" index="7"]
 parameters/DialogueIdleBlend/blend_position = 0
 parameters/DialogueTalkBlend/blend_position = 0
 
@@ -596,56 +596,30 @@ parameters/DialogueTalkBlend/blend_position = 0
 transform = Transform3D(-0.997065, 0, 0.0765625, 0, 1, 0, -0.0765625, 0, -0.997065, 0, 0, 0)
 
 [node name="Skeleton3D" parent="PrinceNPC/VenusModel/Prince Rigging Project Solo/princeface/Posable Face Prince" index="0"]
-bones/0/position = Vector3(-1.13132e-11, 1.00973, -0.0552393)
-bones/0/rotation = Quaternion(-0.523642, 0.000674579, 0.025512, 0.851556)
-bones/1/rotation = Quaternion(0.494075, 0.0131914, 0.00828027, 0.86928)
-bones/2/rotation = Quaternion(0.420003, -0.000667772, 0.000109442, 0.907523)
-bones/3/rotation = Quaternion(-0.317199, 0.000314138, -0.000286005, 0.948359)
-bones/4/position = Vector3(1.34035e-08, 0.218705, -0.0277516)
-bones/4/rotation = Quaternion(-0.0511712, 0.0684217, -0.0382267, 0.99561)
-bones/5/position = Vector3(0.0750219, 0.146838, 0.0513954)
-bones/5/rotation = Quaternion(0.673374, 0.0937485, -0.13196, 0.721363)
-bones/6/position = Vector3(0.055084, 0.193893, 0.021712)
-bones/6/scale = Vector3(1, 1, 1)
-bones/7/scale = Vector3(1, 1, 1)
-bones/8/position = Vector3(-0.000458547, 0.0446674, 0.0303443)
-bones/8/scale = Vector3(1, 1, 1)
-bones/9/rotation = Quaternion(-0.0499969, -0.040847, -0.029042, 0.997491)
-bones/9/scale = Vector3(1, 1, 1)
-bones/10/rotation = Quaternion(-0.0499969, -0.040847, -0.029042, 0.997491)
-bones/10/scale = Vector3(1, 1, 1)
-bones/11/rotation = Quaternion(-0.0460792, 0.17868, 0.0509417, 0.981507)
-bones/12/scale = Vector3(1, 1, 1)
-bones/13/scale = Vector3(1, 1, 1)
-bones/14/scale = Vector3(1, 1, 1)
-bones/15/rotation = Quaternion(0.696722, -0.0822343, -0.071236, 0.709042)
-bones/15/scale = Vector3(1, 1, 1)
-bones/16/position = Vector3(-0.0406938, 0.145935, 0.0779117)
-bones/16/rotation = Quaternion(0.698181, -0.0085361, -0.0354287, 0.714993)
-bones/17/position = Vector3(-0.055084, 0.193893, 0.021712)
-bones/17/scale = Vector3(1, 1, 1)
-bones/18/scale = Vector3(1, 1, 1)
-bones/22/rotation = Quaternion(-0.605696, -0.344793, -0.357614, 0.621581)
-bones/22/scale = Vector3(1, 1, 1)
-bones/23/rotation = Quaternion(-0.182079, 0.722747, -0.481604, 0.461022)
-bones/24/position = Vector3(0.00058692, 0.398644, -1.91306e-05)
-bones/24/rotation = Quaternion(0.62925, -0.0225592, 0.0876473, 0.771915)
-bones/25/rotation = Quaternion(-0.605766, 0.344824, 0.357589, 0.621509)
-bones/25/scale = Vector3(1, 1, 1)
-bones/26/rotation = Quaternion(-0.182838, -0.721115, 0.483133, 0.461677)
-bones/26/scale = Vector3(1, 1, 1)
-bones/27/position = Vector3(-0.000588495, 0.398643, -1.88091e-05)
-bones/27/rotation = Quaternion(0.629798, 0.0240016, -0.0866634, 0.771536)
-bones/27/scale = Vector3(1, 1, 1)
-bones/28/rotation = Quaternion(0.149646, -0.514163, -0.668223, 0.516449)
-bones/29/rotation = Quaternion(0.149646, 0.514163, 0.668223, 0.516449)
-bones/29/scale = Vector3(1, 1, 1)
-bones/30/rotation = Quaternion(0.871889, 0.0224545, -0.0419915, -0.487383)
-bones/31/rotation = Quaternion(0.0701929, 0.00150325, -0.0206237, 0.997319)
-bones/31/scale = Vector3(1, 1, 1)
-bones/32/rotation = Quaternion(0.86677, -0.0313647, -0.0242176, -0.497131)
-bones/33/rotation = Quaternion(0.0661643, -0.000857915, 0.0206133, 0.997595)
-bones/33/scale = Vector3(1, 1, 1)
+bones/0/position = Vector3(1.41155e-11, 1.00928, -0.0552307)
+bones/0/rotation = Quaternion(-0.445011, 0.000111618, 0.00422312, 0.895515)
+bones/1/rotation = Quaternion(0.346136, 0.00151677, 0.000927807, 0.938183)
+bones/2/rotation = Quaternion(0.420004, -0.000719622, 0.000158614, 0.907522)
+bones/3/rotation = Quaternion(-0.3172, 0.000332261, -0.000245349, 0.948359)
+bones/4/position = Vector3(3.04473e-09, 0.218705, -0.0277515)
+bones/4/rotation = Quaternion(-0.00777641, -0.522599, 0.0744522, 0.849286)
+bones/5/position = Vector3(0.0349, 0.147392, 0.0770205)
+bones/6/position = Vector3(0.0550828, 0.193882, 0.0217112)
+bones/8/position = Vector3(-0.000458302, 0.0446689, 0.0303478)
+bones/16/position = Vector3(-0.0756576, 0.147702, 0.0506052)
+bones/17/position = Vector3(-0.0550828, 0.193882, 0.0217111)
+bones/22/rotation = Quaternion(-0.605577, -0.344952, -0.357484, 0.621683)
+bones/23/rotation = Quaternion(-0.205474, 0.704593, -0.51152, 0.446851)
+bones/24/position = Vector3(9.745e-05, 0.397913, -4.66889e-06)
+bones/24/rotation = Quaternion(0.207589, -0.0643525, -0.0223832, 0.97584)
+bones/25/rotation = Quaternion(-0.60577, 0.344893, 0.357647, 0.621434)
+bones/26/rotation = Quaternion(-0.205967, -0.703163, 0.512591, 0.44765)
+bones/27/position = Vector3(-9.90267e-05, 0.397913, -4.31161e-06)
+bones/27/rotation = Quaternion(0.206853, 0.0642324, 0.0225688, 0.976)
+bones/30/rotation = Quaternion(0.904419, 0.00401356, -0.0069108, -0.42657)
+bones/31/rotation = Quaternion(0.0679479, 0.00122956, -0.020608, 0.997475)
+bones/32/rotation = Quaternion(0.9045, -0.00529975, -0.00405781, -0.426422)
+bones/33/rotation = Quaternion(0.0669754, -0.00102213, 0.020591, 0.997542)
 
 [node name="Cylinder" parent="PrinceNPC/VenusModel/Prince Rigging Project Solo/princeface/Posable Face Prince/Skeleton3D" index="0"]
 layers = 1
@@ -707,17 +681,20 @@ skin = SubResource("Skin_n4jut")
 [node name="Shoes" parent="PrinceNPC/VenusModel/PsychopompPlayerModel/PompRig/Skeleton3D" index="7"]
 skin = SubResource("Skin_n4jut")
 
+[node name="AnimationPlayer" parent="PrinceNPC/VenusModel" index="4"]
+blend_times = [&"Attack", &"Hurt", 0.2, &"Attack", &"Idle", 0.5, &"Attack", &"Shrug", 0.2, &"Attack", &"Talk", 0.2, &"Attack", &"Touch", 0.2, &"Attack", &"Walk", 0.5, &"Idle", &"Attack", 0.3, &"Idle", &"Idle", 0.5, &"Idle", &"Shrug", 0.2, &"Idle", &"Talk", 0.2, &"Idle", &"Touch", 0.2, &"Idle", &"Walk", 0.5]
+
 [node name="Quad" parent="PrinceNPC/VenusModel/OrderPanel" index="1"]
-surface_material_override/0 = SubResource("StandardMaterial3D_pwxkk")
+surface_material_override/0 = SubResource("StandardMaterial3D_82p8q")
 
 [node name="Area3D" parent="PrinceNPC/VenusModel/OrderPanel/Quad" index="0"]
 transform = Transform3D(0.995911, 0.0034228, -0.0902282, 0, 0.99928, 0.0379072, 0.0902933, -0.0377526, 0.995193, 0, 0, 0)
 
-[node name="Label3D" type="Label3D" parent="PrinceNPC/VenusModel" index="8"]
+[node name="Label3D" type="Label3D" parent="PrinceNPC/VenusModel" index="7"]
 transform = Transform3D(0.994651, 0, -0.103296, 0, 1, 0, 0.103296, 0, 0.994651, 0.596712, 1, -0.00566673)
 text = "New"
 
-[node name="ShowDebug" parent="PrinceNPC" index="17" node_paths=PackedStringArray("OtherNodes")]
+[node name="ShowDebug" parent="PrinceNPC" index="18" node_paths=PackedStringArray("OtherNodes")]
 OtherNodes = [NodePath("../DebugLabels"), null, NodePath("../InventoryManager"), NodePath("../InventoryManager/ItemName"), NodePath("../InventoryManager/ItemDescription"), null]
 
 [node name="Venus Custom Death Overwrite" parent="." instance=ExtResource("10_cimd1")]
@@ -726,12 +703,12 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.9669
 [node name="PrinceNPC2" parent="." instance=ExtResource("25_b0gnf")]
 transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, -1.88232, 2, 2.64899)
 
-[node name="HealthController" parent="PrinceNPC2" index="4"]
+[node name="HealthController" parent="PrinceNPC2" index="5"]
 Skin0 = SubResource("StandardMaterial3D_xn1yj")
 Skin1 = SubResource("StandardMaterial3D_tj8ie")
 Skin2 = SubResource("StandardMaterial3D_j2eo3")
 
-[node name="PrinceAnimationTree" parent="PrinceNPC2" index="6"]
+[node name="PrinceAnimationTree" parent="PrinceNPC2" index="7"]
 parameters/DialogueIdleBlend/blend_position = 0
 parameters/DialogueTalkBlend/blend_position = 0
 
@@ -739,56 +716,30 @@ parameters/DialogueTalkBlend/blend_position = 0
 transform = Transform3D(-1, 0, 7.45058e-08, 0, 1, 0, -7.45058e-08, 0, -1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="PrinceNPC2/VenusModel/Prince Rigging Project Solo/princeface/Posable Face Prince" index="0"]
-bones/0/position = Vector3(-1.13132e-11, 1.00973, -0.0552393)
-bones/0/rotation = Quaternion(-0.523642, 0.000674579, 0.025512, 0.851556)
-bones/1/rotation = Quaternion(0.494075, 0.0131914, 0.00828027, 0.86928)
-bones/2/rotation = Quaternion(0.420003, -0.000667772, 0.000109442, 0.907523)
-bones/3/rotation = Quaternion(-0.317199, 0.000314138, -0.000286005, 0.948359)
-bones/4/position = Vector3(1.34035e-08, 0.218705, -0.0277516)
-bones/4/rotation = Quaternion(-0.0511712, 0.0684217, -0.0382267, 0.99561)
-bones/5/position = Vector3(0.0750219, 0.146838, 0.0513954)
-bones/5/rotation = Quaternion(0.673374, 0.0937485, -0.13196, 0.721363)
-bones/6/position = Vector3(0.055084, 0.193893, 0.021712)
-bones/6/scale = Vector3(1, 1, 1)
-bones/7/scale = Vector3(1, 1, 1)
-bones/8/position = Vector3(-0.000458547, 0.0446674, 0.0303443)
-bones/8/scale = Vector3(1, 1, 1)
-bones/9/rotation = Quaternion(-0.0499969, -0.040847, -0.029042, 0.997491)
-bones/9/scale = Vector3(1, 1, 1)
-bones/10/rotation = Quaternion(-0.0499969, -0.040847, -0.029042, 0.997491)
-bones/10/scale = Vector3(1, 1, 1)
-bones/11/rotation = Quaternion(-0.0460792, 0.17868, 0.0509417, 0.981507)
-bones/12/scale = Vector3(1, 1, 1)
-bones/13/scale = Vector3(1, 1, 1)
-bones/14/scale = Vector3(1, 1, 1)
-bones/15/rotation = Quaternion(0.696722, -0.0822343, -0.071236, 0.709042)
-bones/15/scale = Vector3(1, 1, 1)
-bones/16/position = Vector3(-0.0406938, 0.145935, 0.0779117)
-bones/16/rotation = Quaternion(0.698181, -0.0085361, -0.0354287, 0.714993)
-bones/17/position = Vector3(-0.055084, 0.193893, 0.021712)
-bones/17/scale = Vector3(1, 1, 1)
-bones/18/scale = Vector3(1, 1, 1)
-bones/22/rotation = Quaternion(-0.605696, -0.344793, -0.357614, 0.621581)
-bones/22/scale = Vector3(1, 1, 1)
-bones/23/rotation = Quaternion(-0.182079, 0.722747, -0.481604, 0.461022)
-bones/24/position = Vector3(0.00058692, 0.398644, -1.91306e-05)
-bones/24/rotation = Quaternion(0.62925, -0.0225592, 0.0876473, 0.771915)
-bones/25/rotation = Quaternion(-0.605766, 0.344824, 0.357589, 0.621509)
-bones/25/scale = Vector3(1, 1, 1)
-bones/26/rotation = Quaternion(-0.182838, -0.721115, 0.483133, 0.461677)
-bones/26/scale = Vector3(1, 1, 1)
-bones/27/position = Vector3(-0.000588495, 0.398643, -1.88091e-05)
-bones/27/rotation = Quaternion(0.629798, 0.0240016, -0.0866634, 0.771536)
-bones/27/scale = Vector3(1, 1, 1)
-bones/28/rotation = Quaternion(0.149646, -0.514163, -0.668223, 0.516449)
-bones/29/rotation = Quaternion(0.149646, 0.514163, 0.668223, 0.516449)
-bones/29/scale = Vector3(1, 1, 1)
-bones/30/rotation = Quaternion(0.871889, 0.0224545, -0.0419915, -0.487383)
-bones/31/rotation = Quaternion(0.0701929, 0.00150325, -0.0206237, 0.997319)
-bones/31/scale = Vector3(1, 1, 1)
-bones/32/rotation = Quaternion(0.86677, -0.0313647, -0.0242176, -0.497131)
-bones/33/rotation = Quaternion(0.0661643, -0.000857915, 0.0206133, 0.997595)
-bones/33/scale = Vector3(1, 1, 1)
+bones/0/position = Vector3(1.41155e-11, 1.00928, -0.0552307)
+bones/0/rotation = Quaternion(-0.445011, 0.000111618, 0.00422312, 0.895515)
+bones/1/rotation = Quaternion(0.346136, 0.00151677, 0.000927807, 0.938183)
+bones/2/rotation = Quaternion(0.420004, -0.000719622, 0.000158614, 0.907522)
+bones/3/rotation = Quaternion(-0.3172, 0.000332261, -0.000245349, 0.948359)
+bones/4/position = Vector3(3.04473e-09, 0.218705, -0.0277515)
+bones/4/rotation = Quaternion(-0.00777641, -0.522599, 0.0744522, 0.849286)
+bones/5/position = Vector3(0.0349, 0.147392, 0.0770205)
+bones/6/position = Vector3(0.0550828, 0.193882, 0.0217112)
+bones/8/position = Vector3(-0.000458302, 0.0446689, 0.0303478)
+bones/16/position = Vector3(-0.0756576, 0.147702, 0.0506052)
+bones/17/position = Vector3(-0.0550828, 0.193882, 0.0217111)
+bones/22/rotation = Quaternion(-0.605577, -0.344952, -0.357484, 0.621683)
+bones/23/rotation = Quaternion(-0.205474, 0.704593, -0.51152, 0.446851)
+bones/24/position = Vector3(9.745e-05, 0.397913, -4.66889e-06)
+bones/24/rotation = Quaternion(0.207589, -0.0643525, -0.0223832, 0.97584)
+bones/25/rotation = Quaternion(-0.60577, 0.344893, 0.357647, 0.621434)
+bones/26/rotation = Quaternion(-0.205967, -0.703163, 0.512591, 0.44765)
+bones/27/position = Vector3(-9.90267e-05, 0.397913, -4.31161e-06)
+bones/27/rotation = Quaternion(0.206853, 0.0642324, 0.0225688, 0.976)
+bones/30/rotation = Quaternion(0.904419, 0.00401356, -0.0069108, -0.42657)
+bones/31/rotation = Quaternion(0.0679479, 0.00122956, -0.020608, 0.997475)
+bones/32/rotation = Quaternion(0.9045, -0.00529975, -0.00405781, -0.426422)
+bones/33/rotation = Quaternion(0.0669754, -0.00102213, 0.020591, 0.997542)
 
 [node name="Cylinder" parent="PrinceNPC2/VenusModel/Prince Rigging Project Solo/princeface/Posable Face Prince/Skeleton3D" index="0"]
 layers = 1
@@ -850,17 +801,20 @@ skin = SubResource("Skin_yfkbd")
 [node name="Shoes" parent="PrinceNPC2/VenusModel/PsychopompPlayerModel/PompRig/Skeleton3D" index="7"]
 skin = SubResource("Skin_yfkbd")
 
+[node name="AnimationPlayer" parent="PrinceNPC2/VenusModel" index="4"]
+blend_times = [&"Attack", &"Hurt", 0.2, &"Attack", &"Idle", 0.5, &"Attack", &"Shrug", 0.2, &"Attack", &"Talk", 0.2, &"Attack", &"Touch", 0.2, &"Attack", &"Walk", 0.5, &"Idle", &"Attack", 0.3, &"Idle", &"Idle", 0.5, &"Idle", &"Shrug", 0.2, &"Idle", &"Talk", 0.2, &"Idle", &"Touch", 0.2, &"Idle", &"Walk", 0.5]
+
 [node name="Quad" parent="PrinceNPC2/VenusModel/OrderPanel" index="1"]
-surface_material_override/0 = SubResource("StandardMaterial3D_tfo5u")
+surface_material_override/0 = SubResource("StandardMaterial3D_qifha")
 
 [node name="Area3D" parent="PrinceNPC2/VenusModel/OrderPanel/Quad" index="0"]
 transform = Transform3D(0.965319, -0.00974438, 0.260862, 0, 0.99926, 0.0373282, -0.261049, -0.0360332, 0.964629, 0, 0, 0)
 
-[node name="Label3D" type="Label3D" parent="PrinceNPC2/VenusModel" index="8"]
+[node name="Label3D" type="Label3D" parent="PrinceNPC2/VenusModel" index="7"]
 transform = Transform3D(0.985903, 0, -0.167319, 0, 1, 0, 0.167319, 0, 0.985903, 0.671158, 1, -0.0768967)
 text = "Normal"
 
-[node name="ShowDebug" parent="PrinceNPC2" index="17" node_paths=PackedStringArray("OtherNodes")]
+[node name="ShowDebug" parent="PrinceNPC2" index="18" node_paths=PackedStringArray("OtherNodes")]
 OtherNodes = [NodePath("../DebugLabels"), null, NodePath("../InventoryManager"), NodePath("../InventoryManager/ItemName"), NodePath("../InventoryManager/ItemDescription"), null]
 
 [node name="Syringe Pickup" parent="." instance=ExtResource("12_h2twj")]
@@ -899,15 +853,9 @@ light_energy = 0.347
 omni_range = 17.118
 
 [editable path="PrinceNPC"]
+[editable path="PrinceNPC/AdvancedDialogueSystem/CamGrabber"]
 [editable path="PrinceNPC/VenusModel/Prince Rigging Project Solo"]
-[editable path="PrinceNPC/VenusModel/DialogObject"]
-[editable path="PrinceNPC/VenusModel/DialogObject/UI/ModeSelectInterface/VBoxContainer/ScoreContainer"]
-[editable path="PrinceNPC/VenusModel/DialogObject/UI/ModeSelectInterface/VBoxContainer/ScoreContainer2"]
-[editable path="PrinceNPC/VenusModel/DialogObject/UI/ModeSelectInterface/ShopController"]
 [editable path="PrinceNPC2"]
+[editable path="PrinceNPC2/AdvancedDialogueSystem/CamGrabber"]
 [editable path="PrinceNPC2/VenusModel/Prince Rigging Project Solo"]
-[editable path="PrinceNPC2/VenusModel/DialogObject"]
-[editable path="PrinceNPC2/VenusModel/DialogObject/UI/ModeSelectInterface/VBoxContainer/ScoreContainer"]
-[editable path="PrinceNPC2/VenusModel/DialogObject/UI/ModeSelectInterface/VBoxContainer/ScoreContainer2"]
-[editable path="PrinceNPC2/VenusModel/DialogObject/UI/ModeSelectInterface/ShopController"]
 [editable path="HosptialEnv"]

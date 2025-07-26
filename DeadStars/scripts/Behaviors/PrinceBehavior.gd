@@ -54,13 +54,11 @@ func StopTalking():
 func Hurt():
 	if HealthController.HP >= 1:
 		AnimTrigger("Hurt")
-	if follow:
-		#PompAI.set("hurt", true)
-		DialogueBox.hide()
-		await get_tree().create_timer(1).timeout
 		#PompAI.set("hurt", false)
 		if InnoutExists == true:
 			SignalBusInnout.emit_signal("GameOver")
+	if NewDialogueSystem:
+		StopTalking()
 
 
 

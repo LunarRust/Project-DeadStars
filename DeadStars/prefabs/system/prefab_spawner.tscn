@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://c2v5p45ad562v"]
+
+[ext_resource type="Texture2D" uid="uid://neas634pjtgp" path="res://Sprites/UI/EmptyButton.png" id="1_tdano"]
+[ext_resource type="Texture2D" uid="uid://0i4iha5ir3i1" path="res://Sprites/UI/ButtonEmpty.png" id="2_ql6tc"]
+[ext_resource type="Script" path="res://CustomScripts/SceneInstantiator.gd" id="3_cf2n3"]
+[ext_resource type="PackedScene" uid="uid://cxhlc7caej3xd" path="res://DeadStars/prefabs/Items/Syringe_pickup.tscn" id="4_f3cdt"]
+[ext_resource type="PackedScene" uid="uid://dqgt2apdu5lyk" path="res://DeadStars/prefabs/Items/Evil_syringe_pickup.tscn" id="5_vgb1p"]
+[ext_resource type="FontFile" uid="uid://dku4ohp5rmpr5" path="res://Fonts/DBStylez.ttf" id="6_nh701"]
+
+[node name="PrefabSpawner" type="Node2D"]
+top_level = true
+z_index = 2
+position = Vector2(82, 3)
+
+[node name="LineEdit" type="OptionButton" parent="."]
+offset_left = 80.0
+offset_top = 4.0
+offset_right = 198.0
+offset_bottom = 37.0
+size_flags_horizontal = 3
+selected = 0
+item_count = 2
+popup/item_0/text = "Syringe01"
+popup/item_1/text = "Syringe02"
+popup/item_1/id = 1
+
+[node name="SpawnButton" type="TextureButton" parent="." node_paths=PackedStringArray("List")]
+offset_left = 93.0
+offset_top = 43.0
+offset_right = 184.0
+offset_bottom = 62.0
+texture_normal = ExtResource("1_tdano")
+texture_pressed = ExtResource("1_tdano")
+texture_hover = ExtResource("2_ql6tc")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("3_cf2n3")
+List = NodePath("../LineEdit")
+SceneList = Array[PackedScene]([ExtResource("4_f3cdt"), ExtResource("5_vgb1p")])
+
+[node name="Label2" type="Label" parent="SpawnButton"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 2.0
+offset_right = 70.0
+offset_bottom = 25.0
+theme_override_colors/font_color = Color(0.494118, 0.415686, 0, 1)
+theme_override_fonts/font = ExtResource("6_nh701")
+text = "Spawn"
+
+[connection signal="pressed" from="SpawnButton" to="SpawnButton" method="_on_pressed"]
